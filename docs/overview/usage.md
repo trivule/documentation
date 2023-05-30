@@ -4,68 +4,80 @@ sidebar_position: 3
 # Usage
 Quickv offers three validation methods: isolated **input** validation, isolated **form** validation, or general validation of all forms on your site. This allows you to choose the method that best suits your needs and effectively validate user-submitted data, whether it be for a single field, an entire form, or for all forms on your website.
 
-1. To perform validation on an individual **input** field, you can use the `QvInput` class. This class takes a valid CSS selector to identify the field to be validated, a `QvConfig` configuration (optional), and a boolean (optional) indicating whether the `qv.input.validated` event will be triggered. This event allows you to know when the field has been changed and validated.
+### Single input validation 
+
+**HTML**
+```html
+<input type="email" id="my-input" name="email"  data-qv-rules="required|email" />
+<div data-qv-feedback="email"></div>
+```
+**Javascript**
+```js
+  const qvInput = new QvInput("#my-input");
+  qvInput.init();
+```
+For more customization, consult its [documentation](#)
+ 
+### Single form
+
+You can use the `QvForm` class of Quickv. Simply provide a valid CSS selector to find the form to be validated in its constructor, then call the `init()` method to initialize validation.
 
 Example
 
+**HTML**
+```html
+<form action="" id="my-form">
+  <div>
+    <input
+      type="text"
+      name="age"
+      data-qv-rules="required|number|between:18,35"
+      data-qv-messages="Age is required | Age must be a number | Age must be between 18 and 35"
+    />
+    <div data-qv-feedback="age"></div>
+  </div>
+  <button data-qv-submit>Submit</button>
+</form>
+```
+**Javascript**
 ```js
-const qv = new QvInput(inputSelector);
-qv.init();
+const qvForm = new QvForm("#my-form");
+qvForm.init();
+```
+For more customization, consult its [documentation](#)
+
+
+### Globally
+
+ To validate all forms on your site in a general way, you can use the  `Quickv` class. These classes take nothing in their constructor and search all forms on your site to apply an instance of `QvForm` to them. However, please note that this method may not work correctly with certain frameworks like Angular, React that manipulate the DOM in a specific way. In this case, you can use methods **Single Input** and **Single Form** for better integration.
+
+Example
+
+**HTML**
+```html
+<form action="">
+  <div>
+    <input
+      type="text" name="age"  data-qv-rules="required|number|between:18,35" data-qv-messages="Age is required | Age must be a number | Age must be between 18 and 35" />
+    <div data-qv-feedback="age"></div>
+  </div>
+  <button data-qv-submit>Submit</button>
+</form>
+
+<form action="">
+  <div>
+    <input  type="email" name="email" data-qv-rules="required|email"/>
+    <div data-qv-feedback="email"></div>
+  </div>
+  <button data-qv-submit>Submit</button>
+</form>
 ```
 
-2. To validate a single form, you can use the `QvForm` class of Quickv. Simply provide a valid CSS selector to find the form to be validated in its constructor, then call the `init()` method to initialize validation.
-
-Example
-
-```js
-const qv = new QvForm(inputSelector);
-qv.init();
-```
-
-3. To validate all forms on your site in a general way, you can use the `Qv` or `Quickv` class of Quickv. These classes take nothing in their constructor and search all forms on your site to apply an instance of `QvForm` to them. However, please note that this method may not work correctly with certain frameworks like Angular that manipulate the DOM in a specific way. In this case, you can use methods 1 and 2 for better integration.
-
-Example
-
+**Javascript**
 ```js
 const qv = new Quickv();
 qv.init();
 ```
-
-By using these classes, you can easily validate your forms with Quickv, but be sure to take into account the specificities of your framework or development environment for optimal integration.
-
-### In HTML and CSS Vanilla
-
-- Copy and include the `quickv.js` file in your project with the `script` tag
-
-- Initialize as follows:
-
-  ```js
-  const qv = new Quickv();
-  qv.init();
-  ```
-
-  That's all you need to do as far as JavaScript, if you have no errors in the console, you can test Quickv
-
-- Create an HTML form, with the `form` tag
-
-- Create a field you want to validate and add attributes like the example below
-
-  Exemple
-
-  ```html
-  <form action="">
-    <div>
-      <input
-        type="text"
-        name="age"
-        data-qv-rules="required|number|between:18,35"
-        data-qv-messages="Age is required | Age must be a number | Age must be between 18 and 35"
-      />
-      <div data-qv-feedback="age"></div>
-    </div>
-    <button data-qv-submit>Submit</button>
-  </form>
-  ```
 
 By typing in the age field and submitting the form by clicking the **_Submit_** button, Quickv will automatically validate the submitted data according to the defined validation rules and display the appropriate error messages in the HTML element with the `data-qv-feedback` attribute if the data is not valid.
 If you do not want to disable the default form, simply remove the `data-qv-submit` attribute from the submit button in your HTML code.

@@ -81,8 +81,13 @@ const config = {
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/facebook/docusaurus",
+            href: "https://github.com/quick-v",
             label: "GitHub",
+            position: "right",
+          },
+          {
+            href: "static/js/quickv.js",
+            label: "Download",
             position: "right",
           },
         ],
