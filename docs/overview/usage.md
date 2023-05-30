@@ -94,54 +94,39 @@ You can see here an example of using Quickv in Reactjs [here](https://github.com
 
 
 ## Customization
+ 
+### Events  
 
-Quickv gives you many attributes to validate your form without writing any JS code
+By default, validation is triggered on "blur", "input" or "change" events. However, you have the possibility to specify your own events using the "data-qv-events" attribute. You can pass it a list of events that will trigger validation, separated by the "|" symbol.
 
-### Display error messages
+Example
+```html
+<input
+  type="text"
+  data-qv-events="mouseenter|mouseover|your-custom-event"
+  data-qv-rules="required|phone:US"
+  name="phone"
+/>
+```
+For more customization, consult its [documentation](#)
 
-By default, error messages are in English. However, you can modify them to fit a specific rule on a field by using the `data-qv-messages` attribute. The messages are separated by the pipe symbol (|) in the order in which you defined your rules. You can also put the messages in any order by specifying the rules for which you defined the messages. For example, if you have a rule `required|min:x|max:x`, you can set the message for the "min" and "max" rule using `data-qv-messages="{1}Message for min|{2}Message for max"`. The numbers in braces correspond to the positions of the rules, with the first rule being at position 0. Sometimes it is handy to have an error message for several rules. You can do this by specifying the positions of the rules affected by the message. For example, `data-qv-messages="This field is required|{1,2}Please enter a number between x and y"`.
-
-The `data-qv-feedback="field_name"` attribute allows you to display the error message where you want it. You can place it anywhere on the page, Quickv will find it and assign it the error message.
-
-If you have a field with the name "xxx", Quickv will try to find the first HTML element with the attribute `data-qv-feedback=xxx` closest to the field in question. If no element is found, it will do nothing.
-
-> _Sometimes you may not want to use the name directly on an HTML field. The **data-qv-name** attribute allows you to give a name to your form._
-
-
-
-
-### Displaying errors in Quickv
-
-Quickv offers different ways to display errors in a form. If you want to display all error messages once the first rule has failed, you can use the `data-qv-show` attribute. It accepts three possible values: `first`, `full`, and `last`.
-
-By default, the value is `first`, which means only the first error message will be displayed. If you choose the `full` value, all error messages for all rules will be displayed. Finally, if you choose `last`, only the last error message will be displayed.
-
-
-
-### Events to trigger validation
-
-If you want to trigger the validation of a field according to certain events, such as `mouseover` or `focus`, you can add the `data-qv-events` attribute to the HTML element that has the `data-qv-rules` attribute. You can specify the events you want, separated by pipes (`|`). Feel free to test this feature!
-
-### Customize the style of the field
+### Style customization
 
 It may happen that you want to apply a specific style to a field depending on its validity state (valid or invalid). To do this, you can use the `data-qv-invalid-class` and `data-qv-valid-class` attributes. For example, you can set data-qv-invalid-class with the value "_invalid-css_" to apply a specific CSS class when the form is invalid. Thus, the classes you have defined will be automatically applied according to the validity state of the form.
 
+```html
+ <input type="text" 
+    data-qv-invalid-class="error" 
+    data-qv-rules="required|phone:US"
+    name="phone"
+  />
+```
+For more customization, consult its [documentation](#)
 
 ## Rules
-
-#### General rules
-
+Here is a brief list of the rules available in Quickv
+### Some rules
 - `required` - The value is mandatory.
-
-- `nullable` - The value can be null, it will simply be ignored.
-
-- `min:x` - Checks if the field value is greater than or equal to x. This rule can be used to validate numbers, strings, and files.
-
-  - If the field is a number or a string, the value of x must be an integer.
-
-  - If the field is a file, the value of x must be expressed in **B, KB, MB, or GB**. Example: 2MB, 1KB, 3GB.
-
-- `max:x` - Checks if the field value is less than or equal to the specified maximum value. This rule works in the same way as the min rule.
 
 - `in:x,x,z,...` - The _in_ validation rule checks if the user input is included in a specified list of values.
 
@@ -162,8 +147,9 @@ It may happen that you want to apply a specific style to a field depending on it
   - If the field is a file, x and y must be expressed in **B, KB, MB, or GB**.
 
 
+For more customization, consult its [documentation](#)
 
-#### Write your rule:
+### Write your rule:
 
 A rule is just a javascript function that takes two parameters and must return a boolean
 
@@ -186,3 +172,5 @@ qv.init();
 ```
 
 After that, you can use your rules as html attributes
+
+For more customization, consult its [documentation](#)
