@@ -6,7 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #3d8f69;
+  --ifm-color-primary: #007f84;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
@@ -68,7 +68,7 @@ input:focus,
 textarea:focus,
 select:focus,
 input[type="file"]:focus {
-  border-color: #007bff;
+  border-color: #0082b1;
 }
 input.is-invalid,
 textarea.is-invalid,
