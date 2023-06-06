@@ -150,6 +150,60 @@ Feel free to customize the CSS classes for the validation state of your form fie
 
 
 ## Messages
+### Customizing error messages
+
+Suppose you have a form with two fields: "Name" and "Email". You want to specify specific error messages for each field other than the Quickv default messages.
+
+For the "Name" field, you want to display the message "**Name is mandatory**" if no value is entered. For the "Email" field, you want to display the message "**Please enter a valid email address**".
+
+You can use the `data-qv-messages` attribute to customize error messages for each field. Here's how you can do it:
+
+```html
+<input type="text" data-qv-rules="required" name="name" data-qv-messages="Name is required">
+
+<input type="email" data-qv-rules="email" name="email" data-qv-messages="Please enter a valid email address">
+```
+
+With this configuration, Quickv will display specific error messages when the corresponding rules are not respected for each field.
+
+### Position markers
+
+Let's suppose you have an additional validation rule for the "Email" field: it must have a minimum length of 8 characters. You want to specify a specific error message for this rule.
+
+You can use position markers to indicate error messages in any order. Here's how you can do it:
+
+```html
+<input type="email" name="email" data-qv-messages="{0}Please enter a valid email address|{1}The email must be at least 8 characters long">
+```
+
+With this configuration, Quickv will display the first error message if the email address is invalid, and the second error message if the minimum length of 8 characters is not respected.
+
+### General error messages
+
+Now let's suppose you want to have a general error message for the "required", "email" and "maxlength" rules in the "Email" field.
+
+You can use the rule positions to specify a common error message. Here's how you can do it:
+
+```html
+<input type="text" data-qv-rules="required|email|maxlength:32" name="name" data-qv-messages="{0,1,3}Please enter a valid email address"> 
+```
+
+Avec cette configuration, Quickv affichera le message d'erreur "**Veuillez saisir une adresse email valide**" si le champ est vide, n'est pas une adresse valide ou dépasse 32 caractères.
+
+### Emplacement des messages
+
+Supposons que vous souhaitez afficher les messages d'erreur à des endroits spécifiques sur votre page, plutôt que juste à côté des champs de formulaire.
+
+Vous pouvez utiliser l'attribut `data-qv-feedback` pour spécifier où afficher les messages d'erreur. Voici comment vous pouvez le faire :
+
+```html
+<input type="text" name="nom" data-qv-messages="Le nom est obligatoire">
+ 
+<div data-qv-feedback="nom"></div> 
+```
+Avec cette configuration, le message d'erreur sera affiché à l'intérieur de l'élément `<div>` ayant l'attribut `data-qv-feedback="nom"`. Vous
+
+
 
 
 
