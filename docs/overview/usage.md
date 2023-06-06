@@ -16,7 +16,7 @@ Quickv offers three validation methods: isolated **input** validation, isolated 
   const qvInput = new QvInput("#my-input");
   qvInput.init();
 ```
-For more customization, consult its [documentation](#)
+For more customization, consult its [documentation](/docs/validation/qv-input)
  
 ### Single form
 

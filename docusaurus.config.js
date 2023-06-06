@@ -67,7 +67,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "Quicv",
+        title: "Quickv",
         logo: {
           alt: "Quickv",
           src: "img/logo.png",
