@@ -166,18 +166,6 @@ You can use the `data-qv-messages` attribute to customize error messages for eac
 
 With this configuration, Quickv will display specific error messages when the corresponding rules are not respected for each field.
 
-### Position markers
-
-Let's suppose you have an additional validation rule for the "Email" field: it must have a minimum length of 8 characters. You want to specify a specific error message for this rule.
-
-You can use position markers to indicate error messages in any order. Here's how you can do it:
-
-```html
-<input type="email" name="email" data-qv-messages="{0}Please enter a valid email address|{1}The email must be at least 8 characters long">
-```
-
-With this configuration, Quickv will display the first error message if the email address is invalid, and the second error message if the minimum length of 8 characters is not respected.
-
 ### General error messages
 
 Now let's suppose you want to have a general error message for the "required", "email" and "maxlength" rules in the "Email" field.
@@ -236,3 +224,128 @@ const qvInput = new QvInput("#my-input", {
 When `failsOnfirst` is set to `false`, all the rules will be executed, and all error messages will be displayed.
 
 These options provide flexibility in controlling how error messages are displayed based on your specific requirements.
+
+## Advanced customization 
+
+### Interacting with Input During Validation
+
+The `onFails` and `onPasses` methods of the `QvInput` class allow you to interact with the `input` element when validation fails or succeeds for a given form field.
+
+The `onFails` method sets an event listener that will be triggered when validation fails. Here's an example of usage:
+
+```javascript
+qvInput.onFails(() => {
+  // Code to execute when validation fails
+  console.log("Validation failed!");
+});
+```
+
+In this example, a callback function is defined to display a message in the console when validation fails. You can customize the code to execute based on your needs, such as displaying an error message to the user or applying specific styles to the `input` element.
+
+Similarly, the `onPasses` method allows you to set an event listener that will be triggered when validation succeeds. Here's an example of usage:
+
+```javascript
+qvInput.onPasses(() => {
+  // Code to execute when validation succeeds
+  console.log("Validation succeeded!");
+});
+```
+
+In this example, a callback function is defined to display a message in the console when validation succeeds. You can modify the code to execute based on your needs, such as validating other form fields or enabling a submission button.
+
+By using these methods, you can react to successful or failed validation events and perform specific actions accordingly. This allows you to add custom logic to your application based on the result of form field validation.
+
+### Emitting Custom Events
+
+The `emit` method of the `QvInput` class allows you to emit a custom event to the associated `input` element. Here's an example of usage:
+
+```javascript
+qvInput.emit("myEvent", { data: "Custom value" });
+```
+
+In this example, a custom event named "myEvent" is emitted to the `input` element. Additional data `{ data: "Custom value" }` can be passed along with the event.
+
+You can use this feature to create advanced communication and interaction between your application and the `QvInput` class. For example, you can emit a custom event when the value of the `input` element changes and listen to that event to perform specific actions in other parts of your application.
+
+### Attaching Event Listeners
+
+The `on` method of the `QvInput` class allows you to attach an event listener to the associated `input` element. Here's an example of usage:
+
+```javascript
+qvInput.on("change", (event) => {
+  // Code to execute when "change" event occurs
+  console.log("Value has changed:", event.target.value);
+});
+```
+
+In this example, an event listener is attached to the `input` element for the "change" event. When this event occurs, the callback function is executed, displaying the new value of the `input` element in the console. You can listen to other events such as "input" or "blur" by specifying the corresponding event name.
+
+This allows you to listen to specific events emitted by the `input` element and perform custom actions in response to those events. For example, you can detect value changes in the `input` element or loss of focus and perform actions accordingly, such as updating other elements in the user interface or performing asynchronous data validation.
+
+### Validating the Input Element
+
+The `valid` method of the `QvInput` class allows you to perform validation on the `input` element using the defined validation rules. Here's an example of usage:
+
+```javascript
+const isValid = qvInput.valid();
+if (isValid) {
+  // Proceed with form submission or handle valid input
+} else {
+  // Display error messages or handle invalid
+
+ input
+}
+```
+
+In this example, the `valid` method is called to validate the `input` element. The return value `isValid` indicates whether the element is valid or not. You can use this information to make decisions in your code, such as submitting the form or displaying error messages to the user.
+
+The `valid` method updates the `_passed` property of the `QvInput` instance with the validation result and returns that result. It performs the validation using the current value of the `input` element and the defined validation rules.
+
+### Validating and Emitting Validation Events
+
+The `validate` method of the `QvInput` class performs validation on the `input` element using the defined validation rules. It also emits the "qv.input.passes" or "qv.input.fails" events based on the validation result. Here's an example of usage:
+
+```javascript
+const isValid = qvInput.validate();
+if (isValid) {
+  // Proceed with form submission or handle valid input
+} else {
+  // Display error messages or handle invalid input
+}
+```
+
+In this example, the `validate` method is called to validate the `input` element. The return value `isValid` indicates whether the element is valid or not. You can use this information to make decisions in your code, such as submitting the form or displaying error messages to the user.
+
+The `validate` method performs the following steps:
+
+1. It calls the `valid` method to perform validation on the `input` element and update the `_passed` property with the result.
+2. It calls other methods to update CSS classes, retrieve error messages, and emit validation events.
+3. It returns the value of the validation result (`this._passed`).
+
+You can use the `validate` method when you want to perform a full validation of the `input` element, update the user interface based on the validation result, and emit the corresponding events.
+
+### Listening to Validation Events
+
+When validation fails or passes, the `qv.input.fails` and `qv.input.passes` events are emitted for you to interact with Quickv in your code.
+
+```js
+const myInput = document.getElementBy('my-input');
+myInput.addEventListener('qv.input.passes', (e) => {
+  console.log(e.detail);
+  // Your code
+});
+```
+
+### Destroying the QvInput Instance
+
+The `destroy` method of the `QvInput` class allows you to reset the `QvInput` instance by removing the validation rules and associated event listeners. Here's an example of usage:
+
+```javascript
+qvInput.destroy();
+```
+
+In this example, the `destroy` method is called on the `qvInput` instance. This removes all custom validation rules and event listeners associated with that instance.
+
+You can use the `destroy` method when you want to reset the `QvInput` instance to its initial state, such as when removing or disabling a form field.
+
+By using the methods and events provided by the `QvInput` class, you can customize form field validation and interaction in your application. Whether it's reacting to successful or failed validation events, emitting custom events, listening to `input` element events, or performing specific validations, you have the ability to add custom logic to your form-based application based on the validation results of the form fields.

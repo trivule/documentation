@@ -37,3 +37,16 @@ This tells Quickv to display messages in Spanish. This method overrides all othe
 All language assignments methods must be used before calling the `init()` method
 This method must be called before initialization methods, constructors or the `init()` method.
 
+
+### Position markers
+
+Let's suppose you have an additional validation rule for the "Email" field: it must have a minimum length of 8 characters. You want to specify a specific error message for this rule.
+
+You can use position markers to indicate error messages in any order. Here's how you can do it:
+
+```html
+<input type="email" name="email" data-qv-messages="{0}Please enter a valid email address|{1}The email must be at least 8 characters long">
+```
+
+With this configuration, Quickv will display the first error message if the email address is invalid, and the second error message if the minimum length of 8 characters is not respected.
+
