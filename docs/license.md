@@ -2,5 +2,5 @@
 sidebar_position: 8
 ---
  
-# Licence
+# License
 

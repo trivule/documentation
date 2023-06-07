@@ -190,46 +190,49 @@ You can use the rule positions to specify a common error message. Here's how you
 
 Avec cette configuration, Quickv affichera le message d'erreur "**Veuillez saisir une adresse email valide**" si le champ est vide, n'est pas une adresse valide ou dépasse 32 caractères.
 
-### Emplacement des messages
+### Message placement
+ 
+Suppose you want to display error messages in specific locations on your page, rather than just next to the form fields.
 
-Supposons que vous souhaitez afficher les messages d'erreur à des endroits spécifiques sur votre page, plutôt que juste à côté des champs de formulaire.
-
-Vous pouvez utiliser l'attribut `data-qv-feedback` pour spécifier où afficher les messages d'erreur. Voici comment vous pouvez le faire :
+You can use the `data-qv-feedback` attribute to specify where to display the error messages. Here's how you can do it:
 
 ```html
-<input type="text" name="nom" data-qv-messages="Le nom est obligatoire">
+<input type="text" name="name" data-qv-messages="Name is required">
  
-<div data-qv-feedback="nom"></div> 
+<div data-qv-feedback="name"></div> 
 ```
-Avec cette configuration, le message d'erreur sera affiché à l'intérieur de l'élément `<div>` ayant l'attribut `data-qv-feedback="nom"`. Vous
 
+With this configuration, the error message will be displayed inside the `<div>` element with the `data-qv-feedback="name"` attribute. You can place the `<div data-qv-feedback="name"></div>` element anywhere on the page. Quickv will display the error message in the nearest element to the corresponding input.
 
+This allows you to control the location where error messages are displayed on the page and style them according to your needs. You can use CSS selectors to target elements with the `data-qv-feedback` attribute and apply specific styles to the error messages. For example:
 
+```css
+div[data-qv-feedback] {
+  color: red;
+  font-size: 14px;
+}
+``` 
+### Ways to display error messages:
+Quickv provides different ways to display errors in a form.
 
+#### Via HTML:
+If you want to display all error messages once the first rule fails, you can use the `data-qv-show` attribute. It accepts two possible values: `first` and `full`.
 
-In the event of a validation failure, a `qv.input.fails` event is emitted, which you can listen to on the input element to perform custom actions. Similarly, when the form is valid, a `qv.input.passes` event is emitted.
+```html
+<input type="text" name="myInput" data-qv-show="first">
+```
 
-If you directly manipulate an instance of `QvInput`, you can use the `onFails` and `onPasses` methods to listen to the events and directly call the desired callbacks according to your needs.
+By default, the value is set to `first`, which means only the first error message will be displayed. If you choose the value `full`, all error messages from all the rules will be displayed.
 
-Usage Example:
+#### Via JavaScript:
+When using JavaScript, you can set the `failsOnfirst` option to `true`. In this case, as soon as the first rule fails, the validation will stop, and the error message for that rule will be displayed.
 
 ```javascript
-const inputElement = document.querySelector("input");
-const qvInput = new QvInput(inputElement);
-
-qvInput.init();
+const qvInput = new QvInput("#my-input", {
+  failsOnfirst: true,
+});
 ```
 
-In this example, the `QvInput` instance is created for an input element. The `init` method is then called to start listening to events and perform validation based on the defined rules.
+When `failsOnfirst` is set to `false`, all the rules will be executed, and all error messages will be displayed.
 
-Events:
-
-- `qv.input.fails`: This event is emitted when the validation fails for the input element. You can listen to this event on the input element and handle it accordingly.
-- `qv.input.passes`: This event is emitted when the validation passes for the input element. You can listen to this event on the input element and handle it accordingly.
-
-Methods:
-
-- `onFails(callback: Function)`: Use this method to register a callback function to be called when the `qv.input.fails` event is emitted.
-- `onPasses(callback: Function)`: Use this method to register a callback function to be called when the `qv.input.passes` event is emitted.
-
-By utilizing the `QvInput` class, you can easily implement individual input validation within your application. Additionally, when combined with the `QvForm` class, you can validate a group of inputs and efficiently handle form validation.
+These options provide flexibility in controlling how error messages are displayed based on your specific requirements.
