@@ -85,11 +85,6 @@ const config = {
             label: "GitHub",
             position: "right",
           },
-          {
-            href: "static/js/quickv.js",
-            label: "Download",
-            position: "right",
-          },
         ],
       },
       footer: {

@@ -234,6 +234,12 @@ The `onFails` and `onPasses` methods of the `QvInput` class allow you to interac
 The `onFails` method sets an event listener that will be triggered when validation fails. Here's an example of usage:
 
 ```javascript
+import QvInput from 'quickv';
+
+const qvInput = new QvInput("#my-input"); 
+//Initialize before anything
+qvInput.init();
+
 qvInput.onFails(() => {
   // Code to execute when validation fails
   console.log("Validation failed!");
