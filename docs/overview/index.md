@@ -1,21 +1,20 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 ---
- 
-# Getting Started
+# Pour commencer
 
-`Quickv` *(pronounced as 'cue-v' in French)* is a lightweight and easy-to-use JavaScript library for client-side validation of HTML forms. With Quickv, you can quickly and easily add validation rules to your form fields using custom HTML attributes, without needing a lot of extra JavaScript code. Quickv's custom HTML attributes are simple to understand and use, allowing developers to set up a robust validation system quickly without devoting a lot of time to creating custom validation functions or writing complex JavaScript code. If you're looking for a simple and effective solution for client-side validation of your HTML forms, Quickv may be the ideal tool for you.
- 
-##  Why use Quickv?
+`Quickv` *(prononcé "cue-v" en français)* est une bibliothèque JavaScript légère et facile à utiliser pour la validation côté client des formulaires HTML. Avec Quickv, vous pouvez rapidement et facilement ajouter des règles de validation à vos champs de formulaire en utilisant des attributs HTML personnalisés, sans avoir besoin d'écrit du code JavaScript supplémentaire. Les attributs HTML personnalisés de Quickv sont simples à comprendre et à utiliser, ce qui permet aux développeurs de mettre en place rapidement un système de validation robuste sans consacrer beaucoup de temps à la création de fonctions de validation personnalisées ou à l'écriture de code JavaScript complexe. Si vous recherchez une solution simple et efficace pour la validation vos formulaires HTML, Quickv peut être l'outil idéal pour vous.
 
-The goal of Quickv is to simplify the validation process and save time for developers, allowing them to focus on other aspects of application development. By providing a fast and easy-to-use validation solution, **Quickv** can be an attractive choice for developers looking for an effective solution to add client-side validation to their HTML forms without sacrificing a lot of time in the process.
+## Pourquoi utiliser Quickv ?
 
-## Example
+L'objectif de Quickv est de simplifier le processus de validation et de gagner du temps pour les développeurs, en leur permettant de se concentrer sur d'autres aspects du développement d'une application. En fournissant une solution de validation rapide et facile à utiliser, Quickv peut être un choix attrayant pour les développeurs recherchant une solution efficace pour ajouter une validation côté client à leurs formulaires HTML sans sacrifier beaucoup de temps dans le processus.
+
+## Exemple d'utilisation
 ```html
  <form id="myForm" > 
       <div>
-        <label class="label">Phone</label>
-        <input type="text" data-qv-rules="required|phone:US" name="phone" />
+        <label class="label">Téléphone</label>
+        <input type="text" data-qv-rules="required|phone:FR" name="phone" />
         <div data-qv-feedback="phone"></div>
       </div>
       <div>
@@ -28,7 +27,7 @@ The goal of Quickv is to simplify the validation process and save time for devel
         <div data-qv-feedback="date"></div>
       </div>
       <div>
-        <label class="label">File</label>
+        <label class="label">Fichier</label>
         <input
           type="file"
           data-qv-rules="required|file|maxFileSize:1MB"
@@ -36,8 +35,8 @@ The goal of Quickv is to simplify the validation process and save time for devel
         />
         <div data-qv-feedback="file"></div>
       </div>
-      <p><button type="submit" data-qv-submit>Submit</button></p>
+      <p><button type="submit" data-qv-submit>Envoyer</button></p>
   </form>
 ```
-Screenshot
-![Validation screenshot](./screenshot.PNG)
+Capture d'écran
+![Capture d'écran de la validation](./screenshot.PNG)
