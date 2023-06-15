@@ -107,6 +107,33 @@ Veuillez noter que certaines règles peuvent avoir des alias, assurez-vous donc 
 ---
 
 Vous pouvez répéter les sections ci-dessus pour chaque règle de validation de votre base de code, en fournissant des explications et des exemples clairs pour chaque règle. N'oubliez pas d'adapter le contenu pour refléter les détails spécifiques de chaque règle et de son utilisation.
+Voici la documentation à placer dans le fichier `readme.md` pour la règle `excludes` :
+
+---
+
+## Règle `excludes`
+
+
+Cette règle vérifie si la saisie ne contient aucun des caractères spécifiés dans la liste des caractères exclus. Les caractères exclus doivent être séparés par une virgule.
+
+
+### Utilisation
+
+```html
+<input data-qv-rules="excludes:-,@"/>
+```
+Si vous essayez de mettre l'espace dans les caractères non autorisés, la validation ne passerait pas comme vous le souhaitez, au lieu d'utiliser le caractère espace classique, vous pouvez le caractère spécial `&esp;`
+
+### Exemple
+
+```html
+<input data-qv-rules="excludes:-,@,&esp;"/>
+```
+
+Dans cet exemple, la règle `excludes` est appliquée à un champ de saisie. Elle vérifie si la valeur saisie ne contient ni le caractère `-` ni le caractère `@`. Si la saisie contient l'un de ces caractères, la règle retourne `false`, indiquant que la validation a échoué.
+
+---
+
 
 ### Règle de validation : stringBetween 
 
