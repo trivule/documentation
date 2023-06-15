@@ -11,7 +11,7 @@ Bienvenue dans le tutoriel de prise en main de Quickv ! Dans ce tutoriel, nous a
 - Valider l'adresse email (maximum 32 caractères)
 - Valider le sujet (doit commencer par une lettre majuscule)
 - Valider le nom (nombre de caractères doit être compris entre 2 et 80, commencer par une lettre, ne doit pas contenir de nombre)
-- Valider le numéro de téléphone (valider un numéro de téléphone français)
+- Valider le numéro de téléphone (valider un numéro de téléphone)
 - Valider le message (nombre de caractères compris entre 2 et 250, commencer par une lettre majuscule, se terminer par un point)
 
 ## Étape 1 : Inclusion de Quickv
@@ -33,7 +33,7 @@ Nous allons créer le formulaire HTML avec les champs à valider à l'aide de Qu
     <label class="label">Nom</label>
     <div>
       <input
-        data-qv-rules="required|min:2|max:80|only:string"
+        data-qv-rules="required|startWithLetter|between:2,80|only:string"
         type="text"
         name="nom"
         required
@@ -43,7 +43,7 @@ Nous allons créer le formulaire HTML avec les champs à valider à l'aide de Qu
   </div>
   <div>
     <label for="">Email</label>
-    <input type="text" data-qv-rules="required|email" name="email" />
+    <input type="text" data-qv-rules="required|email|maxlength:32" name="email" />
     <div data-qv-feedback="email"></div>
   </div>
   <div>
@@ -59,14 +59,14 @@ Nous allons créer le formulaire HTML avec les champs à valider à l'aide de Qu
   <div>
     <label for="">Message</label>
     <textarea
-      data-qv-rules="required|length:2,250|startWithUpper|endWith:."
+      data-qv-rules="required|between:2,250|startWithUpper|endWith:."
       name="message"
     ></textarea>
     <div data-qv-feedback="message"></div>
   </div>
   <p>
-    <button type="submit" value="Submit" class="text-white p-3" data-qv-submit>
-      Submit
+    <button type="submit" value="Submit"   data-qv-submit>
+      Envoyer
     </button>
   </p>
 </form>
