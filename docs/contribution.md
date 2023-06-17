@@ -31,10 +31,18 @@ Nous examinerons votre demande dès que possible et vous fournirons un retour d'
 
 Nous avons également des discussions en cours sur divers sujets liés au projet. Nous vous invitons à participer à ces discussions et à partager vos idées, suggestions ou commentaires. Votre perspective et vos connaissances peuvent aider à orienter le projet dans la bonne direction.
 
-### Code de conduite
+## Code de conduite
 
 Nous vous demandons de respecter notre code de conduite lorsque vous participez au projet. Veuillez respecter les autres contributeurs et maintenir un environnement collaboratif et inclusif.
 
+ Toute violation du code de conduite peut être signalée à Fassinou Claude (dev.claudy@gmail.com) :
+
+1. Les participants doivent faire preuve de tolérance à l'égard des opinions divergentes.
+2. Les participants doivent veiller à ce que leur langage et leurs actions soient exempts d'attaques personnelles et de remarques personnelles désobligeantes.
+3. Lorsqu'ils interprètent les paroles et les actions d'autrui, les participants doivent toujours partir d'une bonne intention.
+4. Le harcèlement, sous quelque forme que ce soit, ne sera pas toléré et sera considéré comme une violation du code de conduite.
+
+Veuillez noter que l'adresse électronique de contact doit être fournie pour signaler les violations.
 Nous sommes impatients de travailler avec vous et de faire avancer ce projet ensemble. Merci pour votre intérêt et votre engagement !
 
 L'équipe de développement
