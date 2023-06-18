@@ -12,7 +12,7 @@ Le répertoire `locale` contient les fichiers d'internationalisation, y compris 
 
 #### Le répertoire **Lang**
 
-Le répertoire `lang` contient les fichiers de langue pour l'anglais et le français.
+Le répertoire `lang` contient les fichiers de langue pour l'anglais.
 
 ### Le répertoire **Messages**
 

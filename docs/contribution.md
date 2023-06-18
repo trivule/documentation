@@ -43,6 +43,7 @@ Nous vous demandons de respecter notre code de conduite lorsque vous participez 
 4. Le harcèlement, sous quelque forme que ce soit, ne sera pas toléré et sera considéré comme une violation du code de conduite.
 
 Veuillez noter que l'adresse électronique de contact doit être fournie pour signaler les violations.
+
 Nous sommes impatients de travailler avec vous et de faire avancer ce projet ensemble. Merci pour votre intérêt et votre engagement !
 
 L'équipe de développement
@@ -170,19 +171,17 @@ export class QvBag implements IQvBag {
 
 En général, votre règle est prête à être utilisée une fois que vous l'avez ajoutée. Cependant, vous devez également lui assigner un message. Sinon, un message par défaut sera utilisé.
 
-Pour ce faire, vous devez vous rendre dans le dossier `./src/local/lang`. Vous y trouverez les deux langues par défaut prises en charge par Quickv (anglais et français). Vous devez ajouter les messages correspondant à votre règle dans ces fichiers.
+Pour ce faire, vous devez vous rendre dans le dossier `./src/local/lang`. Vous y trouverez le fichier de langues par défaut prises en charge par Quickv (anglais). Vous devez ajouter les messages correspondant à votre règle dans ces fichiers.
 
 Voici un exemple d'ajout de messages pour la règle `in` :
 
 ```ts
-export const fr_messages: RulesMessages = {
-  default: "Ce champ est invalide", 
-  in: "Veuillez choisir une valeur correcte pour le champ :field",
+export const en_messages: RulesMessages = {
+  default: "This field is invalid", 
+  in: "Please enter a valid input",
 };
 ```
-
-Vous devez faire de même pour la langue anglaise.
-
+ 
 Si vous avez suivi ces étapes correctement, vous pouvez tester votre règle en l'utilisant dans un formulaire HTML pour voir si tout fonctionne correctement.
 Pour cela vous pouvez compiler le projet et avoir  le bundle à incluer dans votre projet
 
