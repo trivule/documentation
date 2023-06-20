@@ -1,164 +1,27 @@
-(function (w, y) {
+(function (M, y) {
   typeof exports == "object" && typeof module != "undefined"
     ? y(exports)
     : typeof define == "function" && define.amd
     ? define(["exports"], y)
-    : ((w = typeof globalThis != "undefined" ? globalThis : w || self),
-      y((w.quickv = {})));
-})(this, function (w) {
-  var ye, Ee, Me;
+    : ((M = typeof globalThis != "undefined" ? globalThis : M || self),
+      y((M.quickv = {})));
+})(this, function (M) {
+  var be, we, ye;
   ("use strict");
-  var ft = Object.defineProperty;
-  var qe = Object.getOwnPropertySymbols;
-  var mt = Object.prototype.hasOwnProperty,
-    gt = Object.prototype.propertyIsEnumerable;
-  var Ce = (w, y, L) =>
-      y in w
-        ? ft(w, y, { enumerable: !0, configurable: !0, writable: !0, value: L })
-        : (w[y] = L),
-    I = (w, y) => {
-      for (var L in y || (y = {})) mt.call(y, L) && Ce(w, L, y[L]);
-      if (qe) for (var L of qe(y)) gt.call(y, L) && Ce(w, L, y[L]);
-      return w;
+  var mt = Object.defineProperty;
+  var Te = Object.getOwnPropertySymbols;
+  var gt = Object.prototype.hasOwnProperty,
+    vt = Object.prototype.propertyIsEnumerable;
+  var qe = (M, y, _) =>
+      y in M
+        ? mt(M, y, { enumerable: !0, configurable: !0, writable: !0, value: _ })
+        : (M[y] = _),
+    C = (M, y) => {
+      for (var _ in y || (y = {})) gt.call(y, _) && qe(M, _, y[_]);
+      if (Te) for (var _ of Te(y)) vt.call(y, _) && qe(M, _, y[_]);
+      return M;
     };
-  const y = {
-      default: "The :field is invalid",
-      required: "The :field field is required",
-      email: "Please enter a valid email address",
-      maxlength: "The maximum number of characters allowed has been exceeded",
-      minlength:
-        "The minimum number of characters allowed has not been reached",
-      min: "The :field field must be greater than or equal to ':min'",
-      max: "The :field field must be less than or equal to ':max'",
-      string: "Please enter a string of characters",
-      between: "This field value must be in ':min' and ':max'",
-      startWith: "The :field field must be started with ':startWith'",
-      endWith: "The :field field must be ended with ':endWith'",
-      contains: "The :field field must contain the value ':contains'",
-      in: "Please choose a correct value for the :field field",
-      integer: "The :field field must an integer",
-      int: "The :field field must an integer",
-      number: "This field must be a number",
-      numeric: "This field must be a number",
-      file: "This field must be a file",
-      url: "This field must be a valid url",
-      length: "The size of this must be :size",
-      len: "The size of this must be :size",
-      maxFileSize: "The file size must be smaller than :maxFileSize.",
-      minFileSize: "The file size must be larger than :minFileSize.",
-      size: "This field's size should be less than or equal to :size ",
-      boolean: "This field must be a boolean (yes or no) included",
-      startWithUpper: "This field must be started with capitale letter",
-      startWithLower: "This field must be started with capitale letter",
-      nullable: "",
-      password:
-        "The password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.",
-      date: "This field must be a valid date",
-      before: "The date must be before (:beforeDate)",
-      after: "The date must be after (:afterDate)",
-      same: "This field must be same as :same field value",
-      requiredIf:
-        "The :field is required once the :other have the current value",
-      requiredWhen: "The :field is required when :otherFields are present",
-      phone: "This phone number appears to be invalid.",
-      time: "The :field must be a valid time",
-      startWithLetter: "The :field must start with a letter.",
-      excludes: "The :field field must not contain :excludes.",
-      hasLetter: "The :field field must contain at least one letter.",
-      regex: "This field is invalid",
-      lower: "The :field input must be lower",
-      upper: "The :field input must be upper",
-    },
-    L = {
-      default: "Le champ :field est invalide",
-      required: "Le champ :field est requis",
-      email: "Veuillez entrer une adresse e-mail valide",
-      maxlength: "Le nombre maximal de caractères autorisés a été dépassé",
-      minlength:
-        "Le nombre minimal de caractères autorisés n'a pas été atteint",
-      min: "Le champ :field doit être supérieur ou égal à ':min'",
-      max: "Le champ :field doit être inférieur ou égal à ':max'",
-      string: "Veuillez entrer une chaîne de caractères",
-      between:
-        "La valeur de ce champ doit être comprise entre ':min' et ':max'",
-      startWith: "Le champ :field doit commencer par ':startWith'",
-      endWith: "Le champ :field doit se terminer par ':endWith'",
-      contains: "Le champ :field doit contenir la valeur ':contains'",
-      in: "Veuillez choisir une valeur correcte pour le champ :field",
-      integer: "Le champ :field doit être un entier",
-      int: "Le champ :field doit être un entier",
-      number: "Ce champ doit être un nombre",
-      numeric: "Ce champ doit être un nombre",
-      file: "Ce champ doit être un fichier",
-      url: "Ce champ doit être une URL valide",
-      length: "La taille de ce champ doit être :size",
-      len: "La taille de ce champ doit être :size",
-      maxFileSize: "La taille du fichier doit être inférieure à :maxFileSize.",
-      minFileSize: "La taille du fichier doit être supérieure à :minFileSize.",
-      size: "La taille de ce champ doit être inférieure ou égale à :size",
-      boolean: "Ce champ doit être un booléen (oui ou non)",
-      startWithUpper: "Ce champ doit commencer par une lettre majuscule",
-      startWithLower: "Ce champ doit commencer par une lettre minuscule",
-      nullable: "",
-      password:
-        "Le mot de passe doit comporter au moins 8 caractères et inclure une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.",
-      date: "Ce champ doit être une date valide",
-      before: "La date doit être antérieure à (:beforeDate)",
-      after: "La date doit être postérieure à (:afterDate)",
-      same: "Ce champ doit être identique à la valeur du champ :same",
-      requiredIf:
-        "Le champ :field est requis lorsque le champ :other a la valeur actuelle",
-      requiredWhen:
-        "Le champ :field est requis lorsque les champs :otherFields sont présents",
-      phone: "Ce numéro de téléphone semble être invalide",
-      time: "Le champ :field doit être une heure valide.",
-      startWithLetter: "Le champ :field doit commencer par une lettre",
-      excludes: "Le champ :field ne doit pas contenir :excludes.",
-      hasLetter: "Le champ :field doit conteni au moins une lettre",
-      regex: "Le champ :field est invalide.",
-      lower: "Le champ :field doit être en minuscule",
-      upper: "Le champ :field doit être en majuscule",
-    },
-    T = class {
-      static getMessages(t) {
-        t = t != null ? t : T.DEFAULT_LANG;
-        let e = T._message[t];
-        return e || (e = T._message[T.DEFAULT_LANG]), e;
-      }
-      static getRuleMessage(t, e) {
-        var i;
-        const s = T.getMessages(e);
-        return (i = s[t]) != null ? i : s.default;
-      }
-      static addMessage(t, e, s) {
-        const i = T.getMessages(s);
-        (i[t] = e), T.putMessages(i, s);
-      }
-      static putMessages(t, e) {
-        (e = e || T.DEFAULT_LANG), (T._message[e] = t);
-      }
-      static translate(t, e) {
-        if (typeof t != "string" || !t.length)
-          throw new Error(
-            "The first argument must be a string with one or more characters"
-          );
-        if (typeof e != "object" || typeof e === void 0)
-          throw new Error(
-            "The second argument must be a valid key/value pair object"
-          );
-        T._message[t] = e;
-      }
-    };
-  let $ = T;
-  ($.DEFAULT_LANG = "en"),
-    ($.LANG = T.DEFAULT_LANG),
-    ($._message = { en: y, fr: L });
-  const P = {
-      invalidClass: "is-invalid",
-      validClass: "",
-      local: { lang: $.DEFAULT_LANG },
-    },
-    se = (t) => {
+  const y = (t) => {
       const e = /^(\w+):(.+)$/,
         s = t.match(e);
       if (s) {
@@ -170,48 +33,842 @@
         return { ruleName: i, params: r };
       }
     },
-    A = (t, e = ",") =>
+    _ = (t, e = ",") =>
       typeof t != "string" ? [] : t.split(e).map((s) => s.trim()),
     j = (t) => {
       throw new Error(`Please provide <<${t}>> rule arguments`);
     };
-  function he() {
+  function oe() {
     return new Date().toISOString();
   }
-  class Ne {
+  var Le =
+    typeof globalThis != "undefined"
+      ? globalThis
+      : typeof window != "undefined"
+      ? window
+      : typeof global != "undefined"
+      ? global
+      : typeof self != "undefined"
+      ? self
+      : {};
+  function Ce(t) {
+    return t &&
+      t.__esModule &&
+      Object.prototype.hasOwnProperty.call(t, "default")
+      ? t.default
+      : t;
+  }
+  var ue = { exports: {} };
+  (function (t, e) {
+    (function (s, i) {
+      t.exports = i();
+    })(Le, function () {
+      var s = 1e3,
+        i = 6e4,
+        r = 36e5,
+        o = "millisecond",
+        m = "second",
+        f = "minute",
+        D = "hour",
+        N = "day",
+        Y = "week",
+        A = "month",
+        Ee = "quarter",
+        B = "year",
+        W = "date",
+        Me = "Invalid Date",
+        ht =
+          /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/,
+        dt =
+          /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g,
+        ct = {
+          name: "en",
+          weekdays:
+            "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split(
+              "_"
+            ),
+          months:
+            "January_February_March_April_May_June_July_August_September_October_November_December".split(
+              "_"
+            ),
+          ordinal: function (u) {
+            var l = ["th", "st", "nd", "rd"],
+              n = u % 100;
+            return "[" + u + (l[(n - 20) % 10] || l[n] || l[0]) + "]";
+          },
+        },
+        ne = function (u, l, n) {
+          var h = String(u);
+          return !h || h.length >= l
+            ? u
+            : "" + Array(l + 1 - h.length).join(n) + u;
+        },
+        ft = {
+          s: ne,
+          z: function (u) {
+            var l = -u.utcOffset(),
+              n = Math.abs(l),
+              h = Math.floor(n / 60),
+              a = n % 60;
+            return (l <= 0 ? "+" : "-") + ne(h, 2, "0") + ":" + ne(a, 2, "0");
+          },
+          m: function u(l, n) {
+            if (l.date() < n.date()) return -u(n, l);
+            var h = 12 * (n.year() - l.year()) + (n.month() - l.month()),
+              a = l.clone().add(h, A),
+              c = n - a < 0,
+              d = l.clone().add(h + (c ? -1 : 1), A);
+            return +(-(h + (n - a) / (c ? a - d : d - a)) || 0);
+          },
+          a: function (u) {
+            return u < 0 ? Math.ceil(u) || 0 : Math.floor(u);
+          },
+          p: function (u) {
+            return (
+              { M: A, y: B, w: Y, d: N, D: W, h: D, m: f, s: m, ms: o, Q: Ee }[
+                u
+              ] ||
+              String(u || "")
+                .toLowerCase()
+                .replace(/s$/, "")
+            );
+          },
+          u: function (u) {
+            return u === void 0;
+          },
+        },
+        k = "en",
+        V = {};
+      V[k] = ct;
+      var ae = function (u) {
+          return u instanceof K;
+        },
+        Z = function u(l, n, h) {
+          var a;
+          if (!l) return k;
+          if (typeof l == "string") {
+            var c = l.toLowerCase();
+            V[c] && (a = c), n && ((V[c] = n), (a = c));
+            var d = l.split("-");
+            if (!a && d.length > 1) return u(d[0]);
+          } else {
+            var v = l.name;
+            (V[v] = l), (a = v);
+          }
+          return !h && a && (k = a), a || (!h && k);
+        },
+        E = function (u, l) {
+          if (ae(u)) return u.clone();
+          var n = typeof l == "object" ? l : {};
+          return (n.date = u), (n.args = arguments), new K(n);
+        },
+        g = ft;
+      (g.l = Z),
+        (g.i = ae),
+        (g.w = function (u, l) {
+          return E(u, { locale: l.$L, utc: l.$u, x: l.$x, $offset: l.$offset });
+        });
+      var K = (function () {
+          function u(n) {
+            (this.$L = Z(n.locale, null, !0)), this.parse(n);
+          }
+          var l = u.prototype;
+          return (
+            (l.parse = function (n) {
+              (this.$d = (function (h) {
+                var a = h.date,
+                  c = h.utc;
+                if (a === null) return new Date(NaN);
+                if (g.u(a)) return new Date();
+                if (a instanceof Date) return new Date(a);
+                if (typeof a == "string" && !/Z$/i.test(a)) {
+                  var d = a.match(ht);
+                  if (d) {
+                    var v = d[2] - 1 || 0,
+                      b = (d[7] || "0").substring(0, 3);
+                    return c
+                      ? new Date(
+                          Date.UTC(
+                            d[1],
+                            v,
+                            d[3] || 1,
+                            d[4] || 0,
+                            d[5] || 0,
+                            d[6] || 0,
+                            b
+                          )
+                        )
+                      : new Date(
+                          d[1],
+                          v,
+                          d[3] || 1,
+                          d[4] || 0,
+                          d[5] || 0,
+                          d[6] || 0,
+                          b
+                        );
+                  }
+                }
+                return new Date(a);
+              })(n)),
+                (this.$x = n.x || {}),
+                this.init();
+            }),
+            (l.init = function () {
+              var n = this.$d;
+              (this.$y = n.getFullYear()),
+                (this.$M = n.getMonth()),
+                (this.$D = n.getDate()),
+                (this.$W = n.getDay()),
+                (this.$H = n.getHours()),
+                (this.$m = n.getMinutes()),
+                (this.$s = n.getSeconds()),
+                (this.$ms = n.getMilliseconds());
+            }),
+            (l.$utils = function () {
+              return g;
+            }),
+            (l.isValid = function () {
+              return this.$d.toString() !== Me;
+            }),
+            (l.isSame = function (n, h) {
+              var a = E(n);
+              return this.startOf(h) <= a && a <= this.endOf(h);
+            }),
+            (l.isAfter = function (n, h) {
+              return E(n) < this.startOf(h);
+            }),
+            (l.isBefore = function (n, h) {
+              return this.endOf(h) < E(n);
+            }),
+            (l.$g = function (n, h, a) {
+              return g.u(n) ? this[h] : this.set(a, n);
+            }),
+            (l.unix = function () {
+              return Math.floor(this.valueOf() / 1e3);
+            }),
+            (l.valueOf = function () {
+              return this.$d.getTime();
+            }),
+            (l.startOf = function (n, h) {
+              var a = this,
+                c = !!g.u(h) || h,
+                d = g.p(n),
+                v = function (P, q) {
+                  var x = g.w(
+                    a.$u ? Date.UTC(a.$y, q, P) : new Date(a.$y, q, P),
+                    a
+                  );
+                  return c ? x : x.endOf(N);
+                },
+                b = function (P, q) {
+                  return g.w(
+                    a
+                      .toDate()
+                      [P].apply(
+                        a.toDate("s"),
+                        (c ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(q)
+                      ),
+                    a
+                  );
+                },
+                p = this.$W,
+                T = this.$M,
+                S = this.$D,
+                I = "set" + (this.$u ? "UTC" : "");
+              switch (d) {
+                case B:
+                  return c ? v(1, 0) : v(31, 11);
+                case A:
+                  return c ? v(1, T) : v(0, T + 1);
+                case Y:
+                  var z = this.$locale().weekStart || 0,
+                    U = (p < z ? p + 7 : p) - z;
+                  return v(c ? S - U : S + (6 - U), T);
+                case N:
+                case W:
+                  return b(I + "Hours", 0);
+                case D:
+                  return b(I + "Minutes", 1);
+                case f:
+                  return b(I + "Seconds", 2);
+                case m:
+                  return b(I + "Milliseconds", 3);
+                default:
+                  return this.clone();
+              }
+            }),
+            (l.endOf = function (n) {
+              return this.startOf(n, !1);
+            }),
+            (l.$set = function (n, h) {
+              var a,
+                c = g.p(n),
+                d = "set" + (this.$u ? "UTC" : ""),
+                v = ((a = {}),
+                (a[N] = d + "Date"),
+                (a[W] = d + "Date"),
+                (a[A] = d + "Month"),
+                (a[B] = d + "FullYear"),
+                (a[D] = d + "Hours"),
+                (a[f] = d + "Minutes"),
+                (a[m] = d + "Seconds"),
+                (a[o] = d + "Milliseconds"),
+                a)[c],
+                b = c === N ? this.$D + (h - this.$W) : h;
+              if (c === A || c === B) {
+                var p = this.clone().set(W, 1);
+                p.$d[v](b),
+                  p.init(),
+                  (this.$d = p.set(W, Math.min(this.$D, p.daysInMonth())).$d);
+              } else v && this.$d[v](b);
+              return this.init(), this;
+            }),
+            (l.set = function (n, h) {
+              return this.clone().$set(n, h);
+            }),
+            (l.get = function (n) {
+              return this[g.p(n)]();
+            }),
+            (l.add = function (n, h) {
+              var a,
+                c = this;
+              n = Number(n);
+              var d = g.p(h),
+                v = function (T) {
+                  var S = E(c);
+                  return g.w(S.date(S.date() + Math.round(T * n)), c);
+                };
+              if (d === A) return this.set(A, this.$M + n);
+              if (d === B) return this.set(B, this.$y + n);
+              if (d === N) return v(1);
+              if (d === Y) return v(7);
+              var b = ((a = {}), (a[f] = i), (a[D] = r), (a[m] = s), a)[d] || 1,
+                p = this.$d.getTime() + n * b;
+              return g.w(p, this);
+            }),
+            (l.subtract = function (n, h) {
+              return this.add(-1 * n, h);
+            }),
+            (l.format = function (n) {
+              var h = this,
+                a = this.$locale();
+              if (!this.isValid()) return a.invalidDate || Me;
+              var c = n || "YYYY-MM-DDTHH:mm:ssZ",
+                d = g.z(this),
+                v = this.$H,
+                b = this.$m,
+                p = this.$M,
+                T = a.weekdays,
+                S = a.months,
+                I = function (q, x, le, J) {
+                  return (q && (q[x] || q(h, c))) || le[x].slice(0, J);
+                },
+                z = function (q) {
+                  return g.s(v % 12 || 12, q, "0");
+                },
+                U =
+                  a.meridiem ||
+                  function (q, x, le) {
+                    var J = q < 12 ? "AM" : "PM";
+                    return le ? J.toLowerCase() : J;
+                  },
+                P = {
+                  YY: String(this.$y).slice(-2),
+                  YYYY: g.s(this.$y, 4, "0"),
+                  M: p + 1,
+                  MM: g.s(p + 1, 2, "0"),
+                  MMM: I(a.monthsShort, p, S, 3),
+                  MMMM: I(S, p),
+                  D: this.$D,
+                  DD: g.s(this.$D, 2, "0"),
+                  d: String(this.$W),
+                  dd: I(a.weekdaysMin, this.$W, T, 2),
+                  ddd: I(a.weekdaysShort, this.$W, T, 3),
+                  dddd: T[this.$W],
+                  H: String(v),
+                  HH: g.s(v, 2, "0"),
+                  h: z(1),
+                  hh: z(2),
+                  a: U(v, b, !0),
+                  A: U(v, b, !1),
+                  m: String(b),
+                  mm: g.s(b, 2, "0"),
+                  s: String(this.$s),
+                  ss: g.s(this.$s, 2, "0"),
+                  SSS: g.s(this.$ms, 3, "0"),
+                  Z: d,
+                };
+              return c.replace(dt, function (q, x) {
+                return x || P[q] || d.replace(":", "");
+              });
+            }),
+            (l.utcOffset = function () {
+              return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
+            }),
+            (l.diff = function (n, h, a) {
+              var c,
+                d = g.p(h),
+                v = E(n),
+                b = (v.utcOffset() - this.utcOffset()) * i,
+                p = this - v,
+                T = g.m(this, v);
+              return (
+                (T =
+                  ((c = {}),
+                  (c[B] = T / 12),
+                  (c[A] = T),
+                  (c[Ee] = T / 3),
+                  (c[Y] = (p - b) / 6048e5),
+                  (c[N] = (p - b) / 864e5),
+                  (c[D] = p / r),
+                  (c[f] = p / i),
+                  (c[m] = p / s),
+                  c)[d] || p),
+                a ? T : g.a(T)
+              );
+            }),
+            (l.daysInMonth = function () {
+              return this.endOf(A).$D;
+            }),
+            (l.$locale = function () {
+              return V[this.$L];
+            }),
+            (l.locale = function (n, h) {
+              if (!n) return this.$L;
+              var a = this.clone(),
+                c = Z(n, h, !0);
+              return c && (a.$L = c), a;
+            }),
+            (l.clone = function () {
+              return g.w(this.$d, this);
+            }),
+            (l.toDate = function () {
+              return new Date(this.valueOf());
+            }),
+            (l.toJSON = function () {
+              return this.isValid() ? this.toISOString() : null;
+            }),
+            (l.toISOString = function () {
+              return this.$d.toISOString();
+            }),
+            (l.toString = function () {
+              return this.$d.toUTCString();
+            }),
+            u
+          );
+        })(),
+        $e = K.prototype;
+      return (
+        (E.prototype = $e),
+        [
+          ["$ms", o],
+          ["$s", m],
+          ["$m", f],
+          ["$H", D],
+          ["$W", N],
+          ["$M", A],
+          ["$y", B],
+          ["$D", W],
+        ].forEach(function (u) {
+          $e[u[1]] = function (l) {
+            return this.$g(l, u[0], u[1]);
+          };
+        }),
+        (E.extend = function (u, l) {
+          return u.$i || (u(l, K, E), (u.$i = !0)), E;
+        }),
+        (E.locale = Z),
+        (E.isDayjs = ae),
+        (E.unix = function (u) {
+          return E(1e3 * u);
+        }),
+        (E.en = V[k]),
+        (E.Ls = V),
+        (E.p = {}),
+        E
+      );
+    });
+  })(ue);
+  var Ne = ue.exports;
+  const X = Ce(Ne),
+    Ae = (t) => X(t, void 0, !0).isValid(),
+    he = (t, e) => (e === "now" && (e = oe()), X(t).isBefore(e)),
+    de = (t, e) => (e === "now" && (e = oe()), X(t).isAfter(e)),
+    Oe = (t, e) => {
+      e || j("dateBetween");
+      const [s, i] = _(e != null ? e : "");
+      return de(t, s) && he(t, i);
+    },
+    De = (t) => {
+      if (t.split(":").length < 3) for (; t.split(":").length < 3; ) t += ":00";
+      return /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/.test(t);
+    },
+    G = (t, ...e) => !!t && t !== "",
+    Ie = (t) => !0,
+    Re = (t, e) => (e || j("in"), _(e).includes(t)),
+    Be = (t, e) => (R(t) ? H(t, e) : ee(t, e)),
+    Se = (t) =>
+      typeof t == "boolean" ||
+      (typeof t == "string" &&
+        ((t = t.toLowerCase()),
+        t === "true" ||
+          t === "false" ||
+          t === "0" ||
+          t === "1" ||
+          t === "yes" ||
+          t === "no")),
+    xe = (t, e) => {
+      var [s, i] = _(e != null ? e : "");
+      return R(t)
+        ? H(t, i) && te(t, s)
+        : !L(t) && !R(t)
+        ? Oe(t, e)
+        : ((s = Number(s)),
+          (i = Number(i)),
+          t !== void 0 && t !== Number && t !== "" && L(s) && L(i)
+            ? ((t = Number(t)), L(t) ? ve(t, i) && ge(t, s) : !1)
+            : !1);
+    },
+    Fe = (t, e) => {
+      if (!e) throw new Error("The regex rule argument must not be empty");
+      return new RegExp(e).test(t);
+    },
+    Ve = (t, ...e) =>
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        t
+      ),
+    ce = (t, e) => (t && O(t) ? t.length >= Number(e) : !1),
+    fe = (t, e) => (t ? (O(t) ? t.length <= Number(e) : !1) : !0),
+    O = (t) => typeof t == "string",
+    Qe = (t) => /^(ftp|http|https):\/\/[^ "]+$/.test(t),
+    We = (t) =>
+      typeof t != "string" || t.length === 0 ? !1 : /^[A-Z]/.test(t),
+    Pe = (t) =>
+      typeof t != "string" || t.length === 0 ? !1 : /^[a-z]/.test(t),
+    je = (t, e) => {
+      e || j("startWith");
+      const s = _(e != null ? e : "");
+      return O(t) ? s.some((i) => t.startsWith(i)) : !1;
+    },
+    ke = (t, e) => {
+      e || j("endWith");
+      const s = _(e != null ? e : "");
+      return O(t) ? s.some((i) => t.endsWith(i)) : !1;
+    },
+    me = (t, e) => {
+      e || j("contains");
+      const s = _(e != null ? e : "");
+      return O(t) ? s.every((i) => t.includes(i)) : !1;
+    },
+    ee = (t, e) => {
+      if (!L(e)) throw new Error("The length rule argument must be an integer");
+      return (
+        (e = parseInt(e)),
+        typeof t == "string" || typeof t == "number"
+          ? (t = t.toString().split(""))
+          : typeof t == "object" && t !== null && t !== void 0 && (t = []),
+        Array.isArray(t) ? t.length === e : !1
+      );
+    },
+    ze = (t) => {
+      const s = /[A-Z]/.test(t),
+        i = /[a-z]/.test(t),
+        r = /\d/.test(t),
+        o = /[!@#$%^&*(),.?":{}|<>]/.test(t);
+      return !(t.length < 8 || !s || !i || !r || !o);
+    },
+    Ue = (t) => (!O(t) || t.length === 0 ? !1 : /^[a-zA-Z]/.test(t)),
+    Ge = (t) => (typeof t != "string" ? !1 : /[a-zA-Z]/.test(t)),
+    He = (t, e) => !me(t, e),
+    Ye = (t, e) => t === t.toLocaleUpperCase(),
+    Ze = (t, e) => t === t.toLocaleLowerCase(),
+    R = (t) => t instanceof File || t instanceof Blob,
+    H = (t, e) => {
+      if (R(t)) {
+        const i = t.size;
+        let r;
+        const o =
+          e == null ? void 0 : e.match(/^(\d+(\.\d+)?)\s*(B|KB|MB|GB)$/i);
+        if (!o)
+          throw new Error(
+            "Invalid maxSize format. Please use valid format like '1KB', '1MB', etc."
+          );
+        const m = parseFloat(o[1]),
+          f = o[3].toUpperCase();
+        return (
+          f === "KB"
+            ? (r = m * 1024)
+            : f === "MB"
+            ? (r = m * 1024 * 1024)
+            : f === "GB"
+            ? (r = m * 1024 * 1024 * 1024)
+            : (r = m),
+          i <= r
+        );
+      } else return !1;
+    },
+    te = (t, e) => {
+      if (R(t)) {
+        const i = t.size;
+        let r;
+        const o =
+          e == null ? void 0 : e.match(/^(\d+(\.\d+)?)\s*(B|KB|MB|GB)$/i);
+        if (!o)
+          throw new Error(
+            "Invalid minSize format. Please use valid format like '1KB', '1MB', etc."
+          );
+        const m = parseFloat(o[1]),
+          f = o[3].toUpperCase();
+        return (
+          f === "KB"
+            ? (r = m * 1024)
+            : f === "MB"
+            ? (r = m * 1024 * 1024)
+            : f === "GB"
+            ? (r = m * 1024 * 1024 * 1024)
+            : (r = m),
+          i >= r
+        );
+      } else return !1;
+    },
+    ge = (t, e) => {
+      if (R(t)) return te(t, e);
+      if ((t == null && (t = 0), !L(e)))
+        throw new Error("Min rule parameter must be an integer");
+      return L(t) ? Number(t) >= Number(e) : ce(t, e);
+    },
+    ve = (t, e) => {
+      if (R(t)) return H(t, e);
+      if (!L(e)) throw new Error("Min rule parameter must be an integer");
+      return t == null && (t = 0), L(t) ? Number(t) <= Number(e) : fe(t, e);
+    },
+    pe = (t) => (L(t) ? Number.isInteger(Number(t)) : !1),
+    L = (t) =>
+      t === "" || t === null
+        ? !1
+        : t === "0" || t === 0 || t === "1" || t === 1
+        ? !0
+        : !isNaN(Number(t)) && typeof t != "boolean" && typeof t != "object",
+    Ke = {
+      default: "This field is invalid",
+      required: "This field is required",
+      email: "Please enter a valid email address",
+      maxlength: "The maximum number of allowed characters is: :arg0",
+      minlength: "The minimum number of allowed characters is: :arg0",
+      min: "The :field field must be greater than or equal to ':arg0'",
+      max: "The :field field must be less than or equal to ':arg0'",
+      string: "Please enter a string of characters",
+      between: "The value of this field must be between ':arg0' and ':arg1'",
+      startWith: "The :field field must start with ':arg0'",
+      endWith: "The :field field must end with ':arg0'",
+      contains: "The :field field must contain the value ':arg0'",
+      in: "Please choose a correct value for the :field field",
+      integer: "The :field field must be an integer",
+      int: "The :field field must be an integer",
+      number: "This field must be a number",
+      numeric: "This field must be a number",
+      file: "This field must be a file",
+      url: "This field must be a valid URL",
+      length: "The length of this field must be :arg0",
+      len: "The length of this field must be :arg0",
+      maxFileSize: "The file size must be less than :arg0.",
+      minFileSize: "The file size must be greater than :arg0.",
+      size: "The size of this field must be less than or equal to :arg0",
+      boolean: "This field must be a boolean (yes or no)",
+      startWithUpper: "This field must start with an uppercase letter",
+      startWithLower: "This field must start with a lowercase letter",
+      nullable: "",
+      password:
+        "The password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.",
+      date: "This field must be a valid date",
+      before: "The date must be before (:arg0)",
+      after: "The date must be after (:arg0)",
+      same: "This field must be identical to the value of the :arg0 field",
+      requiredIf:
+        "The :field field is required when the :arg0 field has the current value",
+      requiredWhen:
+        "The :field field is required when the :arg0 fields are present",
+      phone: "This phone number seems to be invalid",
+      time: "The :field field must be a valid time.",
+      startWithLetter: "The :field field must start with a letter",
+      excludes: "The :field field must not contain :arg0.",
+      hasLetter: "This field must contain at least one letter",
+      regex: "This field is invalid.",
+      lower: "This field must be lowercase",
+      upper: "This field must be uppercase",
+      fileBetween: "File size must be between :arg0 and :arg1",
+      stringBetween: "The length of this field must be between :arg0 and :arg1",
+    },
+    Je = {
+      default: "Ce champ est invalide",
+      required: "Ce champ est requis",
+      email: "Veuillez entrer une adresse e-mail valide",
+      maxlength: "Le nombre maximal de caractères autorisés est: :arg0",
+      minlength: "Le nombre minimal de caractères autorisés est: :arg0",
+      min: "Le champ :field doit être supérieur ou égal à ':arg0'",
+      max: "Le champ :field doit être inférieur ou égal à ':arg0'",
+      string: "Veuillez entrer une chaîne de caractères",
+      between:
+        "La valeur de ce champ doit être comprise entre ':arg0' et ':arg1'",
+      startWith: "Le champ :field doit commencer par ':arg0'",
+      endWith: "Le champ :field doit se terminer par ':arg0'",
+      contains: "Le champ :field doit contenir la valeur ':arg0'",
+      in: "Veuillez choisir une valeur correcte pour le champ :field",
+      integer: "Le champ :field doit être un entier",
+      int: "Le champ :field doit être un entier",
+      number: "Ce champ doit être un nombre",
+      numeric: "Ce champ doit être un nombre",
+      file: "Ce champ doit être un fichier",
+      url: "Ce champ doit être une URL valide",
+      length: "La taille de ce champ doit être :arg0",
+      len: "La taille de ce champ doit être :arg0",
+      maxFileSize: "La taille du fichier doit être inférieure à :arg0.",
+      minFileSize: "La taille du fichier doit être supérieure à :arg0.",
+      size: "La taille de ce champ doit être inférieure ou égale à :arg0",
+      boolean: "Ce champ doit être un booléen (oui ou non)",
+      startWithUpper: "Ce champ doit commencer par une lettre majuscule",
+      startWithLower: "Ce champ doit commencer par une lettre minuscule",
+      nullable: "",
+      password:
+        "Le mot de passe doit comporter au moins 8 caractères et inclure une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.",
+      date: "Ce champ doit être une date valide",
+      before: "La date doit être antérieure à (:arg0)",
+      after: "La date doit être postérieure à (:arg0)",
+      same: "Ce champ doit être identique à la valeur du champ :arg0",
+      requiredIf:
+        "Le champ :field est requis lorsque le champ :arg0 a la valeur actuelle",
+      requiredWhen:
+        "Le champ :field est requis lorsque les champs :arg0 sont présents",
+      phone: "Ce numéro de téléphone semble être invalide",
+      time: "Le champ :field doit être une heure valide.",
+      startWithLetter: "Le champ :field doit commencer par une lettre",
+      excludes: "Le champ :field ne doit pas contenir :arg0.",
+      hasLetter: "Ce champ doit contenir au moins une lettre",
+      regex: "Ce champ est invalide.",
+      lower: "Ce champ doit être en minuscule",
+      upper: "Ce champ doit être en majuscule",
+      fileBetween:
+        "La taille du fichier doit être comprise entre :arg0 et :arg1",
+      stringBetween:
+        "La longueur de ce champ doit être comprise entre :arg0 et :arg1",
+    },
+    w = class {
+      static getMessages(t) {
+        t = t != null ? t : w.DEFAULT_LANG;
+        let e = w._message[t];
+        return e || (e = w._message[w.DEFAULT_LANG]), e;
+      }
+      static getRuleMessage(t, e) {
+        var i;
+        const s = w.getMessages(e);
+        return (i = s[t]) != null ? i : s.default;
+      }
+      static addMessage(t, e, s) {
+        const i = w.getMessages(s);
+        (i[t] = e), w.putMessages(i, s);
+      }
+      static putMessages(t, e) {
+        if (!t || Object.keys(t).length === 0)
+          throw new Error("The 'messages' argument must be a non-empty object");
+        e = e || w.DEFAULT_LANG;
+        const s = w._message[e] || {},
+          i = C(C({}, s), t);
+        w._message[e] = i;
+      }
+      static translate(t, e) {
+        if (typeof t != "string" || !t.length)
+          throw new Error(
+            "The first argument must be a string with one or more characters"
+          );
+        if (typeof e != "object" || typeof e === void 0)
+          throw new Error(
+            "The second argument must be a valid key/value pair object"
+          );
+        w._message[t] = C(C({}, w.getMessages(t)), e);
+      }
+      static rewrite(t, e, s) {
+        w.addMessage(e, s, t);
+      }
+      static rewriteMany(t, e, s) {
+        if (typeof t != "string" || !t.length)
+          throw new Error(
+            "The 'lang' argument must be a string with one or more characters"
+          );
+        if (!Array.isArray(e) || !Array.isArray(s))
+          throw new Error(
+            "The 'rules' and 'messages' arguments must be arrays"
+          );
+        if (e.length !== s.length)
+          throw new Error(
+            "The 'rules' and 'messages' arrays must have the same length"
+          );
+        for (let i = 0; i < e.length; i++) {
+          const r = e[i],
+            o = s[i];
+          w.rewrite(t, r, o);
+        }
+      }
+      static local(t) {
+        if (!O(t) || !t.length)
+          throw new Error("The language must be a valid string");
+        w._useLang = t;
+      }
+      static getLocal() {
+        var t;
+        return (t = w._useLang) != null ? t : w.LANG;
+      }
+    };
+  let $ = w;
+  ($._useLang = null),
+    ($.DEFAULT_LANG = "en"),
+    ($.LANG = w.DEFAULT_LANG),
+    ($._message = { en: Ke, fr: Je });
+  const se = {
+    invalidClass: "is-invalid",
+    validClass: "",
+    local: { lang: $.DEFAULT_LANG },
+  };
+  class Xe {
     constructor(e) {
-      this.messages = $.getMessages(e != null ? e : $.LANG);
+      this.messages = $.getMessages(e != null ? e : $.getLocal());
     }
     getRulesMessages(e) {
       const s = [];
       for (const i of e)
-        this.messages[i] ? s.push(this.messages[i]) : s.push("Invalid input");
+        this.messages[i]
+          ? s.push(this.messages[i])
+          : s.push("The input value is not valid");
       return s;
     }
     parseMessage(e, s, i, r) {
-      let d = [e, ...A(r != null ? r : "")],
-        o = i;
-      return (
-        o.includes(":field") || (d = d.slice(1)),
-        (o = this._replace(i, o, d)),
-        o
-      );
+      const o = this._createParamObject(_(r != null ? r : ""));
+      return (o.field = e), (i = this._replace(i, o)), i;
     }
     setMessages(e) {
-      return (this.messages = I(I({}, this.messages), e)), this;
+      return (this.messages = C(C({}, this.messages), e)), this;
     }
-    _replace(e, s, i) {
-      var d;
-      const r = e.match(/:[a-zA-Z]+/g);
-      if (r)
-        for (let o = 0; o < r.length; o++) {
-          const p = (d = i[o]) != null ? d : "";
-          s = s.replace(r[o], p);
+    _replace(e, s) {
+      for (const i in s)
+        if (Object.prototype.hasOwnProperty.call(s, i)) {
+          const r = s[i];
+          e = e.replace(`:${i}`, r);
         }
+      return (
+        delete s.field, e.replace(/\.\.\.arg/, Object.values(s).join(", "))
+      );
+    }
+    _createParamObject(e) {
+      const s = {};
+      for (let i = 0; i < e.length; i++) {
+        const r = e[i],
+          o = `arg${i}`;
+        s[o] = r;
+      }
       return s;
     }
   }
-  class Ie {
+  class et {
     constructor(e, s) {
       (this.rules = e),
         (this.messages = s),
@@ -226,7 +883,7 @@
           const r = this.convertAcoladeGroupToArray(
             (s = this.messages[i]) != null ? s : ""
           );
-          for (const d of r) this.messages[d] = this.messages[i];
+          for (const o of r) this.messages[o] = this.messages[i];
         }
     }
     _sanitizeMessage() {
@@ -236,8 +893,8 @@
     convertAcoladeGroupToArray(e) {
       var r;
       const s = /{(\d+(?:,\s*\d+)*)}/g;
-      return (r = [...e.matchAll(s)].map((d) =>
-        d[1].split(",").map((o) => parseInt(o.trim()))
+      return (r = [...e.matchAll(s)].map((o) =>
+        o[1].split(",").map((m) => parseInt(m.trim()))
       )[0]) != null
         ? r
         : [];
@@ -246,9 +903,42 @@
       return this.messages;
     }
   }
-  class Se {
-    constructor(e, s, i) {
-      (this.config = P),
+  class tt {
+    constructor(e) {
+      (this._nativeRules = [
+        "required",
+        "min",
+        "max",
+        "minlength",
+        "maxlength",
+      ]),
+        (this._appliedRules = []),
+        (this.inputElement = e),
+        this.getNativeRulesApplied();
+    }
+    getNativeRulesApplied() {
+      this._nativeRules.forEach((e) => {
+        if (this.inputElement.hasAttribute(e)) {
+          const s = this.inputElement.getAttribute(e);
+          let i = e;
+          s && (i = `${i}:${s}`), this._appliedRules.push(i);
+        }
+      });
+    }
+    merge(e) {
+      const s = [...this._appliedRules];
+      return (
+        e.forEach((i) => {
+          const r = s.findIndex((o) => o.startsWith(i.split(":")[0]));
+          r !== -1 ? (s[r] = i) : s.push(i);
+        }),
+        s
+      );
+    }
+  }
+  class st {
+    constructor(e, s) {
+      (this._passed = !1),
         (this.feedbackElement = null),
         (this.rules = []),
         (this.messages = {}),
@@ -263,32 +953,35 @@
           autoValidate: !0,
           failsOnfirst: !0,
           events: ["blur", "input", "change"],
+          validClass: "",
+          invalidClass: "is-invalid",
+          type: "text",
         }),
-        (this.validator = new lt(this.param)),
-        this.setConfig(s),
+        (this.validator = new ot(this.param)),
         this.setInputElement(e),
-        this._setParams(i),
-        this.setRules(i == null ? void 0 : i.rules),
+        this._setParams(s),
+        this.setRules(s == null ? void 0 : s.rules),
         this.setInputName(),
         this.setFeedbackElement(),
         this.setShowMessage(),
-        this.setInputValidationClass(),
+        this._setValidationClass(),
         this._setErrors(),
-        this._setEvent(i == null ? void 0 : i.events),
+        this._setEvent(s == null ? void 0 : s.events),
         this.validator.setParams(this.param);
     }
     setRules(e) {
-      var i;
-      let s = (i = this.inputElement.dataset.qvRules) != null ? i : "";
+      var r;
+      let s = (r = this.inputElement.dataset.qvRules) != null ? r : "";
       if (s)
-        for (const r of s.split("|"))
-          if (Q.hasRule(se(r).ruleName)) this.rules.push(r);
+        for (const o of s.split("|"))
+          if (Q.hasRule(y(o).ruleName)) this.rules.push(o);
           else
             throw new Error(
-              `The validation rule ${r} is not supported by QuickV`
+              `The validation rule ${o} is not supported by QuickV`
             );
+      const i = new tt(this.inputElement);
       return (
-        (this.rules = e != null ? e : this.rules),
+        (this.rules = i.merge(e != null ? e : this.rules)),
         (this.param.rules = this.rules),
         this
       );
@@ -310,7 +1003,7 @@
         throw new Error(
           "The 'inputElement' parameter must be valide 'ValidatableInput' type."
         );
-      this.inputElement = e;
+      (this.inputElement = e), (this.param.type = this.inputElement.type);
     }
     setInputName() {
       let e = this.inputElement.name;
@@ -360,21 +1053,24 @@
           ? this.showMessage
           : "first");
     }
-    setInputValidationClass() {
+    _setValidationClass() {
       var e, s, i, r;
-      (this.invalidClass = (e = this.config.invalidClass) != null ? e : ""),
-        (this.validClass = (s = this.config.validClass) != null ? s : ""),
-        (this.invalidClass =
-          (i = this.inputElement.dataset.qvInvalidClass) != null
-            ? i
-            : this.invalidClass),
+      (this.invalidClass =
+        (e = this.inputElement.dataset.qvInvalidClass) != null
+          ? e
+          : this.invalidClass),
         (this.validClass =
-          (r = this.inputElement.dataset.qvValidClass) != null
-            ? r
-            : this.validClass);
+          (s = this.inputElement.dataset.qvValidClass) != null
+            ? s
+            : this.validClass),
+        (this.invalidClass =
+          (i = this.param.invalidClass) != null ? i : this.invalidClass),
+        (this.validClass =
+          (r = this.param.validClass) != null ? r : this.validClass);
     }
-    setValidationClass(e) {
-      const s = (r) => {
+    setValidationClass() {
+      const e = this._passed,
+        s = (r) => {
           r.length > 0 && this.inputElement.classList.remove(r);
         },
         i = (r) => {
@@ -392,17 +1088,17 @@
       var r;
       const s = this.inputElement.dataset.qvMessages;
       let i = {};
-      for (let d = 0; d < this.rules.length; d++) {
-        let o =
-          (r = s == null ? void 0 : s.split("|").map((C) => C.trim())) != null
+      for (let o = 0; o < this.rules.length; o++) {
+        let m =
+          (r = s == null ? void 0 : s.split("|").map((N) => N.trim())) != null
             ? r
             : [];
-        o && (o = new Ie(this.rules, o).getMessages());
-        const p = o !== void 0 ? o[d] : "",
-          S = se(this.rules[d]).ruleName;
-        typeof p == "string" && p.length > 0
-          ? (i[S] = p)
-          : (i[S] = $.getRuleMessage(S, $.LANG));
+        m && (m = new et(this.rules, m).getMessages());
+        const f = m !== void 0 ? m[o] : "",
+          D = y(this.rules[o]).ruleName;
+        typeof f == "string" && f.length > 0
+          ? (i[D] = f)
+          : (i[D] = $.getRuleMessage(D, $.getLocal()));
       }
       typeof e != "undefined" &&
       typeof e == "object" &&
@@ -420,27 +1116,23 @@
           : null
         : this.inputElement.value;
     }
-    setConfig(e) {
-      (this.config = P),
-        e && typeof e == "object" && (this.config = I(I({}, this.config), e));
-    }
     _setParams(e) {
       typeof e == "object" &&
         typeof e != "undefined" &&
-        (this.param = I(I({}, this.param), e));
+        (this.param = C(C({}, this.param), e));
     }
   }
-  class Ae extends Se {
-    constructor(e, s, i) {
-      super(e, s, i);
+  class it extends st {
+    constructor(e, s) {
+      super(e, s), (this._emitOnPasses = !0), (this._emitOnFails = !0);
     }
-    validate() {
-      const e = this.valid();
+    validate(e = !0) {
       return (
-        this.setValidationClass(e),
+        this.valid(),
+        this.setValidationClass(),
         (this.errors = this.validator.getMessages()),
-        this.emitChangeEvent(),
-        e
+        e && this.emitChangeEvent(),
+        this._passed
       );
     }
     getRules() {
@@ -453,645 +1145,56 @@
       return this.validator.getMessages();
     }
     valid() {
-      return (this.validator.value = this.getValue()), this.validator.passes();
+      return (
+        (this.validator.value = this.getValue()),
+        (this._passed = this.validator.passes())
+      );
+    }
+    emit(e, s) {
+      const i = new CustomEvent(e, { detail: s });
+      this.inputElement.dispatchEvent(i);
+    }
+    on(e, s) {
+      this.inputElement.addEventListener(e, s);
     }
     emitChangeEvent() {
       this.param.emitEvent &&
-        this.inputElement.dispatchEvent(
-          new CustomEvent("qv.input.validated", {
-            detail: {
-              rules: this.rules,
-              input: {},
-              element: this.inputElement,
-            },
-            bubbles: !0,
-          })
-        );
+        (this._passed
+          ? this._emitOnPasses &&
+            (this.emit("qv.input.passes", {
+              detail: {
+                rules: this.rules,
+                input: {},
+                element: this.inputElement,
+              },
+            }),
+            (this._emitOnPasses = !1),
+            (this._emitOnFails = !0))
+          : this._emitOnFails &&
+            (this.emit("qv.input.fails", {
+              detail: {
+                rules: this.rules,
+                input: {},
+                element: this.inputElement,
+              },
+            }),
+            (this._emitOnPasses = !0),
+            (this._emitOnFails = !1)));
     }
     getErrors() {
       return this.validator.getErrors();
     }
     fails() {
-      return !this.valid();
+      return !this.passes();
     }
-    destroy() {
-      var e;
-      (e = this.param.events) == null ||
-        e.forEach((s) => {
-          this.inputElement.removeEventListener(s, this.validate);
-        });
+    passes() {
+      return this._passed;
+    }
+    __call(e, ...s) {
+      typeof e == "function" && e(...s);
     }
   }
-  const x = (t) => t instanceof File || t instanceof Blob,
-    Y = (t, e) => {
-      if (x(t)) {
-        const i = t.size;
-        let r;
-        const d =
-          e == null ? void 0 : e.match(/^(\d+(\.\d+)?)\s*(B|KB|MB|GB)$/i);
-        if (!d)
-          throw new Error(
-            "Invalid maxSize format. Please use valid format like '1KB', '1MB', etc."
-          );
-        const o = parseFloat(d[1]),
-          p = d[3].toUpperCase();
-        return (
-          p === "KB"
-            ? (r = o * 1024)
-            : p === "MB"
-            ? (r = o * 1024 * 1024)
-            : p === "GB"
-            ? (r = o * 1024 * 1024 * 1024)
-            : (r = o),
-          i <= r
-        );
-      } else return !1;
-    },
-    ie = (t, e) => {
-      if (x(t)) {
-        const i = t.size;
-        let r;
-        const d =
-          e == null ? void 0 : e.match(/^(\d+(\.\d+)?)\s*(B|KB|MB|GB)$/i);
-        if (!d)
-          throw new Error(
-            "Invalid minSize format. Please use valid format like '1KB', '1MB', etc."
-          );
-        const o = parseFloat(d[1]),
-          p = d[3].toUpperCase();
-        return (
-          p === "KB"
-            ? (r = o * 1024)
-            : p === "MB"
-            ? (r = o * 1024 * 1024)
-            : p === "GB"
-            ? (r = o * 1024 * 1024 * 1024)
-            : (r = o),
-          i >= r
-        );
-      } else return !1;
-    };
-  var De =
-    typeof globalThis != "undefined"
-      ? globalThis
-      : typeof window != "undefined"
-      ? window
-      : typeof global != "undefined"
-      ? global
-      : typeof self != "undefined"
-      ? self
-      : {};
-  function xe(t) {
-    return t &&
-      t.__esModule &&
-      Object.prototype.hasOwnProperty.call(t, "default")
-      ? t.default
-      : t;
-  }
-  var de = { exports: {} };
-  (function (t, e) {
-    (function (s, i) {
-      t.exports = i();
-    })(De, function () {
-      var s = 1e3,
-        i = 6e4,
-        r = 36e5,
-        d = "millisecond",
-        o = "second",
-        p = "minute",
-        S = "hour",
-        C = "day",
-        J = "week",
-        N = "month",
-        $e = "quarter",
-        O = "year",
-        z = "date",
-        Le = "Invalid Date",
-        ut =
-          /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/,
-        ht =
-          /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g,
-        dt = {
-          name: "en",
-          weekdays:
-            "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split(
-              "_"
-            ),
-          months:
-            "January_February_March_April_May_June_July_August_September_October_November_December".split(
-              "_"
-            ),
-          ordinal: function (u) {
-            var l = ["th", "st", "nd", "rd"],
-              n = u % 100;
-            return "[" + u + (l[(n - 20) % 10] || l[n] || l[0]) + "]";
-          },
-        },
-        le = function (u, l, n) {
-          var h = String(u);
-          return !h || h.length >= l
-            ? u
-            : "" + Array(l + 1 - h.length).join(n) + u;
-        },
-        ct = {
-          s: le,
-          z: function (u) {
-            var l = -u.utcOffset(),
-              n = Math.abs(l),
-              h = Math.floor(n / 60),
-              a = n % 60;
-            return (l <= 0 ? "+" : "-") + le(h, 2, "0") + ":" + le(a, 2, "0");
-          },
-          m: function u(l, n) {
-            if (l.date() < n.date()) return -u(n, l);
-            var h = 12 * (n.year() - l.year()) + (n.month() - l.month()),
-              a = l.clone().add(h, N),
-              f = n - a < 0,
-              c = l.clone().add(h + (f ? -1 : 1), N);
-            return +(-(h + (n - a) / (f ? a - c : c - a)) || 0);
-          },
-          a: function (u) {
-            return u < 0 ? Math.ceil(u) || 0 : Math.floor(u);
-          },
-          p: function (u) {
-            return (
-              { M: N, y: O, w: J, d: C, D: z, h: S, m: p, s: o, ms: d, Q: $e }[
-                u
-              ] ||
-              String(u || "")
-                .toLowerCase()
-                .replace(/s$/, "")
-            );
-          },
-          u: function (u) {
-            return u === void 0;
-          },
-        },
-        G = "en",
-        W = {};
-      W[G] = dt;
-      var oe = function (u) {
-          return u instanceof ee;
-        },
-        X = function u(l, n, h) {
-          var a;
-          if (!l) return G;
-          if (typeof l == "string") {
-            var f = l.toLowerCase();
-            W[f] && (a = f), n && ((W[f] = n), (a = f));
-            var c = l.split("-");
-            if (!a && c.length > 1) return u(c[0]);
-          } else {
-            var m = l.name;
-            (W[m] = l), (a = m);
-          }
-          return !h && a && (G = a), a || (!h && G);
-        },
-        _ = function (u, l) {
-          if (oe(u)) return u.clone();
-          var n = typeof l == "object" ? l : {};
-          return (n.date = u), (n.args = arguments), new ee(n);
-        },
-        g = ct;
-      (g.l = X),
-        (g.i = oe),
-        (g.w = function (u, l) {
-          return _(u, { locale: l.$L, utc: l.$u, x: l.$x, $offset: l.$offset });
-        });
-      var ee = (function () {
-          function u(n) {
-            (this.$L = X(n.locale, null, !0)), this.parse(n);
-          }
-          var l = u.prototype;
-          return (
-            (l.parse = function (n) {
-              (this.$d = (function (h) {
-                var a = h.date,
-                  f = h.utc;
-                if (a === null) return new Date(NaN);
-                if (g.u(a)) return new Date();
-                if (a instanceof Date) return new Date(a);
-                if (typeof a == "string" && !/Z$/i.test(a)) {
-                  var c = a.match(ut);
-                  if (c) {
-                    var m = c[2] - 1 || 0,
-                      b = (c[7] || "0").substring(0, 3);
-                    return f
-                      ? new Date(
-                          Date.UTC(
-                            c[1],
-                            m,
-                            c[3] || 1,
-                            c[4] || 0,
-                            c[5] || 0,
-                            c[6] || 0,
-                            b
-                          )
-                        )
-                      : new Date(
-                          c[1],
-                          m,
-                          c[3] || 1,
-                          c[4] || 0,
-                          c[5] || 0,
-                          c[6] || 0,
-                          b
-                        );
-                  }
-                }
-                return new Date(a);
-              })(n)),
-                (this.$x = n.x || {}),
-                this.init();
-            }),
-            (l.init = function () {
-              var n = this.$d;
-              (this.$y = n.getFullYear()),
-                (this.$M = n.getMonth()),
-                (this.$D = n.getDate()),
-                (this.$W = n.getDay()),
-                (this.$H = n.getHours()),
-                (this.$m = n.getMinutes()),
-                (this.$s = n.getSeconds()),
-                (this.$ms = n.getMilliseconds());
-            }),
-            (l.$utils = function () {
-              return g;
-            }),
-            (l.isValid = function () {
-              return this.$d.toString() !== Le;
-            }),
-            (l.isSame = function (n, h) {
-              var a = _(n);
-              return this.startOf(h) <= a && a <= this.endOf(h);
-            }),
-            (l.isAfter = function (n, h) {
-              return _(n) < this.startOf(h);
-            }),
-            (l.isBefore = function (n, h) {
-              return this.endOf(h) < _(n);
-            }),
-            (l.$g = function (n, h, a) {
-              return g.u(n) ? this[h] : this.set(a, n);
-            }),
-            (l.unix = function () {
-              return Math.floor(this.valueOf() / 1e3);
-            }),
-            (l.valueOf = function () {
-              return this.$d.getTime();
-            }),
-            (l.startOf = function (n, h) {
-              var a = this,
-                f = !!g.u(h) || h,
-                c = g.p(n),
-                m = function (k, M) {
-                  var B = g.w(
-                    a.$u ? Date.UTC(a.$y, M, k) : new Date(a.$y, M, k),
-                    a
-                  );
-                  return f ? B : B.endOf(C);
-                },
-                b = function (k, M) {
-                  return g.w(
-                    a
-                      .toDate()
-                      [k].apply(
-                        a.toDate("s"),
-                        (f ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(M)
-                      ),
-                    a
-                  );
-                },
-                v = this.$W,
-                E = this.$M,
-                R = this.$D,
-                D = "set" + (this.$u ? "UTC" : "");
-              switch (c) {
-                case O:
-                  return f ? m(1, 0) : m(31, 11);
-                case N:
-                  return f ? m(1, E) : m(0, E + 1);
-                case J:
-                  var U = this.$locale().weekStart || 0,
-                    H = (v < U ? v + 7 : v) - U;
-                  return m(f ? R - H : R + (6 - H), E);
-                case C:
-                case z:
-                  return b(D + "Hours", 0);
-                case S:
-                  return b(D + "Minutes", 1);
-                case p:
-                  return b(D + "Seconds", 2);
-                case o:
-                  return b(D + "Milliseconds", 3);
-                default:
-                  return this.clone();
-              }
-            }),
-            (l.endOf = function (n) {
-              return this.startOf(n, !1);
-            }),
-            (l.$set = function (n, h) {
-              var a,
-                f = g.p(n),
-                c = "set" + (this.$u ? "UTC" : ""),
-                m = ((a = {}),
-                (a[C] = c + "Date"),
-                (a[z] = c + "Date"),
-                (a[N] = c + "Month"),
-                (a[O] = c + "FullYear"),
-                (a[S] = c + "Hours"),
-                (a[p] = c + "Minutes"),
-                (a[o] = c + "Seconds"),
-                (a[d] = c + "Milliseconds"),
-                a)[f],
-                b = f === C ? this.$D + (h - this.$W) : h;
-              if (f === N || f === O) {
-                var v = this.clone().set(z, 1);
-                v.$d[m](b),
-                  v.init(),
-                  (this.$d = v.set(z, Math.min(this.$D, v.daysInMonth())).$d);
-              } else m && this.$d[m](b);
-              return this.init(), this;
-            }),
-            (l.set = function (n, h) {
-              return this.clone().$set(n, h);
-            }),
-            (l.get = function (n) {
-              return this[g.p(n)]();
-            }),
-            (l.add = function (n, h) {
-              var a,
-                f = this;
-              n = Number(n);
-              var c = g.p(h),
-                m = function (E) {
-                  var R = _(f);
-                  return g.w(R.date(R.date() + Math.round(E * n)), f);
-                };
-              if (c === N) return this.set(N, this.$M + n);
-              if (c === O) return this.set(O, this.$y + n);
-              if (c === C) return m(1);
-              if (c === J) return m(7);
-              var b = ((a = {}), (a[p] = i), (a[S] = r), (a[o] = s), a)[c] || 1,
-                v = this.$d.getTime() + n * b;
-              return g.w(v, this);
-            }),
-            (l.subtract = function (n, h) {
-              return this.add(-1 * n, h);
-            }),
-            (l.format = function (n) {
-              var h = this,
-                a = this.$locale();
-              if (!this.isValid()) return a.invalidDate || Le;
-              var f = n || "YYYY-MM-DDTHH:mm:ssZ",
-                c = g.z(this),
-                m = this.$H,
-                b = this.$m,
-                v = this.$M,
-                E = a.weekdays,
-                R = a.months,
-                D = function (M, B, ue, te) {
-                  return (M && (M[B] || M(h, f))) || ue[B].slice(0, te);
-                },
-                U = function (M) {
-                  return g.s(m % 12 || 12, M, "0");
-                },
-                H =
-                  a.meridiem ||
-                  function (M, B, ue) {
-                    var te = M < 12 ? "AM" : "PM";
-                    return ue ? te.toLowerCase() : te;
-                  },
-                k = {
-                  YY: String(this.$y).slice(-2),
-                  YYYY: this.$y,
-                  M: v + 1,
-                  MM: g.s(v + 1, 2, "0"),
-                  MMM: D(a.monthsShort, v, R, 3),
-                  MMMM: D(R, v),
-                  D: this.$D,
-                  DD: g.s(this.$D, 2, "0"),
-                  d: String(this.$W),
-                  dd: D(a.weekdaysMin, this.$W, E, 2),
-                  ddd: D(a.weekdaysShort, this.$W, E, 3),
-                  dddd: E[this.$W],
-                  H: String(m),
-                  HH: g.s(m, 2, "0"),
-                  h: U(1),
-                  hh: U(2),
-                  a: H(m, b, !0),
-                  A: H(m, b, !1),
-                  m: String(b),
-                  mm: g.s(b, 2, "0"),
-                  s: String(this.$s),
-                  ss: g.s(this.$s, 2, "0"),
-                  SSS: g.s(this.$ms, 3, "0"),
-                  Z: c,
-                };
-              return f.replace(ht, function (M, B) {
-                return B || k[M] || c.replace(":", "");
-              });
-            }),
-            (l.utcOffset = function () {
-              return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
-            }),
-            (l.diff = function (n, h, a) {
-              var f,
-                c = g.p(h),
-                m = _(n),
-                b = (m.utcOffset() - this.utcOffset()) * i,
-                v = this - m,
-                E = g.m(this, m);
-              return (
-                (E =
-                  ((f = {}),
-                  (f[O] = E / 12),
-                  (f[N] = E),
-                  (f[$e] = E / 3),
-                  (f[J] = (v - b) / 6048e5),
-                  (f[C] = (v - b) / 864e5),
-                  (f[S] = v / r),
-                  (f[p] = v / i),
-                  (f[o] = v / s),
-                  f)[c] || v),
-                a ? E : g.a(E)
-              );
-            }),
-            (l.daysInMonth = function () {
-              return this.endOf(N).$D;
-            }),
-            (l.$locale = function () {
-              return W[this.$L];
-            }),
-            (l.locale = function (n, h) {
-              if (!n) return this.$L;
-              var a = this.clone(),
-                f = X(n, h, !0);
-              return f && (a.$L = f), a;
-            }),
-            (l.clone = function () {
-              return g.w(this.$d, this);
-            }),
-            (l.toDate = function () {
-              return new Date(this.valueOf());
-            }),
-            (l.toJSON = function () {
-              return this.isValid() ? this.toISOString() : null;
-            }),
-            (l.toISOString = function () {
-              return this.$d.toISOString();
-            }),
-            (l.toString = function () {
-              return this.$d.toUTCString();
-            }),
-            u
-          );
-        })(),
-        Te = ee.prototype;
-      return (
-        (_.prototype = Te),
-        [
-          ["$ms", d],
-          ["$s", o],
-          ["$m", p],
-          ["$H", S],
-          ["$W", C],
-          ["$M", N],
-          ["$y", O],
-          ["$D", z],
-        ].forEach(function (u) {
-          Te[u[1]] = function (l) {
-            return this.$g(l, u[0], u[1]);
-          };
-        }),
-        (_.extend = function (u, l) {
-          return u.$i || (u(l, ee, _), (u.$i = !0)), _;
-        }),
-        (_.locale = X),
-        (_.isDayjs = oe),
-        (_.unix = function (u) {
-          return _(1e3 * u);
-        }),
-        (_.en = W[G]),
-        (_.Ls = W),
-        (_.p = {}),
-        _
-      );
-    });
-  })(de);
-  var Oe = de.exports;
-  const re = xe(Oe),
-    Re = (t) => re(t, void 0, !0).isValid(),
-    ce = (t, e) => (e === "now" && (e = he()), re(t).isBefore(e)),
-    fe = (t, e) => (e === "now" && (e = he()), re(t).isAfter(e)),
-    Be = (t, e) => {
-      e || j("dateBetween");
-      const [s, i] = A(e != null ? e : "");
-      return fe(t, s) && ce(t, i);
-    },
-    Fe = (t) => {
-      if (t.split(":").length < 3) for (; t.split(":").length < 3; ) t += ":00";
-      return /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/.test(t);
-    },
-    Z = (t, ...e) => !!t && t !== "",
-    Ve = (t) => !0,
-    We = (t, e) => (e || j("in"), A(e).includes(t)),
-    Qe = (t, e) => (x(t) ? Y(t, e) : ne(t, e)),
-    ze = (t) =>
-      typeof t == "boolean" ||
-      (typeof t == "string" &&
-        ((t = t.toLowerCase()),
-        t === "true" ||
-          t === "false" ||
-          t === "0" ||
-          t === "1" ||
-          t === "yes" ||
-          t === "no")),
-    ke = (t, e) => {
-      var [s, i] = A(e != null ? e : "");
-      return x(t)
-        ? Y(t, i) && ie(t, s)
-        : !q(t) && !x(t)
-        ? Be(t, e)
-        : ((s = Number(s)),
-          (i = Number(i)),
-          t !== void 0 && t !== Number && t !== "" && q(s) && q(i)
-            ? ((t = Number(t)), q(t) ? be(t, i) && pe(t, s) : !1)
-            : !1);
-    },
-    Pe = (t, e) => {
-      if (!e) throw new Error("The regex rule argument must not be empty");
-      return new RegExp(e).test(t);
-    },
-    je = (t, ...e) =>
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        t
-      ),
-    me = (t, e) => (t && F(t) ? t.length >= Number(e) : !1),
-    ge = (t, e) => (t ? (F(t) ? t.length <= Number(e) : !1) : !0),
-    F = (t) => typeof t == "string",
-    Ge = (t) => /^(ftp|http|https):\/\/[^ "]+$/.test(t),
-    Ue = (t) =>
-      typeof t != "string" || t.length === 0 ? !1 : /^[A-Z]/.test(t),
-    He = (t) =>
-      typeof t != "string" || t.length === 0 ? !1 : /^[a-z]/.test(t),
-    Ye = (t, e) => {
-      e || j("startWith");
-      const s = A(e != null ? e : "");
-      return F(t) ? s.some((i) => t.startsWith(i)) : !1;
-    },
-    Ze = (t, e) => {
-      e || j("endWith");
-      const s = A(e != null ? e : "");
-      return F(t) ? s.some((i) => t.endsWith(i)) : !1;
-    },
-    ve = (t, e) => {
-      e || j("contains");
-      const s = A(e != null ? e : "");
-      return F(t) ? s.every((i) => t.includes(i)) : !1;
-    },
-    ne = (t, e) => {
-      if (!q(e)) throw new Error("The length rule argument must be an integer");
-      return (
-        (e = parseInt(e)),
-        typeof t == "string" || typeof t == "number"
-          ? (t = t.toString().split(""))
-          : typeof t == "object" && t !== null && t !== void 0 && (t = []),
-        Array.isArray(t) ? t.length === e : !1
-      );
-    },
-    Ke = (t) => {
-      const s = /[A-Z]/.test(t),
-        i = /[a-z]/.test(t),
-        r = /\d/.test(t),
-        d = /[!@#$%^&*(),.?":{}|<>]/.test(t);
-      return !(t.length < 8 || !s || !i || !r || !d);
-    },
-    Je = (t) => (!F(t) || t.length === 0 ? !1 : /^[a-zA-Z]/.test(t)),
-    Xe = (t) => (typeof t != "string" ? !1 : /[a-zA-Z]/.test(t)),
-    et = (t, e) => !ve(t, e),
-    tt = (t, e) => t === t.toLocaleUpperCase(),
-    st = (t, e) => t === t.toLocaleLowerCase(),
-    pe = (t, e) => {
-      if (x(t)) return ie(t, e);
-      if ((t == null && (t = 0), !q(e)))
-        throw new Error("Min rule parameter must be an integer");
-      return q(t) ? Number(t) >= Number(e) : me(t, e);
-    },
-    be = (t, e) => {
-      if (x(t)) return Y(t, e);
-      if (!q(e)) throw new Error("Min rule parameter must be an integer");
-      return t == null && (t = 0), q(t) ? Number(t) <= Number(e) : ge(t, e);
-    },
-    _e = (t) => (q(t) ? Number.isInteger(Number(t)) : !1),
-    q = (t) =>
-      t === "" || t === null
-        ? !1
-        : t === "0" || t === 0 || t === "1" || t === 1
-        ? !0
-        : !isNaN(Number(t)) && typeof t != "boolean" && typeof t != "object";
-  class it {
+  class rt {
     constructor(e, s, i = null) {
       (this._value = this._trim(e)), (this.code = s), (this.attribute = i);
     }
@@ -1126,13 +1229,14 @@
       return /^(\+33|0033|0)[1-9](\d{2}){4}$/.test(this._value);
     }
     validPhoneNumber() {
+      if (!(O(this._value) || L(this._value))) return !1;
       if (typeof this.code == "string") {
         const e = [],
           s = this.code.split(",").map((i) => i.trim().toUpperCase());
         for (const i of s) {
           const r = `validate${i}`,
-            d = this[r];
-          if (typeof d == "function") e.push(d.call(this));
+            o = this[r];
+          if (typeof o == "function") e.push(o.call(this));
           else throw new Error(`Validator method '${r}' does not exist.`);
         }
         return e.some((i) => i);
@@ -1149,79 +1253,79 @@
       );
     }
   }
-  const rt = (t, e) => new it(t, e).validPhoneNumber(),
-    V = class {
+  const nt = (t, e) => new rt(t, e).validPhoneNumber(),
+    F = class {
       static rule(t, e, s) {
-        V.addRule(t, e),
-          V.addMessage(t, s != null ? s : "This input is invalide");
+        F.addRule(t, e),
+          F.addMessage(t, s != null ? s : "This input is invalide");
       }
       static addRule(t, e) {
-        V.rules[t] = e;
+        F.rules[t] = e;
       }
       static addMessage(t, e, s) {
         $.addMessage(t, e, s);
       }
       static hasRule(t) {
-        return t in V.rules;
+        return t in F.rules;
       }
       static getRule(t) {
-        return V.rules[t];
+        return F.rules[t];
       }
       static getMessage(t, e) {
         return $.getRuleMessage(t, e);
       }
       static allRules() {
-        return V.rules;
+        return F.rules;
       }
       static allMessages(t) {
         return $.getMessages(t);
       }
     };
-  let Q = V;
+  let Q = F;
   Q.rules = {
-    required: Z,
-    email: je,
-    maxlength: ge,
-    minlength: me,
-    min: pe,
-    max: be,
-    string: F,
-    between: ke,
-    startWith: Ye,
-    endWith: Ze,
-    contains: ve,
-    in: We,
-    integer: _e,
-    int: _e,
-    number: q,
-    numeric: q,
-    url: Ge,
-    length: ne,
-    len: ne,
-    file: x,
-    maxFileSize: Y,
-    minFileSize: ie,
-    size: Qe,
-    boolean: ze,
-    startWithUpper: Ue,
-    nullable: Ve,
-    startWithLower: He,
-    password: Ke,
-    date: Re,
-    before: ce,
-    after: fe,
-    phone: rt,
-    time: Fe,
-    startWithLetter: Je,
-    excludes: et,
-    hasLetter: Xe,
-    regex: Pe,
-    lower: st,
-    upper: tt,
+    required: G,
+    email: Ve,
+    maxlength: fe,
+    minlength: ce,
+    min: ge,
+    max: ve,
+    string: O,
+    between: xe,
+    startWith: je,
+    endWith: ke,
+    contains: me,
+    in: Re,
+    integer: pe,
+    int: pe,
+    number: L,
+    numeric: L,
+    url: Qe,
+    length: ee,
+    len: ee,
+    file: R,
+    maxFileSize: H,
+    minFileSize: te,
+    size: Be,
+    boolean: Se,
+    startWithUpper: We,
+    nullable: Ie,
+    startWithLower: Pe,
+    password: ze,
+    date: Ae,
+    before: he,
+    after: de,
+    phone: nt,
+    time: De,
+    startWithLetter: Ue,
+    excludes: He,
+    hasLetter: Ge,
+    regex: Fe,
+    lower: Ze,
+    upper: Ye,
   };
-  class K extends Ae {
-    constructor(e, s, i) {
-      super(e, s, i);
+  class ie extends it {
+    constructor(e, s) {
+      super(e, s);
     }
     init() {
       var e;
@@ -1241,8 +1345,21 @@
     whereName(e) {
       return this.name === e;
     }
+    onFails(e) {
+      this.on("qv.input.fails", (s) => {
+        this.__call(e);
+      });
+    }
+    onPasses(e) {
+      this.on("qv.input.passes", (s) => {
+        this.__call(e);
+      });
+    }
+    destroy() {
+      (this.param.events = []), (this.rules = []), (this.param.rules = []);
+    }
   }
-  class nt {
+  class at {
     constructor(e) {
       (this.form = e), (this.formRules = []);
     }
@@ -1257,7 +1374,7 @@
       return this.formRules;
     }
   }
-  class at extends nt {
+  class lt extends at {
     constructor(e) {
       super(e), this.register();
     }
@@ -1272,30 +1389,34 @@
       return s ? e === this.getInputValueByName(s) : !1;
     }
     requiredIf(e, s) {
-      const [i, ...r] = A(s != null ? s : "");
+      const [i, ...r] = _(s != null ? s : "");
       if (i && r.length > 0) {
-        const d = this.getInputValueByName(i);
-        return r.includes(d) ? Z(e) : !0;
+        const o = this.getInputValueByName(i);
+        return r.includes(o) ? G(e) : !0;
       }
       return !1;
     }
     requiredWhen(e, s) {
-      const [i, ...r] = A(s != null ? s : "");
+      const [i, ...r] = _(s != null ? s : "");
       return i && r.length > 0
-        ? r.some((o) => (console.log(o), Z(this.getInputValueByName(o))))
-          ? Z(e)
+        ? r.some((m) => (console.log(m), G(this.getInputValueByName(m))))
+          ? G(e)
           : !0
         : !1;
     }
   }
-  class ae {
+  class re {
     constructor(e, s) {
-      (this._emitOnFails = !0),
+      (this._passed = !1),
         (this._emitOnPasses = !0),
+        (this._emitOnFails = !0),
+        (this._qvEnabledClass = "qvEnabled"),
+        (this._qvDisabledClass = "qvDisabled"),
+        (this._triggerValidationEvents = ["change", "qv.form.validate"]),
         (this._qvInputs = []),
         (this.config = { auto: !0 }),
         this.setContainer(e),
-        (this._formValidator = new at(this.container)),
+        (this._formValidator = new lt(this.container)),
         this.setConfig(s),
         this._initQvInputs();
     }
@@ -1314,10 +1435,7 @@
     }
     init() {
       this._runQvInputs(),
-        this.config.auto &&
-          (this.disableButton(),
-          this.validateOnChange(),
-          this.validateOnQvValidated()),
+        this.config.auto && (this.disableButton(), this.validateOnQvEvent()),
         this._onSubmit(),
         this.onFails((e) => {
           this.disableButton();
@@ -1328,35 +1446,66 @@
         this.emit("qv.form.init");
     }
     disableButton() {
-      this.submitButton && this.submitButton.setAttribute("disabled", "true");
+      var e;
+      if (
+        this.submitButton &&
+        (this.submitButton.setAttribute("disabled", "true"),
+        this._qvDisabledClass)
+      ) {
+        const s = this._qvEnabledClass.split(" ");
+        for (const r of s) this.submitButton.classList.remove(r);
+        this._qvDisabledClass =
+          (e = this.submitButton.dataset.qvDisabledClass) != null
+            ? e
+            : "qvDisabled";
+        const i = this._qvDisabledClass.split(" ");
+        for (const r of i) this.submitButton.classList.add(r);
+      }
     }
     enableButton() {
-      this.submitButton && this.submitButton.removeAttribute("disabled");
+      var e;
+      if (
+        this.submitButton &&
+        (this.submitButton.removeAttribute("disabled"), this._qvEnabledClass)
+      ) {
+        const s = this._qvDisabledClass.split(" ");
+        for (const r of s) this.submitButton.classList.remove(r);
+        this._qvEnabledClass =
+          (e = this.submitButton.dataset.qvEnabledClass) != null
+            ? e
+            : "qvEnabled";
+        const i = this._qvEnabledClass.split(" ");
+        for (const r of i) this.submitButton.classList.add(r);
+      }
     }
-    validateOnChange(e) {
-      this.__call(e, this), this.on("change", this._handle.bind(this));
-    }
-    validateOnQvValidated(e) {
+    validateOnQvEvent(e) {
       this.__call(e, this),
-        this.on("qv.input.validated", this._handle.bind(this));
+        this._triggerValidationEvents.forEach((s) => {
+          this.on(s, (i) => {
+            this._handle();
+          });
+        }),
+        this._qvInputs.forEach((s) => {
+          s.onFails(this._handle.bind(this)),
+            s.onPasses(this._handle.bind(this));
+        });
     }
-    _handle(e) {
-      e.stopPropagation(),
-        this.isValid()
-          ? this._emitQvOnPassesEvent()
-          : this._emitQvOnFailsEvent();
+    _handle() {
+      (this._passed = this.isValid()),
+        this._passed ? this._emitQvOnPassesEvent() : this._emitQvOnFailsEvent();
     }
     isValid() {
-      return this._qvInputs.every((e) => e.valid());
+      return this._qvInputs.every((e) => e.passes());
     }
     _onSubmit() {
       this.on("submit", (e) => {
-        this.container.querySelectorAll("[data-qv-rules]").forEach((s) => {
-          new K(s, {}, { emitEvent: !1 }).validate();
-        }),
-          this.isValid()
+        if (!this._passed) {
+          let s = [];
+          for (const i of this._qvInputs) s.push(i.validate(!1));
+          s.every((i) => i)
             ? this._emitQvOnPassesEvent()
-            : (this._emitQvOnFailsEvent(), e.preventDefault());
+            : (e.preventDefault(), this._emitQvOnFailsEvent());
+        }
       });
     }
     rule(e, s, i) {
@@ -1375,10 +1524,10 @@
         (this.container.dataset.qvLang && (s = this.container.dataset.qvLang),
         e &&
           typeof e == "object" &&
-          ((this.config = I(I({}, this.config), e)), e.local))
+          ((this.config = C(C({}, this.config), e)), e.local))
       ) {
-        const d = e.local;
-        d.lang && (s = d.lang);
+        const o = e.local;
+        o.lang && (s = o.lang);
       }
       ($.LANG = s != null ? s : $.DEFAULT_LANG), this._syncRules();
     }
@@ -1405,15 +1554,12 @@
       });
     }
     validate() {
-      this.emit("qv.input.validated");
-    }
-    onInit(e) {
-      typeof e == "function" && this.__call(e, this);
+      this.emit("qv.form.validate");
     }
     _initQvInputs() {
       const e = Array.from(
         this.container.querySelectorAll("[data-qv-rules]")
-      ).map((s) => new K(s));
+      ).map((s) => new ie(s));
       this._qvInputs.push(...e);
     }
     _runQvInputs() {
@@ -1424,10 +1570,12 @@
     }
     destroy() {
       this.container.removeEventListener("submit", this._onSubmit),
-        ["change", "qv.input.validated"].forEach((e) => {
-          this.container.removeEventListener(e, this._handle);
-        });
-      for (const e of this._qvInputs) e.destroy();
+        this._triggerValidationEvents
+          .filter((s) => s !== "qv.form.validate")
+          .forEach((s) => {
+            this.container.removeEventListener(s, this._handle);
+          });
+      for (const s of this._qvInputs) s.destroy();
       (this._qvInputs = []), this.emit("qv.form.destroy");
     }
     _emitQvOnFailsEvent() {
@@ -1458,27 +1606,50 @@
       for (const [s, i] of Object.entries(e)) this.with(s, i);
     }
   }
-  class we {
+  class _e {
     constructor() {
-      this.config = P;
+      this.config = se;
     }
     init(e) {
       this.setConfig(e),
         document.querySelectorAll("form").forEach((s) => {
-          new ae(s).init();
+          new re(s).init();
         });
     }
     rule(e, s, i) {
       Q.rule(e, s, i);
     }
     setConfig(e) {
-      (this.config = P),
-        e && typeof e == "object" && (this.config = I(I({}, this.config), e));
+      (this.config = se),
+        e && typeof e == "object" && (this.config = C(C({}, this.config), e));
     }
   }
-  class lt {
+  class ot {
     constructor(e) {
-      (this._rules = []),
+      (this._rulesToMap = ["min", "max", "between", "size"]),
+        (this._rulesFromTypes = {
+          min: {
+            text: "minlength",
+            file: "minFileSize",
+            date: "beforeDate",
+            "date-local": "beforeDate",
+          },
+          max: {
+            text: "maxlength",
+            file: "maxFileSize",
+            date: "afterDate",
+            "date-local": "afterDate",
+          },
+          between: {
+            text: "stringBetween",
+            file: "fileBetween",
+            date: "dateBetween",
+            "date-local": "dateBetween",
+          },
+          size: { text: "length" },
+        }),
+        (this._inputType = "text"),
+        (this._rules = []),
         (this._value = void 0),
         (this._ruleExecuted = []),
         (this._failOnfirst = !0),
@@ -1491,26 +1662,27 @@
       if (!Array.isArray(e))
         throw new Error("The rule provided must be an array of Rule");
       for (const s of e) {
-        const { ruleName: i, params: r } = se(s),
-          d = Q.getRule(i),
-          o = this._makeRuleExcutedInstance(i);
-        if (((o.params = r), !d))
+        let { ruleName: i, params: r } = y(s),
+          o = this._getRuleToRunName(i);
+        const m = Q.getRule(o),
+          f = this._makeRuleExcutedInstance(o, i);
+        if (((f.params = r), !m))
           throw new Error(`The rule ${i} is not defined`);
         if (
-          (o.wasRunWith(this._value)
-            ? (o.passed = o.passed)
-            : ((o.passed = d(this._value, r)),
-              (o.valueTested = this._value),
-              (o.run = !0)),
+          (f.wasRunWith(this._value)
+            ? (f.passed = f.passed)
+            : ((f.passed = m(this._value, r)),
+              (f.valueTested = this._value),
+              (f.run = !0)),
           this._failOnfirst)
         ) {
-          if (!o.passed) {
-            this._parseRuleMessage(o), this._addRuleExecuted(o);
+          if (!f.passed) {
+            this._parseRuleMessage(f), this._addRuleExecuted(f);
             break;
           }
         } else
-          o.passed ? (o.message = "") : this._parseRuleMessage(o),
-            this._addRuleExecuted(o);
+          f.passed ? (f.message = "") : this._parseRuleMessage(f),
+            this._addRuleExecuted(f);
       }
       return !this.hasErrors();
     }
@@ -1518,7 +1690,7 @@
       var s;
       const e = {};
       for (const i of this._ruleExecuted)
-        i.passed || (e[i.ruleName] = (s = i.message) != null ? s : "");
+        i.passed || (e[i.orignalName] = (s = i.message) != null ? s : "");
       return e;
     }
     hasErrors() {
@@ -1533,22 +1705,27 @@
     getRules() {
       return this._rules;
     }
-    _makeRuleExcutedInstance(e) {
-      let s = this._ruleExecuted.find((i) => i.isNamed(e));
-      return s != null ? s : new ot(e);
+    _makeRuleExcutedInstance(e, s) {
+      let i = this._ruleExecuted.find((r) => r.isNamed(e));
+      return i != null ? i : new ut(e, s);
     }
     _addRuleExecuted(e) {
       this._ruleExecuted.includes(e) || this._ruleExecuted.push(e);
     }
     _parseRuleMessage(e) {
-      const s = new Ne().setMessages(this._qvmessages),
-        i = s.parseMessage(
+      const s = $.getRuleMessage(e.orignalName),
+        i = this._qvmessages[e.orignalName];
+      i !== s
+        ? (this._qvmessages[e.ruleName] = i)
+        : (this._qvmessages[e.ruleName] = $.getRuleMessage(e.ruleName));
+      const r = new Xe().setMessages(this._qvmessages),
+        o = r.parseMessage(
           this._attr,
           e.ruleName,
-          s.getRulesMessages([e.ruleName])[0],
+          r.getRulesMessages([e.ruleName])[0],
           e.params
         );
-      return (e.message = i), e;
+      return (e.message = o), e;
     }
     getMessages() {
       return this._ruleExecuted.filter((s) => !s.passed).map((s) => s.message);
@@ -1563,19 +1740,32 @@
       return this._value;
     }
     setParams(e) {
-      var s, i, r;
+      var s, i, r, o;
       (this._attr = (s = e.attribute) != null ? s : ""),
         (this._failOnfirst = e.failsOnfirst !== void 0 && e.failsOnfirst),
         (this._rules = (i = e.rules) != null ? i : []),
-        (this._qvmessages = (r = e.errors) != null ? r : {});
+        (this._qvmessages = (r = e.errors) != null ? r : {}),
+        (this._inputType = (o = e.type) != null ? o : this._inputType);
+    }
+    _getRuleToRunName(e) {
+      let s = e;
+      if (this._rulesToMap.includes(e)) {
+        const i = this._rulesFromTypes[e];
+        if (i) {
+          const r = i[this._inputType];
+          O(r) && r.length > 0 && (s = r);
+        }
+      }
+      return s;
     }
   }
-  class ot {
-    constructor(e) {
+  class ut {
+    constructor(e, s) {
       (this.passed = !1),
         (this.message = null),
         (this.run = !1),
-        (this.ruleName = e);
+        (this.ruleName = e),
+        (this.orignalName = s);
     }
     wasRunWith(e) {
       return this.valueTested === e && this.run;
@@ -1585,12 +1775,12 @@
     }
   }
   typeof window != "undefined" &&
-    ((window.QvInput = (ye = window.QvInput) != null ? ye : K),
-    (window.QvForm = (Ee = window.QvForm) != null ? Ee : ae),
-    (window.Quickv = (Me = window.Quickv) != null ? Me : we)),
-    (w.Quickv = we),
-    (w.QvConfig = P),
-    (w.QvForm = ae),
-    (w.QvInput = K),
-    Object.defineProperty(w, Symbol.toStringTag, { value: "Module" });
+    ((window.QvInput = (be = window.QvInput) != null ? be : ie),
+    (window.QvForm = (we = window.QvForm) != null ? we : re),
+    (window.Quickv = (ye = window.Quickv) != null ? ye : _e)),
+    (M.Quickv = _e),
+    (M.QvConfig = se),
+    (M.QvForm = re),
+    (M.QvInput = ie),
+    Object.defineProperty(M, Symbol.toStringTag, { value: "Module" });
 });
