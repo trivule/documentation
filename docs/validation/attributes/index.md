@@ -41,8 +41,11 @@ ne, un message, etc.
    - Utilité: Ces attributs sont utilisés pour configurer le bouton de soumission du formulaire en relation avec la validation.
    - Cas d'utilisation: Lorsque vous souhaitez activer ou désactiver le bouton de soumission en fonction de la validité du formulaire, et appliquer des styles CSS correspondants.
    - Exemple: `<button type="submit" data-qv-submit data-qv-enabled-class="enabled" data-qv-disabled-class="disabled">Submit</button>`
-
-8. `data-qv-lang`:
+8. `data-qv-name`: 
+   - Vous pouvez utiliser cet attribut si voulez changer le nom du champ dans le message d'erreur
+   - Il est utilisé sur un élément html à valider
+   - Exemple: `<input type="text" data-qv-name="ours condititions">`
+9.  `data-qv-lang`:
    - Utilité: Ce attribut permet de spécifier la langue utilisée pour les messages d'erreur et les éléments de l'interface utilisateur de Quickv.
    - Cas d'utilisation: Lorsque vous souhaitez personnaliser la langue des messages d'erreur et de l'interface utilisateur de Quickv.
    - Exemple: `<form data-qv-lang="fr">...</form>`
