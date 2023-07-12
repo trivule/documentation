@@ -11,7 +11,7 @@ Bienvenue dans la documentation de Quickv ! Cette bibliothèque offre de puissan
 
 Pour utiliser Quickv, suivez ces étapes :
 
-1. <strong><a target="_blank" href="http://localhost:3000/static/js/quickv.js" download>Téléchargez</a></strong>  la bibliothèque Quickv depuis <a target="_blank" href="http://localhost:3000/static/js/quickv.js" download>ici</a>.
+1. <strong><a target="_blank" href="https://quick-v.github.io/documentation/quickv.2-alpha.js" download>Téléchargez</a></strong>  la bibliothèque Quickv depuis <a target="_blank" href="https://quick-v.github.io/documentation/quickv.2-alpha.js" download>ici</a>.
 2. Incluez la bibliothèque Quickv dans votre page web.
 3. Choisissez la méthode de validation qui convient le mieux à vos besoins :
 
