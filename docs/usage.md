@@ -1,7 +1,7 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
-# Usage
+# Utilisation
 Quickv offers three validation methods: isolated **input** validation, isolated **form** validation, or general validation of all forms on your site. This allows you to choose the method that best suits your needs and effectively validate user-submitted data, whether it be for a single field, an entire form, or for all forms on your website.
 
 ### Single input validation 
