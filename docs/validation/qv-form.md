@@ -1,72 +1,165 @@
 
 # Form validation
- Par **form validation**, il faut attendre la validation d'un formulaire dans son entièrété. 
- En principe, `**form validation**`  est développés en se basant sur [Input validation](/docs/validation/qv-input). Il regroupe par exemple la désactivation du bouton de submission, la prévention de la propagation  de l'événement `submit` d'un formulaire
+ Par **form validation**, il faut enttendre la validation d'un formulaire html dans son entièrété. 
+ En principe, `**form validation**`  est développé en se basant sur [Input validation](/docs/validation/qv-input). Elle regroupe par exemple la désactivation du bouton de submission, la prévention de la propagation  de l'événement `submit` d'un formulaire
 ## QvForm
 ## Personnalisation avancée
 
 ### Interaction avec les formulaires lors de la validation
 
-Les méthodes `onFails` et `onPasses` de la classe `QvForm` vous permettent d'interagir avec les éléments `input` lorsque la validation échoue ou réussit pour les champs du formulaire.
+Considérons le formulaire suivant
+```html
+<form>
+  <div>
+    <label for="">Email</label>
+    <input type="text" data-qv-rules="required|email|maxlength:32" name="email" />
+    <div data-qv-feedback="email"></div>
+  </div>
+ 
+  <div>
+    <label for="">Message</label>
+    <textarea
+      data-qv-rules="required|between:2,250|startWithUpper|endWith:."
+      name="message"
+    ></textarea>
+    <div data-qv-feedback="message"></div>
+  </div>
+  <p>
+    <button type="submit" value="Submit" data-qv-submit>
+      Envoyer
+    </button>
+  </p>
+</form>
+```
+Initialisons-le:
 
-La méthode `onFails` définit un écouteur d'événements qui sera déclenché lorsque la validation échoue pour l'un des champs du formulaire. Voici un exemple d'utilisation :
+```js
+const qvForm = new QvForm("form");
+qvForm.init();
+```
+### `onInit` - Avant la validation
 
-```javascript
-qvForm.onFails((e) => {
-  // Code à exécuter lorsque la validation échoue pour un champ du formulaire
-  console.log("Validation échouée", e.details);
+Lors de l'utilisation de Quickv pour la validation en direct d'un formulaire, il peut arriver que des actions supplémentaires soient nécessaires après l'initialisation du formulaire. Par exemple, des configurations spécifiques ou des manipulations d'objets peuvent être requises pour préparer le formulaire à une interaction plus avancée.
+
+La méthode `onInit` résout ce problème en fournissant un moyen propre d'attacher des gestionnaires d'événements qui seront déclenchés spécifiquement après l'initialisation. Cela permet d'effectuer des actions personnalisées ou de configurer des fonctionnalités supplémentaires en réaction à l'état prêt du formulaire.
+
+La méthode `onInit()` doit être appelée avant la méthode  `init()`
+
+#### Exemple d'utilisation
+
+```typescript
+qvForm.onInit((initializedForm: QvForm) => {
+  console.log("Le formulaire est prêt pour des actions supplémentaires :", initializedForm);
 });
 ```
 
-Dans cet exemple, une fonction de rappel est définie pour afficher un message dans la console lorsque la validation échoue pour un champ du formulaire. Vous pouvez personnaliser le code à exécuter en fonction de vos besoins, par exemple, afficher un message d'erreur à l'utilisateur ou appliquer des styles spécifiques à l'élément `input`.
 
-De manière similaire, la méthode `onPasses` vous permet de définir un écouteur d'événements qui sera déclenché lorsque la validation réussit pour l'un des champs du formulaire. Voici un exemple d'utilisation :
+#### Cas d'Utilisation Typiques
+
+- **Configuration Personnalisée :** Effectuer des configurations spécifiques au formulaire après son initialisation.
+  
+- **Actions Post-Initialisation :** Exécuter des actions qui dépendent de la pleine préparation du formulaire.
+
+*Note : Il est recommandé d'utiliser judicieusement `onInit` pour des tâches non liées à la validation, car l'initialisation complète du formulaire peut ne pas garantir la fin des validations asynchrones ou d'autres tâches différées.*
+
+### `onFails` & `onPasses` - Réaction Dynamique à la Validation
+
+Les méthodes `onFails` et `onPasses` de la classe `QvForm` offrent une flexibilité totale pour réagir de manière dynamique aux succès et aux échecs des validations des champs de formulaire.
+
+#### `onFails` - Validation Échouée
+
+La méthode `onFails` permet de définir un gestionnaire d'événements qui se déclenchera dès qu'un champ du formulaire échoue à la validation. Exemple :
 
 ```javascript
-qvForm.onPasses((input) => {
-  // Code à exécuter lorsque la validation réussit pour un champ du formulaire
+qvForm.onFails((qvFormInstance) => {
+  // Code à exécuter en cas d'échec de validation
+  console.log("Validation échouée", qvFormInstance);
+  // Personnalisez ici les réactions aux échecs de validation
+});
+```
+
+Personnalisez le code à exécuter selon vos besoins
+#### `onPasses` - Validation Réussie
+
+La méthode `onPasses` fonctionne de manière similaire, déclenchant un gestionnaire d'événements lorsque le formulaire réussit à la validation. Exemple :
+
+```javascript
+qvForm.onPasses((qvFormInstance) => {
+  // Code à exécuter en cas de validation réussie
   console.log("Validation réussie");
+  // Personnalisez ici les réactions aux succès de validation
 });
 ```
 
-Dans cet exemple, une fonction de rappel est définie pour afficher un message dans la console lorsque la validation réussit pour un champ du formulaire. Vous pouvez modifier le code à exécuter en fonction de vos besoins, par exemple, valider d'autres champs du formulaire ou activer un bouton de soumission.
+Utilisez cette méthode pour effectuer des actions spécifiques en cas de validation réussie, que ce soit pour valider d'autres champs ou activer un bouton de soumission.
 
-En utilisant ces méthodes, vous pouvez réagir aux événements de validation réussis ou échoués et effectuer des actions spécifiques en conséquence. Cela vous permet d'ajouter une logique personnalisée à votre application en fonction du résultat de la validation des champs du formulaire.
+En tirant parti de `onFails` et `onPasses`, vous pouvez adapter votre application aux résultats de validation des champs du formulaire, ajoutant ainsi une logique personnalisée et réactive.
+
 
 ### Émission d'événements personnalisés
 
-La méthode `emit` de la classe `QvForm` vous permet d'émettre un événement personnalisé vers les éléments `input` associés. Voici un exemple d'utilisation :
+### `emit` - Personnalisation des Événements
+
+La méthode `emit` de la classe `QvForm` permet d'émettre des événements personnalisés vers le formulaire associé à l'instance de `QvForm`. Cette fonctionnalité avancée facilite la communication et l'interaction au sein de votre application.
+
+#### Exemple d'Utilisation
 
 ```javascript
-qvForm.emit("myEvent", { data: "Valeur personnalisée" });
+const userData = { name: "John Doe", age: 25 };
+
+// Émission d'un événement personnalisé "user-updated" avec des données supplémentaires
+qvForm.emit("user-updated", userData);
 ```
 
-Dans cet exemple, un événement personnalisé nommé "myEvent" est émis vers le formulaire. Des données supplémentaires `{ data: "Valeur personnalisée" }` peuvent être transmises avec l'événement.
+Dans cet exemple, un événement personnalisé nommé "user-updated" est émis vers le formulaire, transportant les données utilisateur supplémentaires. Cela offre une flexibilité pour créer des scénarios où des parties spécifiques de votre application peuvent réagir à ces événements sur mesure.
 
-Vous pouvez utiliser cette fonctionnalité pour créer une communication et une interaction avancées entre votre application et la classe `QvForm`. Par exemple, vous pouvez émettre un événement personnalisé lorsque la valeur d'un élément `input` change et écouter cet événement pour effectuer des actions spécifiques dans d'autres parties de votre application.
+#### Utilisations Possibles
+
+- **Communication Avancée :** Émettez des événements lorsque la valeur d'un élément `input` change et écoutez ces événements pour déclencher des actions spécifiques dans différentes parties de votre application.
+
+- **Personnalisation d'Interactions :** Adaptez le comportement de votre application en émettant des événements personnalisés en réponse à des conditions spécifiques ou des états du formulaire.
+
+- **Intégration avec d'Autres Composants :** Facilitez l'intégration avec d'autres composants de votre application en émettant des événements contenant des informations cruciales.
+
+L'utilisation judicieuse de la méthode `emit` peut considérablement enrichir l'interactivité et la modularité de votre application en permettant à différentes parties de réagir de manière personnalisée aux événements émis par la classe `QvForm`.
+
 
 ### Attachement d'écouteurs d'événements
 
-La méthode `on` de la classe `QvForm` vous permet d'attacher un écouteur d'évén
+La méthode `on` de la classe `QvForm` ouvre un monde d'opportunités en vous permettant d'attacher des écouteurs d'événements, que ce soient des événements natifs ou personnalisés, à votre formulaire. Découvrez comment personnaliser votre expérience utilisateur en répondant de manière dynamique à des interactions spécifiques.
 
-ements au formulaire associé. Voici un exemple d'utilisation :
+#### Exemple d'Utilisation
 
 ```javascript
+// Attache un écouteur d'événements pour l'événement "change"
 qvForm.on("change", (event) => {
-  // Code à exécuter lorsque l'événement "change" se produit 
+  // Code à exécuter lorsque l'événement "change" se produit dans le formulaire
+  console.log("Changement détecté !");
 });
 ```
 
-Dans cet exemple, un écouteur d'événements est attaché au formulaire pour l'événement "change". Lorsque cet événement se produit, la fonction de rappel est exécutée. Vous pouvez écouter d'autres événements tels que vos propres événements ou d'autres événements JavaScript standard.
+Dans cet exemple, un écouteur d'événements est ajouté au formulaire pour l'événement "change". Lorsque cet événement survient, le code à l'intérieur de la fonction de rappel est exécuté. Vous pouvez écouter d'autres événements tels que "submit", "click", ou même vos propres événements personnalisés.
 
-Cela vous permet d'écouter des événements spécifiques émis par le formulaire et d'effectuer des actions personnalisées en réponse à ces événements.
+#### Utilisations Possibles
 
-### Validation du formulaire
+- **Réactivité aux Interactions Utilisateur :** Surveillez les événements de changement (`change`), de clic (`click`), ou de soumission (`submit`) pour déclencher des actions spécifiques.
 
-La méthode `valid` de la classe `QvForm` vous permet de valider le formulaire en utilisant les règles de validation définies. Voici un exemple d'utilisation :
+- **Validation Personnalisée :** Attachez un écouteur pour réagir à des événements personnalisés émis par la classe `QvForm` et effectuez des validations ou des actions spécifiques en conséquence.
+
+- **Intégration avec d'Autres Composants :** Créez une interaction harmonieuse avec d'autres parties de votre application en écoutant des événements spécifiques émis par d'autres composants.
+
+En incorporant habilement la méthode `on`, vous pouvez personnaliser l'expérience utilisateur et ajouter une réactivité intelligente à votre formulaire, faisant ainsi de votre application une expérience interactive et dynamique.
+
+### Statut de validation du formulaire
+ 
+La méthode `passes` de la classe `QvForm` permet de vérifier si le formulaire est valide ou non. 
+
+#### Exemple d'Utilisation
 
 ```javascript
-const isValid = qvForm.valid();
+// Vérifie si le formulaire est valide
+const isValid = qvForm.passes();
+
 if (isValid) {
   // Poursuivre avec la soumission du formulaire ou gérer un formulaire valide
 } else {
@@ -74,49 +167,31 @@ if (isValid) {
 }
 ```
 
-Dans cet exemple, la méthode `valid` est appelée pour valider le formulaire. La valeur de retour `isValid` indique si le formulaire est valide ou non. Vous pouvez utiliser cette information pour prendre des décisions dans votre code, telles que la soumission du formulaire ou l'affichage de messages d'erreur à l'utilisateur.
+Dans cet exemple, la méthode `passes` est appelée pour déterminer si le formulaire est valide. Selon le résultat, vous pouvez décider de soumettre le formulaire, afficher des messages d'erreur à l'utilisateur ou effectuer d'autres actions personnalisées.
 
-La méthode `valid` met à jour la propriété `_passed` de l'instance `QvForm` avec le résultat de la validation et retourne ce résultat. Elle effectue la validation en utilisant les valeurs actuelles des éléments `input` et les règles de validation définies.
+#### Utilisations Possibles
 
-### Validation et émission d'événements de validation
+- **Soumission Conditionnelle :** Utilisez `passes` avant de déclencher la soumission du formulaire pour vous assurer que toutes les validations sont passées avec succès.
 
-La méthode `validate` de la classe `QvForm` effectue la validation du formulaire en utilisant les règles de validation définies. Elle émet également les événements "qv.form.passes" ou "qv.form.fails" en fonction du résultat de la validation. Voici un exemple d'utilisation :
+- **Réaction Dynamique :** Personnalisez le comportement de votre application en fonction de l'état de validation actuel du formulaire.
 
-```javascript
-const isValid = qvForm.validate();
-if (isValid) {
-  // Poursuivre avec la soumission du formulaire ou gérer un formulaire valide
-} else {
-  // Afficher des messages d'erreur ou gérer un formulaire invalide
-}
-```
+- **Logique de Gestion d'Erreurs :** Affichez des messages d'erreur ciblés ou effectuez des actions spécifiques en cas d'échec de la validation.
 
-Dans cet exemple, la méthode `validate` est appelée pour valider le formulaire. La valeur de retour `isValid` indique si le formulaire est valide ou non. Vous pouvez utiliser cette information pour prendre des décisions dans votre code, telles que la soumission du formulaire ou l'affichage de messages d'erreur à l'utilisateur.
+La méthode `passes` fait appel à la méthode interne `isValid` qui vérifie chaque champ selon les règles de validation définies. En l'intégrant dans votre logique, vous pouvez créer une expérience utilisateur robuste et réactive. Prenez le contrôle de la validation de votre formulaire avec la méthode `passes` de `QvForm`.
 
-La méthode `validate` effectue les étapes suivantes :
 
-1. Elle appelle la méthode `valid` pour effectuer la validation du formulaire et mettre à jour la propriété `_passed` avec le résultat.
-2. Elle appelle d'autres méthodes pour mettre à jour les classes CSS, récupérer les messages d'erreur et émettre les événements de validation.
-3. Elle renvoie la valeur du résultat de la validation (`this._passed`).
+### `onValidate()` - Réagissez à la Validation du Formulaire
 
-Vous pouvez utiliser la méthode `validate` lorsque vous souhaitez effectuer une validation complète du formulaire, mettre à jour l'interface utilisateur en fonction du résultat de la validation et émettre les événements correspondants.
+La méthode `onValidate()` de la classe `QvForm` vous permet de réagir à l'événement de validation du formulaire. Utilisez cette fonctionnalité pour exécuter des actions spécifiques lorsqu'une validation complète du formulaire est effectuée.
 
-### Écoute des événements de validation
+#### Exemple d'Utilisation
 
-Lors
-
-que la validation échoue ou réussit, les événements `qv.form.fails` et `qv.form.passes` sont émis pour vous permettre d'interagir avec le formulaire dans votre code.
-
-```javascript
-const myForm = document.getElementById('my-form');
-myForm.addEventListener('qv.form.fails', (e) => {
-  console.log(e.detail);
-  // Votre code
+```typescript 
+qvForm.onValidate((qvForm) => {
+  console.log("Validation du formulaire effectuée", qvForm);
 });
 ```
-
-Dans cet exemple, un écouteur d'événements est attaché au formulaire avec l'ID "my-form" pour l'événement "qv.form.fails". Lorsque cet événement se produit, la fonction de rappel est exécutée. Vous pouvez personnaliser le code à exécuter en fonction de vos besoins, par exemple, afficher des messages d'erreur à l'utilisateur ou effectuer des actions spécifiques en cas d'échec de la validation.
-
+ 
 ### Destruction de l'instance QvForm
 
 La méthode `destroy` de la classe `QvForm` vous permet de réinitialiser l'instance `QvForm` en supprimant les règles de validation personnalisées et les écouteurs d'événements associés. Voici un exemple d'utilisation :
