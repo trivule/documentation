@@ -6,7 +6,6 @@ sidebar_position: 1
 
 > **Note:** Cette documentation concerne la version de développement de Quickv 2.0.
 
- 
 
 ## Téléchargement ou Via CDN
 
