@@ -5,9 +5,9 @@ sidebar_position: 0
 
 **Quickv** (prononcé "**cue-v**" en français) est une bibliothèque JavaScript conviviale spécialement conçue pour faciliter la validation dynamique des formulaires HTML sur vos pages web.
 
-Elle a été conçue pour éliminer la rédondance, la perte du temps, la complixité dans le processus de validation d'un formulaire. En utilisant des attributs HTML intuitifs, cette bibliothèque permet d'ajouter des règles de validation complexes et avancés sans la nécessité de coder des fonctions. Elle s'aligne sur la logique naturelle de la validation HTML, rendant le processus simple, familier et fluide.
+Elle a été conçue pour éliminer la rédondance, la perte du temps, la complexité dans le processus de validation d'un formulaire. En utilisant des attributs HTML intuitifs, cette bibliothèque permet d'ajouter des règles de validation complexes et avancés sans la nécessité de coder des fonctions. Elle s'aligne sur la logique naturelle de la validation HTML, rendant le processus simple, familier et fluide.
 
-**Quickv** peut-être est une excellente option si vous recherchez une solution rapide pour mettre en place une validation complexe sur votre site sans avoir à écrire de code JavaScript, cela peu importe votre niveau en développement.
+**Quickv** peut-être est une excellente option si vous recherchez une solution rapide pour mettre en place une validation complexe sur votre site sans avoir à écrire de code JavaScript, cela peu importe votre niveau en développement web.
 
 ## Exemple de validation
 ```html
