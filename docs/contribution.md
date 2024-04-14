@@ -4,72 +4,71 @@ sidebar_position: 11
  
 # Contribution
  
-Nous accueillons les contributions de la communauté pour améliorer `Quickv`. Si vous rencontrez des problèmes, avez des idées d'amélioration ou souhaitez apporter des modifications au code, veuillez suivre les étapes ci-dessous pour contribuer.
+We welcome community contributions to improve `Quickv`. If you encounter issues, have ideas for improvements, or wish to make changes to the code, please follow the steps below to contribute.
 
-### Ouvrir des problèmes
+### Opening Issues
 
-Si vous rencontrez des problèmes ou avez des idées d'amélioration, n'hésitez pas à ouvrir un problème sur notre dépôt GitHub. Assurez-vous de fournir autant de détails que possible, y compris des captures d'écran ou du code d'exemple, pour nous aider à comprendre et résoudre le problème.
+If you encounter problems or have ideas for improvements, feel free to open an issue on our GitHub repository. Make sure to provide as many details as possible, including screenshots or example code, to help us understand and resolve the issue.
 
-### Soumettre des demandes de tirage (Pull Requests)
+### Submitting Pull Requests
 
-Si vous souhaitez apporter des modifications au code, nous vous encourageons à proposer une demande de tirage (Pull Request). Veuillez suivre les étapes ci-dessous :
+If you would like to make changes to the code, we encourage you to propose a pull request. Please follow the steps below:
 
-1. Fork le dépôt et clonez-le localement sur votre machine.
-2. Basculez vers la branche `2.0.0` sur laquelle vous souhaitez travailler.
-3. Installez les dépendances du projet localement en exécutant la commande suivante :
+1. Fork the repository and clone it locally to your machine.
+2. Switch to the `2.0.0` branch on which you want to work.
+3. Install the project dependencies locally by running the following command:
 ```bash
    npm install
 ```
-4. Effectuez les modifications nécessaires et testez-les en profondeur. Par exemple, vous pouvez ajouter une nouvelle règle (voir ci-dessous pour plus de détails).
-5. Validez vos modifications en utilisant la commande `git commit -m "Description des modifications"`.
-6. Transférez vos modifications vers votre dépôt forké.
-7. Ouvrez une demande de tirage (Pull Request) sur notre dépôt GitHub et fournissez une description détaillée des modifications que vous avez apportées.
+4. Make the necessary changes and test them thoroughly. For example, you can add a new rule (see below for more details).
+5. Commit your changes using the command `git commit -m "Description of changes"`.
+6. Push your changes to your forked repository.
+7. Open a pull request on our GitHub repository and provide a detailed description of the changes you made.
 
-Nous examinerons votre demande dès que possible et vous fournirons un retour d'information. Assurez-vous de répondre à tous les commentaires et de mettre à jour votre demande de tirage en conséquence.
+We will review your pull request as soon as possible and provide you with feedback. Be sure to address all comments and update your pull request accordingly.
 
-### Participer aux discussions
+### Participating in Discussions
 
-Nous avons également des discussions en cours sur divers sujets liés au projet. Nous vous invitons à participer à ces discussions et à partager vos idées, suggestions ou commentaires. Votre perspective et vos connaissances peuvent aider à orienter le projet dans la bonne direction.
+We also have ongoing discussions on various topics related to the project. We invite you to participate in these discussions and share your ideas, suggestions, or comments. Your perspective and expertise can help guide the project in the right direction.
 
-## Code de conduite
+## Code of Conduct
 
-Nous vous demandons de respecter notre code de conduite lorsque vous participez au projet. Veuillez respecter les autres contributeurs et maintenir un environnement collaboratif et inclusif.
+We ask that you respect our code of conduct when participating in the project. Please respect other contributors and maintain a collaborative and inclusive environment.
 
- Toute violation du code de conduite peut être signalée à Fassinou Claude (dev.claudy@gmail.com) :
+Any violation of the code of conduct can be reported to Fassinou Claude (dev.claudy@gmail.com):
 
-1. Les participants doivent faire preuve de tolérance à l'égard des opinions divergentes.
-2. Les participants doivent veiller à ce que leur langage et leurs actions soient exempts d'attaques personnelles et de remarques personnelles désobligeantes.
-3. Lorsqu'ils interprètent les paroles et les actions d'autrui, les participants doivent toujours partir d'une bonne intention.
-4. Le harcèlement, sous quelque forme que ce soit, ne sera pas toléré et sera considéré comme une violation du code de conduite.
+1. Participants must be tolerant of differing opinions.
+2. Participants must ensure that their language and actions are free from personal attacks and derogatory remarks.
+3. When interpreting the words and actions of others, participants should always assume good intentions.
+4. Harassment in any form will not be tolerated and will be considered a violation of the code of conduct.
 
-Veuillez noter que l'adresse électronique de contact doit être fournie pour signaler les violations.
+Please note that a contact email address must be provided for reporting violations.
 
-Nous sommes impatients de travailler avec vous et de faire avancer ce projet ensemble. Merci pour votre intérêt et votre engagement !
+We look forward to working with you and moving this project forward together. Thank you for your interest and commitment!
 
-L'équipe de développement
+The Development Team
 
 ---
+Voici la version améliorée et traduite en anglais de votre document :
 
-## Ajouter une nouvelle règle à Quickv
+## Adding a New Rule to Quickv
 
-### Étape 1
+### Step 1
 
-Une règle Quickv est simplement une fonction de rappel qui gère la validation en fonction de vos besoins et doit renvoyer une valeur booléenne. Elle doit implémenter l'interface `RuleCallBack` définie dans `./src/contracts/rule-callback.ts`.
+A Quickv rule is simply a callback function that handles validation according to your requirements and should return a boolean value. It must implement the `RuleCallBack` interface defined in `./src/contracts/rule-callback.ts`.
 
-En fonction du type de données que votre rappel validera, vous devez le classer dans l'un des fichiers suivants :
+Based on the type of data your callback will validate, you should categorize it into one of the following files:
 - `./src/rules` (global, number, phone, string, date, file, etc.)
 
-Voici un exemple d'implémentation d'un rappel pour la règle `in` :
+Here is an example implementation of a callback for the `in` rule:
 
 ```ts
 /**
- * Vérifie si l'entrée se trouve dans la liste spécifiée.
+ * Checks if the input is within the specified list.
  *
- * @param input - L'entrée à vér
-
-ifier.
- * @param params - La liste de valeurs à vérifier. Chaîne séparée par des virgules.
- * @returns `true` si l'entrée se trouve dans la liste, `false` sinon.
+ * @param input - The input to be verified.
+ * @param params - The list of values to verify, as a comma-separated string.
+ * @returns `true` if the input is in the list, `false` otherwise.
  */
 export const inInput: RuleCallBack = (input, params) => {
   if (!params) {
@@ -80,32 +79,34 @@ export const inInput: RuleCallBack = (input, params) => {
 };
 ```
 
-Explication :
-1. Le premier argument, `input`, correspond à la valeur actuelle du champ à valider. Il peut être de types tels que `string`, `Blob`, `File`, `number`, `null`, `boolean`, `undefined`, `FileList`.
-2. Le deuxième argument, `params`, correspond aux arguments possibles. Les arguments sont des chaînes séparées par des virgules. Vous pouvez les récupérer individuellement en utilisant la fonction `splitParam`. 
-Par exemple, si vous avez un champ HTML comme ceci :
-```html 
-<input data-qv-rules="in:actif, inactif, suspendu" />
+Explanation:
+1. The first argument, `input`, refers to the current value of the field being validated. It can be of types such as `string`, `Blob`, `File`, `number`, `null`, `boolean`, `undefined`, `FileList`.
+2. The second argument, `params`, refers to possible arguments. The arguments are comma-separated strings. You can retrieve them individually using the `splitParam` function. 
+For example, if you have an HTML field like this:
+```html
+<input data-qv-rules="in:active, inactive, suspended" />
 ```
-Les valeurs après les deux-points (`:`) sont les paramètres. Dans ce cas, le deuxième argument serait une chaîne telle que `"actif, inactif, suspendu"`. Vous pouvez utiliser la fonction `splitParam(params ?? "")` pour obtenir un tableau de valeurs individuelles, par exemple, `['actif', 'inactif', 'suspendu']`.
+The values after the colon (`:`) are the parameters. In this case, the second argument would be a string like `"active, inactive, suspended"`. You can use the function `splitParam(params ?? "")` to obtain an array of individual values, for example, `['active', 'inactive', 'suspended']`.
 
-3. Le reste du code représente la logique du rappel. Dans cet exemple, nous vérifions si la valeur actuelle du champ se trouve dans la liste spécifiée et renvoyons le résultat.
+3. The rest of the code represents the callback logic. In this example, we check if the current value of the field is in the specified list and return the result.
 
-***Le rappel doit renvoyer une valeur booléenne.***
+***The callback must return a boolean value.***
 
-#### Convention de nommage
+#### Naming Convention
 
-En général, il est recommandé de donner au rappel le même nom que la règle que vous souhaitez ajouter. Cependant, cela n'est pas obligatoire si cela pose des problèmes.
+In general,
 
-Dans cet exemple, le nom de règle est normalement `in`, mais nous avons dû utiliser `inInput` car le mot-clé `in` est réservé en JavaScript/TypeScript.
+it is recommended to name the callback the same as the rule you wish to add. However, this is not mandatory if it causes problems.
 
-### Étape 2 : Tester le rappel
+In this example, the rule name is normally `in`, but we had to use `inInput` because the keyword `in` is reserved in JavaScript/TypeScript.
 
-Une fois que vous avez écrit votre rappel, vous devez le tester pour vous assurer qu'il fonctionne comme prévu. Pour cela, vous pouvez utiliser l'outil de test Jest.
+### Step 2: Test the Callback
 
-Selon le fichier dans lequel vous avez écrit votre rappel, vous devez vous rendre dans le fichier de test correspondant. Dans cet exemple, le fichier de test est `global.test.ts`.
+Once you have written your callback, you need to test it to ensure it works as expected. For this, you can use the Jest testing tool.
 
-Voici un exemple de test pour le rappel `inInput` :
+Depending on the file in which you wrote your callback, you should navigate to the corresponding test file. In this example, the test file is `global.test.ts`.
+
+Here is an example test for the `inInput` callback:
 
 ```ts
 describe("inInput rule callback", () => {
@@ -129,35 +130,34 @@ describe("inInput rule callback", () => {
     expect(() => inInput(input, params)).toThrow();
   });
 });
-
 ```
 
-Vous pouvez exécuter les tests en utilisant la commande suivante :
+You can run the tests using the following command:
 
 ```bash
 npm test
 ```
 
-Une fois que vos tests sont réussis, vous pouvez passer à l'étape suivante.
+Once your tests pass, you can proceed to the next step.
 
-### Étape 3 : Ajouter le rappel aux règles
+### Step 3: Add the Callback to Rules
 
-Toutes les règles Quickv sont répertoriées dans le type `Rule`, qui se trouve dans le fichier `./src/contracts/rule.ts`. Vous devez ajouter votre règle à ce type pour qu'elle soit reconnue.
+All Quickv rules are listed in the `Rule` type, located in the `./src/contracts/rule.ts` file. You must add your rule to this type to make it recognizable.
 
-Voici un exemple d'ajout de la règle `in` :
+Here's an example of adding the `in` rule:
 
 ```ts
 /**
- * Liste des règles Quickv regroupées par type de règle
+ * List of Quickv rules grouped by rule type
  */
 export type Rule = "contains" | "in" | "startWithLetter" /*...*/;
 ```
 
-Cela permet également l'autocomplétion dans votre éditeur de code, mais ce n'est pas le but principal d'ajouter la règle à ce type.
+Adding the rule to this type also enables code completion in your code editor, but that is not the primary goal of including the rule in this type.
 
-Si vous utilisez un outil compatible avec TypeScript, vous remarquerez peut-être une erreur dans le fichier `./src/validation/qv-bag.ts`. Ce fichier est l'endroit où les règles sont réellement ajoutées à Quickv. Tant qu'une règle n'est pas ajoutée à ce fichier, elle ne fera pas partie de Quickv.
+If you use a TypeScript-compatible tool, you might notice an error in the `./src/validation/qv-bag.ts` file. This file is where rules are actually added to Quickv. Until a rule is added to this file, it won't be part of Quickv.
 
-Dans ce fichier, la classe `QvBag` est utilisée pour stocker les règles. Vous devez ajouter votre règle à l'attribut `rules` de cette classe, comme ceci :
+In this file, the `QvBag` class is used to store the rules. You should add your rule to the `rules` attribute of this class, as shown below:
 
 ```typescript
 export class QvBag implements IQvBag {
@@ -167,13 +167,13 @@ export class QvBag implements IQvBag {
 }
 ```
 
-### Étape 4 : Assigner un message
+### Step 4: Assign a Message
 
-En général, votre règle est prête à être utilisée une fois que vous l'avez ajoutée. Cependant, vous devez également lui assigner un message. Sinon, un message par défaut sera utilisé.
+Generally, your rule is ready to be used once you have added it. However, you also need to assign it a message; otherwise, a default message will be used.
 
-Pour ce faire, vous devez vous rendre dans le dossier `./src/local/lang`. Vous y trouverez le fichier de langues par défaut prises en charge par Quickv (anglais). Vous devez ajouter les messages correspondant à votre règle dans ces fichiers.
+To do this, go to the `./src/local/lang` folder. You will find the default language files supported by Quickv (English). Add messages corresponding to your rule in these files.
 
-Voici un exemple d'ajout de messages pour la règle `in` :
+Here's an example of adding messages for the `in` rule:
 
 ```ts
 export const en_messages: RulesMessages = {
@@ -182,32 +182,30 @@ export const en_messages: RulesMessages = {
 };
 ```
  
-Si vous avez suivi ces étapes correctement, vous pouvez tester votre règle en l'utilisant dans un formulaire HTML pour voir si tout fonctionne correctement.
-Pour cela vous pouvez compiler le projet et avoir  le bundle à incluer dans votre projet
+If you've followed these steps correctly, you can test your rule by using it in an HTML form to see if everything works properly.
 
-Pour créer les bundles, exécutez la commande suivante :
+To compile the project and get the bundle to include in your project, run the following command:
+
 ```bash
 npm run build
 ```
-Cette commande va générer les fichiers `index.mjs` et `index.umd.js` dans le dossier `./dist`. Le premier fichier est destiné à être utilisé en tant que module ES6, tandis que le second est adapté aux systèmes UMD.
-Vous pouvez également utiliser la commande `npm run build:watch` pour compiler automatiquement les fichiers pendant que vous travaillez.
+This command will generate the `index.mjs` and `index.umd.js` files in the `./dist` folder. The first file is intended for use as an ES6 module, while the second is suitable for UMD systems.
+You can also use the `npm run build:watch` command to automatically compile the files as you work.
 
-### Résumé des étapes :
+### Summary of Steps:
 
-#### Étape 1 : Écrire le rappel de règle
+#### Step 1: Write the Rule Callback
 
-Voici un exemple de code pour écrire le rappel de règle `in` :
+Here's an example code snippet to write the `in` rule callback:
 
 ```typescript
 import { RuleCallBack, splitParam, throwEmptyArgsException } from "../validation/quickv";
 
 /**
- * Vérifie si la valeur d'entrée se trouve dans la liste spécifiée.
- * @param input - La valeur actuelle du champ à valider. Il peut être de types tels que `string`, `Blob`, `File`, `number`, `null`, `boolean`, `undefined`, `FileList`.
- * @param params - La liste de valeurs à vérifier. Chaîne séparée par des virgules.
- * @returns `true` si l'entrée
-
- se trouve dans la liste, `false` sinon.
+ * Verifies whether the input value is in the specified list.
+ * @param input - The current value of the field to validate. It can be of types such as `string`, `Blob`, `File`, `number`, `null`, `boolean`, `undefined`, `FileList`.
+ * @param params - The list of values to verify. A comma-separated string.
+ * @returns `true` if the input is in the list, `false` otherwise.
  */
 export const inInput: RuleCallBack = (input, params) => {
   if (!params) {
@@ -218,16 +216,16 @@ export const inInput: RuleCallBack = (input, params) => {
 };
 ```
 
-#### Étape 2 : Tester le rappel
+#### Step 2: Test the Callback
 
-Utilisez l'outil de test Jest pour tester le rappel.
+Use the Jest testing tool to test the callback.
 
-#### Étape 3 : Ajouter le rappel aux règles
+#### Step 3: Add the Callback to Rules
 
-Ajoutez le rappel à la liste des règles Quickv dans le fichier `./src/contracts/rule.ts`.
+Add the callback to the Quickv rules list in the `./src/contracts/rule.ts` file.
 
-#### Étape 4 : Assigner un message
+#### Step 4: Assign a Message
 
-Ajoutez le message correspondant à votre règle dans les fichiers de langue `./src/local/lang/en_messages.ts` et `./src/local/lang/fr_messages.ts`.
+Add the corresponding message for your rule in the language files `./src/local/lang/en_messages.ts` and `./src/local/lang/fr_messages.ts`.
 
-Une fois ces étapes terminées, vous pouvez utiliser votre nouvelle règle dans Quickv.
+Once these steps are complete, you can use your new rule in Quickv.
