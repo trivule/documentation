@@ -1,3 +1,6 @@
+---
+sidebar_position: 7
+---
 # File Validation
 
 The following rules are used to validate files. They allow you to check if a value is a `File` or `Blob` object, verify the size of a file, and ensure that the file size falls within minimum and maximum values.

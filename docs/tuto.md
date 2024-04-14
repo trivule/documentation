@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 title: Tutorial in 5 Minutes
 ---
 > **Note:** Quickv 2.0 (Experimental)

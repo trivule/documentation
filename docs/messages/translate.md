@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 17
 title: Translation
 ---
 > **Note:** Quickv 2.0 (Experimental)

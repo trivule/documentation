@@ -1,3 +1,6 @@
+---
+sidebar_position: 12
+---
 # Form Validation
 
 Form validation refers to the validation of an HTML form in its entirety. In practice, form validation is developed based on [input validation](/docs/validation/qv-input). It encompasses actions such as disabling the submit button and preventing the propagation of the `submit` event of a form.

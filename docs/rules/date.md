@@ -1,3 +1,6 @@
+---
+sidebar_position: 8
+---
 # Date Validation
 
 The following rules are used to validate dates. These rules allow you to verify whether an input is a valid date, compare dates, and check if a date falls within a specific range.

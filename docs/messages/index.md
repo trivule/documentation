@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 14
 title: Messages
 ---
 > **Note:** Quickv 2.0 (Experimental)

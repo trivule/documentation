@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 15
 title: Modifying an Existing Message
 ---
 > **Note:** Quickv 2.0 (Experimental)

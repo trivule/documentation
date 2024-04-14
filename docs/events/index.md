@@ -1,6 +1,6 @@
 ---
 
-sidebar_position: 7
+sidebar_position: 20
 title: Events
 ---
 > **Note:** Quickv 2.0 (Experimental)

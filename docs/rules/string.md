@@ -1,3 +1,6 @@
+---
+sidebar_position: 5
+---
 # Validation of Strings
 
 These rules are specifically designed for string validation. They allow you to verify different aspects of a string such as length, format, and more. Here's a detailed description of each rule and practical usage examples:

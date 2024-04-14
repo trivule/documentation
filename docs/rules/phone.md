@@ -1,5 +1,7 @@
+---
+sidebar_position: 9
+---
 # Phone Number Validation
-
 These rules are specifically designed for phone number validation. They allow you to verify the format of phone numbers. Here is a detailed description of each rule and practical usage examples:
 
 > Please note that the code and examples provided may contain errors or limitations due to the complexity and variations of phone number formats across different regions and countries. It is always recommended to perform additional validation or consult relevant standards when working with phone numbers.
