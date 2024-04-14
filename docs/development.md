@@ -5,7 +5,7 @@ title: Développement
 > **Note:**  Quickv 2.0 (Expérimental)
 
 ## Structure du répertoire
-Lorsque vous téléchargez Quickv depuis GitHub, voici un aperçu de la structure du code, mettant en évidence les dossiers et fichiers importants documentés.
+Lorsque vous clonez Quickv depuis GitHub, voici un aperçu de la structure du code, mettant en évidence les dossiers et fichiers importants documentés.
 Le répertoire `src` contient l'ensemble du code principal de Quickv.
 
 ### Le répertoire **Contracts**

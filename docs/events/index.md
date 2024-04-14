@@ -1,51 +1,50 @@
 ---
+
 sidebar_position: 7
-title: Les événements
+title: Events
 ---
-> **Note:**  Quickv 2.0 (Expérimental)
+> **Note:** Quickv 2.0 (Experimental)
 
-# Événements
+# Events
 
-Dans Quickv, vous avez la possibilité d'écouter différents événements JavaScript pour déclencher la validation de vos formulaires, sans avoir à écrire de code JavaScript supplémentaire. Cela vous offre une flexibilité accrue et facilite la gestion des validations de formulaire.
+Quickv provides the ability to listen for different JavaScript events to trigger form validation without writing additional JavaScript code. This increases flexibility and simplifies form validation management.
 
-## Déclencher la validation avec les événements par défaut
+## Triggering Validation with Default Events
 
-Par défaut, Quickv utilise les événements `input`, `blur` et `change` pour déclencher la validation des champs de formulaire. Cela signifie que chaque fois que l'utilisateur saisit, quitte ou modifie une valeur dans un champ de formulaire, la validation sera automatiquement déclenchée.
+By default, Quickv uses the `input`, `blur`, and `change` events to trigger form field validation. This means that whenever a user enters, leaves, or modifies a value in a form field, validation is automatically triggered.
 
-Par exemple, si vous souhaitez déclencher la validation lorsqu'un élément est survolé par le curseur de la souris, vous pouvez utiliser l'attribut `data-qv-events` de Quickv et spécifier l'événement `mouseenter` de la manière suivante :
+For instance, if you want to trigger validation when an element is hovered over by the mouse cursor, you can use Quickv's `data-qv-events` attribute and specify the `mouseenter` event as follows:
 
 ```html
 <input data-qv-events="mouseenter" />
 ```
 
-L'attribut `data-qv-events` peut également accepter une liste d'arguments séparés par le symbole `|` (pipe). Par exemple, si vous souhaitez déclencher la validation lors des événements `mouseenter`, `blur` et `my-custom-event`, vous pouvez utiliser la syntaxe suivante :
+The `data-qv-events` attribute can also accept a list of events separated by the `|` (pipe) symbol. For example, if you want to trigger validation on the `mouseenter`, `blur`, and `my-custom-event` events, you can use the following syntax:
 
 ```html
 <input data-qv-events="mouseenter|blur|my-custom-event" />
 ```
 
-## Événements Quickv à écouter
+## Quickv Events to Listen For
 
-Quickv propose également des événements spécifiques que vous pouvez écouter pour réagir à des actions spécifiques liées à la validation des formulaires. Voici quelques-uns de ces événements :
+Quickv also provides specific events you can listen for to respond to specific actions related to form validation. Here are some of these events:
 
-### Événements liés aux champs de saisie (Input)
+### Input-Related Events
 
-- `qv.input.passes` : Cet événement est déclenché lorsqu'un champ de saisie passe avec succès la validation.
-- `qv.input.fails` : Cet événement est déclenché lorsqu'un champ de saisie échoue à la validation.
+- `qv.input.passes`: This event is triggered when an input field passes validation successfully.
+- `qv.input.fails`: This event is triggered when an input field fails validation.
 
-### Événements liés au formulaire (Form)
+### Form-Related Events
 
-- `qv.form.init` : Cet événement est déclenché lorsque le formulaire est initialisé, c'est-à-dire lorsqu'il est prêt à être validé.
-- `qv.form.passes` : Cet événement est déclenché lorsque tous les champs du formulaire passent avec succès la validation.
-- `qv.form.fails` : Cet événement est déclenché lorsque au moins un champ du formulaire échoue à la validation.
-- `qv.form.update` : Cet événement est utilisé pour indiquer à Quickv de mettre à jour la validation avec les changements du DOM et les nouvelles règles. Cela peut être utile lorsque vous modifiez dynamiquement les éléments du formulaire ou que vous ajoutez de nouvelles règles de validation.
+- `qv.form.init`: This event is triggered when the form is initialized and ready for validation.
+- `qv.form.passes`: This event is triggered when all fields in the form pass validation successfully.
+- `qv.form.fails`: This event is triggered when at least one field in the form fails validation.
+- `qv.form.update`: This event is used to indicate to Quickv to update the validation with DOM changes and new rules. This can be useful when you dynamically modify form elements or add new validation rules.
 
-## Déclencher les événements Quickv
+## Triggering Quickv Events
 
-Outre l'écoute des événements, vous pouvez également déclencher certains événements Quickv manuellement pour effectuer des actions spécifiques. Voici un événement important à connaître :
+In addition to listening for events, you can also manually trigger certain Quickv events to perform specific actions. Here's an important event to know:
 
-- `qv.form.update` : Cet événement doit être déclenché lorsque vous souhaitez indiquer à Quickv de mettre à jour la validation en fonction des changements du DOM ou des nouvelles règles ajoutées.
+- `qv.form.update`: This event should be triggered when you want to instruct Quickv to update validation according to DOM changes or newly added rules.
 
-En utilisant ces événements et en les écoutant ou en les
-
- déclenchant au bon moment, vous pouvez personnaliser davantage le comportement de la validation des formulaires avec Quickv.
+By using these events and either listening for or triggering them at the right time, you can customize the behavior of form validation with Quickv.
