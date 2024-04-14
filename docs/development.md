@@ -1,69 +1,66 @@
 ---
 sidebar_position: 10
-title: Développement
+title: Development
 ---
-> **Note:**  Quickv 2.0 (Expérimental)
+> **Note:** Quickv 2.0 (Experimental)
 
-## Structure du répertoire
-Lorsque vous clonez Quickv depuis GitHub, voici un aperçu de la structure du code, mettant en évidence les dossiers et fichiers importants documentés.
-Le répertoire `src` contient l'ensemble du code principal de Quickv.
+## Directory Structure
+When you clone Quickv from GitHub, here's an overview of the code structure, highlighting the important folders and files documented. The `src` directory contains all of the main Quickv code.
 
-### Le répertoire **Contracts**
+### The **Contracts** Directory
 
-Le répertoire `contracts` contient les interfaces et les types utilisés dans Quickv. Vous pouvez les consulter pour voir les types ajoutés.
+The `contracts` directory contains interfaces and types used in Quickv. You can refer to these to see the types added.
 
-### Le répertoire **Locale**
+### The **Locale** Directory
 
-Le répertoire `locale` contient les fichiers d'internationalisation, y compris les langues prises en charge par défaut par Quickv. Le fichier `qv-local.ts` exporte une classe qui sert de façade pour gérer l'internationalisation, telle que la traduction.
+The `locale` directory contains internationalization files, including languages supported by default in Quickv. The `qv-local.ts` file exports a class that serves as a facade to handle internationalization, such as translation.
 
-#### Le répertoire **Lang**
+#### The **Lang** Directory
 
-Le répertoire `lang` contient les fichiers de langue pour l'anglais.
+The `lang` directory contains language files for English.
 
-### Le répertoire **Messages**
+### The **Messages** Directory
 
-Le répertoire `messages` contient les fichiers de génération de messages basés sur une règle donnée. La classe principale pour cette tâche est la classe `QvMessages`, exportée à partir du fichier `qv-messages.ts`.
+The `messages` directory contains files for generating messages based on a given rule. The main class for this task is the `QvMessages` class, exported from the `qv-messages.ts` file.
 
-### Le répertoire **Rules**
+### The **Rules** Directory
 
-Le répertoire `rules` contient les règles de validation dans Quickv. Il inclut des fichiers regroupant les règles de validation dans différentes catégories :
-- **global.ts** : Règles générales telles que `in`, `between`, etc.
-- **date.ts** : Règles de validation pour les dates.
-- **file.ts** : Règles de validation pour les fichiers.
-- **number.ts** : Règles de validation pour les nombres.
-- **string.ts** : Règles de validation pour les chaînes de caractères.
-- **phone.ts** : Règles de validation pour les numéros de téléphone.
+The `rules` directory contains the validation rules in Quickv. It includes files grouping validation rules into different categories:
+- **global.ts**: General rules such as `in`, `between`, etc.
+- **date.ts**: Validation rules for dates.
+- **file.ts**: Validation rules for files.
+- **number.ts**: Validation rules for numbers.
+- **string.ts**: Validation rules for strings.
+- **phone.ts**: Validation rules for phone numbers.
 
-#### Le répertoire **Form**
+#### The **Form** Directory
 
-Le répertoire `form` contient des règles de validation spécifiques à un formulaire dans son ensemble, plutôt qu'à des saisies individuelles. Par exemple, la règle `same` ne peut être utilisée que dans un formulaire car elle implique la comparaison de deux champs.
+The `form` directory contains rules specific to an entire form rather than individual inputs. For example, the `same` rule can only be used in a form as it involves comparing two fields.
 
-#### Le répertoire **Phone**
+#### The **Phone** Directory
 
-Le répertoire `phone` contient des règles de validation pour les numéros de téléphone. La logique de validation se trouve dans la classe `CountryPhoneValidator`, qui inclut des méthodes de validation pour chaque pays pris en charge. Elle est exportée à partir du fichier `country-phone-validator.ts`.
+The `phone` directory contains validation rules for phone numbers. The validation logic is found in the `CountryPhoneValidator` class, which includes validation methods for each supported country. It is exported from the `country-phone-validator.ts` file.
 
-### Le répertoire **Utils**
+### The **Utils** Directory
 
-Le répertoire `utils` contient des fichiers utiles pour Quickv, tels que des fonctions d'aide.
+The `utils` directory contains useful files for Quickv, such as helper functions.
 
-### Le répertoire **Validation**
+### The **Validation** Directory
 
-Le répertoire `validation` contient la logique de validation dans Quickv. Il comprend plusieurs classes responsables de la validation :
-- `QvInput` : Cette classe, exportée à partir du fichier `qv-input.ts`, gère la validation des champs individuels.
-- `QvForm` : Cette classe, exportée à partir du fichier `qv-form.ts`, gère la validation des formulaires individuels en fonction des saisies dans le formulaire.
-- `Quickv` : Cette classe, exportée à partir du fichier `quickv.ts`, gère la validation de tous les formulaires de votre page.
-- `QValidation` : Cette classe, exportée à partir du fichier `qv-validation.ts`,
+The `validation` directory contains the validation logic in Quickv. It includes several classes responsible for validation:
+- `QvInput`: This class, exported from the `qv-input.ts` file, handles validation of individual fields.
+- `QvForm`: This class, exported from the `qv-form.ts` file, handles validation of individual forms based on the inputs in the form.
+- `Quickv`: This class, exported from the `quickv.ts` file, manages the validation of all forms on your page.
+- `QValidation`: This class, exported from the `qv-validation.ts` file, executes validation rules for a given set of form fields and indicates whether the form is valid or not.
 
- exécute les règles de validation pour un ensemble donné de champs de formulaire et indique si le formulaire est valide ou non.
+## The **Types** Directory
 
-## Le répertoire **Types**
+The `types` directory contains TypeScript declaration files for the Quickv project.
 
-Le répertoire `types` contient les fichiers de déclaration TypeScript pour le projet Quickv.
+## Source Code
 
-## Code source
-
-Le code source de la bibliothèque Quickv est disponible sur [GitHub](https://github.com/quick-v/quickv). Il est gratuit, open source et publié sous notre [licence](/docs/license).
+The source code for the Quickv library is available on [GitHub](https://github.com/quick-v/quickv). It is free, open source, and released under our [license](/docs/license).
 
 ## Contribution
 
-Nous serions ravis de recevoir vos contributions au projet Quickv de quelque manière que ce soit. Lisez nos [directives de contribution](/docs/contribution) pour plus d'informations.
+We would love to receive your contributions to the Quickv project in any way possible. Please read our [contribution guidelines](/docs/contribution) for more information.
