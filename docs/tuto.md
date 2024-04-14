@@ -1,85 +1,78 @@
 ---
 sidebar_position: 4
-title: Tutoriel  en 5min
+title: Tutorial in 5 Minutes
 ---
-> **Note:**  Quickv 2.0 (Expérimental)
+> **Note:** Quickv 2.0 (Experimental)
 
-# Tutoriel en 5min
+# Quickv Tutorial in 5 Minutes
 
-Bienvenue dans le tutoriel de prise en main de Quickv ! Dans ce tutoriel, nous allons apprendre comment utiliser Quickv pour valider un formulaire de contact. Voici ce que nous allons faire :
+Welcome to the Quickv introductory tutorial! In this tutorial, we will learn how to use Quickv to validate a contact form. Here's what we'll do:
 
-- Valider l'adresse email (maximum 32 caractères)
-- Valider le sujet (doit commencer par une lettre majuscule)
-- Valider le nom (nombre de caractères doit être compris entre 2 et 80, commencer par une lettre, ne doit pas contenir de nombre)
-- Valider le numéro de téléphone (valider un numéro de téléphone)
-- Valider le message (nombre de caractères compris entre 2 et 250, commencer par une lettre majuscule, se terminer par un point)
+- Validate the email address (maximum of 32 characters) 
+- Validate the name (length must be between 2 and 80 characters, cannot contain numbers)
+- Validate the phone number (validate a phone number)
+- Validate the message (length between 2 and 250 characters, and end with a point (.))
 
-## Étape 1 : Inclusion de Quickv
+## Step 1: Include Quickv
 
-Tout d'abord, téléchargez la bibliothèque Quickv à partir de [ce lien](https://quick-v.github.io/documentation/quickv.2-alpha.js). Ensuite, assurez-vous d'inclure la bibliothèque Quickv dans votre page web. Vous pouvez le faire en ajoutant la balise `<script>` avec le chemin vers le fichier `quickv.2-alpha.js` (le code source). Assurez-vous d'inclure cette balise avant la fermeture de la balise `<body>`.
+First, download the Quickv library from [this link](https://quick-v.github.io/documentation/quickv.2-alpha.js). Then, be sure to include the Quickv library in your web page. You can do this by adding a `<script>` tag with the path to the `quickv.2-alpha.js` file (the source code). Make sure to include this tag before the closing `<body>` tag.
 
 ```html
 <script src="quickv.2-alpha.js"></script>
 ```
+## Step 2: Define the Form
 
-## Étape 2 : Définition du formulaire
-Créer un page vierge pour le test, mettez du code html.
+Create a blank page for testing and add the following HTML code.
 
-Nous allons créer le formulaire HTML avec les champs à valider à l'aide de Quickv.
+We will create an HTML form with fields to validate using Quickv.
 
-Voici l'exemple :
+Here's an example:
 
 ```html
 <form>
-  <div>
-    <label class="label">Nom</label>
     <div>
-      <input
-        data-qv-rules="required|startWithLetter|between:2,80|only:string"
-        type="text"
-        name="nom"
-        required
-      />
+        <label class="label">Name</label>
+        <div>
+            <input
+                data-qv-rules="required|between:2,80|only:string"
+                type="text"
+                name="name"
+                required
+            />
+        </div>
+        <div data-qv-feedback="name"></div>
     </div>
-    <div data-qv-feedback="nom"></div>
-  </div>
-  <div>
-    <label for="">Email</label>
-    <input type="text" data-qv-rules="required|email|maxlength:32" name="email" />
-    <div data-qv-feedback="email"></div>
-  </div>
-  <div>
-    <label for="">Sujet</label>
-    <input type="text" data-qv-rules="required|startWithUpper" name="sujet" />
-    <div data-qv-feedback="sujet"></div>
-  </div>
-  <div>
-    <label for="">Numéro de téléphone</label>
-    <input type="text" data-qv-rules="required|phone" name="telephone" />
-    <div data-qv-feedback="telephone"></div>
-  </div>
-  <div>
-    <label for="">Message</label>
-    <textarea
-      data-qv-rules="required|between:2,250|startWithUpper|endWith:."
-      name="message"
-    ></textarea>
-    <div data-qv-feedback="message"></div>
-  </div>
-  <p>
-    <button type="submit" value="Submit" data-qv-submit>
-      Envoyer
-    </button>
-  </p>
+    <div>
+        <label>Email</label>
+        <input type="text" data-qv-rules="required|email|maxlength:32" name="email" />
+        <div data-qv-feedback="email"></div>
+    </div>
+    <div>
+        <label>Phone Number</label>
+        <input type="text" data-qv-rules="required|phone" name="phone" />
+        <div data-qv-feedback="phone"></div>
+    </div>
+    <div>
+        <label>Message</label>
+        <textarea
+            data-qv-rules="required|between:2,250|endWith:."
+            name="message"
+        ></textarea>
+        <div data-qv-feedback="message"></div>
+    </div>
+    <p>
+        <button type="submit" value="Submit" data-qv-submit>
+            Submit
+        </button>
+    </p>
 </form>
 ```
 
-Dans cet exemple, nous avons ajouté aux champs des attributs `data-qv-rules` spécifiant les règles de validation et des attributs `data-qv-feedback` à certains `div` pour afficher les retours de validation.
+In this example, we have added `data-qv-rules` attributes to the form fields to specify validation rules and `data-qv-feedback` attributes to certain `div` elements to display validation feedback.
 
-### Style du formulaire
-
-Pour avoir un style un peu propre du formulaire, ajoutons ce code css à notre page.
-Vous pouvez le personnalier comme vous le voulez.
+### Form Style
+To create a clean form style, add the following CSS code to your page.
+You can customize it as you like.
 
 ```css
 form {
@@ -87,12 +80,15 @@ form {
   min-width: 355px;
   margin: 0 auto;
 }
+
 form > div {
   margin-bottom: 0.75rem;
 }
+
 [data-qv-feedback] {
   color: red;
 }
+
 input,
 textarea,
 select,
@@ -131,6 +127,7 @@ select:focus,
 input[type="file"]:focus {
   border-color: #007bff;
 }
+
 input.is-invalid,
 textarea.is-invalid,
 select.is-invalid,
@@ -146,17 +143,20 @@ input[type="file"].success {
   border-left: 4px solid #28a745;
   border-color: #28a745;
 }
+
 label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
 }
+
 .help {
   display: block;
   margin-top: 4px;
   font-size: 14px;
   color: #777;
 }
+
 button,
 input[type="button"],
 input[type="submit"],
@@ -190,6 +190,7 @@ input[type="reset"]:not(:disabled):focus {
   outline: none;
   box-shadow: 0 0 0 2px #007bff;
 }
+
 button:disabled,
 input[type="button"]:disabled,
 input[type="submit"]:disabled,
@@ -203,15 +204,16 @@ form {
   max-width: 500px;
   margin: auto;
 }
+
 div,
 p {
   margin-bottom: 10px;
 }
 ```
 
-## Étape 3 : Initialisation de Quickv
+## Step 3: Initialize Quickv
 
-Maintenant que nous avons défini notre formulaire, nous allons l'associer à Quickv pour effectuer la validation. Ajoutez le code JavaScript suivant à la fin de votre page, juste avant la fermeture de la balise `<body>` :
+Now that we've defined our form, let's link it to Quickv to perform validation. Add the following JavaScript code at the end of your page, just before the closing `</body>` tag:
 
 ```html
 <script>
@@ -220,27 +222,27 @@ Maintenant que nous avons défini notre formulaire, nous allons l'associer à Qu
 </script>
 ```
 
-Dans cet exemple, nous créons une instance de `Quickv` et appelons la méthode `init()` pour initialiser la validation.
+In this example, we create an instance of `Quickv` and call the `init()` method to initialize the validation.
 
-Et voilà ! Maintenant, lorsque vous soumettez le formulaire, ou  vous tapez dans les champs, Quickv effectuera la validation en fonction des règles définies et affichera les retours de validation appropriés.
+And that's it! Now, when you submit the form or interact with the fields, Quickv will validate according to the rules you've defined and display appropriate validation feedback.
 
-N'hésitez pas à personnaliser les règles de validation et les messages d'erreur selon vos besoins. Vous pouvez également consulter la documentation de Quickv pour plus d'informations sur les fonctionnalités avancées.
+Feel free to customize the validation rules and error messages according to your needs. You can also refer to the Quickv documentation for more information on advanced features.
 
-J'espère que ce tutoriel vous a été utile pour prendre en main Quickv avec un exemple concret. Amusez-vous à valider vos formulaires avec facilité !
+I hope this tutorial was helpful for you to get started with Quickv with a concrete example. Have fun validating your forms with ease!
 
-## Aller plus loin
+## Further Reading
 
-Quickv offre de nombreuses possibilités de personnalisation et de configuration pour répondre à vos besoins spécifiques. Voici quelques ressources supplémentaires pour vous aider à explorer ces fonctionnalités :
+Quickv offers many customization and configuration options to meet your specific needs. Here are some additional resources to help you explore these features:
 
-- [Personnalisation des messages](/docs/validation/messages) : Apprenez comment personnaliser les messages d'erreur et les textes affichés par Quickv.
-- [Autres règles de validation](/docs/validation/rules) : Découvrez les différentes règles de validation disponibles dans Quickv, telles que la validation de la longueur, la validation des expressions régulières, et bien plus encore.
-- [Les événements de validation](/docs/validation/events) : Explorez les événements de validation pour interagir avec Quickv lors de la validation d'un formulaire.
-- [Validation d'un input individuel](/docs/validation/qv-input) : Découvrez comment valider un champ de formulaire individuel avec Quickv.
-- [Validation d'un formulaire individuel](/docs/validation/qv-form) : Apprenez à valider un formulaire spécifique en utilisant Quickv.
-- [Validation des formulaires sur une page](/docs/validation/qv-quickv) : Découvrez comment valider tous les formulaires présents sur une page en une seule fois.
-- [Exemples](/docs/example) : Consultez des exemples concrets d'utilisation de Quickv pour la validation de formulaires.
-- [Intégration dans un framework (React, Angular, etc.)](/docs/frameworks) : Obtenez des instructions sur l'intégration de Quickv dans différents frameworks populaires tels que React, Angular, Vue.js, etc.
-- [Contribution](/docs/contribution) : Contribuez au développement de Quickv en soumettant des suggestions, des rapports de bugs ou en proposant des améliorations.
-- [Développement](/docs/contribution) : Si vous êtes intéressé par le développement de Quickv, consultez cette documentation pour obtenir des informations sur la façon de contribuer au projet.
+- [Customizing Messages](/docs/validation/messages): Learn how to customize the error messages and text displayed by Quickv.
+- [Other Validation Rules](/docs/validation/rules): Explore the different validation rules available in Quickv, such as length validation, regular expression validation, and more.
+- [Validation Events](/docs/validation/events): Learn about validation events to interact with Quickv during form validation.
+- [Validating Individual Inputs](/docs/validation/qv-input): Discover how to validate an individual form field with Quickv.
+- [Validating an Individual Form](/docs/validation/qv-form): Learn how to validate a specific form using Quickv.
+- [Validating Forms on a Page](/docs/validation/qv-quickv): Discover how to validate all forms on a page at once.
+- [Examples](/docs/example): Check out real-world examples of Quickv's use for form validation.
+- [Framework Integration (React, Angular, etc.)](/docs/frameworks): Get instructions on integrating Quickv into popular frameworks like React, Angular, Vue.js, etc.
+- [Contribution](/docs/contribution): Contribute to Quickv's development by providing suggestions, bug reports, or proposing improvements.
+- [Development](/docs/contribution): If you are interested in Quickv development, see this documentation for information on how to contribute to the project.
 
-Ces ressources vous aideront à approfondir vos connaissances et à tirer le meilleur parti de Quickv pour la validation de vos formulaires. Profitez de la puissance et de la flexibilité de Quickv dans vos projets !
+These resources will help you deepen your knowledge and make the most of Quickv for your form validation. Enjoy the power and flexibility of Quickv in your projects!

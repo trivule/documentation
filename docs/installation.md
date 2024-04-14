@@ -1,56 +1,87 @@
 ---
+
 sidebar_position: 1
+
 ---
 
 # Installation
 
-> **Note:** Cette documentation concerne la version de développement de Quickv 2.0.
+> **Note:** Experimental Quickv 2.0.
 
+## Downloading or Using CDN
 
-## Téléchargement ou Via CDN
+To use Quickv, follow these steps:
 
-Pour utiliser Quickv, suivez ces étapes :
+1. **[Download](https://quick-v.github.io/documentation/quickv.2-alpha.js)** the Quickv library from [here](https://quick-v.github.io/documentation/quickv.2-alpha.js). Alternatively, you can directly use the link: `https://quick-v.github.io/documentation/quickv.2-alpha.js`.
+2. Include the Quickv library in your web page as you would any other JavaScript file.
 
-
-1. **[Téléchargez](https://quick-v.github.io/documentation/quickv.2-alpha.js)** la bibliothèque Quickv depuis [ici](https://quick-v.github.io/documentation/quickv.2-alpha.js). Vous pouvez également utiliser directement le lien: `https://quick-v.github.io/documentation/quickv.2-alpha.js`
-2. Incluez la bibliothèque Quickv dans votre page web comme on importe n'importe quel fichier javascript.
-
- 
 ## Installation via npm
-> Non publiée encore
 
-## Exemple complet
+1. Go to your project directory and enter the following command:
 
- ```html
- <form id="myForm" > 
-      <div>
-        <label class="label">Téléphone</label>
+```bash
+npm install quickv@2.0.0-alpha.2
+```
+
+After installation, you can use Quickv in your project as needed:
+
+- For a single form field:
+
+```js
+import { QvInput } from 'quickv';
+const qvInput = new QvInput('selector');
+qvInput.init();
+```
+
+- For an entire form:
+
+```js
+import { QvForm } from 'quickv';
+const qvForm = new QvForm('selector');
+qvForm.init();
+```
+
+- For all forms:
+
+```js
+import { Quickv } from 'quickv';
+const qv = new Quickv();
+qv.init();
+```
+
+## Complete Example
+
+```html
+<form id="myForm">
+    <div>
+        <label class="label">Phone</label>
         <input type="text" data-qv-rules="required|phone:FR" name="phone" />
         <div data-qv-feedback="phone"></div>
-      </div>
-      <div>
+    </div>
+    <div>
         <label class="label">Date</label>
         <input
-          type="date"
-          data-qv-rules="required|date|after:now"
-          name="date"
+            type="date"
+            data-qv-rules="required|date|after:now"
+            name="date"
         />
         <div data-qv-feedback="date"></div>
-      </div>
-      <div>
-        <label class="label">Fichier</label>
+    </div>
+    <div>
+        <label class="label">File</label>
         <input
-          type="file"
-          data-qv-rules="required|file|maxFileSize:1MB"
-          name="file"
+            type="file"
+            data-qv-rules="required|file|maxFileSize:1MB"
+            name="file"
         />
         <div data-qv-feedback="file"></div>
-      </div>
-      <p><button type="submit" data-qv-submit>Envoyer</button></p>
+    </div>
+    <p><button type="submit" data-qv-submit>Submit</button></p>
 </form>
+
 <script src="https://quick-v.github.io/documentation/quickv.2-alpha.js"></script>
 <script>
-  const qv = new Quickv();
-  qv.init();
+const qv = new Quickv();
+qv.init();
 </script>
 ```
