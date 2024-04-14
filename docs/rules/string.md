@@ -1,160 +1,146 @@
-# Validation des chaînes de caractères
+# Validation of Strings
 
-Ces règles sont spécifiquement conçues pour la validation des chaînes de caractères. Elles vous permettent de vérifier différents aspects d'une chaîne de caractères tels que la longueur, le format, etc. Voici une description détaillée de chaque règle et des exemples pratiques d'utilisation :
+These rules are specifically designed for string validation. They allow you to verify different aspects of a string such as length, format, and more. Here's a detailed description of each rule and practical usage examples:
 
-## Règle `email`
+## `email` Rule
 
-La règle `email` permet de valider une adresse e-mail.
+The `email` rule validates an email address.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'une adresse e-mail saisie par l'utilisateur est valide.
+**Usage:** Use this rule to ensure that an email address entered by the user is valid.
 
-**Exemple :**
+**Example:**
 ```html
 <input data-qv-rules="email" />
-<!-- Valide une adresse e-mail -->
+<!-- Validates an email address -->
 ```
 
-Dans cet exemple, la règle `email` valide l'adresse e-mail saisie en vérifiant si elle correspond au format d'une adresse e-mail valide.
+In this example, the `email` rule validates the entered email address by checking if it matches the format of a valid email address.
 
 ---
 
-## Règle `minlength`
+## `minlength` Rule
 
-La règle `minlength` permet de valider la longueur minimale d'une chaîne de caractères.
+The `minlength` rule validates the minimum length of a string.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'une chaîne de caractères saisie par l'utilisateur a une longueur minimale spécifiée.
+**Usage:** Use this rule to ensure that a string entered by the user has a specified minimum length.
 
-**Exemple :**
+**Example:**
 ```html
 <input data-qv-rules="minlength:8" />
-<!-- Valide une chaîne de caractères avec une longueur minimale de 8 -->
+<!-- Validates a string with a minimum length of 8 -->
 ```
 
-Dans cet exemple, la règle `minlength` valide la chaîne de caractères en vérifiant si sa longueur est supérieure ou égale à 8.
+In this example, the `minlength` rule validates the string by checking if its length is greater than or equal to 8.
+ 
 
----
+## `maxlength` Rule
 
-## Règle `maxlength`
+The `maxlength` rule validates the maximum length of a string.
 
-La règle `maxlength` permet de valider la longueur maximale d'une chaîne de caractères.
+**Usage:** Use this rule to ensure that a string entered by the user has a specified maximum length.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'une chaîne de caractères saisie par l'utilisateur a une longueur maximale spécifiée.
-
-**Exemple :**
+**Example:**
 ```html
 <input data-qv-rules="maxlength:8" />
-<!-- Valide une chaîne de caractères avec une longueur maximale de 8 -->
+<!-- Validates a string with a maximum length of 8 -->
 ```
 
-Dans cet exemple, la règle `maxlength` valide la chaîne de caractères en vérifiant si sa longueur est inférieure ou égale à 8.
+In this example, the `maxlength` rule validates the string by checking if its length is less than or equal to 8.
 
 ---
 
-## Règle `url`
+## `url` Rule
 
-La règle `url` permet de valider une URL.
+The `url` rule validates a URL.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'une URL saisie par l'utilisateur est valide.
+**Usage:** Use this rule to ensure that a URL entered by the user is valid.
 
-**Exemple :**
+**Example:**
 ```html
 <input data-qv-rules="url" />
-<!-- Valide une URL -->
+<!-- Validates a URL -->
 ```
 
-Dans cet exemple, la règle `url` valide l'URL saisie en vérifiant si elle correspond au format d'une URL valide.
+In this example, the `url` rule validates the entered URL by checking if it matches the format of a valid URL.
 
 ---
 
-## Règle `startWithUpper`
+## `startWithUpper` Rule
 
-La règle `startWithUpper` permet de vérifier si une chaîne de caractères commence par une lettre majuscule.
+The `startWithUpper` rule verifies if a string starts with an uppercase letter.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'une chaîne de caractères saisie par l'utilisateur commence par une lettre majuscule.
+**Usage:** Use this rule to ensure that a string entered by the user starts with an uppercase letter.
 
-**Exemple :**
+**Example:**
 ```html
 <input data-qv-rules="startWithUpper" />
-<!-- Vérifie si une chaîne de caractères commence par une lettre majuscule -->
+<!-- Verifies if a string starts with an uppercase letter -->
 ```
 
-Dans cet exemple, la règle `startWithUpper` vérifie si la chaîne de caractères saisie commence par une lettre majuscule.
+In this example, the `startWithUpper` rule checks if the entered string starts with an uppercase letter.
 
 ---
 
- ### Règle de validation : `lower`
+## `lower` Rule
 
-Cette règle vérifie si les données saisies sont toutes en minuscules.
+The `lower` rule verifies if the entered data consists of only lowercase letters.
 
-**Utilisation:**
+**Usage:** Use the `lower` rule when you want to ensure that a given input string consists only of lowercase letters.
 
-Utilisez la règle `lower` lorsque vous souhaitez vous assurer qu'une chaîne d'entrée donnée ne comporte que des caractères minuscules.
-
-**Exemple:**
-
-Supposons que vous ayez un formulaire d'inscription qui requiert un nom d'utilisateur. Vous voulez vous assurer que le nom d'utilisateur doit être en minuscules. Vous pouvez appliquer la règle `lower` au champ de saisie pour le valider.
-
+**Example:**
 ```html
 <input data-qv-rules="lower" />
 ```
 
-Cette règle garantit que la valeur saisie dans le champ de saisie est entièrement en minuscules. Si l'entrée contient des caractères majuscules, la validation échouera.
+This rule ensures that the value entered in the input field is entirely in lowercase. If the input contains uppercase letters, the validation will fail.
 
-Dans cet exemple, la règle `lower` est utilisée pour valider le champ username dans un formulaire d'enregistrement. L'attribut `data-qv-rules` est fixé à `"lower"` pour appliquer la règle. Toute entrée ne respectant pas la règle (contenant des lettres majuscules) échouera la validation.
+In this example, the `lower` rule is used to validate the username field in a registration form. The `data-qv-rules` attribute is set to `"lower"` to apply the rule. Any input that does not respect the rule (containing uppercase letters) will fail validation.
 
-Veuillez noter que certaines règles peuvent avoir des alias, assurez-vous donc d'utiliser le nom de la règle correcte lors de l'application de la validation.
-
----
-
-Vous pouvez répéter les sections ci-dessus pour chaque règle de validation de votre base de code, en fournissant des explications et des exemples clairs pour chaque règle. N'oubliez pas d'adapter le contenu pour refléter les détails spécifiques de chaque règle et de son utilisation.
-Voici la documentation à placer dans le fichier `readme.md` pour la règle `excludes` :
+Please note that some rules may have aliases, so make sure to use the correct rule name when applying validation.
 
 ---
 
-## Règle `excludes`
+## `excludes` Rule
 
+This rule verifies that the input does not contain any of the characters specified in the exclusion list. The excluded characters must be separated by commas.
 
-Cette règle vérifie si la saisie ne contient aucun des caractères spécifiés dans la liste des caractères exclus. Les caractères exclus doivent être séparés par une virgule.
-
-
-### Utilisation
+### Usage
 
 ```html
-<input data-qv-rules="excludes:-,@"/>
+<input data-qv-rules="excludes:-,@" />
 ```
-Si vous essayez de mettre l'espace dans les caractères non autorisés, la validation ne passerait pas comme vous le souhaitez, au lieu d'utiliser le caractère espace classique, vous pouvez le caractère spécial `&esp;`
+If you want to exclude spaces, you should use the special character `&esp;` instead of the regular space character.
 
-### Exemple
+### Example
 
 ```html
-<input data-qv-rules="excludes:-,@,&esp;"/>
+<input data-qv-rules="excludes:-,@,&esp;" />
 ```
 
-Dans cet exemple, la règle `excludes` est appliquée à un champ de saisie. Elle vérifie si la valeur saisie ne contient ni le caractère `-` ni le caractère `@`. Si la saisie contient l'un de ces caractères, la règle retourne `false`, indiquant que la validation a échoué.
+In this example, the `excludes` rule is applied to an input field. It verifies that the entered value does not contain the character `-` or `@` or a space. If the input contains any of these characters, the rule returns `false`, indicating validation failure.
 
 ---
 
+## `stringBetween` Rule
 
-### Règle de validation : stringBetween 
+This rule verifies that the length of a given string falls within the specified minimum and maximum values.
 
-Cette règle vérifie si la longueur d'une chaîne donnée se situe entre les valeurs minimale et maximale spécifiées.
+**Usage:**
 
-**Utilisation :**
+Use the `stringBetween` rule when you want to ensure that the length of a string is within a specific range.
 
-Utilisez la règle `stringBetween` lorsque vous souhaitez vous assurer que la longueur d'une chaîne se trouve dans une plage spécifique.
+**Example:**
 
-**Exemple :**
-
-Supposons que vous ayez un formulaire qui requiert un champ de mot de passe et que vous souhaitez imposer une longueur minimale et maximale pour ce mot de passe. Vous pouvez appliquer la règle `stringBetween` au champ de saisie du mot de passe pour le valider.
+Suppose you have a form that requires a password field and you want to impose a minimum and maximum length for the password. You can apply the `stringBetween` rule to the password input field to validate it.
 
 ```html
 <input data-qv-rules="stringBetween:8,20" />
 ```
 
-Cela garantira que le mot de passe saisi dans le champ a une longueur comprise entre 8 et 20 caractères (inclus). Si la longueur de l'entrée est inférieure à 8 ou supérieure à 20, la validation échouera.
+This will ensure that the password entered in the field has a length between 8 and 20 characters (inclusive). If the length of the input is less than 8 or more than 20, the validation will fail.
 
-Dans cet exemple, la règle `stringBetween` est utilisée pour valider le champ de mot de passe dans un formulaire. L'attribut `data-qv-rules` est défini sur `"stringBetween:8,20"` pour appliquer la règle. Toute saisie qui enfreint la règle (une longueur hors de la plage spécifiée) échouera à la validation.
- 
----
+In this example, the `stringBetween` rule is used to validate the password field in a form. The `data-qv-rules` attribute is set to `"stringBetween:8,20"` to apply the rule. Any input that violates the rule (a length outside the specified range) will fail validation.
 
-Vous pouvez répéter les sections ci-dessus pour chaque règle de validation de votre code, en fournissant des explications et des exemples clairs pour chaque règle. N'oubliez pas d'adapter le contenu pour refléter les détails spécifiques de chaque règle et de son utilisation.
+--- 
+
+You can repeat the above sections for each validation rule in your codebase, providing clear explanations and examples for each rule. Make sure to tailor the content to reflect the specific details of each rule and its usage.

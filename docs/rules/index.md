@@ -1,40 +1,46 @@
 ---
 sidebar_position: 6
 ---
-# Règles de validation
+# Validation Rules
 
-Dans cette section de la documentation, nous allons passer en revue les différentes règles de validation disponibles dans Quickv pour valider les champs. Chaque règle représente une condition spécifique que le champ doit satisfaire pour être considéré comme valide. Voici les règles de validation disponibles :
+In this section of the documentation, we will review the different validation rules available in Quickv for validating fields. Each rule represents a specific condition that the field must satisfy to be considered valid. Here are the available validation rules:
 
-## Les chaînes de caractères
-La règle `string` permet de valider les champs de type chaîne de caractères. Elle permet de vérifier des conditions telles que la longueur minimale, la longueur maximale, la présence de caractères alphabétiques, numériques ou spéciaux, etc.
+## Strings
 
-[Documentation sur les règles de validation des chaînes de caractères](/docs/validation/rules/string)
+The `string` rule allows you to validate fields of type string. It lets you check conditions such as minimum and maximum length, the presence of alphabetic, numeric, or special characters, and more.
 
-## Les nombres
-La règle `number` est utilisée pour valider les champs numériques. Elle permet de vérifier des conditions telles que la valeur minimale, la valeur maximale, la présence de chiffres uniquement, etc.
+[Documentation on string validation rules](/docs/validation/rules/string)
 
-[Documentation sur les règles de validation des nombres](/docs/validation/rules/number)
+## Numbers
 
-## Les dates
-La règle `date` est utilisée pour valider les champs de type date. Elle permet de vérifier des conditions telles que la validité de la date, la plage de dates autorisées, etc.
+The `number` rule is used to validate numeric fields. It lets you check conditions such as minimum and maximum values, the presence of only numeric characters, and so on.
 
-[Documentation sur les règles de validation des dates](/docs/validation/rules/date)
+[Documentation on number validation rules](/docs/validation/rules/number)
 
-## Les fichiers
-La règle `file` est utilisée pour valider les champs de téléchargement de fichiers. Elle permet de vérifier des conditions telles que le type de fichier autorisé, la taille maximale du fichier, etc.
+## Dates
 
-[Documentation sur les règles de validation des fichiers](/docs/validation/rules/file)
+The `date` rule is used to validate date fields. It lets you verify conditions such as the validity of the date and permitted date ranges, among other options.
 
-## Les numéros de téléphone
-La règle `phone` est utilisée pour valider les champs de numéros de téléphone. Elle permet de vérifier des conditions telles que le format du numéro de téléphone, la présence d'indicatif régional, etc.
+[Documentation on date validation rules](/docs/validation/rules/date)
 
-[Documentation sur les règles de validation des numéros de téléphone](/docs/validation/rules/phone)
+## Files
 
-## Les règles générales
-La règle `global` regroupe les règles de validation générales qui peuvent être utilisées pour des cas spécifiques. Elle permet de personnaliser et de créer des règles de validation sur mesure en utilisant des expressions régulières ou des fonctions de validation personnalisées.
+The `file` rule is used to validate file upload fields. It lets you verify conditions such as the allowed file types and maximum file size.
 
-[Documentation sur les règles de validation générales](/docs/validation/rules/global)
+[Documentation on file validation rules](/docs/validation/rules/file)
 
-Chaque documentation détaillée des règles de validation comprend des explications sur la manière d'utiliser la règle, ses options de configuration, des exemples d'utilisation et des conseils pour tirer le meilleur parti de chaque règle. Vous pouvez cliquer sur les liens pour accéder à la documentation complète de chaque règle.
+## Phone Numbers
 
-En utilisant ces règles de validation, vous pouvez garantir que vos champs respectent les critères requis, offrant ainsi une meilleure expérience utilisateur et des données fiables dans vos applications web.
+The `phone` rule is used to validate phone number fields. It lets you verify conditions such as phone number format and the presence of area codes.
+
+[Documentation on phone number validation rules](/docs/validation/rules/phone)
+
+## General Rules
+
+The `global` rule encompasses general validation rules that can be used for specific cases. It lets you customize and create tailored validation rules using regular expressions or custom validation functions.
+
+[Documentation on general validation rules](/docs/validation/rules/global)
+
+Each detailed documentation on validation rules includes explanations on how to use the rule, its configuration options, usage examples, and tips to get the most out of each rule. You can click the links to access the complete documentation for each rule.
+
+By using these validation rules, you can ensure that your fields meet the required criteria, providing a better user experience and reliable data in your web applications.

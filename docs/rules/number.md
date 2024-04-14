@@ -1,74 +1,73 @@
-# Validation des nombres
+# Number Validation
 
-Ces règles de validation sont spécifiquement conçues pour les nombres. Elles vous permettent de vérifier si une valeur numérique satisfait certaines conditions. Voici une description détaillée de chaque règle et des exemples d'utilisation pratique :
+These validation rules are specifically designed for numbers. They allow you to verify whether a numeric value satisfies certain conditions. Here is a detailed description of each rule and examples of practical usage:
 
-## Règle `min`
+## `min` Rule
 
-La règle `min` permet de vérifier si un nombre est supérieur ou égal à une valeur minimale spécifiée.
+The `min` rule allows you to check if a number is greater than or equal to a specified minimum value.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'un nombre saisi par l'utilisateur est supérieur ou égal à une valeur minimale requise.
+**Usage:** Use this rule to ensure that a number entered by the user is greater than or equal to a required minimum value.
 
-**Exemple :**
+**Example:**
 ```html
 <input qv-rules="min:2"/>
 ```
 
-Cette règle vérifie si la valeur de l'entrée est d'au moins 2. Si la valeur est un nombre, elle effectue une comparaison numérique. Si la valeur est une chaîne de caractères, elle vérifie si le nombre de caractères est supérieur ou égal à 2.
+This rule checks if the input value is at least 2. If the value is a number, it performs a numeric comparison. If the value is a string, it verifies whether the number of characters is greater than or equal to 2.
 
-## Règle `max`
+## `max` Rule
 
-La règle `max` permet de vérifier si un nombre est inférieur ou égal à une valeur maximale spécifiée.
+The `max` rule allows you to check if a number is less than or equal to a specified maximum value.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'un nombre saisi par l'utilisateur est inférieur ou égal à une valeur maximale requise.
+**Usage:** Use this rule to ensure that a number entered by the user is less than or equal to a required maximum value.
 
-**Exemple :**
+**Example:**
 ```html
 <input qv-rules="max:20"/>
 ```
 
-Cette règle vérifie si la valeur de l'entrée est au plus 20. Si la valeur est un nombre, elle effectue une comparaison numérique. Si la valeur est une chaîne de caractères, elle vérifie si le nombre de caractères est inférieur ou égal à 20.
+This rule checks if the input value is at most 20. If the value is a number, it performs a numeric comparison. If the value is a string, it verifies whether the number of characters is less than or equal to 20.
 
-## Règle `integer`
+## `integer` Rule
 
-La règle `integer` permet de vérifier si un nombre est un nombre entier.
+The `integer` rule allows you to check if a number is an integer.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'un nombre saisi par l'utilisateur est un nombre entier.
+**Usage:** Use this rule to ensure that a number entered by the user is an integer.
 
-**Exemple :**
+**Example:**
 ```html
 <input qv-rules="integer"/>
 ```
 
-Cette règle vérifie si la valeur de l'entrée est un nombre entier. Elle renvoie `true` si la valeur est un nombre entier, et `false` sinon.
+This rule checks if the input value is an integer. It returns `true` if the value is an integer, and `false` otherwise.
 
-## Règle `number`
+## `number` Rule
 
-La règle `number` permet de vérifier si une valeur est un nombre.
+The `number` rule allows you to check if a value is a number.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'une valeur saisie par l'utilisateur est un nombre.
+**Usage:** Use this rule to ensure that a value entered by the user is a number.
 
-**Exemple :**
+**Example:**
 ```html
 <input qv-rules="number"/>
 ```
 
-Cette règle vérifie si la valeur de l'entrée est un nombre. Elle renvoie `true` si la valeur est un nombre, et `false` sinon.
+This rule checks if the input value is a number. It returns `true` if the value is a number, and `false` otherwise.
 
-## Règle `modulo`
+## `modulo` Rule
 
-La règle `modulo` ou encore son alias `mod` permet de vérifier si un nombre est un multiple ou divisible par un autre nombre.
- 
+The `modulo` rule, also known as its alias `mod`, allows you to check if a number is a multiple or divisible by another number.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vérifier si un nombre est un multiple ou divisible par un autre nombre.
+**Usage:** Use this rule to verify whether a number is a multiple or divisible by another number.
 
-**Exemple :**
+**Example:**
 ```html
 <input qv-rules="modulo:2"/>
 <input qv-rules="mod:2"/>
 ```
 
-Cette règle vérifie si la valeur de l'entrée est un nombre, et si ce nombre est un multiple ou divisible par 2. Elle renvoie `true` si la condition est satisfaite, et `false` sinon.
+This rule checks if the input value is a number and if it is a multiple or divisible by 2. It returns `true` if the condition is met, and `false` otherwise.
 
 ---
 
-Si vous souhaitez contribuer en ajoutant votre propre règle de validation, vous pouvez visiter [ce lien](/docs/contribution).
+If you would like to contribute by adding your own validation rule, you can visit [this link](/docs/contribution).

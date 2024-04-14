@@ -1,45 +1,49 @@
----
-sidebar_position: 5
----
- # Validation
+# Validation
 
-La validation est un aspect essentiel de la gestion des formulaires dans les applications web. Dans cette documentation, nous allons explorer les concepts liés à la validation dans Quickv et vous guider à travers les différentes fonctionnalités offertes par la bibliothèque pour valider les champs et les formulaires.
+Validation is a crucial aspect of managing forms in web applications. In this documentation, we will explore the concepts related to validation in Quickv and guide you through the different features offered by the library for validating fields and forms.
 
-Pour faciliter votre navigation, voici les différentes sections de la documentation sur la validation :
+To make navigation easier, here are the different sections of the documentation on validation:
 
-## Validation d'un champ
-Dans cette section, vous apprendrez comment valider individuellement les champs de formulaire à l'aide de Quickv. Nous vous expliquerons comment définir les règles de validation, les événements déclencheurs, les messages d'erreur personnalisés et bien plus encore.
+## Field Validation
 
-[Validation d'un champ](/docs/validation/qv-input)
+In this section, you will learn how to individually validate form fields using Quickv. We will explain how to define validation rules, triggering events, custom error messages, and more.
 
-## Validation d'un formulaire
-Cette section se concentre sur la validation des formulaires dans Quickv. Vous découvrirez comment configurer la validation pour un formulaire entier, en utilisant les attributs Quickv appropriés. Nous aborderons également les fonctionnalités supplémentaires telles que la validation automatique, la personnalisation des classes CSS et les événements de validation.
+[Field Validation](/docs/validation/qv-input)
 
-[Validation d'un formulaire](/docs/validation/qv-form)
+## Form Validation
 
-## Les règles de validation
-Les règles de validation sont les conditions que les champs doivent satisfaire pour être considérés comme valides. Dans cette section, nous passerons en revue les règles de validation prédéfinies disponibles dans Quickv, telles que la longueur minimale, le format d'email, la correspondance avec une expression régulière, etc. Vous apprendrez comment utiliser ces règles dans vos formulaires.
+This section focuses on form validation in Quickv. You will discover how to configure validation for an entire form using the appropriate Quickv attributes. We will also cover additional features such as automatic validation, customizing CSS classes, and validation events.
 
-[Les règles de validation](/docs/validation/rules/)
+[Form Validation](/docs/validation/qv-form)
 
-## Les attributs de validation
-Quickv utilise des attributs HTML pour configurer et personnaliser la validation des champs et des formulaires. Dans cette section, nous détaillerons les attributs Quickv les plus couramment utilisés et expliquerons leur utilité, leurs cas d'utilisation et fournirons des exemples pour illustrer leur utilisation.
+## Validation Rules
 
-[Les attributs de validation](/docs/validation/attributes/)
+Validation rules are the conditions that fields must satisfy to be considered valid. In this section, we will review the predefined validation rules available in Quickv, such as minimum length, email format, regex matching, and more. You will learn how to use these rules in your forms.
 
-## Les événements de validation
-Les événements de validation vous permettent de contrôler quand et comment la validation des champs doit être déclenchée. Dans cette section, nous explorerons les événements de validation pris en charge par Quickv et vous montrerons comment les utiliser pour personnaliser le comportement de validation de vos formulaires.
+[Validation Rules](/docs/validation/rules/)
 
-[Les événements de validation](/docs/validation/events/)
+## Validation Attributes
 
-## Les messages de validation
-Les messages de validation sont des messages d'erreur affichés lorsque les champs ne satisfont pas les règles de validation. Dans cette section, vous découvrirez comment personnaliser les messages de validation dans Quickv en utilisant les attributs appropriés. Nous vous montrerons également comment gérer les messages de validation dans différentes langues.
+Quickv uses HTML attributes to configure and customize the validation of fields and forms. In this section, we will detail the most commonly used Quickv attributes, explaining their purpose, use cases, and providing examples to illustrate their use.
 
-[Les messages de validation](/docs/validation/messages/)
+[Validation Attributes](/docs/validation/attributes/)
 
-## Validation globale
-Quickv offre également des fonctionnalités de validation globale pour faciliter la gestion de la validation à l'échelle de l'application. Dans cette section, vous découvrirez comment configurer et utiliser Quickv pour valider plusieurs formulaires ou champs simultanément, et comment gérer les erreurs de validation globales.
+## Validation Events
 
-[Validation globale](/docs/validation/qv-quickv)
+Validation events allow you to control when and how field validation should be triggered. In this section, we will explore the validation events supported by Quickv and show you how to use them to customize the validation behavior of your forms.
 
-Nous espérons que cette documentation vous aidera à maîtriser la validation dans Quickv et à intégrer facilement la validation des formulaires dans vos applications web. Si vous avez des questions supplémentaires, n'hésitez pas à consulter la documentation détaillée de chaque section ou à rejoindre notre [communauté sur Discord](https://discord.gg/wPPAfq5n) pour obtenir de l'aide de la part de la communauté Quickv.
+[Validation Events](/docs/validation/events/)
+
+## Validation Messages
+
+Validation messages are error messages displayed when fields do not satisfy validation rules. In this section, you will discover how to customize validation messages in Quickv using the appropriate attributes. We will also show you how to handle validation messages in different languages.
+
+[Validation Messages](/docs/validation/messages/)
+
+## Global Validation
+
+Quickv also offers global validation features to facilitate the management of validation at the application level. In this section, you will discover how to configure and use Quickv to validate multiple forms or fields simultaneously and how to handle global validation errors.
+
+[Global Validation](/docs/validation/qv-quickv)
+
+We hope this documentation helps you master validation in Quickv and easily integrate form validation into your web applications. If you have additional questions, feel free to consult the detailed documentation for each section or join our [community on Discord](https://discord.gg/wPPAfq5n) for assistance from the Quickv community.

@@ -1,91 +1,85 @@
- 
-# Validation des fichiers
+# File Validation
 
-Les règles suivantes sont utilisées pour valider les fichiers. Elles permettent de vérifier si une valeur est un objet `File` ou `Blob`, de vérifier la taille d'un fichier et de vérifier si la taille d'un fichier se situe entre des valeurs minimales et maximales.
+The following rules are used to validate files. They allow you to check if a value is a `File` or `Blob` object, verify the size of a file, and ensure that the file size falls within minimum and maximum values.
 
-### Règle : `file`
+### Rule: `file`
 
-Cette règle vérifie si la valeur d'entrée est un objet `File` ou `Blob`.
+This rule checks if the input value is a `File` or `Blob` object.
 
 ```html
 <input data-qv-rules="file" />
 ```
 
-- Utilisation : Vous pouvez utiliser cette règle pour vous assurer qu'un champ de saisie de fichier est rempli avec un fichier valide.
+- Usage: Use this rule to ensure that a file input field is filled with a valid file.
 
-### Règle : `maxFileSize`
+### Rule: `maxFileSize`
 
-Cette règle vérifie si la taille d'un objet `File` ou `Blob` est inférieure ou égale à une taille maximale donnée.
+This rule checks if the size of a `File` or `Blob` object is less than or equal to a given maximum size.
 
 ```html
 <input data-qv-rules="maxFileSize:1MB" />
 ```
 
-- Utilisation : Vous pouvez utiliser cette règle pour limiter la taille des fichiers que les utilisateurs peuvent télécharger.
+- Usage: You can use this rule to limit the size of files that users can upload.
 
-### Règle : `minFileSize`
+### Rule: `minFileSize`
 
-Cette règle vérifie si la taille d'un objet `File` ou `Blob` est supérieure ou égale à une taille minimale donnée.
+This rule checks if the size of a `File` or `Blob` object is greater than or equal to a given minimum size.
 
 ```html
 <input data-qv-rules="minFileSize:1MB" />
 ```
 
-- Utilisation : Cette règle est utile lorsque vous souhaitez vous assurer que les fichiers téléchargés ont une taille minimale spécifique.
+- Usage: This rule is useful when you want to ensure that uploaded files have a specific minimum size.
 
-### Règle : `fileBetween`
+### Rule: `fileBetween`
 
-Cette règle vérifie si la taille d'un objet `File` ou `Blob` se situe entre des valeurs minimales et maximales spécifiées.
+This rule checks if the size of a `File` or `Blob` object falls between specified minimum and maximum values.
 
 ```html
 <input data-qv-rules="fileBetween:1MB,5MB" />
 ```
 
-- Utilisation : Vous pouvez utiliser cette règle pour limiter la taille des fichiers téléchargés à une plage spécifique.
+- Usage: You can use this rule to limit the size of uploaded files to a specific range.
 
 ---
-# Règle : "mimes"
+# Rule: "mimes"
 
-La règle "mimes" est utilisée pour vérifier si le type MIME d'un objet `File` ou `Blob` correspond au(x) type(s) MIME spécifié(s). Elle vous permet de valider les téléchargements de fichiers en fonction de leurs types MIME.
+The "mimes" rule is used to verify if the MIME type of a `File` or `Blob` object matches the specified MIME type(s). It allows you to validate file uploads based on their MIME types.
 
-## Utilisation
-
+## Usage
 
 ### Description
-La règle "mimes" valide le type MIME du fichier téléchargé en le comparant aux types MIME spécifiés. Elle renvoie `true` si le type MIME correspond à l'un des types MIME fournis, et `false` sinon.
+The "mimes" rule validates the MIME type of the uploaded file by comparing it to the specified MIME types. It returns `true` if the MIME type matches any of the provided MIME types, and `false` otherwise.
 
-## Exemples
+## Examples
 
-### Exemple 1 : Accepter uniquement les fichiers PDF
+### Example 1: Accept only PDF files
 ```html
 <input type="file" data-qv-rules="mimes:.pdf">
 ```
-Cet exemple restreint les téléchargements de fichiers pour n'accepter que les fichiers avec le type MIME "application/pdf".
+This example restricts file uploads to only accept files with the MIME type "application/pdf".
 
-### Exemple 2 : Accepter plusieurs types MIME
+### Example 2: Accept multiple MIME types
 ```html
 <input type="file" data-qv-rules="mimes:image/jpeg, image/png">
 ```
-Dans cet exemple, les téléchargements de fichiers sont autorisés pour les fichiers image au format JPEG et PNG.
+In this example, file uploads are allowed for JPEG and PNG image files.
 
-### Exemple 3 : Accepter des groupes spécifiques de types MIME
+### Example 3: Accept specific MIME type groups
 ```html
 <input type="file" data-qv-rules="mimes:audio/*">
 ```
-Cet exemple autorise les téléchargements de fichiers audio, quel que soit leur type MIME spécifique.
+This example allows file uploads for audio files, regardless of their specific MIME type.
 
-### Exemple 4 : Utilisation de jokers
+### Example 4: Using wildcards
 ```html
 <input type="file" data-qv-rules="mimes:image/*">
 ```
-Dans ce cas, tous les fichiers image avec un type MIME commençant par "image/" seront acceptés.
+Here, all image files with a MIME type starting with "image/" will be accepted.
 
-## Remarques
-- La règle "mimes" doit être utilisée en combinaison avec d'autres règles de validation pour fournir une validation complète des téléchargements de fichiers.
-- Il est important de noter que la validation est effectuée côté client, et une validation supplémentaire côté serveur est également recommandée pour assurer l'intégrité et la sécurité des données.
+## Notes
+- The "mimes" rule should be used in combination with other validation rules to provide comprehensive validation of file uploads.
+- It's important to note that the validation is performed client-side, and additional server-side validation is also recommended to ensure data integrity and security.
 
-N'oubliez pas d'adapter le code d'exemple en fonction de votre cas d'utilisation et de vos exigences spécifiques.
-
-Pour plus d'informations sur les autres règles disponibles et leur utilisation, veuillez vous référer à la documentation.
-----------
-N'hésitez pas à me faire savoir si vous avez besoin d'une assistance supplémentaire !
+Remember to adapt the example code according to your specific use case and requirements.

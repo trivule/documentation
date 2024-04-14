@@ -1,60 +1,59 @@
-# Validation des dates
+# Date Validation
 
-Les règles suivantes sont utilisées pour valider les dates. Ces règles vous permettent de vérifier si une saisie est une date valide, de comparer des dates et de vérifier si une date se situe dans une plage spécifique.
+The following rules are used to validate dates. These rules allow you to verify whether an input is a valid date, compare dates, and check if a date falls within a specific range.
 
-### Règle : `date`
+### Rule: `date`
 
-Cette règle vérifie si la saisie est une date valide.
-
-```html
-<input type="date-local" data-qv-rules="date" />
-```
-
-- Utilisation : Vous pouvez utiliser cette règle pour vous assurer que l'utilisateur entre une date valide dans un champ de saisie de date.
-
-### Règle : `before`
-
-Cette règle vérifie si la date saisie est antérieure à la date de comparaison.
+This rule checks if the input is a valid date.
 
 ```html
-<input type="date-local" data-qv-rules="before:2020-11-11" />
+<input type="date" data-qv-rules="date" />
 ```
 
-- Utilisation : Cette règle est utile lorsque vous souhaitez vous assurer que l'utilisateur sélectionne une date antérieure à une date spécifique.
+- Usage: Use this rule to ensure that the user enters a valid date in a date input field.
 
-### Règle : `after`
+### Rule: `before`
 
-Cette règle vérifie si la date saisie est postérieure à la date de comparaison.
+This rule checks if the entered date is before a specified date.
+
+```html
+<input type="date" data-qv-rules="before:2020-11-11" />
+```
+
+- Usage: This rule is useful when you want to ensure that the user selects a date earlier than a specified date.
+
+### Rule: `after`
+
+This rule checks if the entered date is after a specified date.
  
 ```html
-<input data-qv-rules="after:now" />
+<input type="date" data-qv-rules="after:now" />
 ```
 
-- Utilisation : Vous pouvez utiliser cette règle pour vous assurer que l'utilisateur sélectionne une date postérieure à la date actuelle.
+- Usage: Use this rule to ensure that the user selects a date later than the current date.
 
-### Règle : `dateBetween`
+### Rule: `dateBetween`
 
-Cette règle vérifie si la date saisie se situe entre deux autres dates.
+This rule checks if the entered date falls between two other dates.
 
 ```html
-<input type="date-local" data-qv-rules="dateBetween:2020-11-11,now" />
+<input type="date" data-qv-rules="dateBetween:2020-11-11,now" />
 ```
 
-- Utilisation : Cette règle est utile lorsque vous souhaitez valider si une date se trouve dans une plage de dates spécifique.
+- Usage: This rule is useful when you want to validate whether a date is within a specific date range.
 
-### Règle : `time`
+### Rule: `time`
 
-Cette règle vérifie si la chaîne de caractères saisie représente une heure valide au format 24 heures.
+This rule checks if the entered time is in the 24-hour format.
 
 ```html
-<input data-qv-rules="time" />
+<input type="time" data-qv-rules="time" />
 ```
 
-- Utilisation : Vous pouvez utiliser cette règle pour valider les champs de saisie d'heure, en vous assurant que l'utilisateur entre une heure valide au format 24 heures.
+- Usage: Use this rule to validate time input fields, ensuring that the user enters a valid time in the 24-hour format.
 
 ---
 
-N'hésitez pas à contribuer vos propres règles personnalisées à la bibliothèque en visitant la page [/docs/contribution](/docs/contribution).
+Feel free to contribute your own custom rules to the library by visiting the page [/docs/contribution](/docs/contribution).
 
-Nous espérons que cette documentation vous aidera à comprendre et à utiliser les règles de validation des dates fournies par Quickv.
- 
+We hope this documentation helps you understand and use the date validation rules provided by Quickv.

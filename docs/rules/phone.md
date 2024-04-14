@@ -1,27 +1,27 @@
-# Validation des numéros de téléphone
+# Phone Number Validation
 
-Ces règles sont spécifiquement conçues pour la validation des numéros de téléphone. Elles vous permettent de vérifier le format des numéros de téléphone. Voici une description détaillée de chaque règle et des exemples pratiques d'utilisation :
+These rules are specifically designed for phone number validation. They allow you to verify the format of phone numbers. Here is a detailed description of each rule and practical usage examples:
 
-> Veuillez noter que le code et les exemples fournis peuvent contenir des erreurs ou des limitations en raison de la complexité et des variations des formats de numéros de téléphone dans différentes régions et pays. Il est toujours recommandé d'effectuer une validation supplémentaire ou de consulter les normes pertinentes lors de la manipulation de numéros de téléphone.
+> Please note that the code and examples provided may contain errors or limitations due to the complexity and variations of phone number formats across different regions and countries. It is always recommended to perform additional validation or consult relevant standards when working with phone numbers.
 
-## Règle `phone`
+## `phone` Rule
 
-La règle `phone` valide le format d'un numéro de téléphone. Veuillez noter que, compte tenu de la diversité des numéros de téléphone existants, cette validation peut ne pas couvrir tous les cas possibles.
+The `phone` rule validates the format of a phone number. Given the diversity of phone numbers, this validation may not cover all possible cases.
 
-**Utilisation :** Vous pouvez utiliser cette règle pour vous assurer qu'un numéro de téléphone saisi par l'utilisateur respecte le format attendu.
+**Usage:** Use this rule to ensure that a phone number entered by the user adheres to the expected format.
 
-**Exemple :**
+**Example:**
 ```html
 <input data-qv-rules="phone:FR,BJ" /> 
 
 <input data-qv-rules="phone" />
-<!-- Valide les numéros de téléphone de manière globale -->
+<!-- Validates phone numbers globally -->
 ```
 
-Dans le premier exemple, la règle valide le numéro de téléphone en fonction des codes de pays spécifiés (FR,BJ). Elle s'assure que le numéro de téléphone saisi respecte le format utilisé dans les pays respectifs.
+In the first example, the rule validates the phone number based on the specified country codes (FR, BJ). It ensures that the entered phone number follows the format used in the respective countries.
 
-Dans le deuxième exemple, la règle valide les numéros de téléphone de manière globale, sans restriction de code de pays spécifique.
+In the second example, the rule validates phone numbers globally, without any restriction on specific country codes.
 
 ---
 
-Si vous souhaitez contribuer en ajoutant votre propre règle de validation des numéros de téléphone, vous pouvez vous rendre sur la [page de contribution](/docs/contribution).
+If you would like to contribute by adding your own phone number validation rule, you can visit the [contribution page](/docs/contribution).

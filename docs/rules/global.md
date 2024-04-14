@@ -1,11 +1,10 @@
- 
-# Géneral
- 
-## Règle `required`
+# General Validation Rules
 
-La règle `required` permet de vérifier si une saisie est obligatoire.
+## Rule: `required`
 
-### Utilisation
+The `required` rule ensures that an input is mandatory.
+
+### Usage
 
 ```html
 <input data-qv-rules="required" />
@@ -13,23 +12,23 @@ La règle `required` permet de vérifier si une saisie est obligatoire.
 
 ### Description
 
-Cette règle vérifie si la saisie n'est pas vide. Si la valeur saisie est vide, la règle retourne `false`, indiquant que la validation a échoué.
+This rule checks if the input is not empty. If the input value is empty, the rule returns `false`, indicating that validation has failed.
 
-### Exemple
+### Example
 
 ```html
 <input data-qv-rules="required" />
 ```
 
-Dans cet exemple, la règle `required` est appliquée à un champ de saisie. Elle vérifie si une valeur a été saisie dans le champ. Si le champ est vide, la règle retourne `false`, indiquant que la validation a échoué.
+In this example, the `required` rule is applied to an input field. It checks if a value has been entered into the field. If the field is empty, the rule returns `false`, indicating that validation has failed.
 
 ---
 
-## Règle `nullable`
+## Rule: `nullable`
 
-La règle `nullable` permet d'indiquer qu'une saisie peut être nulle (non obligatoire).
+The `nullable` rule allows an input to be null (not required).
 
-### Utilisation
+### Usage
 
 ```html
 <input data-qv-rules="nullable" />
@@ -37,23 +36,23 @@ La règle `nullable` permet d'indiquer qu'une saisie peut être nulle (non oblig
 
 ### Description
 
-Cette règle ne fait aucune vérification spécifique et retourne toujours `true`. Elle est utilisée pour indiquer qu'une saisie n'est pas obligatoire, c'est-à-dire qu'elle peut être laissée vide.
+This rule does not perform any specific checks and always returns `true`. It is used to indicate that an input is not mandatory, meaning it can be left empty.
 
-### Exemple
+### Example
 
 ```html
 <input data-qv-rules="nullable" />
 ```
 
-Dans cet exemple, la règle `nullable` est appliquée à un champ de saisie. Elle indique que la saisie dans ce champ n'est pas obligatoire. La validation sera considérée comme réussie, que le champ soit vide ou non.
+In this example, the `nullable` rule is applied to an input field. It indicates that input in this field is not mandatory. Validation will be considered successful whether the field is empty or not.
 
 ---
 
-## Règle `in`
+## Rule: `in`
 
-La règle `in` permet de vérifier si une saisie fait partie d'une liste de valeurs spécifiée.
+The `in` rule checks if an input is part of a specified list of values.
 
-### Utilisation
+### Usage
 
 ```html
 <input data-qv-rules="in:active,inactive" />
@@ -61,56 +60,54 @@ La règle `in` permet de vérifier si une saisie fait partie d'une liste de vale
 
 ### Description
 
-Cette règle vérifie si la valeur saisie fait partie de la liste des valeurs spécifiées. Les valeurs doivent être séparées par une virgule.
+This rule checks if the input value is part of the specified list of values. Values must be separated by a comma.
 
-### Exemple
+### Example
 
 ```html
 <input data-qv-rules="in:active,inactive" />
 ```
 
-Dans cet exemple, la règle `inInput` est appliquée à un champ de saisie. Elle vérifie si la valeur saisie est soit "active" soit "inactive". Si la valeur saisie ne fait pas partie de cette liste, la règle retourne `false`, indiquant que la validation a échoué.
+In this example, the `in` rule is applied to an input field. It checks if the input value is either "active" or "inactive." If the input value is not part of this list, the rule returns `false`, indicating that validation has failed.
 
 ---
 
-## Règle `size`
+## Rule: `size`
 
-La règle `size` permet de vérifier si une saisie respecte une taille maximale spécifiée.
+The `size` rule checks if an input adheres to a specified maximum size.
 
-### Utilisation
+### Usage
 
 ```html
 <input type="text" data-qv-rules="size:6" />
 ```
-ou
+or
 
 ```html
 <input type="file" data-qv-rules="size:6MB" />
 ```
 ### Description
 
-Cette règle vérifie si la saisie respecte la taille maximale spécifiée. La règle est appliquée différemment en fonction du type de saisie :
+This rule checks if the input adheres to the specified maximum size. The rule is applied differently depending on the type of input:
 
-- Si la valeur saisie est un fichier, la règle vérifie la taille maximale du fichier.
-- Si la valeur saisie n'est pas un fichier, la règle vérifie le nombre de caractères dans la saisie.
+- If the input value is a file, the rule checks the maximum file size.
+- If the input value is not a file, the rule checks the number of characters in the input.
 
-### Exemple
+### Example
 
 ```html
 <input type="text" data-qv-rules="size:6" />
 ```
 
-Dans cet exemple, la règle `size` est appliquée à un champ de saisie. Elle vérifie si la taille de la saisie est  égale à 6 caractères. Si la taille
-
- dépasse 6 caractères ou moins, la règle retourne `false`, indiquant que la validation a échoué.
+In this example, the `size` rule is applied to an input field. It checks if the size of the input is equal to 6 characters. If the size exceeds or falls below 6 characters, the rule returns `false`, indicating that validation has failed.
 
 ---
 
-## Règle `boolean`
+## Rule: `boolean`
 
-La règle `boolean` permet de vérifier si une saisie est une valeur booléenne.
+The `boolean` rule checks if an input is a boolean value.
 
-### Utilisation
+### Usage
 
 ```html
 <input data-qv-rules="boolean" />
@@ -118,116 +115,115 @@ La règle `boolean` permet de vérifier si une saisie est une valeur booléenne.
 
 ### Description
 
-Cette règle vérifie si la saisie correspond à une valeur booléenne. Les valeurs acceptées sont : "true", "false", "0", "1", "yes" et "no" (les lettres peuvent être en majuscules ou en minuscules).
+This rule checks if the input corresponds to a boolean value. The accepted values are: "true," "false," "0," "1," "yes," and "no" (letters can be uppercase or lowercase).
 
-### Exemple
+### Example
 
 ```html
 <input data-qv-rules="boolean" />
 ```
 
-Dans cet exemple, la règle `isBoolean` est appliquée à un champ de saisie. Elle vérifie si la valeur saisie correspond à une valeur booléenne. Si la valeur saisie n'est pas une valeur booléenne valide, la règle retourne `false`, indiquant que la validation a échoué.
+In this example, the `boolean` rule is applied to an input field. It checks if the input value corresponds to a boolean value. If the input value is not a valid boolean, the rule returns `false`, indicating that validation has failed.
 
 ---
 
-## Règle `between`
+## Rule: `between`
 
-La règle `between` permet de vérifier si une saisie est comprise entre deux valeurs spécifiées.
+The `between` rule checks if an input falls within specified minimum and maximum values.
 
-### Utilisation
+### Usage
 
 ```html
-<!--valide number-->
+<!-- Valid number -->
 <input type="number" data-qv-rules="between:6,7" />
 
-<!--valide string-->
+<!-- Valid string -->
 <input type="text" data-qv-rules="between:6,7" />
 
-<!--valide date-->
+<!-- Valid date -->
 <input type="date-local" data-qv-rules="between:01-01-2021,now" />
 
-<!--valide file size-->
+<!-- Valid file size -->
 <input type="file" data-qv-rules="between:2MB,3MB" />
 ```
 
 ### Description
 
-Cette règle permet de valider différents types de données en spécifiant une plage de valeurs. Les plages de valeurs possibles dépendent du type de données :
+This rule allows you to validate different types of data by specifying a range of values. Possible ranges of values depend on the type of data:
 
-- Pour les nombres, la règle vérifie si la valeur saisie est comprise entre les valeurs minimale et maximale spécifiées.
-- Pour les chaînes de caractères, la règle vérifie si la longueur de la chaîne est comprise entre les valeurs minimale et maximale spécifiées.
-- Pour les dates, la règle vérifie si la date saisie est comprise entre les dates minimale et maximale spécifiées.
-- Pour les fichiers, la règle vérifie si la taille du fichier est comprise entre les tailles minimale et maximale spécifiées.
+- For numbers, the rule checks if the input value falls within the specified minimum and maximum values.
+- For strings, the rule checks if the length of the string falls within the specified minimum and maximum lengths.
+- For dates, the rule checks if the input date falls within the specified minimum and maximum dates.
+- For files, the rule checks if the file size falls within the specified minimum and maximum file sizes.
 
-### Exemple
+### Example
 
 ```html
-<!--valide number-->
+<!-- Valid number -->
 <input type="number" data-qv-rules="between:6,7" />
 
-<!--valide string-->
+<!-- Valid string -->
 <input type="text" data-qv-rules="between:6,7" />
 
-<!--valide date-->
+<!-- Valid date -->
 <input type="date-local" data-qv-rules="between:01-01-2021,now" />
 
-<!--valide file size-->
+<!-- Valid file size -->
 <input type="file" data-qv-rules="between:2MB,3MB" />
 ```
 
-Dans ces exemples, la règle `between` est appliquée à différents types de champs de saisie. Elle vérifie si la valeur saisie respecte les plages de valeurs spécifiées. Si la valeur saisie ne respecte pas la plage de valeurs, la règle retourne `false`, indiquant que la validation a échoué.
+In these examples, the `between` rule is applied to different types of input fields. It checks if the input value falls within the specified ranges. If the input value does not fall within the specified range, the rule returns `false`, indicating that validation has failed.
 
 ---
 
-## Règle `regex`
+## Rule: `regex`
 
-La règle `regex` permet de vérifier si une saisie correspond à une expression régulière spécifiée.
+The `regex` rule checks if an input matches a specified regular expression.
 
-### Utilisation
-
-```html
-<input data-qv-rules
-
-="regex:^[A-Z]+$" />
-```
-
-### Description
-
-Cette règle vérifie si la valeur saisie correspond à l'expression régulière spécifiée. L'expression régulière est définie en utilisant la syntaxe standard des expressions régulières sans les caractères `/` au début e la fin .
-
-### Exemple
+### Usage
 
 ```html
 <input data-qv-rules="regex:^[A-Z]+$" />
 ```
 
-Dans cet exemple, la règle `regex` est appliquée à un champ de saisie. Elle vérifie si la valeur saisie est une suite de lettres majuscules. Si la valeur saisie ne correspond pas à l'expression régulière, la règle retourne `false`, indiquant que la validation a échoué.
+### Description
+
+This rule checks if the input value matches the specified regular expression. The regular expression is defined using standard regex syntax without the `/` characters at the beginning and end.
+
+### Example
+
+```html
+<input data-qv-rules="regex:^[A-Z]+$" />
+```
+
+In this example, the `regex` rule is applied to an input field. It checks if the input value is a sequence of uppercase letters. If the input value does not match the regular expression, the rule returns `false`, indicating that validation has failed.
 
 #### Note
-La règle '**regex**' dans Quickv utilise normalement le symbole '**|**' comme séparateur pour spécifier plusieurs expressions régulières. Cependant, cela peut poser problème si le symbole '**|**' est présent dans votre expression régulière. Pour résoudre ce problème, Quickv propose l'utilisation d'un caractère spécial '`&pip;`' comme substitut au symbole '**|**'.
+The `regex` rule in Quickv typically uses the `|` symbol as a separator to specify multiple regular expressions. However, this can pose problems if the `|` symbol is present in your regular expression. To address this issue, Quickv offers the use of a special character '`&pip;`' as a substitute for the `|` symbol.
 
-Ainsi, au lieu d'écrire votre règle 'regex' de cette manière :
+Instead of writing your `regex` rule like this:
 
 ```html
 <input data-qv-rules="regex:^abc|def$" />
 ```
 
-Vous pouvez utiliser le caractère '**&pip;**' à la place du symbole '**|**', comme ceci :
+You can use the character '`&pip;`' in place of the `|` symbol, like this:
 
 ```html
 <input data-qv-rules="regex:^abc&pip;def$" />
 ```
 
-De cette manière, Quickv reconnaîtra que vous souhaitez utiliser le symbole '|' dans votre expression régulière sans l'interpréter comme un séparateur de règles.
+This way, Quickv will recognize that you want to use the `|` symbol in your regular expression without interpreting it as a rule separator.
 
-Assurez-vous de suivre cette convention lors de l'utilisation de la règle 'regex' dans Quickv pour éviter toute confusion ou erreur liée au symbole '|'.
+Be sure to follow this convention when using the `regex` rule in Quickv to avoid any confusion or errors related to the `|` symbol.
+
 ---
 
-## Règle `only`
+## Rule: `only`
 
-La règle `only` permet de vérifier si une saisie correspond à un type spécifique.
+The `only` rule checks if an input matches a specific type.
 
-### Utilisation
+### Usage
 
 ```html
 <input data-qv-rules="only:letter" />
@@ -235,15 +231,12 @@ La règle `only` permet de vérifier si une saisie correspond à un type spécif
 
 ### Description
 
-Cette règle permet de valider une saisie en fonction de son type. Deux types sont actuellement supportés : "string" (chaîne de caractères) et "number" (nombre). La règle vérifie si la valeur saisie correspond au type spécifié.
+This rule allows you to validate an input based on its type. Two types are currently supported: "string" and "number." The rule checks if the input value matches the specified type.
 
-### Exemple
+### Example
 
 ```html
 <input data-qv-rules="only:letter" />
 ```
 
-Dans cet exemple, la règle `only` est appliquée à un champ de saisie. Elle vérifie si la valeur saisie est une chaîne de caractères ne contenant que des lettres. Si la valeur saisie ne correspond pas au type spécifié, la règle retourne `false`, indiquant que la validation a échoué.
-
----
- 
+In this example, the `only` rule is applied to an input field. It checks if the input value is a string containing only letters. If the input value does not match the specified type, the rule returns `false`, indicating that validation has failed.
