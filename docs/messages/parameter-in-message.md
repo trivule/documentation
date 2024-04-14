@@ -1,41 +1,41 @@
 ---
 sidebar_position: 4
-title: Paramètres dans le message
+title: Parameters in Messages
 ---
-> **Note:**  Quickv 2.0 (Expérimental)
+> **Note:** Quickv 2.0 (Experimental)
  
-# Paramètres dans le message
+# Parameters in Messages
 
-Parfois, vous souhaiterez inclure des informations spécifiques, telles que le nom du champ, dans les messages d'erreur. Vous pouvez le faire en utilisant des paramètres dans les messages. Par exemple, pour inclure le nom du champ dans un message, utilisez `:field` dans le message. Par exemple :
-
-```markdown
-Le champ :field est requis.
-```
-
-Lorsque le message d'erreur est généré, `:field` sera remplacé par le nom réel du champ.
-
-Si vous avez plusieurs paramètres à passer dans un message, vous pouvez les représenter avec `:arg1`, `:arg2`, etc. Par exemple, si vous avez une règle `min` avec un paramètre `9MB` ( `data-qv-rules="min:92"`), vous pouvez utiliser le message suivant :
+Sometimes, you may want to include specific information such as the field name in error messages. You can do this by using parameters in the messages. For instance, to include the field name in a message, use `:field` in the message. For example:
 
 ```markdown
-La taille doit dépasser :arg0.
+The field :field is required.
 ```
 
-Le résultat serait :
+When the error message is generated, `:field` will be replaced with the actual name of the field.
+
+If you have multiple parameters to pass in a message, you can represent them with `:arg1`, `:arg2`, etc. For example, if you have a `min` rule with a parameter of `9MB` (`data-qv-rules="min:92"`), you can use the following message:
 
 ```markdown
-La taille doit dépasser 9MB.
+The size must exceed :arg0.
 ```
 
-Si vous avez plusieurs valeurs possibles pour une règle, vous pouvez utiliser `...arg` pour afficher la liste des paramètres. Par exemple, si vous avez une règle `in` avec les paramètres `active`, `inactive`, `etc.` ( `data-qv-rules="in:active,inactive"`), vous pouvez utiliser le message suivant :
+The result would be:
 
 ```markdown
-La valeur du champ doit être l'une des valeurs suivantes : ...arg.
+The size must exceed 9MB.
 ```
 
-Le résultat serait :
+If you have multiple possible values for a rule, you can use `...arg` to display the list of parameters. For example, if you have an `in` rule with the parameters `active`, `inactive`, `etc.` (`data-qv-rules="in:active,inactive"`), you can use the following message:
 
 ```markdown
-La valeur du champ doit être l'une des valeurs suivantes : active, inactive, etc.
+The field value must be one of the following: ...arg.
 ```
 
-En utilisant ces personnalisations pour les messages d'erreur, vous pouvez rendre les validations Quickv plus adaptées à vos besoins spécifiques de traduction et de personnalisation.
+The result would be:
+
+```markdown
+The field value must be one of the following: active, inactive, etc.
+```
+
+By using these customizations for error messages, you can make Quickv validations more tailored to your specific translation and customization needs.

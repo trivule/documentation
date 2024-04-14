@@ -2,55 +2,55 @@
 sidebar_position: 7
 title: Messages
 ---
-> **Note:**  Quickv 2.0 (Expérimental)
+> **Note:** Quickv 2.0 (Experimental)
 
 # Messages
 
-Lorsque Quickv souhaite afficher des messages d'erreur, il détermine d'abord la langue dans laquelle ces messages doivent être affichés. Voici comment cela fonctionne :
+When Quickv needs to display error messages, it first determines the language in which these messages should be displayed. Here's how it works:
 
 ### Via HTML
 
-Tout d'abord, Quickv vérifie la langue définie sur l'attribut `lang` de l'élément racine `html` :
+First, Quickv checks the language set on the `lang` attribute of the root `html` element:
 ```html
 <html lang="en"></html>
 ```
 
-Si Quickv prend en charge la langue définie dans l'attribut `lang`, ou si vous avez ajouté vos propres langues, les messages d'erreur seront affichés dans cette langue.
+If Quickv supports the language defined in the `lang` attribute, or if you have added your own languages, the error messages will be displayed in that language.
 
-Si, pour une raison quelconque, vous ne souhaitez pas utiliser la langue définie dans l'attribut `lang`, vous pouvez utiliser l'attribut `data-qv-lang` sur l'élément racine pour spécifier la langue dans laquelle les messages doivent être affichés.
+If, for any reason, you don't want to use the language defined in the `lang` attribute, you can use the `data-qv-lang` attribute on the root element to specify the language in which the messages should be displayed.
 
 ```html
 <html data-qv-lang="en"></html>
 ```
 
-L'attribut `data-qv-lang` peut également être utilisé sur un élément de formulaire pour spécifier la langue pour ce formulaire spécifique.
+The `data-qv-lang` attribute can also be used on a form element to specify the language for that specific form.
 ```html
 <form data-qv-lang="en"></form>
 ```
-Cela signifie que les messages d'erreur seront spécifiques à chaque formulaire.
+This means that error messages will be specific to each form.
 
 ### Via JavaScript
 
-Quickv offre une autre façon de spécifier la langue des messages d'erreur en utilisant JavaScript :
+Quickv offers another way to specify the language of error messages using JavaScript:
 
 ```javascript
 QvLocal.local('es');
 ```
-Cela indique à Quickv d'afficher les messages en espagnol. Cette méthode remplace toutes les autres méthodes d'attribution de la langue pour l'affichage des messages d'erreur.
+This tells Quickv to display messages in Spanish. This method overrides all other methods of language assignment for displaying error messages.
 
-**Note :**
+**Note:**
 
-Toutes les méthodes d'attribution de la langue doivent être utilisées avant d'appeler la méthode `init()`.
-Cette méthode doit être appelée avant les méthodes d'initialisation, les constructeurs ou la méthode `init()`.
+All language assignment methods must be used before calling the `init()` method.
+This method should be called before initialization methods, constructors, or the `init()` method.
 
-### Marqueurs de position
+### Placeholders
 
-Supposons que vous ayez une règle de validation supplémentaire pour le champ "Email" : il doit avoir une longueur minimale de 8 caractères. Vous souhaitez spécifier un message d'erreur spécifique pour cette règle.
+Suppose you have an additional validation rule for the "Email" field: it must have a minimum length of 8 characters. You want to specify a specific error message for this rule.
 
-Vous pouvez utiliser des marqueurs de position pour indiquer les messages d'erreur dans n'importe quel ordre. Voici comment vous pouvez le faire :
+You can use placeholders to indicate error messages in any order. Here's how you can do it:
 
 ```html
-<input type="email" name="email" data-qv-messages="{0}Veuillez saisir une adresse e-mail valide|{1}L'e-mail doit comporter au moins 8 caractères">
+<input type="email" name="email" data-qv-messages="{0}Please enter a valid email address|{1}Email must be at least 8 characters long">
 ```
 
-Avec cette configuration, Quickv affichera le premier message d'erreur si l'adresse e-mail est invalide, et le deuxième message d'erreur si la longueur minimale de 8 caractères n'est pas respectée.
+With this configuration, Quickv will display the first error message if the email address is invalid, and the second error message if the minimum length of 8 characters is not met.

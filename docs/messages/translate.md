@@ -1,21 +1,21 @@
 ---
 sidebar_position: 4
-title: Traduction
+title: Translation
 ---
-> **Note:**  Quickv 2.0 (Expérimental)
+> **Note:** Quickv 2.0 (Experimental)
  
-# Traduction
+# Translation
 
-Par défaut, les messages d'erreur sont en anglais. Cependant, vous pouvez traduire ces messages dans votre langue préférée en utilisant la classe `QvLocal`. Quickv prend en charge nativement deux langues : le français et l'anglais.
+By default, error messages are in English. However, you can translate these messages into your preferred language using the `QvLocal` class. Quickv natively supports two languages: French and English.
 
-Pour traduire les messages dans votre langue, vous pouvez utiliser la méthode `translate(lang, messages)`. Par exemple, pour traduire les messages en espagnol, vous pouvez faire ce qui suit :
+To translate messages into your language, you can use the `translate(lang, messages)` method. For example, to translate messages into Spanish, you can use the following code:
 
 ```javascript
 QvLocal.translate('es', {
   min: "El campo :field debe ser menor que :arg0",
   rule1: "Mensaje 1",
-  etc: "etc"
+  etc: "etc."
 });
 ```
 
-Assurez-vous de traduire tous les messages pour chaque règle que vous utilisez ; sinon, certains messages pourraient rester en anglais.
+Make sure to translate all messages for each rule you use; otherwise, some messages may remain in English.

@@ -1,23 +1,23 @@
 ---
 sidebar_position: 4
-title: Modification d'un message existant
+title: Modifying an Existing Message
 ---
-> **Note:**  Quickv 2.0 (Expérimental)
+> **Note:** Quickv 2.0 (Experimental)
 
-# Modification d'un message existant
+# Modifying an Existing Message
 
-Si vous souhaitez modifier un message existant dans Quickv, vous pouvez utiliser la méthode `rewrite(lang, rule, message)`. Par exemple, si vous souhaitez personnaliser le message pour la règle `min` en anglais, vous pouvez faire ce qui suit :
-
-```javascript
-QvLocal.rewrite('en', 'min', 'Votre message personnalisé pour la règle min');
-```
-
-Vous pouvez également utiliser la méthode `rewriteMany(lang, rules, messages)` pour modifier plusieurs messages en une seule fois.
+If you want to modify an existing message in Quickv, you can use the `rewrite(lang, rule, message)` method. For example, if you want to customize the message for the `min` rule in English, you can do the following:
 
 ```javascript
-QvLocal.rewriteMany('en', ['min','max'], ['Message de règle Min', 'Message de règle Max']);
+QvLocal.rewrite('en', 'min', 'Your custom message for the min rule');
 ```
 
-Il est important d'indiquer les messages d'erreur dans l'ordre respectif des règles.
+You can also use the `rewriteMany(lang, rules, messages)` method to modify multiple messages at once.
 
-Une fois que vous avez modifié ou ajouté des messages, Quickv utilisera les nouvelles versions des messages pour les règles correspondantes.
+```javascript
+QvLocal.rewriteMany('en', ['min', 'max'], ['Min rule message', 'Max rule message']);
+```
+
+It is important to provide the error messages in the respective order of the rules.
+
+Once you have modified or added messages, Quickv will use the updated versions of the messages for the corresponding rules.
