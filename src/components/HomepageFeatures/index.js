@@ -1,63 +1,75 @@
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
-
-const FeatureList = [
-  {
-    title: "Easy to install",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
-    description: (
-      <>
-        Quickv can be installed and set up in just two lines of code, with no
-        need for JavaScript knowledge.
-      </>
-    ),
-  },
-  {
-    title: "Effortless and Intuitive Usage",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
-    description: (
-      <>
-        Quickv offers predefined rules that you can easily assign to your form
-        fields, enabling them to validate inputs automatically without writing
-        any JavaScript code.
-      </>
-    ),
-  },
-  {
-    title: "Easy to Extend",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
-    description: (
-      <>
-        Quickv allows you to add your own rules and supports
-        internationalization options for a customizable experience.
-      </>
-    ),
-  },
-];
-
-function Feature({ Svg, title, description }) {
-  return (
-    <div className={clsx("col col--4")}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
-  );
-}
+import InstallationImageUrl from "@site/static/img/installation.png";
+import CustumImageUrl from "@site/static/img/custum.png";
+import EffortlessImageUrl from "@site/static/img/effortless.png";
 
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
+    <section>
+      <div className={clsx("container", styles.padY5)}>
+        <div className="row row--align-center">
+          <div className={clsx("col col--6")}>
+            <h2>Easy to install and initialize</h2>
+            <p>
+              Quickv is straightforward to install and initialize. Installation
+              requires just two lines of code, making it accessible even for
+              those without JavaScript knowledge. Initialization is equally
+              simple. Once installed, you can immediately begin using Quickv by
+              adding custom attributes to your HTML forms. These attributes
+              allow you to define complex validation rules without writing
+              additional JavaScript code. Quickv seamlessly integrates with your
+              forms, enabling dynamic validation with minimal setup.
+            </p>
+          </div>
+          <div className={clsx("col col--6")}>
+            <img src={InstallationImageUrl} />
+          </div>
+        </div>
+      </div>
+      <div className={clsx("container", styles.padY5)}>
+        <div className="row row--align-center">
+          <div className={clsx("col col--6")}>
+            <img src={EffortlessImageUrl} />
+          </div>
+          <div className={clsx("col col--6")}>
+            <h2>Effortless and Intuitive Usage</h2>
+            <p>
+              Quickv simplifies form validation with predefined rules that you
+              can easily apply to your form fields using custom HTML attributes.
+              These attributes let you specify validation criteria directly
+              within your HTML code, such as required fields, character length,
+              patterns, or value ranges. By adding these attributes to your form
+              elements, Quickv automatically handles the validation process for
+              you. When users interact with your form, Quickv checks their
+              inputs against the specified rules, ensuring data accuracy and
+              consistency without requiring you to write any JavaScript code.
+              This streamlined approach saves time and effort, making form
+              validation effortless and efficient.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className={clsx("container", styles.padY5)}>
+        <div className="row row--align-center">
+          <div className={clsx("col col--6")}>
+            <h2>Easy to customize and extend</h2>
+            <p>
+              Quickv allows you to customize validation messages, rules, and
+              event triggers to suit your specific needs. You can create custom
+              rules for unique validation scenarios and define tailored feedback
+              messages in different languages for an internationalized user
+              experience. Additionally, you can control when validation checks
+              occur, such as on form submission or input changes, providing a
+              smooth, user-friendly form experience. Quickv's options enable you
+              to streamline form validation while saving time and effort.
+            </p>
+          </div>
+          <div className={clsx("col col--6")}>
+            <img src={CustumImageUrl} />
+          </div>
         </div>
       </div>
     </section>

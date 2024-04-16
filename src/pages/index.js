@@ -8,17 +8,20 @@ import Heading from "@theme/Heading";
 import styles from "./index.module.css";
 
 function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
+    <header className={clsx("hero ", styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          Quick Validation
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">
+          Quickv enables dynamic form validation <br /> without needing to write
+          or know JavaScript,
+          <br /> saving developers time and effort.
+        </p>
         <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs">
-            Documentation
+          <Link className="button button--primary button--lg" to="/docs">
+            Read docs
           </Link>
         </div>
       </div>
