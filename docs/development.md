@@ -2,18 +2,18 @@
 sidebar_position: 23
 title: Development
 ---
-> **Note:** Quickv 2.0 (Experimental)
+> **Note:** Trivule 2.0 (Experimental)
 
 ## Directory Structure
-When you clone Quickv from GitHub, here's an overview of the code structure, highlighting the important folders and files documented. The `src` directory contains all of the main Quickv code.
+When you clone Trivule from GitHub, here's an overview of the code structure, highlighting the important folders and files documented. The `src` directory contains all of the main Trivule code.
 
 ### The **Contracts** Directory
 
-The `contracts` directory contains interfaces and types used in Quickv. You can refer to these to see the types added.
+The `contracts` directory contains interfaces and types used in Trivule. You can refer to these to see the types added.
 
 ### The **Locale** Directory
 
-The `locale` directory contains internationalization files, including languages supported by default in Quickv. The `qv-local.ts` file exports a class that serves as a facade to handle internationalization, such as translation.
+The `locale` directory contains internationalization files, including languages supported by default in Trivule. The `tr-local.ts` file exports a class that serves as a facade to handle internationalization, such as translation.
 
 #### The **Lang** Directory
 
@@ -21,11 +21,11 @@ The `lang` directory contains language files for English.
 
 ### The **Messages** Directory
 
-The `messages` directory contains files for generating messages based on a given rule. The main class for this task is the `QvMessages` class, exported from the `qv-messages.ts` file.
+The `messages` directory contains files for generating messages based on a given rule. The main class for this task is the `TrMessages` class, exported from the `tr-messages.ts` file.
 
 ### The **Rules** Directory
 
-The `rules` directory contains the validation rules in Quickv. It includes files grouping validation rules into different categories:
+The `rules` directory contains the validation rules in Trivule. It includes files grouping validation rules into different categories:
 - **global.ts**: General rules such as `in`, `between`, etc.
 - **date.ts**: Validation rules for dates.
 - **file.ts**: Validation rules for files.
@@ -43,24 +43,24 @@ The `phone` directory contains validation rules for phone numbers. The validatio
 
 ### The **Utils** Directory
 
-The `utils` directory contains useful files for Quickv, such as helper functions.
+The `utils` directory contains useful files for Trivule, such as helper functions.
 
 ### The **Validation** Directory
 
-The `validation` directory contains the validation logic in Quickv. It includes several classes responsible for validation:
-- `QvInput`: This class, exported from the `qv-input.ts` file, handles validation of individual fields.
-- `QvForm`: This class, exported from the `qv-form.ts` file, handles validation of individual forms based on the inputs in the form.
-- `Quickv`: This class, exported from the `quickv.ts` file, manages the validation of all forms on your page.
-- `QValidation`: This class, exported from the `qv-validation.ts` file, executes validation rules for a given set of form fields and indicates whether the form is valid or not.
+The `validation` directory contains the validation logic in Trivule. It includes several classes responsible for validation:
+- `TrInput`: This class, exported from the `tr-input.ts` file, handles validation of individual fields.
+- `TrForm`: This class, exported from the `tr-form.ts` file, handles validation of individual forms based on the inputs in the form.
+- `Trivule`: This class, exported from the `Trivule.ts` file, manages the validation of all forms on your page.
+- `TRalidation`: This class, exported from the `tr-validation.ts` file, executes validation rules for a given set of form fields and indicates whether the form is valid or not.
 
 ## The **Types** Directory
 
-The `types` directory contains TypeScript declaration files for the Quickv project.
+The `types` directory contains TypeScript declaration files for the Trivule project.
 
 ## Source Code
 
-The source code for the Quickv library is available on [GitHub](https://github.com/quick-v/quickv). It is free, open source, and released under our [license](/docs/license).
+The source code for the Trivule library is available on [GitHub](https://github.com/trivule/Trivule). It is free, open source, and released under our [license](/docs/license).
 
 ## Contribution
 
-We would love to receive your contributions to the Quickv project in any way possible. Please read our [contribution guidelines](/docs/contribution) for more information.
+We would love to receive your contributions to the Trivule project in any way possible. Please read our [contribution guidelines](/docs/contribution) for more information.

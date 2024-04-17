@@ -4,7 +4,7 @@ sidebar_position:   22
  
 # Contribution
  
-We welcome community contributions to improve `Quickv`. If you encounter issues, have ideas for improvements, or wish to make changes to the code, please follow the steps below to contribute.
+We welcome community contributions to improve `Trivule`. If you encounter issues, have ideas for improvements, or wish to make changes to the code, please follow the steps below to contribute.
 
 ### Opening Issues
 
@@ -51,11 +51,11 @@ The Development Team
 ---
 Voici la version améliorée et traduite en anglais de votre document :
 
-## Adding a New Rule to Quickv
+## Adding a New Rule to Trivule
 
 ### Step 1
 
-A Quickv rule is simply a callback function that handles validation according to your requirements and should return a boolean value. It must implement the `RuleCallBack` interface defined in `./src/contracts/rule-callback.ts`.
+A Trivule rule is simply a callback function that handles validation according to your requirements and should return a boolean value. It must implement the `RuleCallBack` interface defined in `./src/contracts/rule-callback.ts`.
 
 Based on the type of data your callback will validate, you should categorize it into one of the following files:
 - `./src/rules` (global, number, phone, string, date, file, etc.)
@@ -84,7 +84,7 @@ Explanation:
 2. The second argument, `params`, refers to possible arguments. The arguments are comma-separated strings. You can retrieve them individually using the `splitParam` function. 
 For example, if you have an HTML field like this:
 ```html
-<input data-qv-rules="in:active, inactive, suspended" />
+<input data-tv-rules="in:active, inactive, suspended" />
 ```
 The values after the colon (`:`) are the parameters. In this case, the second argument would be a string like `"active, inactive, suspended"`. You can use the function `splitParam(params ?? "")` to obtain an array of individual values, for example, `['active', 'inactive', 'suspended']`.
 
@@ -142,25 +142,25 @@ Once your tests pass, you can proceed to the next step.
 
 ### Step 3: Add the Callback to Rules
 
-All Quickv rules are listed in the `Rule` type, located in the `./src/contracts/rule.ts` file. You must add your rule to this type to make it recognizable.
+All Trivule rules are listed in the `Rule` type, located in the `./src/contracts/rule.ts` file. You must add your rule to this type to make it recognizable.
 
 Here's an example of adding the `in` rule:
 
 ```ts
 /**
- * List of Quickv rules grouped by rule type
+ * List of Trivule rules grouped by rule type
  */
 export type Rule = "contains" | "in" | "startWithLetter" /*...*/;
 ```
 
 Adding the rule to this type also enables code completion in your code editor, but that is not the primary goal of including the rule in this type.
 
-If you use a TypeScript-compatible tool, you might notice an error in the `./src/validation/qv-bag.ts` file. This file is where rules are actually added to Quickv. Until a rule is added to this file, it won't be part of Quickv.
+If you use a TypeScript-compatible tool, you might notice an error in the `./src/validation/tr-bag.ts` file. This file is where rules are actually added to Trivule. Until a rule is added to this file, it won't be part of Trivule.
 
-In this file, the `QvBag` class is used to store the rules. You should add your rule to the `rules` attribute of this class, as shown below:
+In this file, the `TrBag` class is used to store the rules. You should add your rule to the `rules` attribute of this class, as shown below:
 
 ```typescript
-export class QvBag implements IQvBag {
+export class TrBag implements ITrBag {
   private static rules: RulesBag = { 
     in: inInput,
   };
@@ -171,7 +171,7 @@ export class QvBag implements IQvBag {
 
 Generally, your rule is ready to be used once you have added it. However, you also need to assign it a message; otherwise, a default message will be used.
 
-To do this, go to the `./src/local/lang` folder. You will find the default language files supported by Quickv (English). Add messages corresponding to your rule in these files.
+To do this, go to the `./src/local/lang` folder. You will find the default language files supported by Trivule (English). Add messages corresponding to your rule in these files.
 
 Here's an example of adding messages for the `in` rule:
 
@@ -199,7 +199,7 @@ You can also use the `npm run build:watch` command to automatically compile the 
 Here's an example code snippet to write the `in` rule callback:
 
 ```typescript
-import { RuleCallBack, splitParam, throwEmptyArgsException } from "../validation/quickv";
+import { RuleCallBack, splitParam, throwEmptyArgsException } from "../validation/Trivule";
 
 /**
  * Verifies whether the input value is in the specified list.
@@ -222,10 +222,10 @@ Use the Jest testing tool to test the callback.
 
 #### Step 3: Add the Callback to Rules
 
-Add the callback to the Quickv rules list in the `./src/contracts/rule.ts` file.
+Add the callback to the Trivule rules list in the `./src/contracts/rule.ts` file.
 
 #### Step 4: Assign a Message
 
 Add the corresponding message for your rule in the language files `./src/local/lang/en_messages.ts` and `./src/local/lang/fr_messages.ts`.
 
-Once these steps are complete, you can use your new rule in Quickv.
+Once these steps are complete, you can use your new rule in Trivule.

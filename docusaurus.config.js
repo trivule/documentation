@@ -13,15 +13,15 @@ const config = {
   favicon: "img/logo.png",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "http://trivule.com",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "quick-v", // Usually your GitHub org/user name.
-  projectName: "Quickv", // Usually your repo name.
+  organizationName: "trivule", // Usually your GitHub org/user name.
+  projectName: "Trivule", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -43,15 +43,13 @@ const config = {
           sidebarPath: "./sidebars.js",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -67,7 +65,7 @@ const config = {
       image: "img/docusaurus-social-card.jpg",
       navbar: {
         logo: {
-          alt: "Quickv Logo",
+          alt: "Trivule Logo",
           src: "img/logo.png",
         },
         items: [
@@ -79,7 +77,7 @@ const config = {
           },
 
           {
-            href: "https://github.com/quick-v",
+            href: "https://github.com/trivule",
             label: "GitHub",
             position: "right",
           },
@@ -102,7 +100,7 @@ const config = {
             items: [
               {
                 label: "Discord",
-                href: "https://discord.gg/6xKyDWA8TQ",
+                href: "#",
               },
             ],
           },
@@ -111,12 +109,12 @@ const config = {
             items: [
               {
                 label: "GitHub",
-                href: "https://github.com/quick-v",
+                href: "https://github.com/trivule",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Quickv`,
+        copyright: `Copyright © ${new Date().getFullYear()} Trivule`,
       },
       prism: {
         theme: prismThemes.github,

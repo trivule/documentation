@@ -15,8 +15,8 @@ function HomepageHeader() {
           Quick Validation
         </Heading>
         <p className="hero__subtitle">
-          Quickv enables dynamic form validation <br /> without needing to write
-          or know JavaScript,
+          Trivule enables dynamic form validation <br /> without needing to
+          write or know JavaScript,
           <br /> saving developers time and effort.
         </p>
         <div className={styles.buttons}>
@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Quickv is a library that simplifies web form validation, making it a seamless, intuitive, and effortless experience."
+      description="Trivule is a library that simplifies web form validation, making it a seamless, intuitive, and effortless experience."
     >
       <HomepageHeader />
       <main>

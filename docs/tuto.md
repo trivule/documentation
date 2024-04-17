@@ -2,29 +2,29 @@
 sidebar_position: 1
 title: Tutorial in 5 Minutes
 ---
-> **Note:** Quickv 2.0 (Experimental)
+> **Note:** Trivule 2.0 (Experimental)
 
-# Quickv Tutorial in 5 Minutes
+# Trivule Tutorial in 5 Minutes
 
-Welcome to the Quickv introductory tutorial! In this tutorial, we will learn how to use Quickv to validate a contact form. Here's what we'll do:
+Welcome to the Trivule introductory tutorial! In this tutorial, we will learn how to use Trivule to validate a contact form. Here's what we'll do:
 
 - Validate the email address (maximum of 32 characters) 
 - Validate the name (length must be between 2 and 80 characters, cannot contain numbers)
 - Validate the phone number (validate a phone number)
 - Validate the message (length between 2 and 250 characters, and end with a point (.))
 
-## Step 1: Include Quickv
+## Step 1: Include Trivule
 
-First, download the Quickv library from [this link](https://quick-v.github.io/documentation/quickv.2-alpha.js). Then, be sure to include the Quickv library in your web page. You can do this by adding a `<script>` tag with the path to the `quickv.2-alpha.js` file (the source code). Make sure to include this tag before the closing `<body>` tag.
+First, download the Trivule library from [this link](https://trivule.github.io/documentation/Trivule.2-alpha.js). Then, be sure to include the Trivule library in your web page. You can do this by adding a `<script>` tag with the path to the `Trivule.2-alpha.js` file (the source code). Make sure to include this tag before the closing `<body>` tag.
 
 ```html
-<script src="quickv.2-alpha.js"></script>
+<script src="Trivule.2-alpha.js"></script>
 ```
 ## Step 2: Define the Form
 
 Create a blank page for testing and add the following HTML code.
 
-We will create an HTML form with fields to validate using Quickv.
+We will create an HTML form with fields to validate using Trivule.
 
 Here's an example:
 
@@ -34,41 +34,41 @@ Here's an example:
         <label class="label">Name</label>
         <div>
             <input
-                data-qv-rules="required|between:2,80|only:string"
+                data-tv-rules="required|between:2,80|only:string"
                 type="text"
                 name="name"
                 required
             />
         </div>
-        <div data-qv-feedback="name"></div>
+        <div data-tv-feedback="name"></div>
     </div>
     <div>
         <label>Email</label>
-        <input type="text" data-qv-rules="required|email|maxlength:32" name="email" />
-        <div data-qv-feedback="email"></div>
+        <input type="text" data-tv-rules="required|email|maxlength:32" name="email" />
+        <div data-tv-feedback="email"></div>
     </div>
     <div>
         <label>Phone Number</label>
-        <input type="text" data-qv-rules="required|phone" name="phone" />
-        <div data-qv-feedback="phone"></div>
+        <input type="text" data-tv-rules="required|phone" name="phone" />
+        <div data-tv-feedback="phone"></div>
     </div>
     <div>
         <label>Message</label>
         <textarea
-            data-qv-rules="required|between:2,250|endWith:."
+            data-tv-rules="required|between:2,250|endWith:."
             name="message"
         ></textarea>
-        <div data-qv-feedback="message"></div>
+        <div data-tv-feedback="message"></div>
     </div>
     <p>
-        <button type="submit" value="Submit" data-qv-submit>
+        <button type="submit" value="Submit" data-tv-submit>
             Submit
         </button>
     </p>
 </form>
 ```
 
-In this example, we have added `data-qv-rules` attributes to the form fields to specify validation rules and `data-qv-feedback` attributes to certain `div` elements to display validation feedback.
+In this example, we have added `data-tv-rules` attributes to the form fields to specify validation rules and `data-tv-feedback` attributes to certain `div` elements to display validation feedback.
 
 ### Form Style
 To create a clean form style, add the following CSS code to your page.
@@ -85,7 +85,7 @@ form > div {
   margin-bottom: 0.75rem;
 }
 
-[data-qv-feedback] {
+[data-tv-feedback] {
   color: red;
 }
 
@@ -211,38 +211,38 @@ p {
 }
 ```
 
-## Step 3: Initialize Quickv
+## Step 3: Initialize Trivule
 
-Now that we've defined our form, let's link it to Quickv to perform validation. Add the following JavaScript code at the end of your page, just before the closing `</body>` tag:
+Now that we've defined our form, let's link it to Trivule to perform validation. Add the following JavaScript code at the end of your page, just before the closing `</body>` tag:
 
 ```html
 <script>
-  const qv = new Quickv();
-  qv.init();
+  const tr = new Trivule();
+  tr.init();
 </script>
 ```
 
-In this example, we create an instance of `Quickv` and call the `init()` method to initialize the validation.
+In this example, we create an instance of `Trivule` and call the `init()` method to initialize the validation.
 
-And that's it! Now, when you submit the form or interact with the fields, Quickv will validate according to the rules you've defined and display appropriate validation feedback.
+And that's it! Now, when you submit the form or interact with the fields, Trivule will validate according to the rules you've defined and display appropriate validation feedback.
 
-Feel free to customize the validation rules and error messages according to your needs. You can also refer to the Quickv documentation for more information on advanced features.
+Feel free to customize the validation rules and error messages according to your needs. You can also refer to the Trivule documentation for more information on advanced features.
 
-I hope this tutorial was helpful for you to get started with Quickv with a concrete example. Have fun validating your forms with ease!
+I hope this tutorial was helpful for you to get started with Trivule with a concrete example. Have fun validating your forms with ease!
 
 ## Further Reading
 
-Quickv offers many customization and configuration options to meet your specific needs. Here are some additional resources to help you explore these features:
+Trivule offers many customization and configuration options to meet your specific needs. Here are some additional resources to help you explore these features:
 
-- [Customizing Messages](/docs/validation/messages): Learn how to customize the error messages and text displayed by Quickv.
-- [Other Validation Rules](/docs/validation/rules): Explore the different validation rules available in Quickv, such as length validation, regular expression validation, and more.
-- [Validation Events](/docs/validation/events): Learn about validation events to interact with Quickv during form validation.
-- [Validating Individual Inputs](/docs/validation/qv-input): Discover how to validate an individual form field with Quickv.
-- [Validating an Individual Form](/docs/validation/qv-form): Learn how to validate a specific form using Quickv.
-- [Validating Forms on a Page](/docs/validation/qv-quickv): Discover how to validate all forms on a page at once.
-- [Examples](/docs/example): Check out real-world examples of Quickv's use for form validation.
-- [Framework Integration (React, Angular, etc.)](/docs/frameworks): Get instructions on integrating Quickv into popular frameworks like React, Angular, Vue.js, etc.
-- [Contribution](/docs/contribution): Contribute to Quickv's development by providing suggestions, bug reports, or proposing improvements.
-- [Development](/docs/contribution): If you are interested in Quickv development, see this documentation for information on how to contribute to the project.
+- [Customizing Messages](/docs/validation/messages): Learn how to customize the error messages and text displayed by Trivule.
+- [Other Validation Rules](/docs/validation/rules): Explore the different validation rules available in Trivule, such as length validation, regular expression validation, and more.
+- [Validation Events](/docs/validation/events): Learn about validation events to interact with Trivule during form validation.
+- [Validating Individual Inputs](/docs/validation/tr-input): Discover how to validate an individual form field with Trivule.
+- [Validating an Individual Form](/docs/validation/tr-form): Learn how to validate a specific form using Trivule.
+- [Validating Forms on a Page](/docs/validation/tr-Trivule): Discover how to validate all forms on a page at once.
+- [Examples](/docs/example): Check out real-world examples of Trivule's use for form validation.
+- [Framework Integration (React, Angular, etc.)](/docs/frameworks): Get instructions on integrating Trivule into popular frameworks like React, Angular, Vue.js, etc.
+- [Contribution](/docs/contribution): Contribute to Trivule's development by providing suggestions, bug reports, or proposing improvements.
+- [Development](/docs/contribution): If you are interested in Trivule development, see this documentation for information on how to contribute to the project.
 
-These resources will help you deepen your knowledge and make the most of Quickv for your form validation. Enjoy the power and flexibility of Quickv in your projects!
+These resources will help you deepen your knowledge and make the most of Trivule for your form validation. Enjoy the power and flexibility of Trivule in your projects!

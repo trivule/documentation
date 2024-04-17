@@ -3,9 +3,9 @@ sidebar_position: 12
 ---
 # Form Validation
 
-Form validation refers to the validation of an HTML form in its entirety. In practice, form validation is developed based on [input validation](/docs/validation/qv-input). It encompasses actions such as disabling the submit button and preventing the propagation of the `submit` event of a form.
+Form validation refers to the validation of an HTML form in its entirety. In practice, form validation is developed based on [input validation](/docs/validation/tr-input). It encompasses actions such as disabling the submit button and preventing the propagation of the `submit` event of a form.
 
-## QvForm
+## TrForm
 
 ### Interaction with Forms during Validation
 
@@ -15,19 +15,19 @@ Let's consider the following form:
 <form>
   <div>
     <label>Email</label>
-    <input type="text" data-qv-rules="required|email|maxlength:32" name="email" />
-    <div data-qv-feedback="email"></div>
+    <input type="text" data-tv-rules="required|email|maxlength:32" name="email" />
+    <div data-tv-feedback="email"></div>
   </div>
   <div>
     <label>Message</label>
     <textarea
-      data-qv-rules="required|between:2,250|endWith:."
+      data-tv-rules="required|between:2,250|endWith:."
       name="message"
     ></textarea>
-    <div data-qv-feedback="message"></div>
+    <div data-tv-feedback="message"></div>
   </div>
   <p>
-    <button type="submit" value="Submit" data-qv-submit>
+    <button type="submit" value="Submit" data-tv-submit>
       Send
     </button>
   </p>
@@ -37,20 +37,20 @@ Let's consider the following form:
 Let's initialize it:
 
 ```js
-const qvForm = new QvForm("form");
-qvForm.init();
+const trForm = new TrForm("form");
+trForm.init();
 ```
 
-By initializing the form, Quickv will attach the appropriate event handlers to the form and its fields. This setup ensures that when the form is submitted, the fields are validated according to the specified rules. If any field fails validation, the submit event is prevented, and appropriate feedback is displayed to the user.
+By initializing the form, Trivule will attach the appropriate event handlers to the form and its fields. This setup ensures that when the form is submitted, the fields are validated according to the specified rules. If any field fails validation, the submit event is prevented, and appropriate feedback is displayed to the user.
 
-The `data-qv-rules` attribute is used to specify the validation rules for each input field, such as requiring a field to be filled (`required`), specifying the format (`email`), or setting constraints on length (`maxlength:32`). The `data-qv-feedback` attribute specifies where the feedback messages should be displayed.
+The `data-tv-rules` attribute is used to specify the validation rules for each input field, such as requiring a field to be filled (`required`), specifying the format (`email`), or setting constraints on length (`maxlength:32`). The `data-tv-feedback` attribute specifies where the feedback messages should be displayed.
 
-Once the form is initialized, Quickv takes care of handling form submissions and providing feedback based on the validation rules.
+Once the form is initialized, Trivule takes care of handling form submissions and providing feedback based on the validation rules.
 
 
 ### `onInit` - Before Validation
 
-When using Quickv for live form validation, additional actions may be needed after form initialization. For example, specific configurations or object manipulations may be required to prepare the form for more advanced interaction.
+When using Trivule for live form validation, additional actions may be needed after form initialization. For example, specific configurations or object manipulations may be required to prepare the form for more advanced interaction.
 
 The `onInit` method addresses this by providing a clean way to attach event handlers that will be triggered specifically after initialization. This allows you to perform custom actions or configure additional features in response to the form's ready state.
 
@@ -59,7 +59,7 @@ The `onInit()` method should be called before calling the `init()` method.
 #### Example Usage
 
 ```typescript
-qvForm.onInit((initializedForm: QvForm) => {
+trForm.onInit((initializedForm: TrForm) => {
     console.log("The form is ready for additional actions:", initializedForm);
 });
 ```
@@ -76,16 +76,16 @@ In this example, the `onInit` method is called with a callback function that log
 
 ### `onFails` & `onPasses` - Dynamic Validation Responses
 
-The `onFails` and `onPasses` methods of the `QvForm` class provide complete flexibility to dynamically respond to the successes and failures of form field validations.
+The `onFails` and `onPasses` methods of the `TrForm` class provide complete flexibility to dynamically respond to the successes and failures of form field validations.
 
 #### `onFails` - Failed Validation
 
 The `onFails` method allows you to define an event handler that will be triggered whenever a form field fails validation. Example:
 
 ```javascript
-qvForm.onFails((qvFormInstance) => {
+trForm.onFails((trFormInstance) => {
   // Code to execute in case of validation failure
-  console.log("Validation failed", qvFormInstance);
+  console.log("Validation failed", trFormInstance);
   // Customize the reactions to validation failures here
 });
 ```
@@ -97,7 +97,7 @@ Customize the code to execute according to your needs.
 The `onPasses` method works similarly, triggering an event handler when the form passes validation. Example:
 
 ```javascript
-qvForm.onPasses((qvFormInstance) => {
+trForm.onPasses((trFormInstance) => {
   // Code to execute in case of successful validation
   console.log("Validation succeeded");
   // Customize reactions to validation successes here
@@ -112,7 +112,7 @@ By leveraging `onFails` and `onPasses`, you can tailor your application to the v
 
 ### `emit` - Event Customization
 
-The `emit` method of the `QvForm` class allows you to emit custom events to the form associated with the `QvForm` instance. This advanced feature facilitates communication and interaction within your application.
+The `emit` method of the `TrForm` class allows you to emit custom events to the form associated with the `TrForm` instance. This advanced feature facilitates communication and interaction within your application.
 
 #### Example Usage
 
@@ -120,7 +120,7 @@ The `emit` method of the `QvForm` class allows you to emit custom events to the 
 const userData = { name: "John Doe", age: 25 };
 
 // Emitting a custom "user-updated" event with additional data
-qvForm.emit("user-updated", userData);
+trForm.emit("user-updated", userData);
 ```
 
 In this example, a custom event named "user-updated" is emitted to the form, carrying additional user data. This flexibility allows you to create scenarios where specific parts of your application can respond to these tailored events.
@@ -133,17 +133,17 @@ In this example, a custom event named "user-updated" is emitted to the form, car
 
 - **Integration with Other Components:** Facilitate integration with other components of your application by emitting events containing crucial information.
 
-Wise use of the `emit` method can greatly enhance your application's interactivity and modularity, allowing different parts to respond in a customized way to events emitted by the `QvForm` class.
+Wise use of the `emit` method can greatly enhance your application's interactivity and modularity, allowing different parts to respond in a customized way to events emitted by the `TrForm` class.
 
 ### Attaching Event Listeners
 
-The `on` method of the `QvForm` class opens up a world of opportunities by allowing you to attach event listeners, whether they are native or custom events, to your form. Learn how to customize your user experience by dynamically responding to specific interactions.
+The `on` method of the `TrForm` class opens up a world of opportunities by allowing you to attach event listeners, whether they are native or custom events, to your form. Learn how to customize your user experience by dynamically responding to specific interactions.
 
 #### Example Usage
 
 ```javascript
 // Attach an event listener for the "change" event
-qvForm.on("change", (event) => {
+trForm.on("change", (event) => {
   // Code to execute when the "change" event occurs in the form
   console.log("Change detected!");
 });
@@ -155,7 +155,7 @@ In this example, an event listener is added to the form for the "change" event. 
 
 - **User Interaction Responsiveness:** Monitor events such as change (`change`), click (`click`), or submit (`submit`) to trigger specific actions.
 
-- **Custom Validation:** Attach a listener to respond to custom events emitted by the `QvForm` class and perform validations or specific actions accordingly.
+- **Custom Validation:** Attach a listener to respond to custom events emitted by the `TrForm` class and perform validations or specific actions accordingly.
 
 - **Integration with Other Components:** Create harmonious interactions with other parts of your application by listening to specific events emitted by other components.
 
@@ -163,13 +163,13 @@ By skillfully incorporating the `on` method, you can customize the user experien
 
 ### Form Validation Status
 
-The `passes` method in the `QvForm` class checks whether the form is valid or not.
+The `passes` method in the `TrForm` class checks whether the form is valid or not.
 
 #### Example Usage
 
 ```javascript
 // Check if the form is valid
-const isValid = qvForm.passes();
+const isValid = trForm.passes();
 
 if (isValid) {
     // Proceed with form submission or handle a valid form
@@ -188,42 +188,42 @@ In this example, the `passes` method is called to determine whether the form is 
 
 - **Error Handling Logic:** Display targeted error messages or take specific actions in case of validation failure.
 
-The `passes` method calls the internal `isValid` method that checks each field according to the defined validation rules. By incorporating it into your logic, you can create a robust and responsive user experience. Take control of your form validation with the `passes` method from `QvForm`.
+The `passes` method calls the internal `isValid` method that checks each field according to the defined validation rules. By incorporating it into your logic, you can create a robust and responsive user experience. Take control of your form validation with the `passes` method from `TrForm`.
 
 ### `onValidate()` - Reacting to Form Validation
 
-The `onValidate()` method of the `QvForm` class allows you to react to the form validation event. Use this feature to execute specific actions when complete form validation is performed.
+The `onValidate()` method of the `TrForm` class allows you to react to the form validation event. Use this feature to execute specific actions when complete form validation is performed.
 
 #### Example Usage
 
 ```javascript
-qvForm.onValidate((qvForm) => {
-    console.log("Form validation performed", qvForm);
+trForm.onValidate((trForm) => {
+    console.log("Form validation performed", trForm);
 });
 ```
 
-### Destroying QvForm Instance
+### Destroying TrForm Instance
 
-The `destroy` method of the `QvForm` class allows you to reset the `QvForm` instance by removing custom validation rules and associated event listeners. Here is an example of usage:
+The `destroy` method of the `TrForm` class allows you to reset the `TrForm` instance by removing custom validation rules and associated event listeners. Here is an example of usage:
 
 ```javascript
-qvForm.destroy();
+trForm.destroy();
 ```
 
-In this example, the `destroy` method is called on the `qvForm` instance. This removes all custom validation rules and event listeners associated with this instance.
+In this example, the `destroy` method is called on the `trForm` instance. This removes all custom validation rules and event listeners associated with this instance.
 
-You can use the `destroy` method when you want to reset the `QvForm` instance to its initial state, such as when removing or deactivating the form.
+You can use the `destroy` method when you want to reset the `TrForm` instance to its initial state, such as when removing or deactivating the form.
 
-By using the methods and events provided by the `QvForm` class, you can customize your form's validation and interaction in your application. Whether reacting to successful or failed validation events, emitting custom events, listening to form events, or performing specific validations, you have the ability to add custom logic to your application based on the form validation results.
+By using the methods and events provided by the `TrForm` class, you can customize your form's validation and interaction in your application. Whether reacting to successful or failed validation events, emitting custom events, listening to form events, or performing specific validations, you have the ability to add custom logic to your application based on the form validation results.
 
-The `isValid` method of the `QvForm` class checks whether the form is valid. It returns a boolean value indicating whether all form fields, represented by `QvInput` instances attached to the `QvForm` class, are valid.
+The `isValid` method of the `TrForm` class checks whether the form is valid. It returns a boolean value indicating whether all form fields, represented by `TrInput` instances attached to the `TrForm` class, are valid.
 
 Here's an example usage:
 
 ```javascript
-const qvForm = new QvForm(formElement);
+const trForm = new TrForm(formElement);
 
-const isValid = qvForm.isValid();
+const isValid = trForm.isValid();
 if (isValid) {
     // The form is valid
     // Perform desired actions, such as submitting the form
@@ -233,26 +233,26 @@ if (isValid) {
 }
 ```
 
-In this example, a `QvForm` instance is created with the form element `formElement`. Then, the `isValid` method is called on this instance to check if the form is valid. The return value, `isValid`, will be `true` if all form fields are valid, and `false` otherwise.
+In this example, a `TrForm` instance is created with the form element `formElement`. Then, the `isValid` method is called on this instance to check if the form is valid. The return value, `isValid`, will be `true` if all form fields are valid, and `false` otherwise.
 
 You can use this method to make decisions in your code based on the form's validity. For example, if the form is valid, you may submit the form or perform other desired actions. If the form is not valid, you can display an error message or prevent form submission.
 
-The `isValid` method iterates over all `QvInput` instances attached to the `QvForm` class using the `every` method. It calls the `passes` method on each `QvInput` instance to check if the field is valid. If all fields pass validation, the `isValid` method returns `true`. Otherwise, it returns `false`.
+The `isValid` method iterates over all `TrInput` instances attached to the `TrForm` class using the `every` method. It calls the `passes` method on each `TrInput` instance to check if the field is valid. If all fields pass validation, the `isValid` method returns `true`. Otherwise, it returns `false`.
 
 By using the `isValid` method, you can easily verify the overall validity of the form based on the individual validation of each field.
 
-The `observeChanges` method of the `QvForm` class allows you to attach an event listener to the "qv.form.updated" event. When this event is triggered, the method initializes and executes the `QvInputs` for the form, then calls the provided function with the form instance as a parameter.
+The `observeChanges` method of the `TrForm` class allows you to attach an event listener to the "tr.form.updated" event. When this event is triggered, the method initializes and executes the `TrInputs` for the form, then calls the provided function with the form instance as a parameter.
 
 Here's an example usage:
 
 ```javascript
-qvForm.observeChanges((form) => {
+trForm.observeChanges((form) => {
     console.log("Form updated", form);
 });
 ```
 
-In this example, the `observeChanges` method is called on the `qvForm` instance with a callback function that displays a message in the console when the "qv.form.updated" event is triggered. The callback function takes the form instance `form` as a parameter.
+In this example, the `observeChanges` method is called on the `trForm` instance with a callback function that displays a message in the console when the "tr.form.updated" event is triggered. The callback function takes the form instance `form` as a parameter.
 
-When the "qv.form.updated" event is triggered, the `observeChanges` method destroys the current form instance by calling the `destroy` method, then reinitializes the form by calling the `setContainer` method with the original container. Next, the `QvInputs` are initialized by calling the `_initQvInputs` method, then executed by calling the `_runQvInputs` method. Finally, the provided callback function is called with the form instance as a parameter.
+When the "tr.form.updated" event is triggered, the `observeChanges` method destroys the current form instance by calling the `destroy` method, then reinitializes the form by calling the `setContainer` method with the original container. Next, the `TrInputs` are initialized by calling the `_initTrInputs` method, then executed by calling the `_runTrInputs` method. Finally, the provided callback function is called with the form instance as a parameter.
 
-Using the `observeChanges` method allows you to monitor changes in the form and take specific actions in response to those changes. You can reset and update the `QvInputs`, as well as execute custom code when the form is updated.
+Using the `observeChanges` method allows you to monitor changes in the form and take specific actions in response to those changes. You can reset and update the `TrInputs`, as well as execute custom code when the form is updated.

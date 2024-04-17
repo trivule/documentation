@@ -6,47 +6,47 @@ sidebar_position: 2
 
 # Installation
 
-> **Note:** Experimental Quickv 2.0.
+> **Note:** Experimental Trivule 2.0.
 
 ## Downloading or Using CDN
 
-To use Quickv, follow these steps:
+To use Trivule, follow these steps:
 
-1. **[Download](https://quick-v.github.io/documentation/quickv.2-alpha.js)** the Quickv library from [here](https://quick-v.github.io/documentation/quickv.2-alpha.js). Alternatively, you can directly use the link: `https://quick-v.github.io/documentation/quickv.2-alpha.js`.
-2. Include the Quickv library in your web page as you would any other JavaScript file.
+1. **[Download](https://trivule.github.io/documentation/Trivule.2-alpha.js)** the Trivule library from [here](https://trivule.github.io/documentation/Trivule.2-alpha.js). Alternatively, you can directly use the link: `https://trivule.github.io/documentation/Trivule.2-alpha.js`.
+2. Include the Trivule library in your web page as you would any other JavaScript file.
 
 ## Installation via npm
 
 1. Go to your project directory and enter the following command:
 
 ```bash
-npm install quickv@2.0.0-alpha.2
+npm install Trivule@2.0.0-alpha.2
 ```
 
-After installation, you can use Quickv in your project as needed:
+After installation, you can use Trivule in your project as needed:
 
 - For a single form field:
 
 ```js
-import { QvInput } from 'quickv';
-const qvInput = new QvInput('selector');
-qvInput.init();
+import { TrInput } from 'Trivule';
+const trInput = new TrInput('selector');
+trInput.init();
 ```
 
 - For an entire form:
 
 ```js
-import { QvForm } from 'quickv';
-const qvForm = new QvForm('selector');
-qvForm.init();
+import { TrForm } from 'Trivule';
+const trForm = new TrForm('selector');
+trForm.init();
 ```
 
 - For all forms:
 
 ```js
-import { Quickv } from 'quickv';
-const qv = new Quickv();
-qv.init();
+import { Trivule } from 'Trivule';
+const tr = new Trivule();
+tr.init();
 ```
 
 ## Complete Example
@@ -55,33 +55,33 @@ qv.init();
 <form id="myForm">
     <div>
         <label class="label">Phone</label>
-        <input type="text" data-qv-rules="required|phone:FR" name="phone" />
-        <div data-qv-feedback="phone"></div>
+        <input type="text" data-tv-rules="required|phone:FR" name="phone" />
+        <div data-tv-feedback="phone"></div>
     </div>
     <div>
         <label class="label">Date</label>
         <input
             type="date"
-            data-qv-rules="required|date|after:now"
+            data-tv-rules="required|date|after:now"
             name="date"
         />
-        <div data-qv-feedback="date"></div>
+        <div data-tv-feedback="date"></div>
     </div>
     <div>
         <label class="label">File</label>
         <input
             type="file"
-            data-qv-rules="required|file|maxFileSize:1MB"
+            data-tv-rules="required|file|maxFileSize:1MB"
             name="file"
         />
-        <div data-qv-feedback="file"></div>
+        <div data-tv-feedback="file"></div>
     </div>
-    <p><button type="submit" data-qv-submit>Submit</button></p>
+    <p><button type="submit" data-tv-submit>Submit</button></p>
 </form>
 
-<script src="https://quick-v.github.io/documentation/quickv.2-alpha.js"></script>
+<script src="https://trivule.github.io/documentation/Trivule.2-alpha.js"></script>
 <script>
-const qv = new Quickv();
-qv.init();
+const tr = new Trivule();
+tr.init();
 </script>
 ```

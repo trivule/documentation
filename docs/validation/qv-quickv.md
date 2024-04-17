@@ -3,18 +3,18 @@ sidebar_position: 13
 ---
 # Global Validation
 
-## Quickv
+## Trivule
 
 If you have a website or application and want to apply the same validation rules to all forms without managing each form individually, you can use global validation.
 
 ## Usage
 
-To set up global validation, simply initialize Quickv:
+To set up global validation, simply initialize Trivule:
 
 ```html
 <script>
-  const qv = new Quickv();
-  qv.init();
+  const tr = new Trivule();
+  tr.init();
 </script>
 ```
 

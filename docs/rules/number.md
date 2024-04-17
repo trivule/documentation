@@ -13,7 +13,7 @@ The `min` rule allows you to check if a number is greater than or equal to a spe
 
 **Example:**
 ```html
-<input qv-rules="min:2"/>
+<input tr-rules="min:2"/>
 ```
 
 This rule checks if the input value is at least 2. If the value is a number, it performs a numeric comparison. If the value is a string, it verifies whether the number of characters is greater than or equal to 2.
@@ -26,7 +26,7 @@ The `max` rule allows you to check if a number is less than or equal to a specif
 
 **Example:**
 ```html
-<input qv-rules="max:20"/>
+<input tr-rules="max:20"/>
 ```
 
 This rule checks if the input value is at most 20. If the value is a number, it performs a numeric comparison. If the value is a string, it verifies whether the number of characters is less than or equal to 20.
@@ -39,7 +39,7 @@ The `integer` rule allows you to check if a number is an integer.
 
 **Example:**
 ```html
-<input qv-rules="integer"/>
+<input tr-rules="integer"/>
 ```
 
 This rule checks if the input value is an integer. It returns `true` if the value is an integer, and `false` otherwise.
@@ -52,7 +52,7 @@ The `number` rule allows you to check if a value is a number.
 
 **Example:**
 ```html
-<input qv-rules="number"/>
+<input tr-rules="number"/>
 ```
 
 This rule checks if the input value is a number. It returns `true` if the value is a number, and `false` otherwise.
@@ -65,8 +65,8 @@ The `modulo` rule, also known as its alias `mod`, allows you to check if a numbe
 
 **Example:**
 ```html
-<input qv-rules="modulo:2"/>
-<input qv-rules="mod:2"/>
+<input tr-rules="modulo:2"/>
+<input tr-rules="mod:2"/>
 ```
 
 This rule checks if the input value is a number and if it is a multiple or divisible by 2. It returns `true` if the condition is met, and `false` otherwise.

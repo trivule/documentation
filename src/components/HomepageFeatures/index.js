@@ -13,14 +13,14 @@ export default function HomepageFeatures() {
           <div className={clsx("col col--6")}>
             <h2>Easy to install and initialize</h2>
             <p>
-              Quickv is straightforward to install and initialize. Installation
+              Trivule is straightforward to install and initialize. Installation
               requires just two lines of code, making it accessible even for
               those without JavaScript knowledge. Initialization is equally
-              simple. Once installed, you can immediately begin using Quickv by
+              simple. Once installed, you can immediately begin using Trivule by
               adding custom attributes to your HTML forms. These attributes
               allow you to define complex validation rules without writing
-              additional JavaScript code. Quickv seamlessly integrates with your
-              forms, enabling dynamic validation with minimal setup.
+              additional JavaScript code. Trivule seamlessly integrates with
+              your forms, enabling dynamic validation with minimal setup.
             </p>
           </div>
           <div className={clsx("col col--6")}>
@@ -36,13 +36,13 @@ export default function HomepageFeatures() {
           <div className={clsx("col col--6")}>
             <h2>Effortless and Intuitive Usage</h2>
             <p>
-              Quickv simplifies form validation with predefined rules that you
+              Trivule simplifies form validation with predefined rules that you
               can easily apply to your form fields using custom HTML attributes.
               These attributes let you specify validation criteria directly
               within your HTML code, such as required fields, character length,
               patterns, or value ranges. By adding these attributes to your form
-              elements, Quickv automatically handles the validation process for
-              you. When users interact with your form, Quickv checks their
+              elements, Trivule automatically handles the validation process for
+              you. When users interact with your form, Trivule checks their
               inputs against the specified rules, ensuring data accuracy and
               consistency without requiring you to write any JavaScript code.
               This streamlined approach saves time and effort, making form
@@ -57,14 +57,14 @@ export default function HomepageFeatures() {
           <div className={clsx("col col--6")}>
             <h2>Easy to customize and extend</h2>
             <p>
-              Quickv allows you to customize validation messages, rules, and
+              Trivule allows you to customize validation messages, rules, and
               event triggers to suit your specific needs. You can create custom
               rules for unique validation scenarios and define tailored feedback
               messages in different languages for an internationalized user
               experience. Additionally, you can control when validation checks
               occur, such as on form submission or input changes, providing a
-              smooth, user-friendly form experience. Quickv's options enable you
-              to streamline form validation while saving time and effort.
+              smooth, user-friendly form experience. Trivule's options enable
+              you to streamline form validation while saving time and effort.
             </p>
           </div>
           <div className={clsx("col col--6")}>
