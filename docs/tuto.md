@@ -15,10 +15,10 @@ Welcome to the Trivule introductory tutorial! In this tutorial, we will learn ho
 
 ## Step 1: Include Trivule
 
-First, download the Trivule library from [this link](https://trivule.github.io/documentation/Trivule.2-alpha.js). Then, be sure to include the Trivule library in your web page. You can do this by adding a `<script>` tag with the path to the `Trivule.2-alpha.js` file (the source code). Make sure to include this tag before the closing `<body>` tag.
+First, download the Trivule library from [this link](https://trivule.github.io/documentation/trivule.2-alpha.js). Then, be sure to include the Trivule library in your web page. You can do this by adding a `<script>` tag with the path to the `Trivule.1-alpha.js` file (the source code). Make sure to include this tag before the closing `<body>` tag.
 
 ```html
-<script src="Trivule.2-alpha.js"></script>
+<script src="trivule.1-alpha.js"></script>
 ```
 ## Step 2: Define the Form
 
@@ -34,41 +34,41 @@ Here's an example:
         <label class="label">Name</label>
         <div>
             <input
-                data-tv-rules="required|between:2,80|only:string"
+                data-tr-rules="required|between:2,80|only:string"
                 type="text"
                 name="name"
                 required
             />
         </div>
-        <div data-tv-feedback="name"></div>
+        <div data-tr-feedback="name"></div>
     </div>
     <div>
         <label>Email</label>
-        <input type="text" data-tv-rules="required|email|maxlength:32" name="email" />
-        <div data-tv-feedback="email"></div>
+        <input type="text" data-tr-rules="required|email|maxlength:32" name="email" />
+        <div data-tr-feedback="email"></div>
     </div>
     <div>
         <label>Phone Number</label>
-        <input type="text" data-tv-rules="required|phone" name="phone" />
-        <div data-tv-feedback="phone"></div>
+        <input type="text" data-tr-rules="required|phone" name="phone" />
+        <div data-tr-feedback="phone"></div>
     </div>
     <div>
         <label>Message</label>
         <textarea
-            data-tv-rules="required|between:2,250|endWith:."
+            data-tr-rules="required|between:2,250|endWith:."
             name="message"
         ></textarea>
-        <div data-tv-feedback="message"></div>
+        <div data-tr-feedback="message"></div>
     </div>
     <p>
-        <button type="submit" value="Submit" data-tv-submit>
+        <button type="submit" value="Submit" data-tr-submit>
             Submit
         </button>
     </p>
 </form>
 ```
 
-In this example, we have added `data-tv-rules` attributes to the form fields to specify validation rules and `data-tv-feedback` attributes to certain `div` elements to display validation feedback.
+In this example, we have added `data-tr-rules` attributes to the form fields to specify validation rules and `data-tr-feedback` attributes to certain `div` elements to display validation feedback.
 
 ### Form Style
 To create a clean form style, add the following CSS code to your page.
@@ -85,7 +85,7 @@ form > div {
   margin-bottom: 0.75rem;
 }
 
-[data-tv-feedback] {
+[data-tr-feedback] {
   color: red;
 }
 
@@ -234,14 +234,14 @@ I hope this tutorial was helpful for you to get started with Trivule with a conc
 
 Trivule offers many customization and configuration options to meet your specific needs. Here are some additional resources to help you explore these features:
 
-- [Customizing Messages](/docs/validation/messages): Learn how to customize the error messages and text displayed by Trivule.
-- [Other Validation Rules](/docs/validation/rules): Explore the different validation rules available in Trivule, such as length validation, regular expression validation, and more.
-- [Validation Events](/docs/validation/events): Learn about validation events to interact with Trivule during form validation.
+- [Customizing Messages](/docs/messages): Learn how to customize the error messages and text displayed by Trivule.
+- [Other Validation Rules](/docs/rules): Explore the different validation rules available in Trivule, such as length validation, regular expression validation, and more.
+- [Validation Events](/docs/events): Learn about validation events to interact with Trivule during form validation.
 - [Validating Individual Inputs](/docs/validation/tr-input): Discover how to validate an individual form field with Trivule.
 - [Validating an Individual Form](/docs/validation/tr-form): Learn how to validate a specific form using Trivule.
-- [Validating Forms on a Page](/docs/validation/tr-Trivule): Discover how to validate all forms on a page at once.
+- [Validating Forms on a Page](/docs/validation/trivule): Discover how to validate all forms on a page at once.
 - [Examples](/docs/example): Check out real-world examples of Trivule's use for form validation.
-- [Framework Integration (React, Angular, etc.)](/docs/frameworks): Get instructions on integrating Trivule into popular frameworks like React, Angular, Vue.js, etc.
+- [Framework Integration (React, Angular, etc.)](#): Get instructions on integrating Trivule into popular frameworks like React, Angular, Vue.js, etc.
 - [Contribution](/docs/contribution): Contribute to Trivule's development by providing suggestions, bug reports, or proposing improvements.
 - [Development](/docs/contribution): If you are interested in Trivule development, see this documentation for information on how to contribute to the project.
 

@@ -15,19 +15,19 @@ Let's consider the following form:
 <form>
   <div>
     <label>Email</label>
-    <input type="text" data-tv-rules="required|email|maxlength:32" name="email" />
-    <div data-tv-feedback="email"></div>
+    <input type="text" data-tr-rules="required|email|maxlength:32" name="email" />
+    <div data-tr-feedback="email"></div>
   </div>
   <div>
     <label>Message</label>
     <textarea
-      data-tv-rules="required|between:2,250|endWith:."
+      data-tr-rules="required|between:2,250|endWith:."
       name="message"
     ></textarea>
-    <div data-tv-feedback="message"></div>
+    <div data-tr-feedback="message"></div>
   </div>
   <p>
-    <button type="submit" value="Submit" data-tv-submit>
+    <button type="submit" value="Submit" data-tr-submit>
       Send
     </button>
   </p>
@@ -43,7 +43,7 @@ trForm.init();
 
 By initializing the form, Trivule will attach the appropriate event handlers to the form and its fields. This setup ensures that when the form is submitted, the fields are validated according to the specified rules. If any field fails validation, the submit event is prevented, and appropriate feedback is displayed to the user.
 
-The `data-tv-rules` attribute is used to specify the validation rules for each input field, such as requiring a field to be filled (`required`), specifying the format (`email`), or setting constraints on length (`maxlength:32`). The `data-tv-feedback` attribute specifies where the feedback messages should be displayed.
+The `data-tr-rules` attribute is used to specify the validation rules for each input field, such as requiring a field to be filled (`required`), specifying the format (`email`), or setting constraints on length (`maxlength:32`). The `data-tr-feedback` attribute specifies where the feedback messages should be displayed.
 
 Once the form is initialized, Trivule takes care of handling form submissions and providing feedback based on the validation rules.
 

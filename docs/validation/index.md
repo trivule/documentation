@@ -22,30 +22,30 @@ This section focuses on form validation in Trivule. You will discover how to con
 
 Validation rules are the conditions that fields must satisfy to be considered valid. In this section, we will review the predefined validation rules available in Trivule, such as minimum length, email format, regex matching, and more. You will learn how to use these rules in your forms.
 
-[Validation Rules](/docs/validation/rules/)
+[Validation Rules](/docs/rules/)
 
 ## Validation Attributes
 
 Trivule uses HTML attributes to configure and customize the validation of fields and forms. In this section, we will detail the most commonly used Trivule attributes, explaining their purpose, use cases, and providing examples to illustrate their use.
 
-[Validation Attributes](/docs/validation/attributes/)
+[Validation Attributes](/docs/attributes/)
 
 ## Validation Events
 
 Validation events allow you to control when and how field validation should be triggered. In this section, we will explore the validation events supported by Trivule and show you how to use them to customize the validation behavior of your forms.
 
-[Validation Events](/docs/validation/events/)
+[Validation Events](/docs/events/)
 
 ## Validation Messages
 
 Validation messages are error messages displayed when fields do not satisfy validation rules. In this section, you will discover how to customize validation messages in Trivule using the appropriate attributes. We will also show you how to handle validation messages in different languages.
 
-[Validation Messages](/docs/validation/messages/)
+[Validation Messages](/docs/messages/)
 
 ## Global Validation
 
 Trivule also offers global validation features to facilitate the management of validation at the application level. In this section, you will discover how to configure and use Trivule to validate multiple forms or fields simultaneously and how to handle global validation errors.
 
-[Global Validation](/docs/validation/tr-Trivule)
+[Global Validation](/docs/validation/trivule)
 
 We hope this documentation helps you master validation in Trivule and easily integrate form validation into your web applications. If you have additional questions, feel free to consult the detailed documentation for each section or join our [community on Discord](https://discord.gg/wPPAfq5n) for assistance from the Trivule community.

@@ -17,15 +17,15 @@ First, Trivule checks the language set on the `lang` attribute of the root `html
 
 If Trivule supports the language defined in the `lang` attribute, or if you have added your own languages, the error messages will be displayed in that language.
 
-If, for any reason, you don't want to use the language defined in the `lang` attribute, you can use the `data-tv-lang` attribute on the root element to specify the language in which the messages should be displayed.
+If, for any reason, you don't want to use the language defined in the `lang` attribute, you can use the `data-tr-lang` attribute on the root element to specify the language in which the messages should be displayed.
 
 ```html
-<html data-tv-lang="en"></html>
+<html data-tr-lang="en"></html>
 ```
 
-The `data-tv-lang` attribute can also be used on a form element to specify the language for that specific form.
+The `data-tr-lang` attribute can also be used on a form element to specify the language for that specific form.
 ```html
-<form data-tv-lang="en"></form>
+<form data-tr-lang="en"></form>
 ```
 This means that error messages will be specific to each form.
 
@@ -50,7 +50,7 @@ Suppose you have an additional validation rule for the "Email" field: it must ha
 You can use placeholders to indicate error messages in any order. Here's how you can do it:
 
 ```html
-<input type="email" name="email" data-tv-messages="{0}Please enter a valid email address|{1}Email must be at least 8 characters long">
+<input type="email" name="email" data-tr-messages="{0}Please enter a valid email address|{1}Email must be at least 8 characters long">
 ```
 
 With this configuration, Trivule will display the first error message if the email address is invalid, and the second error message if the minimum length of 8 characters is not met.

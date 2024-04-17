@@ -13,16 +13,16 @@ Trivule provides the ability to listen for different JavaScript events to trigge
 
 By default, Trivule uses the `input`, `blur`, and `change` events to trigger form field validation. This means that whenever a user enters, leaves, or modifies a value in a form field, validation is automatically triggered.
 
-For instance, if you want to trigger validation when an element is hovered over by the mouse cursor, you can use Trivule's `data-tv-events` attribute and specify the `mouseenter` event as follows:
+For instance, if you want to trigger validation when an element is hovered over by the mouse cursor, you can use Trivule's `data-tr-events` attribute and specify the `mouseenter` event as follows:
 
 ```html
-<input data-tv-events="mouseenter" />
+<input data-tr-events="mouseenter" />
 ```
 
-The `data-tv-events` attribute can also accept a list of events separated by the `|` (pipe) symbol. For example, if you want to trigger validation on the `mouseenter`, `blur`, and `my-custom-event` events, you can use the following syntax:
+The `data-tr-events` attribute can also accept a list of events separated by the `|` (pipe) symbol. For example, if you want to trigger validation on the `mouseenter`, `blur`, and `my-custom-event` events, you can use the following syntax:
 
 ```html
-<input data-tv-events="mouseenter|blur|my-custom-event" />
+<input data-tr-events="mouseenter|blur|my-custom-event" />
 ```
 
 ## Trivule Events to Listen For

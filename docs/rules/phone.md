@@ -14,9 +14,9 @@ The `phone` rule validates the format of a phone number. Given the diversity of 
 
 **Example:**
 ```html
-<input data-tv-rules="phone:FR,BJ" /> 
+<input data-tr-rules="phone:FR,BJ" /> 
 
-<input data-tv-rules="phone" />
+<input data-tr-rules="phone" />
 <!-- Validates phone numbers globally -->
 ```
 

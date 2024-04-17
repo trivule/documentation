@@ -10,7 +10,7 @@ The following rules are used to validate files. They allow you to check if a val
 This rule checks if the input value is a `File` or `Blob` object.
 
 ```html
-<input data-tv-rules="file" />
+<input data-tr-rules="file" />
 ```
 
 - Usage: Use this rule to ensure that a file input field is filled with a valid file.
@@ -20,7 +20,7 @@ This rule checks if the input value is a `File` or `Blob` object.
 This rule checks if the size of a `File` or `Blob` object is less than or equal to a given maximum size.
 
 ```html
-<input data-tv-rules="maxFileSize:1MB" />
+<input data-tr-rules="maxFileSize:1MB" />
 ```
 
 - Usage: You can use this rule to limit the size of files that users can upload.
@@ -30,7 +30,7 @@ This rule checks if the size of a `File` or `Blob` object is less than or equal 
 This rule checks if the size of a `File` or `Blob` object is greater than or equal to a given minimum size.
 
 ```html
-<input data-tv-rules="minFileSize:1MB" />
+<input data-tr-rules="minFileSize:1MB" />
 ```
 
 - Usage: This rule is useful when you want to ensure that uploaded files have a specific minimum size.
@@ -40,7 +40,7 @@ This rule checks if the size of a `File` or `Blob` object is greater than or equ
 This rule checks if the size of a `File` or `Blob` object falls between specified minimum and maximum values.
 
 ```html
-<input data-tv-rules="fileBetween:1MB,5MB" />
+<input data-tr-rules="fileBetween:1MB,5MB" />
 ```
 
 - Usage: You can use this rule to limit the size of uploaded files to a specific range.
@@ -59,25 +59,25 @@ The "mimes" rule validates the MIME type of the uploaded file by comparing it to
 
 ### Example 1: Accept only PDF files
 ```html
-<input type="file" data-tv-rules="mimes:.pdf">
+<input type="file" data-tr-rules="mimes:.pdf">
 ```
 This example restricts file uploads to only accept files with the MIME type "application/pdf".
 
 ### Example 2: Accept multiple MIME types
 ```html
-<input type="file" data-tv-rules="mimes:image/jpeg, image/png">
+<input type="file" data-tr-rules="mimes:image/jpeg, image/png">
 ```
 In this example, file uploads are allowed for JPEG and PNG image files.
 
 ### Example 3: Accept specific MIME type groups
 ```html
-<input type="file" data-tv-rules="mimes:audio/*">
+<input type="file" data-tr-rules="mimes:audio/*">
 ```
 This example allows file uploads for audio files, regardless of their specific MIME type.
 
 ### Example 4: Using wildcards
 ```html
-<input type="file" data-tv-rules="mimes:image/*">
+<input type="file" data-tr-rules="mimes:image/*">
 ```
 Here, all image files with a MIME type starting with "image/" will be accepted.
 

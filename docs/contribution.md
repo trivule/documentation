@@ -84,7 +84,7 @@ Explanation:
 2. The second argument, `params`, refers to possible arguments. The arguments are comma-separated strings. You can retrieve them individually using the `splitParam` function. 
 For example, if you have an HTML field like this:
 ```html
-<input data-tv-rules="in:active, inactive, suspended" />
+<input data-tr-rules="in:active, inactive, suspended" />
 ```
 The values after the colon (`:`) are the parameters. In this case, the second argument would be a string like `"active, inactive, suspended"`. You can use the function `splitParam(params ?? "")` to obtain an array of individual values, for example, `['active', 'inactive', 'suspended']`.
 

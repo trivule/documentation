@@ -13,7 +13,7 @@ The `email` rule validates an email address.
 
 **Example:**
 ```html
-<input data-tv-rules="email" />
+<input data-tr-rules="email" />
 <!-- Validates an email address -->
 ```
 
@@ -29,7 +29,7 @@ The `minlength` rule validates the minimum length of a string.
 
 **Example:**
 ```html
-<input data-tv-rules="minlength:8" />
+<input data-tr-rules="minlength:8" />
 <!-- Validates a string with a minimum length of 8 -->
 ```
 
@@ -44,7 +44,7 @@ The `maxlength` rule validates the maximum length of a string.
 
 **Example:**
 ```html
-<input data-tv-rules="maxlength:8" />
+<input data-tr-rules="maxlength:8" />
 <!-- Validates a string with a maximum length of 8 -->
 ```
 
@@ -60,7 +60,7 @@ The `url` rule validates a URL.
 
 **Example:**
 ```html
-<input data-tv-rules="url" />
+<input data-tr-rules="url" />
 <!-- Validates a URL -->
 ```
 
@@ -76,7 +76,7 @@ The `startWithUpper` rule verifies if a string starts with an uppercase letter.
 
 **Example:**
 ```html
-<input data-tv-rules="startWithUpper" />
+<input data-tr-rules="startWithUpper" />
 <!-- Verifies if a string starts with an uppercase letter -->
 ```
 
@@ -92,12 +92,12 @@ The `lower` rule verifies if the entered data consists of only lowercase letters
 
 **Example:**
 ```html
-<input data-tv-rules="lower" />
+<input data-tr-rules="lower" />
 ```
 
 This rule ensures that the value entered in the input field is entirely in lowercase. If the input contains uppercase letters, the validation will fail.
 
-In this example, the `lower` rule is used to validate the username field in a registration form. The `data-tv-rules` attribute is set to `"lower"` to apply the rule. Any input that does not respect the rule (containing uppercase letters) will fail validation.
+In this example, the `lower` rule is used to validate the username field in a registration form. The `data-tr-rules` attribute is set to `"lower"` to apply the rule. Any input that does not respect the rule (containing uppercase letters) will fail validation.
 
 Please note that some rules may have aliases, so make sure to use the correct rule name when applying validation.
 
@@ -110,14 +110,14 @@ This rule verifies that the input does not contain any of the characters specifi
 ### Usage
 
 ```html
-<input data-tv-rules="excludes:-,@" />
+<input data-tr-rules="excludes:-,@" />
 ```
 If you want to exclude spaces, you should use the special character `&esp;` instead of the regular space character.
 
 ### Example
 
 ```html
-<input data-tv-rules="excludes:-,@,&esp;" />
+<input data-tr-rules="excludes:-,@,&esp;" />
 ```
 
 In this example, the `excludes` rule is applied to an input field. It verifies that the entered value does not contain the character `-` or `@` or a space. If the input contains any of these characters, the rule returns `false`, indicating validation failure.
@@ -137,12 +137,12 @@ Use the `stringBetween` rule when you want to ensure that the length of a string
 Suppose you have a form that requires a password field and you want to impose a minimum and maximum length for the password. You can apply the `stringBetween` rule to the password input field to validate it.
 
 ```html
-<input data-tv-rules="stringBetween:8,20" />
+<input data-tr-rules="stringBetween:8,20" />
 ```
 
 This will ensure that the password entered in the field has a length between 8 and 20 characters (inclusive). If the length of the input is less than 8 or more than 20, the validation will fail.
 
-In this example, the `stringBetween` rule is used to validate the password field in a form. The `data-tv-rules` attribute is set to `"stringBetween:8,20"` to apply the rule. Any input that violates the rule (a length outside the specified range) will fail validation.
+In this example, the `stringBetween` rule is used to validate the password field in a form. The `data-tr-rules` attribute is set to `"stringBetween:8,20"` to apply the rule. Any input that violates the rule (a length outside the specified range) will fail validation.
 
 --- 
 

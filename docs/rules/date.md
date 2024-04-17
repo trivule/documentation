@@ -10,7 +10,7 @@ The following rules are used to validate dates. These rules allow you to verify 
 This rule checks if the input is a valid date.
 
 ```html
-<input type="date" data-tv-rules="date" />
+<input type="date" data-tr-rules="date" />
 ```
 
 - Usage: Use this rule to ensure that the user enters a valid date in a date input field.
@@ -20,7 +20,7 @@ This rule checks if the input is a valid date.
 This rule checks if the entered date is before a specified date.
 
 ```html
-<input type="date" data-tv-rules="before:2020-11-11" />
+<input type="date" data-tr-rules="before:2020-11-11" />
 ```
 
 - Usage: This rule is useful when you want to ensure that the user selects a date earlier than a specified date.
@@ -30,7 +30,7 @@ This rule checks if the entered date is before a specified date.
 This rule checks if the entered date is after a specified date.
  
 ```html
-<input type="date" data-tv-rules="after:now" />
+<input type="date" data-tr-rules="after:now" />
 ```
 
 - Usage: Use this rule to ensure that the user selects a date later than the current date.
@@ -40,7 +40,7 @@ This rule checks if the entered date is after a specified date.
 This rule checks if the entered date falls between two other dates.
 
 ```html
-<input type="date" data-tv-rules="dateBetween:2020-11-11,now" />
+<input type="date" data-tr-rules="dateBetween:2020-11-11,now" />
 ```
 
 - Usage: This rule is useful when you want to validate whether a date is within a specific date range.
@@ -50,7 +50,7 @@ This rule checks if the entered date falls between two other dates.
 This rule checks if the entered time is in the 24-hour format.
 
 ```html
-<input type="time" data-tv-rules="time" />
+<input type="time" data-tr-rules="time" />
 ```
 
 - Usage: Use this rule to validate time input fields, ensuring that the user enters a valid time in the 24-hour format.

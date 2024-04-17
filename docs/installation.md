@@ -55,28 +55,28 @@ tr.init();
 <form id="myForm">
     <div>
         <label class="label">Phone</label>
-        <input type="text" data-tv-rules="required|phone:FR" name="phone" />
-        <div data-tv-feedback="phone"></div>
+        <input type="text" data-tr-rules="required|phone:FR" name="phone" />
+        <div data-tr-feedback="phone"></div>
     </div>
     <div>
         <label class="label">Date</label>
         <input
             type="date"
-            data-tv-rules="required|date|after:now"
+            data-tr-rules="required|date|after:now"
             name="date"
         />
-        <div data-tv-feedback="date"></div>
+        <div data-tr-feedback="date"></div>
     </div>
     <div>
         <label class="label">File</label>
         <input
             type="file"
-            data-tv-rules="required|file|maxFileSize:1MB"
+            data-tr-rules="required|file|maxFileSize:1MB"
             name="file"
         />
-        <div data-tv-feedback="file"></div>
+        <div data-tr-feedback="file"></div>
     </div>
-    <p><button type="submit" data-tv-submit>Submit</button></p>
+    <p><button type="submit" data-tr-submit>Submit</button></p>
 </form>
 
 <script src="https://trivule.github.io/documentation/Trivule.2-alpha.js"></script>

@@ -10,7 +10,7 @@ The `required` rule ensures that an input is mandatory.
 ### Usage
 
 ```html
-<input data-tv-rules="required" />
+<input data-tr-rules="required" />
 ```
 
 ### Description
@@ -20,7 +20,7 @@ This rule checks if the input is not empty. If the input value is empty, the rul
 ### Example
 
 ```html
-<input data-tv-rules="required" />
+<input data-tr-rules="required" />
 ```
 
 In this example, the `required` rule is applied to an input field. It checks if a value has been entered into the field. If the field is empty, the rule returns `false`, indicating that validation has failed.
@@ -34,7 +34,7 @@ The `nullable` rule allows an input to be null (not required).
 ### Usage
 
 ```html
-<input data-tv-rules="nullable" />
+<input data-tr-rules="nullable" />
 ```
 
 ### Description
@@ -44,7 +44,7 @@ This rule does not perform any specific checks and always returns `true`. It is 
 ### Example
 
 ```html
-<input data-tv-rules="nullable" />
+<input data-tr-rules="nullable" />
 ```
 
 In this example, the `nullable` rule is applied to an input field. It indicates that input in this field is not mandatory. Validation will be considered successful whether the field is empty or not.
@@ -58,7 +58,7 @@ The `in` rule checks if an input is part of a specified list of values.
 ### Usage
 
 ```html
-<input data-tv-rules="in:active,inactive" />
+<input data-tr-rules="in:active,inactive" />
 ```
 
 ### Description
@@ -68,7 +68,7 @@ This rule checks if the input value is part of the specified list of values. Val
 ### Example
 
 ```html
-<input data-tv-rules="in:active,inactive" />
+<input data-tr-rules="in:active,inactive" />
 ```
 
 In this example, the `in` rule is applied to an input field. It checks if the input value is either "active" or "inactive." If the input value is not part of this list, the rule returns `false`, indicating that validation has failed.
@@ -82,12 +82,12 @@ The `size` rule checks if an input adheres to a specified maximum size.
 ### Usage
 
 ```html
-<input type="text" data-tv-rules="size:6" />
+<input type="text" data-tr-rules="size:6" />
 ```
 or
 
 ```html
-<input type="file" data-tv-rules="size:6MB" />
+<input type="file" data-tr-rules="size:6MB" />
 ```
 ### Description
 
@@ -99,7 +99,7 @@ This rule checks if the input adheres to the specified maximum size. The rule is
 ### Example
 
 ```html
-<input type="text" data-tv-rules="size:6" />
+<input type="text" data-tr-rules="size:6" />
 ```
 
 In this example, the `size` rule is applied to an input field. It checks if the size of the input is equal to 6 characters. If the size exceeds or falls below 6 characters, the rule returns `false`, indicating that validation has failed.
@@ -113,7 +113,7 @@ The `boolean` rule checks if an input is a boolean value.
 ### Usage
 
 ```html
-<input data-tv-rules="boolean" />
+<input data-tr-rules="boolean" />
 ```
 
 ### Description
@@ -123,7 +123,7 @@ This rule checks if the input corresponds to a boolean value. The accepted value
 ### Example
 
 ```html
-<input data-tv-rules="boolean" />
+<input data-tr-rules="boolean" />
 ```
 
 In this example, the `boolean` rule is applied to an input field. It checks if the input value corresponds to a boolean value. If the input value is not a valid boolean, the rule returns `false`, indicating that validation has failed.
@@ -138,16 +138,16 @@ The `between` rule checks if an input falls within specified minimum and maximum
 
 ```html
 <!-- Valid number -->
-<input type="number" data-tv-rules="between:6,7" />
+<input type="number" data-tr-rules="between:6,7" />
 
 <!-- Valid string -->
-<input type="text" data-tv-rules="between:6,7" />
+<input type="text" data-tr-rules="between:6,7" />
 
 <!-- Valid date -->
-<input type="date-local" data-tv-rules="between:01-01-2021,now" />
+<input type="date-local" data-tr-rules="between:01-01-2021,now" />
 
 <!-- Valid file size -->
-<input type="file" data-tv-rules="between:2MB,3MB" />
+<input type="file" data-tr-rules="between:2MB,3MB" />
 ```
 
 ### Description
@@ -163,16 +163,16 @@ This rule allows you to validate different types of data by specifying a range o
 
 ```html
 <!-- Valid number -->
-<input type="number" data-tv-rules="between:6,7" />
+<input type="number" data-tr-rules="between:6,7" />
 
 <!-- Valid string -->
-<input type="text" data-tv-rules="between:6,7" />
+<input type="text" data-tr-rules="between:6,7" />
 
 <!-- Valid date -->
-<input type="date-local" data-tv-rules="between:01-01-2021,now" />
+<input type="date-local" data-tr-rules="between:01-01-2021,now" />
 
 <!-- Valid file size -->
-<input type="file" data-tv-rules="between:2MB,3MB" />
+<input type="file" data-tr-rules="between:2MB,3MB" />
 ```
 
 In these examples, the `between` rule is applied to different types of input fields. It checks if the input value falls within the specified ranges. If the input value does not fall within the specified range, the rule returns `false`, indicating that validation has failed.
@@ -186,7 +186,7 @@ The `regex` rule checks if an input matches a specified regular expression.
 ### Usage
 
 ```html
-<input data-tv-rules="regex:^[A-Z]+$" />
+<input data-tr-rules="regex:^[A-Z]+$" />
 ```
 
 ### Description
@@ -196,7 +196,7 @@ This rule checks if the input value matches the specified regular expression. Th
 ### Example
 
 ```html
-<input data-tv-rules="regex:^[A-Z]+$" />
+<input data-tr-rules="regex:^[A-Z]+$" />
 ```
 
 In this example, the `regex` rule is applied to an input field. It checks if the input value is a sequence of uppercase letters. If the input value does not match the regular expression, the rule returns `false`, indicating that validation has failed.
@@ -207,13 +207,13 @@ The `regex` rule in Trivule typically uses the `|` symbol as a separator to spec
 Instead of writing your `regex` rule like this:
 
 ```html
-<input data-tv-rules="regex:^abc|def$" />
+<input data-tr-rules="regex:^abc|def$" />
 ```
 
 You can use the character '`&pip;`' in place of the `|` symbol, like this:
 
 ```html
-<input data-tv-rules="regex:^abc&pip;def$" />
+<input data-tr-rules="regex:^abc&pip;def$" />
 ```
 
 This way, Trivule will recognize that you want to use the `|` symbol in your regular expression without interpreting it as a rule separator.
@@ -229,7 +229,7 @@ The `only` rule checks if an input matches a specific type.
 ### Usage
 
 ```html
-<input data-tv-rules="only:letter" />
+<input data-tr-rules="only:letter" />
 ```
 
 ### Description
@@ -239,7 +239,7 @@ This rule allows you to validate an input based on its type. Two types are curre
 ### Example
 
 ```html
-<input data-tv-rules="only:letter" />
+<input data-tr-rules="only:letter" />
 ```
 
 In this example, the `only` rule is applied to an input field. It checks if the input value is a string containing only letters. If the input value does not match the specified type, the rule returns `false`, indicating that validation has failed.

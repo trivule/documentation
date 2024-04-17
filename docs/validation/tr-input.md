@@ -11,7 +11,7 @@ The `TrInput` class is a core component of Trivule that enables individual input
 
 ## Initialization
 
-First and foremost, when initializing an instance of this class, it sets up the `rules`, `messages`, and other values defined on the input element using `data-tv` attributes or the second argument of it constructor, which is an object of type `TrInputParams`. 
+First and foremost, when initializing an instance of this class, it sets up the `rules`, `messages`, and other values defined on the input element using `data-tr` attributes or the second argument of it constructor, which is an object of type `TrInputParams`. 
   
 ```javascript
   const trInput = new TrInput("input") 
@@ -19,17 +19,17 @@ First and foremost, when initializing an instance of this class, it sets up the 
 The first constructor argument should be a [`ValidatableInput` ](#)
 
 This assumes you have an input on your page that has the ID #my-input.
-This input would have its validation dependencies via data-tv attributes
+This input would have its validation dependencies via data-tr attributes
 ```html
 <input 
   type="text"
-  data-tv-invalid-class="is-invalid"
-  data-tv-rules="required|min:8"
-  data-tv-events="blur|change|input" 
+  data-tr-invalid-class="is-invalid"
+  data-tr-rules="required|min:8"
+  data-tr-events="blur|change|input" 
   name="phone"
 />
 ```
-Rather than setting the `data-tv` attributes this way, you have the option of directly passing a `TrInputParams` object with the same parameters:
+Rather than setting the `data-tr` attributes this way, you have the option of directly passing a `TrInputParams` object with the same parameters:
 
 ```javascript
 const inputElement = document.querySelector("#my-input");
@@ -63,19 +63,19 @@ This allows you to customize validation settings directly after creating the `tr
 trInput.init();
 ```
 
-Once this setup is complete, calling the `init` method starts listening to the events specified by the `data-tv-events` attribute or the `events` property in the `TrInputParams` object.
+Once this setup is complete, calling the `init` method starts listening to the events specified by the `data-tr-events` attribute or the `events` property in the `TrInputParams` object.
 When one of these events is triggered, the defined validation rules are executed in the order they were defined.
 
 ## Rules Assignment
 
-Assigning rules to an input field is an essential step in the validation process. To do this, you can use either the `data-tv-rules` attribute in your HTML tag, or the `rules` attribute of the `TrInputParams` object when initializing the `trInput` instance.
+Assigning rules to an input field is an essential step in the validation process. To do this, you can use either the `data-tr-rules` attribute in your HTML tag, or the `rules` attribute of the `TrInputParams` object when initializing the `trInput` instance.
 
 Here is an example illustrating this assignment:
 
 ```html
 <input
    type="text"
-   data-tv-rules="required|min:8"
+   data-tr-rules="required|min:8"
    name="password"
 />
 ```
@@ -99,12 +99,12 @@ By using these attributes, you can easily specify validation rules for your inpu
 
 ## Validation trigger
 
-You have the ability to define your own custom JavaScript events that trigger the validation process. By default, the events used are `blur`, `input` and `change`. However, if you want to customize these events, you can do so by using the `data-tv-events` attribute on your HTML elements or by using the `events` attribute of the `TrInputParams` object.
+You have the ability to define your own custom JavaScript events that trigger the validation process. By default, the events used are `blur`, `input` and `change`. However, if you want to customize these events, you can do so by using the `data-tr-events` attribute on your HTML elements or by using the `events` attribute of the `TrInputParams` object.
 
-When using the `data-tv-events` attribute on an HTML element, you can specify the events separated by the `|` symbol. For example :
+When using the `data-tr-events` attribute on an HTML element, you can specify the events separated by the `|` symbol. For example :
 
 ```html
-<input type="text" data-tv-events="focus|input|myCustomEvent" />
+<input type="text" data-tr-events="focus|input|myCustomEvent" />
 ```
 
 In this example, validation will be triggered on the `focus`, `input` events, as well as the `myCustomEvent` custom event.
@@ -123,19 +123,19 @@ Feel free to customize validation events to your specific needs using either of 
 
 ## Validation error style
  
-It is common to visually indicate the validation status of form fields by applying specific CSS classes. You can easily add a CSS class to your input field when it is valid or invalid using the `data-tv-invalid-class` or `data-tv-valid` attributes, or the `invalidClass` or ` validClass` of the `TrInputParams` object.
+It is common to visually indicate the validation status of form fields by applying specific CSS classes. You can easily add a CSS class to your input field when it is valid or invalid using the `data-tr-invalid-class` or `data-tr-valid` attributes, or the `invalidClass` or ` validClass` of the `TrInputParams` object.
 
-The default class to represent the invalid state of a form field is `is-invalid`. This means that if you don't explicitly specify the class to use with the `data-tv-invalid-class` or `invalidClass` attribute of the TrInputParams object, the '`is-invalid`' class will be automatically added to your input field when the validation fails.
+The default class to represent the invalid state of a form field is `is-invalid`. This means that if you don't explicitly specify the class to use with the `data-tr-invalid-class` or `invalidClass` attribute of the TrInputParams object, the '`is-invalid`' class will be automatically added to your input field when the validation fails.
 
-The `data-tv-invalid-class` attribute allows you to specify the CSS class that will be added to your input field when it is invalid. For example :
+The `data-tr-invalid-class` attribute allows you to specify the CSS class that will be added to your input field when it is invalid. For example :
 
 ```html
-<input type="text" data-tv-invalid-class="error" />
+<input type="text" data-tr-invalid-class="error" />
 ```
 
 In this example, the CSS class "error" will be applied to the `<input>` element when validation fails.
 
-Similarly, you can use the `data-tv-valid` attribute to specify the CSS class that will be added to your input field when it is valid.
+Similarly, you can use the `data-tr-valid` attribute to specify the CSS class that will be added to your input field when it is valid.
 
 If you prefer to use the `invalidClass` or `validClass` attribute of the `TrInputParams` object when creating a `TrInput` instance, you can do so as follows:
 
@@ -157,12 +157,12 @@ Suppose you have a form with two fields: "Name" and "Email". You want to specify
 
 For the "Name" field, you want to display the message "**Name is mandatory**" if no value is entered. For the "Email" field, you want to display the message "**Please enter a valid email address**".
 
-You can use the `data-tv-messages` attribute to customize error messages for each field. Here's how you can do it:
+You can use the `data-tr-messages` attribute to customize error messages for each field. Here's how you can do it:
 
 ```html
-<input type="text" data-tv-rules="required" name="name" data-tv-messages="Name is required">
+<input type="text" data-tr-rules="required" name="name" data-tr-messages="Name is required">
 
-<input type="email" data-tv-rules="email" name="email" data-tv-messages="Please enter a valid email address">
+<input type="email" data-tr-rules="email" name="email" data-tr-messages="Please enter a valid email address">
 ```
 
 With this configuration, Trivule will display specific error messages when the corresponding rules are not respected for each field.
@@ -174,7 +174,7 @@ Now let's suppose you want to have a general error message for the "required", "
 You can use the rule positions to specify a common error message. Here's how you can do it:
 
 ```html
-<input type="text" data-tv-rules="required|email|maxlength:32" name="name" data-tv-messages="{0,1,3}Please enter a valid email address"> 
+<input type="text" data-tr-rules="required|email|maxlength:32" name="name" data-tr-messages="{0,1,3}Please enter a valid email address"> 
 ```
 
 Avec cette configuration, Trivule affichera le message d'erreur "**Veuillez saisir une adresse email valide**" si le champ est vide, n'est pas une adresse valide ou dépasse 32 caractères.
@@ -183,20 +183,20 @@ Avec cette configuration, Trivule affichera le message d'erreur "**Veuillez sais
  
 Suppose you want to display error messages in specific locations on your page, rather than just next to the form fields.
 
-You can use the `data-tv-feedback` attribute to specify where to display the error messages. Here's how you can do it:
+You can use the `data-tr-feedback` attribute to specify where to display the error messages. Here's how you can do it:
 
 ```html
-<input type="text" name="name" data-tv-messages="Name is required">
+<input type="text" name="name" data-tr-messages="Name is required">
  
-<div data-tv-feedback="name"></div> 
+<div data-tr-feedback="name"></div> 
 ```
 
-With this configuration, the error message will be displayed inside the `<div>` element with the `data-tv-feedback="name"` attribute. You can place the `<div data-tv-feedback="name"></div>` element anywhere on the page. Trivule will display the error message in the nearest element to the corresponding input.
+With this configuration, the error message will be displayed inside the `<div>` element with the `data-tr-feedback="name"` attribute. You can place the `<div data-tr-feedback="name"></div>` element anywhere on the page. Trivule will display the error message in the nearest element to the corresponding input.
 
-This allows you to control the location where error messages are displayed on the page and style them according to your needs. You can use CSS selectors to target elements with the `data-tv-feedback` attribute and apply specific styles to the error messages. For example:
+This allows you to control the location where error messages are displayed on the page and style them according to your needs. You can use CSS selectors to target elements with the `data-tr-feedback` attribute and apply specific styles to the error messages. For example:
 
 ```css
-div[data-tv-feedback] {
+div[data-tr-feedback] {
   color: red;
   font-size: 14px;
 }
@@ -205,10 +205,10 @@ div[data-tv-feedback] {
 Trivule provides different ways to display errors in a form.
 
 #### Via HTML:
-If you want to display all error messages once the first rule fails, you can use the `data-tv-show` attribute. It accepts two possible values: `first` and `full`.
+If you want to display all error messages once the first rule fails, you can use the `data-tr-show` attribute. It accepts two possible values: `first` and `full`.
 
 ```html
-<input type="text" name="myInput" data-tv-show="first">
+<input type="text" name="myInput" data-tr-show="first">
 ```
 
 By default, the value is set to `first`, which means only the first error message will be displayed. If you choose the value `full`, all error messages from all the rules will be displayed.
