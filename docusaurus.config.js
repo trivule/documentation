@@ -8,7 +8,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Your ally for effortless form validation",
+  title: "Developper ally for effortless form validation",
   tagline: "Your ally for effortless form validation",
   favicon: "img/logo.png",
 
