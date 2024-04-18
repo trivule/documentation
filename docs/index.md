@@ -1,5 +1,6 @@
 ---
 sidebar_position: 0
+title: Why Trivule?
 ---
 > **Note:** Experimental Trivule 1.0.
 # Why Trivule?

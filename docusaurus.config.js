@@ -78,7 +78,11 @@ const config = {
             position: "left",
             label: "Documentation",
           },
-
+          {
+            href: "/try-trivule",
+            position: "left",
+            label: "Try online",
+          },
           {
             href: "https://github.com/trivule",
             label: "GitHub",

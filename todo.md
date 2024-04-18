@@ -1,2 +1,1 @@
-- Replace https://trivule.github.io/documentation/Trivule.2-alpha.js by the production link
 - Rewrite onInit doc (docs/validation/tr-form)

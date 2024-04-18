@@ -12,7 +12,7 @@ sidebar_position: 2
 
 To use Trivule, follow these steps:
 
-1. **[Download](https://trivule.github.io/documentation/Trivule.2-alpha.js)** the Trivule library from [here](https://trivule.github.io/documentation/Trivule.2-alpha.js). Alternatively, you can directly use the link: `https://trivule.github.io/documentation/Trivule.2-alpha.js`.
+1. **[Download](https://www.trivule.com/js/trivule.js)** the Trivule library from [here](https://www.trivule.com/js/trivule.js). Alternatively, you can directly use the link: `https://www.trivule.com/js/trivule.js`.
 2. Include the Trivule library in your web page as you would any other JavaScript file.
 
 ## Installation via npm
@@ -79,7 +79,7 @@ tr.init();
     <p><button type="submit" data-tr-submit>Submit</button></p>
 </form>
 
-<script src="https://trivule.github.io/documentation/Trivule.2-alpha.js"></script>
+<script src="https://www.trivule.com/js/trivule.js"></script>
 <script>
 const tr = new Trivule();
 tr.init();
