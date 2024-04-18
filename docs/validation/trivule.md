@@ -1,6 +1,7 @@
 ---
 sidebar_position: 13
 ---
+> **Note:** Experimental Trivule 1.0.
 # Global Validation
 
 ## Trivule

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 ---
+> **Note:** Experimental Trivule 1.0.
 # Number Validation
 
 These validation rules are specifically designed for numbers. They allow you to verify whether a numeric value satisfies certain conditions. Here is a detailed description of each rule and examples of practical usage:

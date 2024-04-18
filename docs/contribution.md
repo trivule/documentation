@@ -15,7 +15,7 @@ If you encounter problems or have ideas for improvements, feel free to open an i
 If you would like to make changes to the code, we encourage you to propose a pull request. Please follow the steps below:
 
 1. Fork the repository and clone it locally to your machine.
-2. Switch to the `2.0.0` branch on which you want to work.
+2. Switch to the `1.x` branch on which you want to work.
 3. Install the project dependencies locally by running the following command:
 ```bash
    npm install

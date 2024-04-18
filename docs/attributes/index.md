@@ -2,7 +2,7 @@
 sidebar_position: 18
 title: Attributes
 ---
-> **Note:** Trivule 2.0 (Experimental)
+> **Note:** Experimental Trivule 1.0.
 
 # Attributes
 

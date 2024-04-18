@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Tutorial in 5 Minutes
 ---
-> **Note:** Trivule 2.0 (Experimental)
+> **Note:** Experimental Trivule 1.0.
 
 # Trivule Tutorial in 5 Minutes
 

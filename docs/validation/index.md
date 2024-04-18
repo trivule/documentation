@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 ---
+> **Note:** Experimental Trivule 1.0.
 # Validation
 Validation is a crucial aspect of managing forms in web applications. In this documentation, we will explore the concepts related to validation in Trivule and guide you through the different features offered by the library for validating fields and forms.
 

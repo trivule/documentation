@@ -12,6 +12,7 @@ const config = {
   tagline: "Your ally for effortless form validation",
   favicon: "img/logo.png",
 
+  baseUrlIssueBanner: true,
   // Set the production url of your site here
   url: "http://trivule.com",
   // Set the /<baseUrl>/ pathname under which your site is served

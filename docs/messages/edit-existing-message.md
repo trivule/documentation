@@ -2,7 +2,7 @@
 sidebar_position: 15
 title: Modifying an Existing Message
 ---
-> **Note:** Trivule 2.0 (Experimental)
+> **Note:** Experimental Trivule 1.0.
 
 # Modifying an Existing Message
 

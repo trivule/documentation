@@ -6,7 +6,7 @@ sidebar_position: 2
 
 # Installation
 
-> **Note:** Experimental Trivule 2.0.
+> **Note:** Experimental Trivule 1.0.
 
 ## Downloading or Using CDN
 
@@ -20,7 +20,7 @@ To use Trivule, follow these steps:
 1. Go to your project directory and enter the following command:
 
 ```bash
-npm install Trivule@2.0.0-alpha.2
+npm install trivule
 ```
 
 After installation, you can use Trivule in your project as needed:

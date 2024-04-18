@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 ---
+> **Note:** Experimental Trivule 1.0.
 # General Validation Rules
 
 ## Rule: `required`

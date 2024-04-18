@@ -2,7 +2,7 @@
 sidebar_position: 17
 title: Translation
 ---
-> **Note:** Trivule 2.0 (Experimental)
+> **Note:** Experimental Trivule 1.0.
  
 # Translation
 

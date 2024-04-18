@@ -3,7 +3,7 @@
 sidebar_position: 20
 title: Events
 ---
-> **Note:** Trivule 2.0 (Experimental)
+> **Note:** Experimental Trivule 1.0.
 
 # Events
 
