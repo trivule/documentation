@@ -1,5 +1,6 @@
 ---
 sidebar_position: 13
+title: Global Validation
 ---
 > **Note:** Experimental Trivule 1.0.
 # Global Validation

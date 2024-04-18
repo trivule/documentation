@@ -1,5 +1,6 @@
 ---
 sidebar_position: 7
+title: File Validation
 ---
 > **Note:** Experimental Trivule 1.0.
 # File Validation

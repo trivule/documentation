@@ -1,5 +1,6 @@
 ---
 sidebar_position: 10
+title: Validations
 ---
 > **Note:** Experimental Trivule 1.0.
 # Validation

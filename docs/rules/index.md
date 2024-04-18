@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+title: Validation Rules
 ---
 > **Note:** Experimental Trivule 1.0.
 # Validation Rules

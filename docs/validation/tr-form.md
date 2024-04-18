@@ -1,5 +1,6 @@
 ---
 sidebar_position: 12
+title: Form Validation
 ---
 > **Note:** Experimental Trivule 1.0.
 # Form Validation

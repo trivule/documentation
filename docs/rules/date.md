@@ -1,5 +1,6 @@
 ---
 sidebar_position: 8
+title: Date Validation
 ---
 > **Note:** Experimental Trivule 1.0.
 # Date Validation
