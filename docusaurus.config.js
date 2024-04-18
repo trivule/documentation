@@ -10,7 +10,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config = {
   title: "Developper ally for effortless form validation",
   tagline: "Your ally for effortless form validation",
-  favicon: "img/logo.png",
+  favicon: "img/favicon.ico",
 
   baseUrlIssueBanner: true,
   // Set the production url of your site here

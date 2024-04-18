@@ -15,7 +15,7 @@ Welcome to the Trivule introductory tutorial! In this tutorial, we will learn ho
 
 ## Step 1: Include Trivule
 
-First, download the Trivule library from [this link](https://www.trivule.com/js/trivule.js). Then, be sure to include the Trivule library in your web page. You can do this by adding a `<script>` tag with the path to the `Trivule.1-alpha.js` file (the source code). Make sure to include this tag before the closing `<body>` tag.
+First, download the Trivule library from [this link](https://www.trivule.com/js/trivule.js). Then, be sure to include the Trivule library in your web page. You can do this by adding a `<script>` tag with the path to the `trivule.js` file (the source code). Make sure to include this tag before the closing `<body>` tag.
 
 ```html
 <script src="trivule.js"></script>
