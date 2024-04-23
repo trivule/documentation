@@ -1,13 +1,13 @@
-var Ds = Object.defineProperty;
+var Is = Object.defineProperty;
 var We = Object.getOwnPropertySymbols;
-var Is = Object.prototype.hasOwnProperty,
+var Ds = Object.prototype.hasOwnProperty,
   Rs = Object.prototype.propertyIsEnumerable;
 var ke = (y, E, b) =>
     E in y
-      ? Ds(y, E, { enumerable: !0, configurable: !0, writable: !0, value: b })
+      ? Is(y, E, { enumerable: !0, configurable: !0, writable: !0, value: b })
       : (y[E] = b),
-  I = (y, E) => {
-    for (var b in E || (E = {})) Is.call(E, b) && ke(y, b, E[b]);
+  D = (y, E) => {
+    for (var b in E || (E = {})) Ds.call(E, b) && ke(y, b, E[b]);
     if (We) for (var b of We(E)) Rs.call(E, b) && ke(y, b, E[b]);
     return y;
   };
@@ -19,7 +19,7 @@ var ke = (y, E, b) =>
     : ((y = typeof globalThis != "undefined" ? globalThis : y || self),
       E((y.trivule = {})));
 })(this, function (y) {
-  var Oe, Ae, De, Ie, Re;
+  var Ae, Oe, Ie, De, Re;
   ("use strict");
   const E = (s) => {
       const e = /^(\w+):(.+)$/,
@@ -50,7 +50,7 @@ var ke = (y, E, b) =>
       } catch (u) {
         return t;
       }
-    return a || (A(a) && a != null && a.length) ? a : t;
+    return a || (O(a) && a != null && a.length) ? a : t;
   }
   function S(s, e, t = null, r = !1) {
     return ge(s, `tr-${e}`, t, r);
@@ -106,7 +106,7 @@ var ke = (y, E, b) =>
           /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/,
         Bs =
           /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g,
-        Os = {
+        As = {
           name: "en",
           weekdays:
             "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split(
@@ -128,7 +128,7 @@ var ke = (y, E, b) =>
             ? f
             : "" + Array(l + 1 - o.length).join(i) + f;
         },
-        As = {
+        Os = {
           s: ce,
           z: function (f) {
             var l = -f.utcOffset(),
@@ -164,7 +164,7 @@ var ke = (y, E, b) =>
         },
         Z = "en",
         k = {};
-      k[Z] = Os;
+      k[Z] = As;
       var Fe = "$isDayjsObject",
         de = function (f) {
           return f instanceof se || !(!f || !f[Fe]);
@@ -188,7 +188,7 @@ var ke = (y, E, b) =>
           var i = typeof l == "object" ? l : {};
           return (i.date = f), (i.args = arguments), new se(i);
         },
-        m = As;
+        m = Os;
       (m.l = ee),
         (m.i = de),
         (m.w = function (f, l) {
@@ -282,20 +282,20 @@ var ke = (y, E, b) =>
               var n = this,
                 c = !!m.u(o) || o,
                 d = m.p(i),
-                g = function (V, O) {
+                g = function (V, A) {
                   var P = m.w(
-                    n.$u ? Date.UTC(n.$y, O, V) : new Date(n.$y, O, V),
+                    n.$u ? Date.UTC(n.$y, A, V) : new Date(n.$y, A, V),
                     n
                   );
                   return c ? P : P.endOf(B);
                 },
-                _ = function (V, O) {
+                _ = function (V, A) {
                   return m.w(
                     n
                       .toDate()
                       [V].apply(
                         n.toDate("s"),
-                        (c ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(O)
+                        (c ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(A)
                       ),
                     n
                   );
@@ -390,19 +390,19 @@ var ke = (y, E, b) =>
                 C = n.weekdays,
                 R = n.months,
                 Y = n.meridiem,
-                j = function (O, P, K, te) {
-                  return (O && (O[P] || O(o, c))) || K[P].slice(0, te);
+                j = function (A, P, K, te) {
+                  return (A && (A[P] || A(o, c))) || K[P].slice(0, te);
                 },
-                J = function (O) {
-                  return m.s(g % 12 || 12, O, "0");
+                J = function (A) {
+                  return m.s(g % 12 || 12, A, "0");
                 },
                 V =
                   Y ||
-                  function (O, P, K) {
-                    var te = O < 12 ? "AM" : "PM";
+                  function (A, P, K) {
+                    var te = A < 12 ? "AM" : "PM";
                     return K ? te.toLowerCase() : te;
                   };
-              return c.replace(Bs, function (O, P) {
+              return c.replace(Bs, function (A, P) {
                 return (
                   P ||
                   (function (K) {
@@ -457,7 +457,7 @@ var ke = (y, E, b) =>
                         return d;
                     }
                     return null;
-                  })(O) ||
+                  })(A) ||
                   d.replace(":", "")
                 );
               });
@@ -588,7 +588,7 @@ var ke = (y, E, b) =>
       if ((e === "now" && (e = me()), !G(s).passes))
         return { passes: !1, value: s };
       if (!G(e).passes)
-        throw new Error("Pease provide a valid argument for afterDate rule");
+        throw new Error("Pease provide a valid argument for dateAfter rule");
       return { passes: ae(s).isAfter(e), value: G(s).value };
     },
     _e = (s, e) => {
@@ -652,7 +652,7 @@ var ke = (y, E, b) =>
       let t = !1;
       return (
         e === "string"
-          ? !A(s).passes || s.length === 0
+          ? !O(s).passes || s.length === 0
             ? (t = !1)
             : (t = !/\d/.test(s))
           : e === "number" && (t = p(s).passes),
@@ -697,14 +697,14 @@ var ke = (y, E, b) =>
       value: s,
     }),
     ie = (s, e) => ({
-      passes: A(s).passes ? s.length >= Number(e) : !1,
+      passes: O(s).passes ? s.length >= Number(e) : !1,
       value: s,
     }),
     ne = (s, e) => ({
-      passes: A(s).passes ? s.length <= Number(e) : !0,
+      passes: O(s).passes ? s.length <= Number(e) : !0,
       value: s,
     }),
-    A = (s) => ({ passes: typeof s == "string", value: s }),
+    O = (s) => ({ passes: typeof s == "string", value: s }),
     ts = (s) => ({ passes: /^(ftp|http|https):\/\/[^ "]+$/.test(s), value: s }),
     rs = (s, e = "EN") =>
       typeof s != "string" || s.length === 0
@@ -717,21 +717,21 @@ var ke = (y, E, b) =>
     is = (s, e) => {
       e || W("startWith");
       const t = b(e != null ? e : "");
-      return A(s).passes
+      return O(s).passes
         ? { passes: t.some((r) => s.startsWith(r)), value: s }
         : { passes: !1, value: s };
     },
     ns = (s, e) => {
       e || W("endWith");
       const t = b(e != null ? e : "");
-      return A(s).passes
+      return O(s).passes
         ? { passes: t.some((r) => s.endsWith(r)), value: s }
         : { passes: !1, value: s };
     },
     ls = (s, e) => {
       e || W("contains");
       const t = b(e != null ? e : "");
-      return A(s).passes
+      return O(s).passes
         ? {
             passes: t.every((a) => s.includes(new re(a).replaceSpaces())),
             value: s,
@@ -758,11 +758,11 @@ var ke = (y, E, b) =>
         : { passes: !0, value: s };
     },
     os = (s) =>
-      !A(s).passes || s.length === 0 || s.charAt(0) === " "
+      !O(s).passes || s.length === 0 || s.charAt(0) === " "
         ? { passes: !1, value: s }
         : { passes: !/^[0-9]/.test(s), value: s },
     hs = (s) =>
-      !A(s).passes || s.length === 0
+      !O(s).passes || s.length === 0
         ? { passes: !1, value: s }
         : { passes: !/[0-9]$/.test(s), value: s },
     fs = (s) =>
@@ -773,7 +773,7 @@ var ke = (y, E, b) =>
       const t = b(e);
       return (
         t.length || W("excludes"),
-        A(s).passes
+        O(s).passes
           ? {
               passes: !t.some((r) => s.includes(new re(r).replaceSpaces())),
               value: s,
@@ -1010,7 +1010,7 @@ var ke = (y, E, b) =>
           throw new Error("The 'messages' argument must be a non-empty object");
         t = t || $.DEFAULT_LANG;
         const r = $._message[t] || {},
-          a = I(I({}, r), e);
+          a = D(D({}, r), e);
         $._message[t] = a;
       }
       static translate(e, t) {
@@ -1022,7 +1022,7 @@ var ke = (y, E, b) =>
           throw new Error(
             "The second argument must be a valid key/value pair object"
           );
-        $._message[e] = I(I({}, $.getMessages(e)), t);
+        $._message[e] = D(D({}, $.getMessages(e)), t);
       }
       static rewrite(e, t, r) {
         $.addMessage(t, r, e);
@@ -1047,7 +1047,7 @@ var ke = (y, E, b) =>
         }
       }
       static local(e) {
-        if (!A(e) || !e.length)
+        if (!O(e) || !e.length)
           throw new Error("The language must be a valid string");
         $._useLang = e;
       }
@@ -1060,15 +1060,15 @@ var ke = (y, E, b) =>
     (H.DEFAULT_LANG = "en"),
     (H.LANG = H.DEFAULT_LANG),
     (H._message = { en: ps });
-  let D = H;
+  let I = H;
   const oe = {
     invalidClass: "is-invalid",
     validClass: "",
-    local: { lang: D.DEFAULT_LANG },
+    local: { lang: I.DEFAULT_LANG },
   };
   class vs {
     constructor(e) {
-      this.messages = D.getMessages(e != null ? e : D.getLocal());
+      this.messages = I.getMessages(e != null ? e : I.getLocal());
     }
     getRulesMessages(e) {
       const t = [];
@@ -1083,7 +1083,7 @@ var ke = (y, E, b) =>
       return (u.field = e), (r = this._replace(r, u)), r;
     }
     setMessages(e) {
-      return (this.messages = I(I({}, this.messages), e)), this;
+      return (this.messages = D(D({}, this.messages), e)), this;
     }
     _replace(e, t) {
       for (const r in t)
@@ -1338,7 +1338,7 @@ var ke = (y, E, b) =>
           N = E(this.rules[u]).ruleName;
         typeof v == "string" && v.length > 0
           ? (r[N] = v)
-          : (r[N] = D.getRuleMessage(N, D.getLocal()));
+          : (r[N] = I.getRuleMessage(N, I.getLocal()));
       }
       typeof e != "undefined" &&
       typeof e == "object" &&
@@ -1359,7 +1359,7 @@ var ke = (y, E, b) =>
     _setParams(e) {
       typeof e == "object" &&
         typeof e != "undefined" &&
-        (this.param = I(I({}, this.param), e));
+        (this.param = D(D({}, this.param), e));
       const t = ge(this.inputElement, "tr", null, !0);
       t && (this.param = Object.assign(this.param, t));
     }
@@ -1478,7 +1478,7 @@ var ke = (y, E, b) =>
       return /^(\+33|0033|0)[1-9](\d{2}){4}$/.test(this._value);
     }
     validPhoneNumber() {
-      if (!(A(this._value) || p(this._value))) return !1;
+      if (!(O(this._value) || p(this._value))) return !1;
       if (typeof this.code == "string") {
         const e = [],
           t = this.code.split(",").map((r) => r.trim().toUpperCase());
@@ -1511,7 +1511,7 @@ var ke = (y, E, b) =>
         q.rules[e] = t;
       }
       static addMessage(e, t, r) {
-        D.addMessage(e, t, r);
+        I.addMessage(e, t, r);
       }
       static hasRule(e) {
         return e in q.rules;
@@ -1520,13 +1520,13 @@ var ke = (y, E, b) =>
         return q.rules[e];
       }
       static getMessage(e, t) {
-        return D.getRuleMessage(e, t);
+        return I.getRuleMessage(e, t);
       }
       static allRules() {
         return q.rules;
       }
       static allMessages(e) {
-        return D.getMessages(e);
+        return I.getMessages(e);
       }
     };
   Ce.rules = {
@@ -1536,7 +1536,7 @@ var ke = (y, E, b) =>
     minlength: ie,
     min: Ee,
     max: Te,
-    string: A,
+    string: O,
     between: Ze,
     startWith: is,
     endWith: ns,
@@ -1826,12 +1826,12 @@ var ke = (y, E, b) =>
         ((t = S(this.container, "lang", t)),
         e &&
           typeof e == "object" &&
-          ((this.config = I(I({}, this.config), e)), e.local))
+          ((this.config = D(D({}, this.config), e)), e.local))
       ) {
         const a = e.local;
         a.lang && (t = a.lang);
       }
-      (D.LANG = t != null ? t : D.DEFAULT_LANG), this._syncRules();
+      (I.LANG = t != null ? t : I.DEFAULT_LANG), this._syncRules();
     }
     on(e, t) {
       this.container.addEventListener(e, t);
@@ -1951,7 +1951,7 @@ var ke = (y, E, b) =>
     }
     setConfig(e) {
       (this.config = oe),
-        e && typeof e == "object" && (this.config = I(I({}, this.config), e));
+        e && typeof e == "object" && (this.config = D(D({}, this.config), e));
     }
     static Rule(e, t, r) {
       x.rule(e, t, r);
@@ -2029,11 +2029,11 @@ var ke = (y, E, b) =>
       this._ruleExecuted.includes(e) || this._ruleExecuted.push(e);
     }
     _parseRuleMessage(e, t) {
-      const r = D.getRuleMessage(e.orignalName),
+      const r = I.getRuleMessage(e.orignalName),
         a = this._trmessages[e.orignalName];
       a !== r
         ? (this._trmessages[e.ruleName] = a)
-        : (this._trmessages[e.ruleName] = D.getRuleMessage(
+        : (this._trmessages[e.ruleName] = I.getRuleMessage(
             t != null ? t : e.ruleName
           ));
       const u = new vs().setMessages(this._trmessages),
@@ -2085,11 +2085,11 @@ var ke = (y, E, b) =>
     }
   }
   typeof window != "undefined" &&
-    ((window.TrivuleInput = (Oe = window.TrivuleInput) != null ? Oe : he),
-    (window.TrivuleForm = (Ae = window.TrivuleForm) != null ? Ae : fe),
-    (window.Trivule = (De = window.Trivule) != null ? De : Be),
-    (window.TrBag = (Ie = window.TrBag) != null ? Ie : x),
-    (window.TrLocal = (Re = window.TrLocal) != null ? Re : D)),
+    ((window.TrivuleInput = (Ae = window.TrivuleInput) != null ? Ae : he),
+    (window.TrivuleForm = (Oe = window.TrivuleForm) != null ? Oe : fe),
+    (window.Trivule = (Ie = window.Trivule) != null ? Ie : Be),
+    (window.TrBag = (De = window.TrBag) != null ? De : x),
+    (window.TrLocal = (Re = window.TrLocal) != null ? Re : I)),
     (y.TrBag = x),
     (y.TrConfig = oe),
     (y.Trivule = Be),
