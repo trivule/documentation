@@ -1,27 +1,27 @@
-var Is = Object.defineProperty;
-var We = Object.getOwnPropertySymbols;
+var Ss = Object.defineProperty;
+var Ve = Object.getOwnPropertySymbols;
 var Ds = Object.prototype.hasOwnProperty,
   Rs = Object.prototype.propertyIsEnumerable;
-var ke = (y, E, b) =>
-    E in y
-      ? Is(y, E, { enumerable: !0, configurable: !0, writable: !0, value: b })
-      : (y[E] = b),
-  D = (y, E) => {
-    for (var b in E || (E = {})) Ds.call(E, b) && ke(y, b, E[b]);
-    if (We) for (var b of We(E)) Rs.call(E, b) && ke(y, b, E[b]);
-    return y;
+var We = (_, y, b) =>
+    y in _
+      ? Ss(_, y, { enumerable: !0, configurable: !0, writable: !0, value: b })
+      : (_[y] = b),
+  S = (_, y) => {
+    for (var b in y || (y = {})) Ds.call(y, b) && We(_, b, y[b]);
+    if (Ve) for (var b of Ve(y)) Rs.call(y, b) && We(_, b, y[b]);
+    return _;
   };
-(function (y, E) {
+(function (_, y) {
   typeof exports == "object" && typeof module != "undefined"
-    ? E(exports)
+    ? y(exports)
     : typeof define == "function" && define.amd
-    ? define(["exports"], E)
-    : ((y = typeof globalThis != "undefined" ? globalThis : y || self),
-      E((y.trivule = {})));
-})(this, function (y) {
-  var Ae, Oe, Ie, De, Re;
+    ? define(["exports"], y)
+    : ((_ = typeof globalThis != "undefined" ? globalThis : _ || self),
+      y((_.trivule = {})));
+})(this, function (_) {
+  var Ae, Oe, Ie, Se, De;
   ("use strict");
-  const E = (s) => {
+  const y = (s) => {
       const e = /^(\w+):(.+)$/,
         t = s.match(e);
       if (t) {
@@ -35,13 +35,13 @@ var ke = (y, E, b) =>
     },
     b = (s, e = ",") =>
       typeof s != "string" ? [] : s.split(e).map((t) => t.trim()),
-    W = (s) => {
+    V = (s) => {
       throw new Error(`Please provide <<${s}>> rule arguments`);
     };
-  function me() {
+  function pe() {
     return new Date().toISOString();
   }
-  function ge(s, e, t = null, r = !1) {
+  function ve(s, e, t = null, r = !1) {
     if (!s) return t;
     let a = s.getAttribute(`data-${e}`);
     if (a && r)
@@ -52,8 +52,8 @@ var ke = (y, E, b) =>
       }
     return a || (O(a) && a != null && a.length) ? a : t;
   }
-  function S(s, e, t = null, r = !1) {
-    return ge(s, `tr-${e}`, t, r);
+  function R(s, e, t = null, r = !1) {
+    return ve(s, `tr-${e}`, t, r);
   }
   class re {
     constructor(e) {
@@ -66,7 +66,7 @@ var ke = (y, E, b) =>
       return this.argument.replace(new RegExp(this._space, "g"), " ");
     }
   }
-  var je =
+  var ke =
     typeof globalThis != "undefined"
       ? globalThis
       : typeof window != "undefined"
@@ -76,37 +76,37 @@ var ke = (y, E, b) =>
       : typeof self != "undefined"
       ? self
       : {};
-  function Ve(s) {
+  function je(s) {
     return s &&
       s.__esModule &&
       Object.prototype.hasOwnProperty.call(s, "default")
       ? s.default
       : s;
   }
-  var pe = { exports: {} };
+  var be = { exports: {} };
   (function (s, e) {
     (function (t, r) {
       s.exports = r();
-    })(je, function () {
+    })(ke, function () {
       var t = 1e3,
         r = 6e4,
         a = 36e5,
         u = "millisecond",
         h = "second",
         v = "minute",
-        N = "hour",
-        B = "day",
-        w = "week",
+        $ = "hour",
+        C = "day",
+        N = "week",
         L = "month",
-        Se = "quarter",
+        Re = "quarter",
         F = "year",
         z = "date",
         xe = "Invalid Date",
         Cs =
           /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/,
-        Bs =
+        As =
           /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g,
-        As = {
+        Os = {
           name: "en",
           weekdays:
             "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split(
@@ -122,20 +122,20 @@ var ke = (y, E, b) =>
             return "[" + f + (l[(i - 20) % 10] || l[i] || l[0]) + "]";
           },
         },
-        ce = function (f, l, i) {
+        me = function (f, l, i) {
           var o = String(f);
           return !o || o.length >= l
             ? f
             : "" + Array(l + 1 - o.length).join(i) + f;
         },
-        Os = {
-          s: ce,
+        Is = {
+          s: me,
           z: function (f) {
             var l = -f.utcOffset(),
               i = Math.abs(l),
               o = Math.floor(i / 60),
               n = i % 60;
-            return (l <= 0 ? "+" : "-") + ce(o, 2, "0") + ":" + ce(n, 2, "0");
+            return (l <= 0 ? "+" : "-") + me(o, 2, "0") + ":" + me(n, 2, "0");
           },
           m: function f(l, i) {
             if (l.date() < i.date()) return -f(i, l);
@@ -150,7 +150,7 @@ var ke = (y, E, b) =>
           },
           p: function (f) {
             return (
-              { M: L, y: F, w, d: B, D: z, h: N, m: v, s: h, ms: u, Q: Se }[
+              { M: L, y: F, w: N, d: C, D: z, h: $, m: v, s: h, ms: u, Q: Re }[
                 f
               ] ||
               String(f || "")
@@ -163,10 +163,10 @@ var ke = (y, E, b) =>
           },
         },
         Z = "en",
-        k = {};
-      k[Z] = As;
+        W = {};
+      W[Z] = Os;
       var Fe = "$isDayjsObject",
-        de = function (f) {
+        ge = function (f) {
           return f instanceof se || !(!f || !f[Fe]);
         },
         ee = function f(l, i, o) {
@@ -174,25 +174,25 @@ var ke = (y, E, b) =>
           if (!l) return Z;
           if (typeof l == "string") {
             var c = l.toLowerCase();
-            k[c] && (n = c), i && ((k[c] = i), (n = c));
+            W[c] && (n = c), i && ((W[c] = i), (n = c));
             var d = l.split("-");
             if (!n && d.length > 1) return f(d[0]);
           } else {
-            var g = l.name;
-            (k[g] = l), (n = g);
+            var p = l.name;
+            (W[p] = l), (n = p);
           }
           return !o && n && (Z = n), n || (!o && Z);
         },
-        T = function (f, l) {
-          if (de(f)) return f.clone();
+        E = function (f, l) {
+          if (ge(f)) return f.clone();
           var i = typeof l == "object" ? l : {};
           return (i.date = f), (i.args = arguments), new se(i);
         },
-        m = Os;
+        m = Is;
       (m.l = ee),
-        (m.i = de),
+        (m.i = ge),
         (m.w = function (f, l) {
-          return T(f, { locale: l.$L, utc: l.$u, x: l.$x, $offset: l.$offset });
+          return E(f, { locale: l.$L, utc: l.$u, x: l.$x, $offset: l.$offset });
         });
       var se = (function () {
           function f(i) {
@@ -213,28 +213,28 @@ var ke = (y, E, b) =>
                 if (typeof n == "string" && !/Z$/i.test(n)) {
                   var d = n.match(Cs);
                   if (d) {
-                    var g = d[2] - 1 || 0,
-                      _ = (d[7] || "0").substring(0, 3);
+                    var p = d[2] - 1 || 0,
+                      w = (d[7] || "0").substring(0, 3);
                     return c
                       ? new Date(
                           Date.UTC(
                             d[1],
-                            g,
+                            p,
                             d[3] || 1,
                             d[4] || 0,
                             d[5] || 0,
                             d[6] || 0,
-                            _
+                            w
                           )
                         )
                       : new Date(
                           d[1],
-                          g,
+                          p,
                           d[3] || 1,
                           d[4] || 0,
                           d[5] || 0,
                           d[6] || 0,
-                          _
+                          w
                         );
                   }
                 }
@@ -260,14 +260,14 @@ var ke = (y, E, b) =>
               return this.$d.toString() !== xe;
             }),
             (l.isSame = function (i, o) {
-              var n = T(i);
+              var n = E(i);
               return this.startOf(o) <= n && n <= this.endOf(o);
             }),
             (l.isAfter = function (i, o) {
-              return T(i) < this.startOf(o);
+              return E(i) < this.startOf(o);
             }),
             (l.isBefore = function (i, o) {
-              return this.endOf(o) < T(i);
+              return this.endOf(o) < E(i);
             }),
             (l.$g = function (i, o, n) {
               return m.u(i) ? this[o] : this.set(n, i);
@@ -282,46 +282,46 @@ var ke = (y, E, b) =>
               var n = this,
                 c = !!m.u(o) || o,
                 d = m.p(i),
-                g = function (V, A) {
+                p = function (j, A) {
                   var P = m.w(
-                    n.$u ? Date.UTC(n.$y, A, V) : new Date(n.$y, A, V),
+                    n.$u ? Date.UTC(n.$y, A, j) : new Date(n.$y, A, j),
                     n
                   );
-                  return c ? P : P.endOf(B);
+                  return c ? P : P.endOf(C);
                 },
-                _ = function (V, A) {
+                w = function (j, A) {
                   return m.w(
                     n
                       .toDate()
-                      [V].apply(
+                      [j].apply(
                         n.toDate("s"),
                         (c ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(A)
                       ),
                     n
                   );
                 },
-                M = this.$W,
-                C = this.$M,
-                R = this.$D,
+                T = this.$W,
+                B = this.$M,
+                D = this.$D,
                 Y = "set" + (this.$u ? "UTC" : "");
               switch (d) {
                 case F:
-                  return c ? g(1, 0) : g(31, 11);
+                  return c ? p(1, 0) : p(31, 11);
                 case L:
-                  return c ? g(1, C) : g(0, C + 1);
-                case w:
-                  var j = this.$locale().weekStart || 0,
-                    J = (M < j ? M + 7 : M) - j;
-                  return g(c ? R - J : R + (6 - J), C);
-                case B:
-                case z:
-                  return _(Y + "Hours", 0);
+                  return c ? p(1, B) : p(0, B + 1);
                 case N:
-                  return _(Y + "Minutes", 1);
+                  var k = this.$locale().weekStart || 0,
+                    J = (T < k ? T + 7 : T) - k;
+                  return p(c ? D - J : D + (6 - J), B);
+                case C:
+                case z:
+                  return w(Y + "Hours", 0);
+                case $:
+                  return w(Y + "Minutes", 1);
                 case v:
-                  return _(Y + "Seconds", 2);
+                  return w(Y + "Seconds", 2);
                 case h:
-                  return _(Y + "Milliseconds", 3);
+                  return w(Y + "Milliseconds", 3);
                 default:
                   return this.clone();
               }
@@ -333,23 +333,23 @@ var ke = (y, E, b) =>
               var n,
                 c = m.p(i),
                 d = "set" + (this.$u ? "UTC" : ""),
-                g = ((n = {}),
-                (n[B] = d + "Date"),
+                p = ((n = {}),
+                (n[C] = d + "Date"),
                 (n[z] = d + "Date"),
                 (n[L] = d + "Month"),
                 (n[F] = d + "FullYear"),
-                (n[N] = d + "Hours"),
+                (n[$] = d + "Hours"),
                 (n[v] = d + "Minutes"),
                 (n[h] = d + "Seconds"),
                 (n[u] = d + "Milliseconds"),
                 n)[c],
-                _ = c === B ? this.$D + (o - this.$W) : o;
+                w = c === C ? this.$D + (o - this.$W) : o;
               if (c === L || c === F) {
-                var M = this.clone().set(z, 1);
-                M.$d[g](_),
-                  M.init(),
-                  (this.$d = M.set(z, Math.min(this.$D, M.daysInMonth())).$d);
-              } else g && this.$d[g](_);
+                var T = this.clone().set(z, 1);
+                T.$d[p](w),
+                  T.init(),
+                  (this.$d = T.set(z, Math.min(this.$D, T.daysInMonth())).$d);
+              } else p && this.$d[p](w);
               return this.init(), this;
             }),
             (l.set = function (i, o) {
@@ -363,17 +363,17 @@ var ke = (y, E, b) =>
                 c = this;
               i = Number(i);
               var d = m.p(o),
-                g = function (C) {
-                  var R = T(c);
-                  return m.w(R.date(R.date() + Math.round(C * i)), c);
+                p = function (B) {
+                  var D = E(c);
+                  return m.w(D.date(D.date() + Math.round(B * i)), c);
                 };
               if (d === L) return this.set(L, this.$M + i);
               if (d === F) return this.set(F, this.$y + i);
-              if (d === B) return g(1);
-              if (d === w) return g(7);
-              var _ = ((n = {}), (n[v] = r), (n[N] = a), (n[h] = t), n)[d] || 1,
-                M = this.$d.getTime() + i * _;
-              return m.w(M, this);
+              if (d === C) return p(1);
+              if (d === N) return p(7);
+              var w = ((n = {}), (n[v] = r), (n[$] = a), (n[h] = t), n)[d] || 1,
+                T = this.$d.getTime() + i * w;
+              return m.w(T, this);
             }),
             (l.subtract = function (i, o) {
               return this.add(-1 * i, o);
@@ -384,25 +384,25 @@ var ke = (y, E, b) =>
               if (!this.isValid()) return n.invalidDate || xe;
               var c = i || "YYYY-MM-DDTHH:mm:ssZ",
                 d = m.z(this),
-                g = this.$H,
-                _ = this.$m,
-                M = this.$M,
-                C = n.weekdays,
-                R = n.months,
+                p = this.$H,
+                w = this.$m,
+                T = this.$M,
+                B = n.weekdays,
+                D = n.months,
                 Y = n.meridiem,
-                j = function (A, P, K, te) {
+                k = function (A, P, K, te) {
                   return (A && (A[P] || A(o, c))) || K[P].slice(0, te);
                 },
                 J = function (A) {
-                  return m.s(g % 12 || 12, A, "0");
+                  return m.s(p % 12 || 12, A, "0");
                 },
-                V =
+                j =
                   Y ||
                   function (A, P, K) {
                     var te = A < 12 ? "AM" : "PM";
                     return K ? te.toLowerCase() : te;
                   };
-              return c.replace(Bs, function (A, P) {
+              return c.replace(As, function (A, P) {
                 return (
                   P ||
                   (function (K) {
@@ -412,13 +412,13 @@ var ke = (y, E, b) =>
                       case "YYYY":
                         return m.s(o.$y, 4, "0");
                       case "M":
-                        return M + 1;
+                        return T + 1;
                       case "MM":
-                        return m.s(M + 1, 2, "0");
+                        return m.s(T + 1, 2, "0");
                       case "MMM":
-                        return j(n.monthsShort, M, R, 3);
+                        return k(n.monthsShort, T, D, 3);
                       case "MMMM":
-                        return j(R, M);
+                        return k(D, T);
                       case "D":
                         return o.$D;
                       case "DD":
@@ -426,27 +426,27 @@ var ke = (y, E, b) =>
                       case "d":
                         return String(o.$W);
                       case "dd":
-                        return j(n.weekdaysMin, o.$W, C, 2);
+                        return k(n.weekdaysMin, o.$W, B, 2);
                       case "ddd":
-                        return j(n.weekdaysShort, o.$W, C, 3);
+                        return k(n.weekdaysShort, o.$W, B, 3);
                       case "dddd":
-                        return C[o.$W];
+                        return B[o.$W];
                       case "H":
-                        return String(g);
+                        return String(p);
                       case "HH":
-                        return m.s(g, 2, "0");
+                        return m.s(p, 2, "0");
                       case "h":
                         return J(1);
                       case "hh":
                         return J(2);
                       case "a":
-                        return V(g, _, !0);
+                        return j(p, w, !0);
                       case "A":
-                        return V(g, _, !1);
+                        return j(p, w, !1);
                       case "m":
-                        return String(_);
+                        return String(w);
                       case "mm":
-                        return m.s(_, 2, "0");
+                        return m.s(w, 2, "0");
                       case "s":
                         return String(o.$s);
                       case "ss":
@@ -468,40 +468,40 @@ var ke = (y, E, b) =>
             (l.diff = function (i, o, n) {
               var c,
                 d = this,
-                g = m.p(o),
-                _ = T(i),
-                M = (_.utcOffset() - this.utcOffset()) * r,
-                C = this - _,
-                R = function () {
-                  return m.m(d, _);
+                p = m.p(o),
+                w = E(i),
+                T = (w.utcOffset() - this.utcOffset()) * r,
+                B = this - w,
+                D = function () {
+                  return m.m(d, w);
                 };
-              switch (g) {
+              switch (p) {
                 case F:
-                  c = R() / 12;
+                  c = D() / 12;
                   break;
                 case L:
-                  c = R();
+                  c = D();
                   break;
-                case Se:
-                  c = R() / 3;
-                  break;
-                case w:
-                  c = (C - M) / 6048e5;
-                  break;
-                case B:
-                  c = (C - M) / 864e5;
+                case Re:
+                  c = D() / 3;
                   break;
                 case N:
-                  c = C / a;
+                  c = (B - T) / 6048e5;
+                  break;
+                case C:
+                  c = (B - T) / 864e5;
+                  break;
+                case $:
+                  c = B / a;
                   break;
                 case v:
-                  c = C / r;
+                  c = B / r;
                   break;
                 case h:
-                  c = C / t;
+                  c = B / t;
                   break;
                 default:
-                  c = C;
+                  c = B;
               }
               return n ? c : m.a(c);
             }),
@@ -509,7 +509,7 @@ var ke = (y, E, b) =>
               return this.endOf(L).$D;
             }),
             (l.$locale = function () {
-              return k[this.$L];
+              return W[this.$L];
             }),
             (l.locale = function (i, o) {
               if (!i) return this.$L;
@@ -537,13 +537,13 @@ var ke = (y, E, b) =>
         })(),
         Pe = se.prototype;
       return (
-        (T.prototype = Pe),
+        (E.prototype = Pe),
         [
           ["$ms", u],
           ["$s", h],
           ["$m", v],
-          ["$H", N],
-          ["$W", B],
+          ["$H", $],
+          ["$W", C],
           ["$M", L],
           ["$y", F],
           ["$D", z],
@@ -552,23 +552,23 @@ var ke = (y, E, b) =>
             return this.$g(l, f[0], f[1]);
           };
         }),
-        (T.extend = function (f, l) {
-          return f.$i || (f(l, se, T), (f.$i = !0)), T;
+        (E.extend = function (f, l) {
+          return f.$i || (f(l, se, E), (f.$i = !0)), E;
         }),
-        (T.locale = ee),
-        (T.isDayjs = de),
-        (T.unix = function (f) {
-          return T(1e3 * f);
+        (E.locale = ee),
+        (E.isDayjs = ge),
+        (E.unix = function (f) {
+          return E(1e3 * f);
         }),
-        (T.en = k[Z]),
-        (T.Ls = k),
-        (T.p = {}),
-        T
+        (E.en = W[Z]),
+        (E.Ls = W),
+        (E.p = {}),
+        E
       );
     });
-  })(pe);
-  var qe = pe.exports;
-  const ae = Ve(qe),
+  })(be);
+  var qe = be.exports;
+  const ae = je(qe),
     G = (s) => {
       const e = ae(new Date(s), void 0, !0);
       return s
@@ -577,24 +577,24 @@ var ke = (y, E, b) =>
           : { passes: !1, value: s }
         : { passes: !1, value: s };
     },
-    ve = (s, e) => {
-      if ((e === "now" && (e = me()), !G(s).passes))
+    we = (s, e) => {
+      if ((e === "now" && (e = pe()), !G(s).passes))
         return { passes: !1, value: s };
       if (!G(e).passes)
         throw new Error("Pease provide a valid argument for dateBefore rule");
       return { passes: ae(s).isBefore(e), value: s };
     },
-    be = (s, e) => {
-      if ((e === "now" && (e = me()), !G(s).passes))
+    _e = (s, e) => {
+      if ((e === "now" && (e = pe()), !G(s).passes))
         return { passes: !1, value: s };
       if (!G(e).passes)
         throw new Error("Pease provide a valid argument for dateAfter rule");
       return { passes: ae(s).isAfter(e), value: G(s).value };
     },
-    _e = (s, e) => {
-      e || W("dateBetween");
+    ye = (s, e) => {
+      e || V("dateBetween");
       const [t, r] = b(e != null ? e : "");
-      return { passes: be(s, t).passes && ve(s, r).passes, value: s };
+      return { passes: _e(s, t).passes && we(s, r).passes, value: s };
     },
     Ge = (s) => {
       if (s.split(":").length < 3) for (; s.split(":").length < 3; ) s += ":00";
@@ -606,11 +606,14 @@ var ke = (y, E, b) =>
     Q = (s, ...e) => ({ passes: !!s && s !== "", value: s }),
     Ue = (s) => ({ passes: !0, value: s }),
     He = (s, e) => {
-      e || W("in");
+      e || V("in");
       const t = b(e);
       return { passes: t.includes(s), value: t };
     },
-    ze = (s, e) => (U(s).passes ? X(s, e) : le(s, e)),
+    ze = (s, e) =>
+      U(s).passes
+        ? { passes: X(s, e).passes, value: s, alias: "maxFileSize" }
+        : { passes: le(s, e).passes, value: s, alias: "length" },
     Ye = (s) =>
       typeof s == "boolean"
         ? { passes: !0, value: !!s }
@@ -627,21 +630,25 @@ var ke = (y, E, b) =>
     Ze = (s, e, t) => {
       var [r, a] = b(e != null ? e : "");
       return t === "file"
-        ? { passes: ye(s, e).passes, value: s, alias: "fileBetween" }
+        ? { passes: Te(s, e).passes, value: s, alias: "fileBetween" }
         : t == "date" || t == "date-local"
-        ? { passes: _e(s, e).passes, value: s, alias: "dateBetween" }
+        ? { passes: ye(s, e).passes, value: s, alias: "dateBetween" }
         : t == "number" &&
           ((r = Number(r)),
           (a = Number(a)),
           s !== void 0 &&
             s !== Number &&
             s !== "" &&
-            p(r).passes &&
-            p(a).passes)
-        ? p(s).passes
-          ? { passes: Te(s, a).passes && Ee(s, r).passes, value: Number(s) }
+            g(r).passes &&
+            g(a).passes)
+        ? g(s).passes
+          ? {
+              passes: he(s, a).passes && oe(s, r).passes,
+              value: Number(s),
+              alias: "numberBetween",
+            }
           : { passes: !1, value: s }
-        : { passes: we(s, e).passes, value: s, alias: "stringBetween" };
+        : { passes: Ee(s, e).passes, value: s, alias: "stringBetween" };
     },
     Je = (s, e) => {
       if (!e) throw new Error("The regex rule argument must not be empty");
@@ -655,35 +662,35 @@ var ke = (y, E, b) =>
           ? !O(s).passes || s.length === 0
             ? (t = !1)
             : (t = !/\d/.test(s))
-          : e === "number" && (t = p(s).passes),
+          : e === "number" && (t = g(s).passes),
         { passes: t, value: s }
       );
     },
     Qe = (s, e) => {
-      if (!p(e).passes)
+      if (!g(e).passes)
         throw new Error("Digit rule parameter must be a number");
       let t = !1;
-      if (p(s).passes) {
+      if (g(s).passes) {
         const r = String(s);
         t = /^\d+$/.test(r) && r.length === Number(e);
       }
       return { passes: t, value: s };
     },
     Xe = (s, e) => {
-      if (!p(e).passes)
+      if (!g(e).passes)
         throw new Error("Max_digit rule parameter must be a number");
       let t = !1;
-      if (p(s).passes) {
+      if (g(s).passes) {
         const r = String(s);
         t = /^\d+$/.test(r) && r.length <= Number(e);
       }
       return { passes: t, value: s };
     },
     es = (s, e, t) => {
-      if (!p(e).passes)
+      if (!g(e).passes)
         throw new Error("Min_digit rule parameter must be a number");
       let r = !1;
-      if (p(s).passes) {
+      if (g(s).passes) {
         const a = String(s);
         r = /^\d+$/.test(a) && a.length >= Number(e);
       }
@@ -715,21 +722,21 @@ var ke = (y, E, b) =>
         ? { passes: !1, value: s }
         : { passes: s[0] == s[0].toLocaleLowerCase(), value: s },
     is = (s, e) => {
-      e || W("startWith");
+      e || V("startWith");
       const t = b(e != null ? e : "");
       return O(s).passes
         ? { passes: t.some((r) => s.startsWith(r)), value: s }
         : { passes: !1, value: s };
     },
     ns = (s, e) => {
-      e || W("endWith");
+      e || V("endWith");
       const t = b(e != null ? e : "");
       return O(s).passes
         ? { passes: t.some((r) => s.endsWith(r)), value: s }
         : { passes: !1, value: s };
     },
     ls = (s, e) => {
-      e || W("contains");
+      e || V("contains");
       const t = b(e != null ? e : "");
       return O(s).passes
         ? {
@@ -739,7 +746,7 @@ var ke = (y, E, b) =>
         : { passes: !1, value: s };
     },
     le = (s, e) => {
-      if (!p(e).passes)
+      if (!g(e).passes)
         throw new Error("The length rule argument must be an integer");
       (e = parseInt(e)),
         typeof s == "string" || typeof s == "number"
@@ -772,7 +779,7 @@ var ke = (y, E, b) =>
     cs = (s, e) => {
       const t = b(e);
       return (
-        t.length || W("excludes"),
+        t.length || V("excludes"),
         O(s).passes
           ? {
               passes: !t.some((r) => s.includes(new re(r).replaceSpaces())),
@@ -783,7 +790,7 @@ var ke = (y, E, b) =>
     },
     ds = (s, e) => ({ passes: s === s.toLocaleUpperCase(), value: s }),
     ms = (s, e) => ({ passes: s === s.toLocaleLowerCase(), value: s }),
-    we = (s, e) => {
+    Ee = (s, e) => {
       const [t, r] = b(e != null ? e : "");
       return { passes: ie(s, t).passes && ne(s, r).passes, value: s };
     },
@@ -836,13 +843,13 @@ var ke = (y, E, b) =>
         );
       } else return { passes: !1, value: s };
     },
-    ye = (s, e) => {
+    Te = (s, e) => {
       const [t, r] = b(e != null ? e : "");
       return { passes: X(s, r).passes && ue(s, t).passes, value: s };
     },
     gs = (s, e) => {
       var t;
-      if ((e || W("mimes"), s instanceof File)) {
+      if ((e || V("mimes"), s instanceof File)) {
         const r = s;
         return {
           passes: ((t =
@@ -863,30 +870,37 @@ var ke = (y, E, b) =>
         };
       } else return { passes: !1, value: s };
     },
-    Ee = (s, e, t) => {
-      if (U(s).passes || t == "file") return ue(s, e);
-      if ((s == null && (s = 0), !p(e).passes))
+    oe = (s, e, t) => {
+      if (!g(e).passes)
         throw new Error("Min rule parameter must be an integer");
-      return p(s).passes
-        ? { passes: Number(s) >= Number(e), value: Number(s) }
-        : { passes: ie(s, e).passes, value: s, alias: "minlength" };
+      return U(s).passes || t == "file"
+        ? { passes: ue(s, e).passes, value: s }
+        : (s == null && (s = 0),
+          g(s).passes
+            ? { passes: Number(s) >= Number(e), value: Number(s) }
+            : { passes: ie(s, e).passes, value: s, alias: "minlength" });
     },
-    Te = (s, e, t) => {
-      if (U(s).passes || t == "file") return X(s, e);
-      if (!p(e).passes)
+    he = (s, e, t) => {
+      if (!g(e).passes)
         throw new Error("Min rule parameter must be an integer");
-      return (
-        s == null && (s = 0),
-        p(s).passes
-          ? { passes: Number(s) <= Number(e), value: Number(s) }
-          : { passes: ne(s, e).passes, value: s, alias: "maxlength" }
-      );
+      return U(s).passes || t == "file"
+        ? { passes: X(s, e).passes, value: s, alias: "maxFileSize" }
+        : (s == null && (s = 0),
+          g(s).passes
+            ? { passes: Number(s) <= Number(e), value: Number(s) }
+            : { passes: ne(s, e).passes, value: s, alias: "maxlength" });
     },
-    Me = (s) =>
-      p(s).passes
-        ? { passes: Number.isInteger(Number(s)), value: parseInt(s) }
-        : { passes: !1, value: s },
-    p = (s) =>
+    Me = (s) => {
+      const e = g(s);
+      return e.passes
+        ? {
+            passes: Number.isInteger(e.value),
+            value: parseInt(e.value),
+            type: e.type,
+          }
+        : { passes: !1, value: s };
+    },
+    g = (s) =>
       s === "" || s === null || s === void 0
         ? { passes: !1, value: s }
         : s === "0" || s === 0
@@ -902,27 +916,33 @@ var ke = (y, E, b) =>
             type: "number",
           },
     $e = (s, e) => {
-      if (!p(e).passes)
+      if (!g(e).passes)
         throw new Error("Modulo rule parameter must be an integer");
-      return p(s).passes
+      return g(s).passes
         ? { passes: Number(s) % Number(e) === 0, value: Number(s) }
         : { passes: !1, value: s };
     },
     Ne = (s, e) => {
-      if (!p(e).passes)
+      if (!g(e).passes)
         throw new Error("Lessthan rule parameter must be a number");
-      return p(s).passes
+      return g(s).passes
         ? { passes: Number(s) < Number(e), value: s }
         : { passes: !1, value: s };
     },
     Le = (s, e) => {
-      if (!p(e).passes)
+      if (!g(e).passes)
         throw new Error("Greaterthan rule parameter must be a number");
-      return p(s).passes
+      return g(s).passes
         ? { passes: Number(s) > Number(e), value: s }
         : { passes: !1, value: s };
     },
-    ps = {
+    ps = (s, e) => {
+      if (!g(s).passes) return { passes: !1, value: s };
+      const [t, r] = b(e),
+        a = Number(s);
+      return { passes: oe(s, t).passes && he(s, r).passes, value: a };
+    },
+    vs = {
       default: "This field is invalid",
       required: "This field is required",
       email: "Please enter a valid email address",
@@ -987,31 +1007,33 @@ var ke = (y, E, b) =>
       greaterThan: "This field must be a numeric value greater than :arg0",
       gthan: "This field must be a numeric value greater than :arg0",
       dateBetween: "The date must be between :arg0 and :arg1",
+      numberBetween:
+        "This field must be a numeric value between :arg0 and :arg1",
     },
-    H = class $ {
+    H = class M {
       static getMessages(e) {
-        e = e != null ? e : $.DEFAULT_LANG;
-        let t = $._message[e];
-        return t || (t = $._message[$.DEFAULT_LANG]), t;
+        e = e != null ? e : M.DEFAULT_LANG;
+        let t = M._message[e];
+        return t || (t = M._message[M.DEFAULT_LANG]), t;
       }
       static getRuleMessage(e, t) {
         var a;
-        const r = $.getMessages(t);
+        const r = M.getMessages(t);
         return (a = r[e]) != null ? a : r.default;
       }
       static addMessage(e, t, r) {
         if (t) {
-          const a = $.getMessages(r);
-          (a[e] = t), $.putMessages(a, r);
+          const a = M.getMessages(r);
+          (a[e] = t), M.putMessages(a, r);
         }
       }
       static putMessages(e, t) {
         if (!e || Object.keys(e).length === 0)
           throw new Error("The 'messages' argument must be a non-empty object");
-        t = t || $.DEFAULT_LANG;
-        const r = $._message[t] || {},
-          a = D(D({}, r), e);
-        $._message[t] = a;
+        t = t || M.DEFAULT_LANG;
+        const r = M._message[t] || {},
+          a = S(S({}, r), e);
+        M._message[t] = a;
       }
       static translate(e, t) {
         if (typeof e != "string" || !e.length)
@@ -1022,10 +1044,10 @@ var ke = (y, E, b) =>
           throw new Error(
             "The second argument must be a valid key/value pair object"
           );
-        $._message[e] = D(D({}, $.getMessages(e)), t);
+        M._message[e] = S(S({}, M.getMessages(e)), t);
       }
       static rewrite(e, t, r) {
-        $.addMessage(t, r, e);
+        M.addMessage(t, r, e);
       }
       static rewriteMany(e, t, r) {
         if (typeof e != "string" || !e.length)
@@ -1043,30 +1065,30 @@ var ke = (y, E, b) =>
         for (let a = 0; a < t.length; a++) {
           const u = t[a],
             h = r[a];
-          $.rewrite(e, u, h);
+          M.rewrite(e, u, h);
         }
       }
       static local(e) {
         if (!O(e) || !e.length)
           throw new Error("The language must be a valid string");
-        $._useLang = e;
+        M._useLang = e;
       }
       static getLocal() {
         var e;
-        return (e = $._useLang) != null ? e : $.LANG;
+        return (e = M._useLang) != null ? e : M.LANG;
       }
     };
   (H._useLang = null),
     (H.DEFAULT_LANG = "en"),
     (H.LANG = H.DEFAULT_LANG),
-    (H._message = { en: ps });
+    (H._message = { en: vs });
   let I = H;
-  const oe = {
+  const fe = {
     invalidClass: "is-invalid",
     validClass: "",
     local: { lang: I.DEFAULT_LANG },
   };
-  class vs {
+  class bs {
     constructor(e) {
       this.messages = I.getMessages(e != null ? e : I.getLocal());
     }
@@ -1083,7 +1105,7 @@ var ke = (y, E, b) =>
       return (u.field = e), (r = this._replace(r, u)), r;
     }
     setMessages(e) {
-      return (this.messages = D(D({}, this.messages), e)), this;
+      return (this.messages = S(S({}, this.messages), e)), this;
     }
     _replace(e, t) {
       for (const r in t)
@@ -1105,7 +1127,7 @@ var ke = (y, E, b) =>
       return t;
     }
   }
-  class bs {
+  class ws {
     constructor(e, t) {
       (this.rules = e),
         (this.messages = t),
@@ -1173,7 +1195,7 @@ var ke = (y, E, b) =>
       );
     }
   }
-  class ws {
+  class ys {
     constructor(e, t) {
       (this._passed = !1),
         (this.feedbackElement = null),
@@ -1194,7 +1216,7 @@ var ke = (y, E, b) =>
           invalidClass: "is-invalid",
           type: "text",
         }),
-        (this.validator = new Ns(this.param)),
+        (this.validator = new Ls(this.param)),
         this.setInputElement(e),
         this._setParams(t),
         this.setRules(t == null ? void 0 : t.rules),
@@ -1207,11 +1229,11 @@ var ke = (y, E, b) =>
         this.validator.setParams(this.param);
     }
     setRules(e) {
-      let t = S(this.inputElement, "rules", this.param.rules);
+      let t = R(this.inputElement, "rules", this.param.rules);
       if (t) {
         const a = t.split("|").filter((u) => u.length > 0);
         for (const u of a)
-          if (x.hasRule(E(u).ruleName)) this.rules.push(u);
+          if (x.hasRule(y(u).ruleName)) this.rules.push(u);
           else
             throw new Error(
               `The validation rule ${u} is not supported by Trivule`
@@ -1225,7 +1247,7 @@ var ke = (y, E, b) =>
       );
     }
     _setEvent(e) {
-      const t = S(this.inputElement, "events", "");
+      const t = R(this.inputElement, "events", "");
       t &&
         (this.param.events = t.split("|").length
           ? t.split("|")
@@ -1252,7 +1274,7 @@ var ke = (y, E, b) =>
       if (e == null || (typeof e == "string" && e.length < 0))
         throw new Error("The input name could not be empty or null");
       this.name = e;
-      let t = (r = S(this.inputElement, "name")) != null ? r : this.name;
+      let t = (r = R(this.inputElement, "name")) != null ? r : this.name;
       this.param.attribute = t;
     }
     set errors(e) {
@@ -1286,7 +1308,7 @@ var ke = (y, E, b) =>
       }
     }
     setShowMessage() {
-      (this.showMessage = S(this.inputElement, "show", "first")),
+      (this.showMessage = R(this.inputElement, "show", "first")),
         (this.showMessage = this.showMessages.includes(this.showMessage)
           ? this.showMessage
           : "first");
@@ -1297,12 +1319,12 @@ var ke = (y, E, b) =>
         (e = this.param.invalidClass) != null ? e : this.invalidClass),
         (this.validClass =
           (t = this.param.validClass) != null ? t : this.validClass),
-        (this.invalidClass = S(
+        (this.invalidClass = R(
           this.inputElement,
           "invalid-class",
           this.invalidClass
         )),
-        (this.validClass = S(
+        (this.validClass = R(
           this.inputElement,
           "valid-class",
           this.validClass
@@ -1326,19 +1348,19 @@ var ke = (y, E, b) =>
     }
     _setErrors(e) {
       var a;
-      const t = S(this.inputElement, "messages", "");
+      const t = R(this.inputElement, "messages", "");
       let r = {};
       for (let u = 0; u < this.rules.length; u++) {
         let h =
-          (a = t == null ? void 0 : t.split("|").map((B) => B.trim())) != null
+          (a = t == null ? void 0 : t.split("|").map((C) => C.trim())) != null
             ? a
             : [];
-        h && (h = new bs(this.rules, h).getMessages());
+        h && (h = new ws(this.rules, h).getMessages());
         const v = h !== void 0 ? h[u] : "",
-          N = E(this.rules[u]).ruleName;
+          $ = y(this.rules[u]).ruleName;
         typeof v == "string" && v.length > 0
-          ? (r[N] = v)
-          : (r[N] = I.getRuleMessage(N, I.getLocal()));
+          ? (r[$] = v)
+          : (r[$] = I.getRuleMessage($, I.getLocal()));
       }
       typeof e != "undefined" &&
       typeof e == "object" &&
@@ -1359,17 +1381,14 @@ var ke = (y, E, b) =>
     _setParams(e) {
       typeof e == "object" &&
         typeof e != "undefined" &&
-        (this.param = D(D({}, this.param), e));
-      const t = ge(this.inputElement, "tr", null, !0);
+        (this.param = S(S({}, this.param), e));
+      const t = ve(this.inputElement, "tr", null, !0);
       t && (this.param = Object.assign(this.param, t));
     }
   }
-  class ys extends ws {
+  class Es extends ys {
     constructor(e, t) {
-      super(e, t),
-        (this._emitOnPasses = !0),
-        (this._emitOnFails = !0),
-        (this._ruleExecuted = []);
+      super(e, t), (this._emitOnPasses = !0), (this._emitOnFails = !0);
     }
     validate(e = !0) {
       return (
@@ -1392,7 +1411,6 @@ var ke = (y, E, b) =>
     valid() {
       return (
         (this.validator.value = this.getValue()),
-        (this._ruleExecuted = this.validator.getRuleExecuted()),
         (this._passed = this.validator.passes())
       );
     }
@@ -1443,7 +1461,7 @@ var ke = (y, E, b) =>
       return this.validator.getRuleExecuted();
     }
   }
-  class Es {
+  class Ts {
     constructor(e, t, r = null) {
       (this._value = this._trim(e)), (this.code = t), (this.attribute = r);
     }
@@ -1478,7 +1496,7 @@ var ke = (y, E, b) =>
       return /^(\+33|0033|0)[1-9](\d{2}){4}$/.test(this._value);
     }
     validPhoneNumber() {
-      if (!(O(this._value) || p(this._value))) return !1;
+      if (!(O(this._value) || g(this._value))) return !1;
       if (typeof this.code == "string") {
         const e = [],
           t = this.code.split(",").map((r) => r.trim().toUpperCase());
@@ -1502,8 +1520,8 @@ var ke = (y, E, b) =>
       );
     }
   }
-  const Ts = (s, e) => ({ passes: new Es(s, e).validPhoneNumber(), value: s }),
-    Ce = class q {
+  const Ms = (s, e) => ({ passes: new Ts(s, e).validPhoneNumber(), value: s }),
+    Be = class q {
       static rule(e, t, r, a) {
         q.addRule(e, t), q.addMessage(e, r, a);
       }
@@ -1529,13 +1547,13 @@ var ke = (y, E, b) =>
         return I.getMessages(e);
       }
     };
-  Ce.rules = {
+  Be.rules = {
     required: Q,
     email: ss,
     maxlength: ne,
     minlength: ie,
-    min: Ee,
-    max: Te,
+    min: oe,
+    max: he,
     string: O,
     between: Ze,
     startWith: is,
@@ -1545,8 +1563,8 @@ var ke = (y, E, b) =>
     integer: Me,
     int: Me,
     modulo: $e,
-    number: p,
-    numeric: p,
+    number: g,
+    numeric: g,
     url: ts,
     length: le,
     len: le,
@@ -1560,9 +1578,9 @@ var ke = (y, E, b) =>
     startWithLower: as,
     password: us,
     date: G,
-    before: ve,
-    after: be,
-    phone: Ts,
+    before: we,
+    after: _e,
+    phone: Ms,
     time: Ge,
     startWithLetter: os,
     endWithLetter: hs,
@@ -1571,7 +1589,7 @@ var ke = (y, E, b) =>
     regex: Je,
     lower: ms,
     upper: ds,
-    stringBetween: we,
+    stringBetween: Ee,
     mod: $e,
     only: Ke,
     mimes: gs,
@@ -1582,11 +1600,12 @@ var ke = (y, E, b) =>
     maxDigit: Xe,
     greaterThan: Le,
     gthan: Le,
-    fileBetween: ye,
-    dateBetween: _e,
+    fileBetween: Te,
+    dateBetween: ye,
+    numberBetween: ps,
   };
-  let x = Ce;
-  class he extends ys {
+  let x = Be;
+  class ce extends Es {
     constructor(e, t) {
       super(e, t);
     }
@@ -1634,14 +1653,14 @@ var ke = (y, E, b) =>
       return e === this.inputElement;
     }
   }
-  class Ms {
+  class $s {
     constructor(e) {
       (this.form = e), (this.formRules = []);
     }
     getInputByName(e) {
       return this.form.querySelector(`[name=${e}]`);
     }
-    getInputralueByName(e) {
+    getInpuTrValueByName(e) {
       const t = this.getInputByName(e);
       return t ? t.value : void 0;
     }
@@ -1649,7 +1668,7 @@ var ke = (y, E, b) =>
       return this.formRules;
     }
   }
-  class $s extends Ms {
+  class Ns extends $s {
     constructor(e) {
       super(e), this.register();
     }
@@ -1662,13 +1681,13 @@ var ke = (y, E, b) =>
     }
     same(e, t) {
       return t
-        ? { passes: e === this.getInputralueByName(t), value: e }
+        ? { passes: e === this.getInpuTrValueByName(t), value: e }
         : { passes: !1, value: e };
     }
     requiredIf(e, t) {
       const [r, ...a] = b(t != null ? t : "");
       if (r && a.length > 0) {
-        const u = this.getInputralueByName(r);
+        const u = this.getInpuTrValueByName(r);
         return a.includes(u) ? Q(e) : { passes: !0, value: e };
       }
       return { passes: !1, value: e };
@@ -1676,13 +1695,13 @@ var ke = (y, E, b) =>
     requiredWhen(e, t) {
       const [r, ...a] = b(t != null ? t : "");
       return r && a.length > 0
-        ? a.some((h) => Q(this.getInputralueByName(h)).passes)
+        ? a.some((h) => Q(this.getInpuTrValueByName(h)).passes)
           ? Q(e)
           : { passes: !0, value: e }
         : { passes: !1, value: e };
     }
   }
-  class fe {
+  class de {
     constructor(e, t) {
       (this._passed = !1),
         (this._emitOnPasses = !0),
@@ -1693,7 +1712,7 @@ var ke = (y, E, b) =>
         (this._trivuleInputs = []),
         (this.config = { auto: !0 }),
         this.setContainer(e),
-        (this._formValidator = new $s(this.container)),
+        (this._formValidator = new Ns(this.container)),
         this.setConfig(t),
         this._initTrivuleInputs();
     }
@@ -1727,7 +1746,7 @@ var ke = (y, E, b) =>
       ) {
         const e = this._trEnabledClass.split(" ");
         for (const r of e) this.submitButton.classList.remove(r);
-        this._trDisabledClass = S(
+        this._trDisabledClass = R(
           this.submitButton,
           "disabled-class",
           this._trDisabledClass
@@ -1743,7 +1762,7 @@ var ke = (y, E, b) =>
       ) {
         const e = this._trDisabledClass.split(" ");
         for (const r of e) this.submitButton.classList.remove(r);
-        this._trEnabledClass = S(
+        this._trEnabledClass = R(
           this.submitButton,
           "enabled-class",
           this._trEnabledClass
@@ -1818,15 +1837,15 @@ var ke = (y, E, b) =>
     setConfig(e) {
       var r;
       let t =
-        S(document.querySelector("html"), "lang") ||
+        R(document.querySelector("html"), "lang") ||
         ((r = document.querySelector("html")) == null
           ? void 0
           : r.getAttribute("lang"));
       if (
-        ((t = S(this.container, "lang", t)),
+        ((t = R(this.container, "lang", t)),
         e &&
           typeof e == "object" &&
-          ((this.config = D(D({}, this.config), e)), e.local))
+          ((this.config = S(S({}, this.config), e)), e.local))
       ) {
         const a = e.local;
         a.lang && (t = a.lang);
@@ -1868,7 +1887,7 @@ var ke = (y, E, b) =>
         (e =
           e || Array.from(this.container.querySelectorAll("[data-tr-rules]")));
       for (const t of e) {
-        const r = new he(t, {
+        const r = new ce(t, {
           validClass: this.config.validClass,
           invalidClass: this.config.invalidClass,
         });
@@ -1932,14 +1951,14 @@ var ke = (y, E, b) =>
       for (const e of this._trivuleInputs) e.destroy();
     }
   }
-  class Be {
+  class Ce {
     constructor() {
-      (this._trForms = []), (this.config = oe);
+      (this._trForms = []), (this.config = fe);
     }
     init(e) {
       this.setConfig(e),
         document.querySelectorAll("form").forEach((t) => {
-          const r = new fe(t, this.config);
+          const r = new de(t, this.config);
           r.init(), this._trForms.push(r);
         });
     }
@@ -1950,14 +1969,14 @@ var ke = (y, E, b) =>
       return this._trForms;
     }
     setConfig(e) {
-      (this.config = oe),
-        e && typeof e == "object" && (this.config = D(D({}, this.config), e));
+      (this.config = fe),
+        e && typeof e == "object" && (this.config = S(S({}, this.config), e));
     }
     static Rule(e, t, r) {
       x.rule(e, t, r);
     }
   }
-  class Ns {
+  class Ls {
     constructor(e) {
       (this._inputType = "text"),
         (this._rules = []),
@@ -1975,30 +1994,29 @@ var ke = (y, E, b) =>
         throw new Error("The rule provided must be an array of Rule");
       let t = this._inputType;
       for (const u of e) {
-        let { ruleName: h, params: v } = E(u),
-          N = h;
-        const B = x.getRule(N),
-          w = this._makeRuleExcutedInstance(N, h);
-        if (((w.params = v), !B))
+        let { ruleName: h, params: v } = y(u),
+          $ = h;
+        const C = x.getRule($),
+          N = this._makeRuleExcutedInstance($, h);
+        if (((N.params = v), !C))
           throw new Error(`The rule ${h} is not defined`);
-        if (w.wasRunWith(this._value)) w.passed = w.passed;
-        else {
-          const L = B(this._value, v, t);
-          (w.passed = L.passes),
-            (this._value = L.value),
-            (t = (r = L.type) != null ? r : t),
-            (N = (a = L.alias) != null ? a : h),
-            (w.valueTested = this._value),
-            (w.run = !0);
-        }
-        if (this._failOnfirst) {
-          if (!w.passed) {
-            this._parseRuleMessage(w, N), this._addRuleExecuted(w);
+        const L = C(this._value, v, t);
+        if (
+          ((N.passed = L.passes),
+          (this._value = L.value),
+          (t = (r = L.type) != null ? r : t),
+          ($ = (a = L.alias) != null ? a : h),
+          (N.valueTested = this._value),
+          (N.run = !0),
+          this._failOnfirst)
+        ) {
+          if (!N.passed) {
+            this._parseRuleMessage(N, $), this._addRuleExecuted(N);
             break;
           }
         } else
-          w.passed ? (w.message = "") : this._parseRuleMessage(w, N),
-            this._addRuleExecuted(w);
+          N.passed ? (N.message = "") : this._parseRuleMessage(N, $),
+            this._addRuleExecuted(N);
       }
       return !this.hasErrors();
     }
@@ -2023,7 +2041,7 @@ var ke = (y, E, b) =>
     }
     _makeRuleExcutedInstance(e, t) {
       let r = this._ruleExecuted.find((a) => a.isNamed(e));
-      return r != null ? r : new Ls(e, t);
+      return r != null ? r : new Bs(e, t);
     }
     _addRuleExecuted(e) {
       this._ruleExecuted.includes(e) || this._ruleExecuted.push(e);
@@ -2036,7 +2054,7 @@ var ke = (y, E, b) =>
         : (this._trmessages[e.ruleName] = I.getRuleMessage(
             t != null ? t : e.ruleName
           ));
-      const u = new vs().setMessages(this._trmessages),
+      const u = new bs().setMessages(this._trmessages),
         h = u.parseMessage(
           this._attr,
           e.ruleName,
@@ -2069,7 +2087,7 @@ var ke = (y, E, b) =>
       return this._ruleExecuted;
     }
   }
-  class Ls {
+  class Bs {
     constructor(e, t) {
       (this.passed = !1),
         (this.message = null),
@@ -2085,15 +2103,15 @@ var ke = (y, E, b) =>
     }
   }
   typeof window != "undefined" &&
-    ((window.TrivuleInput = (Ae = window.TrivuleInput) != null ? Ae : he),
-    (window.TrivuleForm = (Oe = window.TrivuleForm) != null ? Oe : fe),
-    (window.Trivule = (Ie = window.Trivule) != null ? Ie : Be),
-    (window.TrBag = (De = window.TrBag) != null ? De : x),
-    (window.TrLocal = (Re = window.TrLocal) != null ? Re : I)),
-    (y.TrBag = x),
-    (y.TrConfig = oe),
-    (y.Trivule = Be),
-    (y.TrivuleForm = fe),
-    (y.TrivuleInput = he),
-    Object.defineProperty(y, Symbol.toStringTag, { value: "Module" });
+    ((window.TrivuleInput = (Ae = window.TrivuleInput) != null ? Ae : ce),
+    (window.TrivuleForm = (Oe = window.TrivuleForm) != null ? Oe : de),
+    (window.Trivule = (Ie = window.Trivule) != null ? Ie : Ce),
+    (window.TrBag = (Se = window.TrBag) != null ? Se : x),
+    (window.TrLocal = (De = window.TrLocal) != null ? De : I)),
+    (_.TrBag = x),
+    (_.TrConfig = fe),
+    (_.Trivule = Ce),
+    (_.TrivuleForm = de),
+    (_.TrivuleInput = ce),
+    Object.defineProperty(_, Symbol.toStringTag, { value: "Module" });
 });
