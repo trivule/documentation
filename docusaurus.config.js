@@ -8,7 +8,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Developper ally for effortless form validation",
+  title: "Trivule",
   tagline: "Your ally for effortless form validation",
   favicon: "img/favicon.ico",
 
@@ -64,8 +64,20 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: "keywords",
+          content:
+            "Form validator, Quick form validation, effortless form validator, best validator, javascript validator",
+        },
+        {
+          name: "description",
+          content:
+            " Trivule is a user-friendly JavaScript library for HTML form validation. It allows you to quickly add validation rules to your form fields using custom HTML attributes, without the need to write additional JavaScript code. ",
+        },
+      ],
       // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/logo.png",
       navbar: {
         logo: {
           alt: "Trivule Logo",
