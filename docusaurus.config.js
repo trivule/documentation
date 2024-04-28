@@ -140,6 +140,15 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+
+  plugins: [
+    [
+      "@docusaurus/plugin-google-tag-manager",
+      {
+        containerId: "GTM-WQCJ2KV8",
+      },
+    ],
+  ],
 };
 
 export default config;
