@@ -2,8 +2,7 @@
 sidebar_position: 18
 title: Attributes
 ---
-> **Note:** Experimental Trivule 1.0.
-
+ 
 # Attributes
 
 Trivule utilizes HTML attributes to configure and customize form validation. These attributes, all of which start with `data-tr`, offer a simple and intuitive approach to define validation rules, events, error messages, CSS classes, and other features related to form field validation. By using these attributes, you can quickly implement form validation in your web applications without needing to write complex JavaScript code. In this documentation, we will explore the most commonly used Trivule attributes, explaining their purpose and providing examples to illustrate their usage.

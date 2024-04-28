@@ -2,8 +2,6 @@
 sidebar_position: 23
 title: Development
 ---
-> **Note:** Experimental Trivule 1.0.
-
 ## Directory Structure
 When you clone Trivule from GitHub, here's an overview of the code structure, highlighting the important folders and files documented. The `src` directory contains all of the main Trivule code.
 

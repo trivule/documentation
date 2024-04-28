@@ -3,8 +3,7 @@
 sidebar_position: 20
 title: Events
 ---
-> **Note:** Experimental Trivule 1.0.
-
+ 
 # Events
 
 Trivule provides the ability to listen for different JavaScript events to trigger form validation without writing additional JavaScript code. This increases flexibility and simplifies form validation management.

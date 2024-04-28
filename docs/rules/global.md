@@ -2,7 +2,6 @@
 sidebar_position: 4
 title: General Validation Rules
 ---
-> **Note:** Experimental Trivule 1.0.
 # General Validation Rules
 
 ## Rule: `required`

@@ -2,7 +2,7 @@
 sidebar_position: 5
 title: Validation of Strings
 ---
-> **Note:** Experimental Trivule 1.0.
+ 
 # Validation of Strings
 
 

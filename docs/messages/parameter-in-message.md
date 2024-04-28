@@ -2,7 +2,6 @@
 sidebar_position: 16
 title: Parameters in Messages
 ---
-> **Note:** Experimental Trivule 1.0.
  
 # Parameters in Messages
 

@@ -2,8 +2,7 @@
 sidebar_position: 15
 title: Modifying an Existing Message
 ---
-> **Note:** Experimental Trivule 1.0.
-
+ 
 # Modifying an Existing Message
 
 If you want to modify an existing message in Trivule, you can use the `rewrite(lang, rule, message)` method. For example, if you want to customize the message for the `min` rule in English, you can do the following:

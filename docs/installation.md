@@ -5,13 +5,11 @@ title: Installation
 
 # Installation
 
-> **Note:** Experimental Trivule 1.0.
-
 ## Downloading or Using CDN
 
 To use Trivule, follow these steps:
 
-1. **[Download](https://www.trivule.com/js/trivule.js)** the Trivule library from [here](https://www.trivule.com/js/trivule.js). Alternatively, you can directly use the link: `https://www.trivule.com/js/trivule.js`.
+1. **[Download](https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js)** the Trivule library from [here](https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js). Alternatively, you can directly use the link: `https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js`.
 2. Include the Trivule library in your web page as you would any other JavaScript file.
 
 ## Installation via npm
@@ -19,7 +17,7 @@ To use Trivule, follow these steps:
 1. Go to your project directory and enter the following command:
 
 ```bash
-npm install trivule
+npm i trivule
 ```
 
 After installation, you can use Trivule in your project as needed:
@@ -27,7 +25,7 @@ After installation, you can use Trivule in your project as needed:
 - For a single form field:
 
 ```js
-import { TrInput } from 'Trivule';
+import { TrInput } from 'trivule';
 const trInput = new TrInput('selector');
 trInput.init();
 ```
@@ -35,7 +33,7 @@ trInput.init();
 - For an entire form:
 
 ```js
-import { TrForm } from 'Trivule';
+import { TrForm } from 'trivule';
 const trForm = new TrForm('selector');
 trForm.init();
 ```
@@ -43,7 +41,7 @@ trForm.init();
 - For all forms:
 
 ```js
-import { Trivule } from 'Trivule';
+import { Trivule } from 'trivule';
 const tr = new Trivule();
 tr.init();
 ```
@@ -78,7 +76,7 @@ tr.init();
     <p><button type="submit" data-tr-submit>Submit</button></p>
 </form>
 
-<script src="https://www.trivule.com/js/trivule.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js"></script>
 <script>
 const tr = new Trivule();
 tr.init();

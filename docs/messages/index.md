@@ -2,8 +2,7 @@
 sidebar_position: 14
 title: Messages
 ---
-> **Note:** Experimental Trivule 1.0.
-
+ 
 # Messages
 
 When Trivule needs to display error messages, it first determines the language in which these messages should be displayed. Here's how it works:

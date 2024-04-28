@@ -2,7 +2,7 @@
 sidebar_position: 9
 title: Phone Number Validation
 ---
-> **Note:** Experimental Trivule 1.0.
+ 
 # Phone Number Validation
 These rules are specifically designed for phone number validation. They allow you to verify the format of phone numbers. Here is a detailed description of each rule and practical usage examples:
 

@@ -1,9 +1,8 @@
 ---
 sidebar_position: 1
-title: Tutorial in 5 Minutes
+title: Quick start tutorial (3 minutes)
 ---
-> **Note:** Experimental Trivule 1.0.
-
+ 
 # Trivule Tutorial in 5 Minutes
 
 Welcome to the Trivule introductory tutorial! In this tutorial, we will learn how to use Trivule to validate a contact form. Here's what we'll do:
@@ -15,10 +14,10 @@ Welcome to the Trivule introductory tutorial! In this tutorial, we will learn ho
 
 ## Step 1: Include Trivule
 
-First, download the Trivule library from [this link](https://www.trivule.com/js/trivule.js). Then, be sure to include the Trivule library in your web page. You can do this by adding a `<script>` tag with the path to the `trivule.js` file (the source code). Make sure to include this tag before the closing `<body>` tag.
+First, add the Trivule library from [this link](https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js) to your code.
 
 ```html
-<script src="trivule.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js"></script>
 ```
 ## Step 2: Define the Form
 

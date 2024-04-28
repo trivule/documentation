@@ -2,7 +2,7 @@
 sidebar_position: 3
 title: Validation Rules
 ---
-> **Note:** Experimental Trivule 1.0.
+ 
 # Validation Rules
 
 In this section of the documentation, we will review the different validation rules available in Trivule for validating fields. Each rule represents a specific condition that the field must satisfy to be considered valid. Here are the available validation rules:

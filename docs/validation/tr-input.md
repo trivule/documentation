@@ -2,7 +2,7 @@
 sidebar_position: 11
 title: Input validation
 ---
-> **Note:** Experimental Trivule 1.0.
+ 
 # Input validation
  
 ### TrInput 

@@ -2,7 +2,7 @@
 sidebar_position: 0
 title: Why Trivule?
 ---
-> **Note:** Experimental Trivule 1.0.
+
 # Why Trivule?
 
 **Trivule**  is a user-friendly JavaScript library designed to simplify the dynamic validation of HTML forms on your web pages.
