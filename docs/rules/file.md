@@ -48,14 +48,14 @@ This rule checks if the size of a `File` or `Blob` object falls between specifie
 - Usage: You can use this rule to limit the size of uploaded files to a specific range.
 
 ---
-# Rule: "mimes"
+<!-- # Rule: "mimes"
 
 The "mimes" rule is used to verify if the MIME type of a `File` or `Blob` object matches the specified MIME type(s). It allows you to validate file uploads based on their MIME types.
 
 ## Usage
 
 ### Description
-The "mimes" rule validates the MIME type of the uploaded file by comparing it to the specified MIME types. It returns `true` if the MIME type matches any of the provided MIME types, and `false` otherwise.
+The "mimes" rule validates the MIME type of the uploaded file by comparing it to the specified MIME types.
 
 ## Examples
 
@@ -88,3 +88,4 @@ Here, all image files with a MIME type starting with "image/" will be accepted.
 - It's important to note that the validation is performed client-side, and additional server-side validation is also recommended to ensure data integrity and security.
 
 Remember to adapt the example code according to your specific use case and requirements.
+ -->
