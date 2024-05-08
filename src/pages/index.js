@@ -9,10 +9,10 @@ import styles from "./index.module.css";
 
 function HomepageHeader() {
   return (
-    <header className={clsx("hero ", styles.heroBanner)}>
+    <header className={clsx("hero features", styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          Quick Validation
+          <span className="text--primary">Triv</span><span>ule</span>
         </Heading>
         <p className="hero__subtitle">
           Trivule enables dynamic form validation <br /> without needing to
@@ -22,6 +22,9 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link className="button button--primary button--lg" to="/docs">
             Read docs
+          </Link>
+          <Link className="button button--secondary button--lg" to="/">
+            GitHub
           </Link>
         </div>
       </div>
