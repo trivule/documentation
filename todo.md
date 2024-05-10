@@ -1,2 +1,3 @@
 - Rewrite onInit doc (docs/validation/tr-form)
 - Rewrite the doc of size rule
+- Write doc for imperative mode
