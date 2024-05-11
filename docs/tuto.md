@@ -5,7 +5,9 @@ title: Quick start tutorial (3 minutes)
  
 # Trivule Tutorial in 5 Minutes
 
-Welcome to the Trivule introductory tutorial! In this tutorial, we will learn how to use Trivule to validate a contact form. Here's what we'll do:
+Welcome to the Trivule introductory tutorial! In this tutorial, we will learn how to use Trivule to validate a contact form. 
+Nous allons utiliser la validation déclarative et la validation impérative
+Here's what we'll do:
 
 - Validate the email address (maximum of 32 characters) 
 - Validate the name (length must be between 2 and 80 characters, cannot contain numbers)
@@ -25,7 +27,7 @@ Create a blank page for testing and add the following HTML code.
 
 We will create an HTML form with fields to validate using Trivule.
 
-Here's an example:
+### Formulaire déclaratif
 
 ```html
 <form>
@@ -46,11 +48,7 @@ Here's an example:
         <input type="text" data-tr-rules="required|email|maxlength:32" name="email" />
         <div data-tr-feedback="email"></div>
     </div>
-    <div>
-        <label>Phone Number</label>
-        <input type="text" data-tr-rules="required|phone" name="phone" />
-        <div data-tr-feedback="phone"></div>
-    </div>
+    
     <div>
         <label>Message</label>
         <textarea
@@ -228,6 +226,58 @@ And that's it! Now, when you submit the form or interact with the fields, Trivul
 Feel free to customize the validation rules and error messages according to your needs. You can also refer to the Trivule documentation for more information on advanced features.
 
 I hope this tutorial was helpful for you to get started with Trivule with a concrete example. Have fun validating your forms with ease!
+
+### Imperative validation
+
+```html
+<form>
+    <div>
+        <label for="name">Name</label>
+        <div>
+            <input type="text" id="name" name="name" />
+            <div class="invalid-feedback"></div>
+        </div>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" />
+        <div class="invalid-feedback"></div>
+    </div>
+    <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
+        <div class="invalid-feedback"></div>
+    </div>
+    <p>
+        <button type="submit" value="Submit" data-tr-submit>
+            Submit
+        </button>
+    </p>
+</form>
+```
+
+```js
+const trivuleForm = new TrivuleForm("form", {
+  feedbackSelector: ".invalid-feedback", // Specify where to display error feedback
+});
+
+trivuleForm.init();
+
+trivuleForm.make({
+    name: { 
+        rules: "required|between:2,80|only:string",
+    },
+    email: { 
+        rules: "required|email|maxlength:32",
+    },
+    message: {
+        rules: "required|between:2,250|endWith:.",
+        messages: {
+            endWith: "The message must end with a period (.)", // Override the default message
+        }
+    }
+});
+```
 
 ## Further Reading
 
