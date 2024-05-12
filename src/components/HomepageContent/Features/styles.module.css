@@ -1,0 +1,14 @@
+.features_card {
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  outline: 1px solid transparent;
+}
+
+.features_card:hover {
+  outline: 1px solid var(--ifm-color-primary);
+  transform: scale(1.01);
+}
