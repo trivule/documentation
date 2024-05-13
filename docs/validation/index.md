@@ -50,4 +50,6 @@ Trivule also offers global validation features to facilitate the management of v
 
 [Global Validation](/docs/validation/trivule)
 
+
+
 We hope this documentation helps you master validation in Trivule and easily integrate form validation into your web applications. If you have additional questions, feel free to consult the detailed documentation for each section or join our [community on Discord](https://discord.gg/wPPAfq5n) for assistance from the Trivule community.

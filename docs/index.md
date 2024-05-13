@@ -106,14 +106,15 @@ Trivule comes with default error messages, but it also provides you with the fle
 <div data-tr-feedback="file"></div>
 ```
 or
+ 
 ```javascript
-{
-	file:{
-	rules:"required|mimes:text/plain",
-	messages:"Le fichier est requis|Le fichier doit être un fichier texte",
-	feedbackElement:"[data-tr-feedback]"
-}
-}
+trivuleForm.make([
+  {
+    selector: "file",
+    rules: ["required", "mimes:text/plain"],
+    messages:['The file is required', 'The file must be a text file'.]
+  }, 
+]);
 ```
 
 Trivule displays error messages at the nearest feedback element to the input. If you specify a general selector, it will be the first encountered element around the input.
