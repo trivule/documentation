@@ -9,7 +9,7 @@ Let's say the `required` rule doesn't meet your requirements. You want to custom
 Here's how to add or modify a rule in Trivule:
 
 ```javascript
-TrBag.rule("required", (input) => {
+TrRule.add("required", (input) => {
   return {
     value: input,
     passes: false,
@@ -47,7 +47,7 @@ const notSudoRule: RuleCallBack = (input: string) => {
   };
 };
 
-TrBag.rule(
+TrRule.rule(
   "notSudo",
   notSudoRule,
   "The input value should not be 'sudo'",

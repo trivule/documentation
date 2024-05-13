@@ -2,16 +2,19 @@
 sidebar_position: 13
 title: Form Validation
 ---
- 
 # Form Validation
 
-Form validation refers to the validation of an HTML form in its entirety. In practice, form validation is developed based on [input validation](/docs/validation/tr-input). It encompasses actions such as disabling the submit button and preventing the propagation of the `submit` event of a form.
+Form validation involves validating a set of HTML fields, whether inside a `<form>` element or grouped within a container such as a `<div>`.
 
-## TrForm
+## TrivuleForm
 
-### Interaction with Forms during Validation
+TrivuleForm offers two validation approaches: declarative and imperative, to address different form validation needs.
 
-Let's consider the following form:
+### Declarative Validation
+
+Declarative validation allows validating a form by simply specifying validation rules in the attributes of HTML fields. It's a simple and convenient approach for basic form validation.
+
+Example usage:
 
 ```html
 <form>
@@ -30,24 +33,46 @@ Let's consider the following form:
   </div>
   <p>
     <button type="submit" value="Submit" data-tr-submit>
-      Send
+      Submit
     </button>
   </p>
 </form>
 ```
 
-Let's initialize it:
+Validation initialization:
 
 ```js
-const trForm = new TrForm("form");
+const trForm = new TrivuleForm("form");
 trForm.init();
 ```
 
-By initializing the form, Trivule will attach the appropriate event handlers to the form and its fields. This setup ensures that when the form is submitted, the fields are validated according to the specified rules. If any field fails validation, the submit event is prevented, and appropriate feedback is displayed to the user.
+With this declarative approach, the form is automatically validated without writing additional JavaScript code, which is ideal for simple form validation needs.
 
-The `data-tr-rules` attribute is used to specify the validation rules for each input field, such as requiring a field to be filled (`required`), specifying the format (`email`), or setting constraints on length (`maxlength:32`). The `data-tr-feedback` attribute specifies where the feedback messages should be displayed.
+### Imperative Validation
 
-Once the form is initialized, Trivule takes care of handling form submissions and providing feedback based on the validation rules.
+Imperative validation allows defining validation rules and applying them dynamically using JavaScript code. This provides greater flexibility for more complex form validation cases.
+
+Example usage:
+
+```js
+const trivuleForm = new TrivuleForm("form",{
+  realTime:false,
+  feedbackSelector:".invalid-feedback"
+});
+// Define imperative validation rules for each form field
+trivuleForm.make([
+  {
+    selector: "email",
+    rules: ["required", "email", "maxlength:32"],
+  },
+  {
+    selector: "message",
+    rules: ["required", "between:2,250", "endWith:."],
+  },
+]);
+```
+
+With this imperative approach, you can dynamically define validation rules and interact more actively with the form according to specific needs.
 
 
 ### `onInit` - Before Validation

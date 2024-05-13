@@ -1,78 +1,173 @@
 ---
 sidebar_position: 1
-title: Quick start tutorial (3 minutes)
+title: Quick start tutorial
 ---
  
-# Trivule Tutorial in 5 Minutes
-
-Welcome to the Trivule introductory tutorial! In this tutorial, we will learn how to use Trivule to validate a contact form. Here's what we'll do:
-
-- Validate the email address (maximum of 32 characters) 
-- Validate the name (length must be between 2 and 80 characters, cannot contain numbers)
-- Validate the phone number (validate a phone number)
-- Validate the message (length between 2 and 250 characters, and end with a point (.))
+ 
+Welcome to the Trivule introductory tutorial! In this guide, we'll walk through using Trivule to validate a contact form. We'll explore both declarative and imperative validation methods to suit different validation needs.
 
 ## Step 1: Include Trivule
 
-First, add the Trivule library from [this link](https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js) to your code.
+To get started with Trivule, include the library in your project. You can either add it directly from the CDN or follow the installation instructions on our [installation page](/docs/installation).
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/trivule@1.1.0/dist/index.umd.js"></script>
 ```
-## Step 2: Define the Form
 
-Create a blank page for testing and add the following HTML code.
+## Step 2: Form Validation
 
-We will create an HTML form with fields to validate using Trivule.
+Create an HTML form with fields to validate using Trivule.
 
-Here's an example:
+### Imperative Validation
 
 ```html
 <form>
-    <div>
-        <label class="label">Name</label>
-        <div>
-            <input
-                data-tr-rules="required|between:2,80|only:string"
-                type="text"
-                name="name"
-                required
-            />
-        </div>
-        <div data-tr-feedback="name"></div>
-    </div>
-    <div>
-        <label>Email</label>
-        <input type="text" data-tr-rules="required|email|maxlength:32" name="email" />
-        <div data-tr-feedback="email"></div>
-    </div>
-    <div>
-        <label>Phone Number</label>
-        <input type="text" data-tr-rules="required|phone" name="phone" />
-        <div data-tr-feedback="phone"></div>
-    </div>
-    <div>
-        <label>Message</label>
-        <textarea
-            data-tr-rules="required|between:2,250|endWith:."
-            name="message"
-        ></textarea>
-        <div data-tr-feedback="message"></div>
-    </div>
-    <p>
-        <button type="submit" value="Submit" data-tr-submit>
-            Submit
-        </button>
-    </p>
+  <label for="name">Name</label>
+  <div>
+    <input type="text" id="name" name="name" />
+    <div class="invalid-feedback"></div>
+  </div>
+  <label for="email">Email</label>
+  <div>
+    <input type="text" id="email" name="email" />
+    <div class="invalid-feedback"></div>
+  </div>
+  <label for="message">Message</label>
+ <div>
+  <textarea id="message" name="message"></textarea>
+  <div class="invalid-feedback"></div>
+ </div>
+  <p>
+    <button type="submit" value="Submit" data-tr-submit>
+      Submit
+    </button>
+  </p>
+</form>
+```
+
+```js
+const trivuleForm = new TrivuleForm("form", {
+  feedbackSelector: ".invalid-feedback",
+});
+
+trivuleForm.make({
+    name: { 
+        rules: "required|between:2,80|only:string",
+    },
+    email: { 
+        rules: "required|email|maxlength:32",
+    },
+    message: {
+        rules: "required|between:2,250|endWith:.",
+        messages: {
+            endWith: "The message must end with a period (.)",
+        }
+    }
+});
+```
+
+#### Form Submission
+
+You can use the `onPasses` method to be notified when the form is valid.
+
+```js
+trivuleForm.onPasses((trivuleForm)=>{
+  const allInputs = trivuleForm.inputs(true);
+})
+```
+
+Alternatively, the `onFails` method allows you to be notified when the form is invalid.
+
+```js
+trivuleForm.onFails((trivuleForm)=>{
+  // Do something
+})
+```
+
+To prevent form submission, which is not mandatory as Trivule will prevent submission if it's not valid by default:
+
+```js
+trivuleForm.on('submit', (e)=>{
+  if(!trivuleForm.valid){
+    e.preventDefault();
+  }
+})
+```
+
+### Declarative Validation
+
+```html
+<form>
+  <label class="label">Name</label>
+  <div>
+    <input
+      data-tr-rules="required|between:2,80|only:string"
+      type="text"
+      name="name"
+      required
+    />
+    <div data-tr-feedback="name"></div>
+  </div>
+  <label>Email</label>
+  <div>
+    <input type="text" data-tr-rules="required|email|maxlength:32" name="email" />
+    <div data-tr-feedback="email"></div>
+  </div>
+  <label>Message</label>
+  <div>
+    <textarea
+      data-tr-rules="required|between:2,250|endWith:."
+      name="message"
+    ></textarea>
+    <div data-tr-feedback="message"></div>
+  </div>
+  <p>
+    <button type="submit" value="Submit" data-tr-submit>
+      Submit
+    </button>
+  </p>
 </form>
 ```
 
 In this example, we have added `data-tr-rules` attributes to the form fields to specify validation rules and `data-tr-feedback` attributes to certain `div` elements to display validation feedback.
 
-### Form Style
-To create a clean form style, add the following CSS code to your page.
-You can customize it as you like.
+## Step 3: Initialize Trivule
 
+Now that we've defined our form, let's link it to Trivule to perform validation. Add the following JavaScript code at the end of your page, just before the closing `</body>` tag:
+
+```html
+<script>
+    new TrivuleForm("form"); 
+</script>
+```
+
+And that's it! Now, when you submit the form or when field values change, Trivule will validate according to the rules you've defined and display appropriate validation feedback.
+
+Feel free to customize the validation rules and error messages according to your needs. You can also refer to the Trivule documentation for more information on advanced features.
+
+I hope this tutorial was helpful for you to get started with Trivule with a concrete example. Have fun validating your forms with ease!
+
+## Further Reading
+
+Trivule offers many customization and configuration options to meet your specific needs. Here are some additional resources to help you explore these features:
+
+- [Customizing Messages](/docs/messages): Learn how to customize the error messages and text displayed by Trivule.
+- [Other Validation Rules](/docs/rules): Explore the different validation rules available in Trivule, such as length validation, regular expression validation, and more.
+- [Validation Events](/docs/events): Learn about validation events to interact with Trivule during form validation.
+- [Validating Individual Inputs](/docs/validation/tr-input): Discover how to validate an individual form field with Trivule.
+- [Validating an Individual Form](/docs/validation/tr-form): Learn how to validate a specific form using Trivule.
+- [Validating Forms on a Page](/docs/validation/trivule): Discover how to validate all forms on a page at once.
+- [Examples](/docs/example): Check out real-world examples of Trivule's use for form validation.
+- [Framework Integration (React, Angular, etc.)](#): Get instructions on integrating Trivule into popular frameworks like React, Angular, Vue.js, etc.
+- [Contribution](/docs/contribution): Contribute to Trivule's development by providing suggestions, bug reports, or proposing improvements.
+- [Development](/docs/contribution): If you are interested in Trivule development, see this documentation for information on how to contribute to the project.
+
+These resources will help you deepen your knowledge and make the most of Trivule for your form validation. Enjoy the power and flexibility of Trivule in your projects!
+
+### Form Style
+To create a clean form style, add the following CSS code to your page. You can customize it as you like.
+
+ 
 ```css
 form {
   width: 80%;
@@ -209,39 +304,3 @@ p {
   margin-bottom: 10px;
 }
 ```
-
-## Step 3: Initialize Trivule
-
-Now that we've defined our form, let's link it to Trivule to perform validation. Add the following JavaScript code at the end of your page, just before the closing `</body>` tag:
-
-```html
-<script>
-  const tr = new Trivule();
-  tr.init();
-</script>
-```
-
-In this example, we create an instance of `Trivule` and call the `init()` method to initialize the validation.
-
-And that's it! Now, when you submit the form or interact with the fields, Trivule will validate according to the rules you've defined and display appropriate validation feedback.
-
-Feel free to customize the validation rules and error messages according to your needs. You can also refer to the Trivule documentation for more information on advanced features.
-
-I hope this tutorial was helpful for you to get started with Trivule with a concrete example. Have fun validating your forms with ease!
-
-## Further Reading
-
-Trivule offers many customization and configuration options to meet your specific needs. Here are some additional resources to help you explore these features:
-
-- [Customizing Messages](/docs/messages): Learn how to customize the error messages and text displayed by Trivule.
-- [Other Validation Rules](/docs/rules): Explore the different validation rules available in Trivule, such as length validation, regular expression validation, and more.
-- [Validation Events](/docs/events): Learn about validation events to interact with Trivule during form validation.
-- [Validating Individual Inputs](/docs/validation/tr-input): Discover how to validate an individual form field with Trivule.
-- [Validating an Individual Form](/docs/validation/tr-form): Learn how to validate a specific form using Trivule.
-- [Validating Forms on a Page](/docs/validation/trivule): Discover how to validate all forms on a page at once.
-- [Examples](/docs/example): Check out real-world examples of Trivule's use for form validation.
-- [Framework Integration (React, Angular, etc.)](#): Get instructions on integrating Trivule into popular frameworks like React, Angular, Vue.js, etc.
-- [Contribution](/docs/contribution): Contribute to Trivule's development by providing suggestions, bug reports, or proposing improvements.
-- [Development](/docs/contribution): If you are interested in Trivule development, see this documentation for information on how to contribute to the project.
-
-These resources will help you deepen your knowledge and make the most of Trivule for your form validation. Enjoy the power and flexibility of Trivule in your projects!
