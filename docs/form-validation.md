@@ -2,8 +2,25 @@
 sidebar_position: 13
 title: Form Validation
 ---
+
 # Form Validation
 
+## Global Validation
+
+If you have a website or application and want to apply the same validation rules to all forms without managing each form individually, you can use global validation with [declarative validation](#).
+
+## Usage
+
+To set up global validation, simply initialize Trivule:
+
+```html
+<script>
+  const tr = new Trivule();
+  tr.init();
+</script>
+```
+
+This activates global validation for all your forms.
 Form validation involves validating a set of HTML fields, whether inside a `<form>` element or grouped within a container such as a `<div>`.
 
 ## TrivuleForm
@@ -43,7 +60,6 @@ Validation initialization:
 
 ```js
 const trForm = new TrivuleForm("form");
-trForm.init();
 ```
 
 With this declarative approach, the form is automatically validated without writing additional JavaScript code, which is ideal for simple form validation needs.
@@ -74,8 +90,42 @@ trivuleForm.make([
 
 With this imperative approach, you can dynamically define validation rules and interact more actively with the form according to specific needs.
 
+ ### Validation Settings
 
-### `onInit` - Before Validation
+- To initialize form validation, the first argument passed to the constructor is a CSS selector. It can be a standard `<form>` element or a `<div>` container containing a set of inputs to validate.
+- The second parameter consists of a basic configuration to customize the validation behavior.
+
+Here's an explanation of each available option:
+
+- `auto` (optional): This option specifies whether the form should be validated as the user types in the form fields. By default, this option is disabled (`false`).
+
+- `local` (optional): This option allows you to set the language for validation error messages. You can specify the language as a string. For example, `"fr"` for French. This option is also optional.
+
+- `validClass` (optional): This is the CSS class that will be added to all the inputs in the form when they are valid. If this option is not set, no class will be added.
+
+- `invalidClass` (optional): This is the CSS class that will be added to all the inputs in the form when they are invalid. If this option is not set, `is-invalid` class will be added.
+
+Here's the translation:
+
+- `feedbackSelector` (optional): If this option is not specified, Trivule will first check if a selector is indicated during declaration with the `make` method, and then use that selector. In the absence of a selector, Trivule will check if the input has an associated HTML element with the `data-tr-feedback` attribute set to the input's name. If no element is found in either of these cases, no feedback message will be displayed.
+
+- `realTime` (optional): This option specifies whether validation should be performed in real-time as the user types in the form fields. By default, this option is disabled (`false`).
+
+These options allow you to customize the validation of your form according to your specific needs.
+**Default values**
+```js
+const options = {
+  auto: true,
+  local: {
+    lang: "en",
+  }; 
+  validClass: "",
+  invalidClass: "is-invalid",
+  feedbackSelector: "[data-tr-feedback={name}]", //where {name} we be replaced with the input name
+  realTime: true;
+};
+```
+### `make` - Before Validation
 
 When using Trivule for live form validation, additional actions may be needed after form initialization. For example, specific configurations or object manipulations may be required to prepare the form for more advanced interaction.
 

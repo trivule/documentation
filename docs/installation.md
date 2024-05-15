@@ -9,7 +9,7 @@ title: Installation
 
 To use Trivule in your project, follow these steps:
 
-1. **[Download](https://cdn.jsdelivr.net/npm/trivule@1.1.0/dist/index.umd.js)** the Trivule library from [here](https://cdn.jsdelivr.net/npm/trivule@1.1.0/dist/index.umd.js). Alternatively, you can use the CDN link directly: `https://cdn.jsdelivr.net/npm/trivule@1.1.0/dist/index.umd.js`.
+1. **[Download](https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js)** the Trivule library from [here](https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js). Alternatively, you can use the CDN link directly: `https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js`.
 2. Include the Trivule library in your web page as you would any other JavaScript file.
 
 ## Installation via npm
@@ -75,7 +75,7 @@ Here's an example of validation that doesn't require JavaScript:
     <p><button type="submit" data-tr-submit>Submit</button></p>
 </form>
 
-<script src="https://cdn.jsdelivr.net/npm/trivule@1.1.0/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js"></script>
 <script>
 const tr = new Trivule();
 tr.init();

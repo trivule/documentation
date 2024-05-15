@@ -11,7 +11,7 @@ Welcome to the Trivule introductory tutorial! In this guide, we'll walk through 
 To get started with Trivule, include the library in your project. You can either add it directly from the CDN or follow the installation instructions on our [installation page](/docs/installation).
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/trivule@1.1.0/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js"></script>
 ```
 
 ## Step 2: Form Validation
