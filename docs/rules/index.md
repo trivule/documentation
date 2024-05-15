@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
-title: Validation Rules
+sidebar_position: 5
+title: Rules
 ---
  
-# Validation Rules 
+# Rules 
 
 In this section of the documentation, we'll explore the various validation rules provided by Trivule for validating fields. Each rule represents a specific condition that a field must meet to be considered valid. Here are the available validation rules:
 
@@ -351,7 +351,7 @@ In the second example, the rule validates phone numbers globally, without any re
 
 The `global` rule encompasses general validation rules that can be used for specific cases. 
 
-## Rule: `required`
+### `required`
 
 This rule checks if the input is not empty (not null, not undefined, not empty string). If the input value is empty, the validation fails.
 
@@ -363,7 +363,7 @@ This rule checks if the input is not empty (not null, not undefined, not empty s
 
 ---
  
-## Rule: `in`
+### `in`
  
 This rule checks if the input value is part of the specified list of values. Values must be separated by a comma.
 
@@ -376,7 +376,7 @@ This rule checks if the input value is part of the specified list of values. Val
 In this example, the `in` rule is applied to an input field. It checks if the input value is either "active" or "inactive."
 
  
-##  `size`
+### `size`
  
 ### Usage
 
@@ -405,7 +405,7 @@ In this example, the `size` rule is applied to an input field. It checks if the 
 
  
 
-## Rule: `boolean`
+### `boolean`
 
 This rule checks if the input corresponds to a boolean value. The accepted values are: "`true`," "`false`", "`0`", "`1`", "`yes`, and "`no`" 
 
@@ -417,7 +417,7 @@ This rule checks if the input corresponds to a boolean value. The accepted value
 
  
 
-## Rule: `between`
+### `between`
 
 This rule allows you to validate different types of data by specifying a range of values. Possible ranges of values depend on the type of data:
 
@@ -443,7 +443,7 @@ This rule allows you to validate different types of data by specifying a range o
 ```
   
 
-##  `regex`
+###  `regex`
 This rule checks if the input value matches the specified regular expression. The regular expression is defined using standard regex syntax without the `/` characters at the beginning and end.
 
 ### Example
@@ -475,7 +475,7 @@ Be sure to follow this convention when using the `regex` rule in Trivule to avoi
 
 ---
 
-## Rule: `only`
+### `only`
 
 This rule allows you to validate an input based on its type. Two types are currently supported: "string" and "number." The rule checks if the input value matches the specified type.
 
@@ -542,3 +542,57 @@ The `endWithString` rule checks if the input string ends with a specified substr
 <input type="text" data-tr-rules="endWithString:suffix" />
 ``` 
 
+# How to add or modify a new rule in Trivule?
+
+Let's say the `required` rule doesn't meet your requirements. You want to customize its behavior or add a new rule. The `rule` method of the `TrBag` class is here for that.
+
+Here's how to add or modify a rule in Trivule:
+
+```javascript
+TrRule.add("required", (input) => {
+  return {
+    value: input,
+    passes: false,
+  };
+});
+```
+
+This method takes four parameters, two of which are required:
+
+- **rule**: The name of the rule.
+- **callback**: The callback. This callback takes three parameters, one of which is required. The first is the value of the field to validate, the second is the argument passed to the rule, and the third is the field type. Only the value is required. This callback must return an object in the following format:
+```js
+{
+  value: value, // The value can be modified to serve the next rule.
+  passes: true, // or false: indicates if the predicate passed.
+  type: "text", // Optional but necessary for specific types, such as numbers, dates, etc.
+  alias: "required", // Optional but useful when the rule can change depending on the data type and refer to another.
+}
+```
+Explanation on `alias`:
+When we take the `min` rule, it is a general rule that validates numbers, strings, file sizes, etc. When the data type to be validated is a `string`, the rule simply calls the `minlength` rule to avoid rewriting another logic.
+
+- **message**: The message to display when the rule fails.
+- **locale**: The language of the message if it was not in English .
+
+### Complete Example
+
+```typescript
+const notSudoRule: RuleCallBack = (input: string) => {
+  return {
+    value: input,
+    passes: input != "sudo",
+    type: "text", // Optional
+    alias: undefined, // Optional
+  };
+};
+
+TrRule.rule(
+  "notSudo",
+  notSudoRule,
+  "The input value should not be 'sudo'",
+  "en"
+);
+```
+
+Once this step is completed, your rule is available in Trivule, and you can use it just like you would with Trivule's other rules.
