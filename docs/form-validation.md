@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 4
 title: Form Validation
 ---
 
@@ -125,211 +125,439 @@ const options = {
   realTime: true;
 };
 ```
-### `make` - Before Validation
+### Make Validation
 
-When using Trivule for live form validation, additional actions may be needed after form initialization. For example, specific configurations or object manipulations may be required to prepare the form for more advanced interaction.
+The `make` method in the `TrivuleForm` class is used to define and apply validation rules to form inputs. This method allows you to specify validation parameters for multiple inputs, either by passing an array of input parameters or an object containing input names and their corresponding parameters.
 
-The `onInit` method addresses this by providing a clean way to attach event handlers that will be triggered specifically after initialization. This allows you to perform custom actions or configure additional features in response to the form's ready state.
+#### Usage
 
-The `onInit()` method should be called before calling the `init()` method.
+The `make` method can be used in two ways:
+1. By passing an array of [input parameters](#).
+2. By passing an object with input names as keys and their [parameters](#) as values.
 
-#### Example Usage
+#### Example 1: Using an Array of Input Parameters
+In this example, we define validation rules for two inputs using an array of input parameters.
 
 ```typescript
-trForm.onInit((initializedForm: TrForm) => {
-    console.log("The form is ready for additional actions:", initializedForm);
+const trivuleForm = new TrivuleForm("form");
+
+// Define validation rules for each form field
+trivuleForm.make([
+  {
+    selector: "age", // The input name
+    rules: "required|between:18,40",
+  },
+  {
+    selector: "#birthDayInput", 
+    rules: "required|date",
+  },
+]);
+```
+#### Example 2: Using an object with input names and parameters
+
+In this example, we define validation rules for multiple inputs using an object where keys are input names and values are their corresponding parameters.
+
+```typescript
+const trivuleForm = new TrivuleForm("form");
+
+const inputs = {
+  age: {
+    rules: "required|between:18,40",
+  },
+  birthDay: {
+    rules: "required|date",
+    selector: "#birthDayInput",  
+  },
+  message: {
+    rules: "required|only:string",
+  },
+};
+
+// Apply validation rules
+trivuleForm.make(inputs);
+```
+
+#### Example 3: Chaining `make` Method Calls
+
+You can also chain multiple `make` method calls to define validation rules for different sets of inputs.
+
+```typescript
+const trivuleForm = new TrivuleForm("form");
+
+trivuleForm
+  .make([
+    {
+      selector: "age",
+      rules: "required|between:18,40",
+    },
+    {
+      selector:"birthDayInput",
+      rules: "required|date",
+    },
+  ])
+  .make({
+    message: {
+      rules: "required|only:string",
+    },
+  });
+```
+
+
+### Handling Failed Validation
+
+The `TrivuleForm` class offers two approaches for handling failed validation:
+
+**1. Using `onFails` Method:**
+
+* Conveniently attaches an event listener to the `"tr.form.fails"` event.
+* Event triggers upon form validation failure.
+* Provides a callback function with the `TrivuleForm` instance, enabling access to validation-related information.
+
+**Example:**
+
+```typescript
+const trivuleForm = new TrivuleForm("form");
+
+trivuleForm.onFails((trivuleForm) => {
+  console.log("Form validation failed!", trivuleForm);
+  // Additional error handling logic...
 });
 ```
 
-In this example, the `onInit` method is called with a callback function that logs a message when the form is ready for further actions. This method provides a way to execute custom actions or additional configurations in response to the form's initialization.
+**2. Direct Event Listener:**
 
-#### Use Cases
+* Listen for the `"tr.form.fails"` event directly on the form element.
+* Offers more control over event handling.
+* Useful when avoiding dependency on `TrivuleForm` methods or for custom event handling needs.
 
-- **Custom Configuration:** Perform specific configurations for the form after its initialization.
+**Example:**
 
-- **Post-Initialization Actions:** Execute actions that depend on the full preparation of the form.
+```typescript
+const formElement = document.getElementById("form");
 
-*Note: It is advisable to use `onInit` judiciously for tasks unrelated to validation, as full form initialization may not guarantee the completion of asynchronous validations or other deferred tasks.*
-
-### `onFails` & `onPasses` - Dynamic Validation Responses
-
-The `onFails` and `onPasses` methods of the `TrForm` class provide complete flexibility to dynamically respond to the successes and failures of form field validations.
-
-#### `onFails` - Failed Validation
-
-The `onFails` method allows you to define an event handler that will be triggered whenever a form field fails validation. Example:
-
-```javascript
-trForm.onFails((trFormInstance) => {
-  // Code to execute in case of validation failure
-  console.log("Validation failed", trFormInstance);
-  // Customize the reactions to validation failures here
+formElement.addEventListener("tr.form.fails", (event) => {
+  console.log("Form validation failed!", event.target); // Target is the form element
+  // Additional error handling logic...
 });
 ```
 
-Customize the code to execute according to your needs.
+**Choosing the Approach:**
 
-#### `onPasses` - Successful Validation
+* **`onFails` Method:** Cleaner and encapsulated when working within the `TrivuleForm` class context.
+* **Direct Event Listener:** Offers more control and independence from `TrivuleForm` methods.
 
-The `onPasses` method works similarly, triggering an event handler when the form passes validation. Example:
 
-```javascript
-trForm.onPasses((trFormInstance) => {
-  // Code to execute in case of successful validation
-  console.log("Validation succeeded");
-  // Customize reactions to validation successes here
+### Handling Successful Validation
+
+Similarly to handling failed validation, you can manage successful validation using the `onPasses` method or by directly listening for the `"tr.form.passes"` event.
+
+**1. Using `onPasses` Method:**
+
+* Attach an event listener to the `"tr.form.passes"` event.
+* Executed when the form validation succeeds.
+* Provides a callback function with the `TrivuleForm` instance, enabling specific actions upon successful validation.
+
+**Example:**
+
+```typescript
+const trivuleForm = new TrivuleForm("form");
+
+trivuleForm.onPasses((trivuleForm) => {
+  console.log("Form validation passed!", trivuleForm);
+  // Additional actions upon successful validation...
 });
 ```
 
-Use this method to perform specific actions in case of successful validation, such as validating other fields or enabling a submit button.
+**2. Direct Event Listener:**
 
-By leveraging `onFails` and `onPasses`, you can tailor your application to the validation outcomes of the form fields, adding customized and responsive logic.
+* Listen for the `"tr.form.passes"` event directly on the form element.
+* Offers more control over event handling and independence from `TrivuleForm` methods.
 
-### Custom Event Emission
+**Example:**
 
-### `emit` - Event Customization
+```typescript
+const formElement = document.getElementById("form");
 
-The `emit` method of the `TrForm` class allows you to emit custom events to the form associated with the `TrForm` instance. This advanced feature facilitates communication and interaction within your application.
-
-#### Example Usage
-
-```javascript
-const userData = { name: "John Doe", age: 25 };
-
-// Emitting a custom "user-updated" event with additional data
-trForm.emit("user-updated", userData);
+formElement.addEventListener("tr.form.passes", (event) => {
+  console.log("Form validation passed!", event.target); // Target is the form element
+  // Additional actions upon successful validation...
+});
 ```
 
-In this example, a custom event named "user-updated" is emitted to the form, carrying additional user data. This flexibility allows you to create scenarios where specific parts of your application can respond to these tailored events.
+**Choosing the Approach:**
 
-#### Possible Uses
+* **`onPasses` Method:** Convenient and encapsulated within the `TrivuleForm` class context.
+* **Direct Event Listener:** Provides more flexibility and control over event handling.
 
-- **Advanced Communication:** Emit events when an `input` element's value changes and listen for these events to trigger specific actions in different parts of your application.
-
-- **Customizing Interactions:** Adapt your application's behavior by emitting custom events in response to specific conditions or form states.
-
-- **Integration with Other Components:** Facilitate integration with other components of your application by emitting events containing crucial information.
-
-Wise use of the `emit` method can greatly enhance your application's interactivity and modularity, allowing different parts to respond in a customized way to events emitted by the `TrForm` class.
 
 ### Attaching Event Listeners
 
-The `on` method of the `TrForm` class opens up a world of opportunities by allowing you to attach event listeners, whether they are native or custom events, to your form. Learn how to customize your user experience by dynamically responding to specific interactions.
+The `on` method in the `TrivuleForm` class allows you to attach event listeners to the container element of the form.
 
-#### Example Usage
+#### Syntax
 
-```javascript
-// Attach an event listener for the "change" event
-trForm.on("change", (event) => {
-  // Code to execute when the "change" event occurs in the form
-  console.log("Change detected!");
+```typescript
+trivuleForm.on(eventName: string, callback: EventCallback): void;
+```
+
+#### Parameters
+
+- `eventName`: A string representing the name of the event to listen to.
+- `callback`: The callback function to execute when the specified event occurs. This function takes an event of type `Event` as a parameter and returns nothing.
+
+#### Example
+
+```typescript
+// Attach an event listener to handle form initialization
+trivuleForm.on("tr.form.init", (event) => {
+  console.log("Form initialized", event.detail);
+  // Additional actions to perform when the form is initialized
+});
+
+ 
+trivuleForm.on("click", (event) => {
+  //form click event
 });
 ```
 
-In this example, an event listener is added to the form for the "change" event. When this event occurs, the code inside the callback function is executed. You can listen for other events such as "submit," "click," or even your own custom events.
+#### Usage
 
-#### Possible Uses
+You can use the `on` method to listen for various events related to the form, such as form initialization, validation, submission, and more. Simply provide the appropriate event name and the corresponding callback function to handle the event.
 
-- **User Interaction Responsiveness:** Monitor events such as change (`change`), click (`click`), or submit (`submit`) to trigger specific actions.
+### Emitting Custom Events
 
-- **Custom Validation:** Attach a listener to respond to custom events emitted by the `TrForm` class and perform validations or specific actions accordingly.
+The `emit` method in the `TrivuleForm` class enables you to emit custom events from the container element of the form.
 
-- **Integration with Other Components:** Create harmonious interactions with other parts of your application by listening to specific events emitted by other components.
+#### Syntax
 
-By skillfully incorporating the `on` method, you can customize the user experience and add intelligent responsiveness to your form, making your application an interactive and dynamic experience.
+```typescript
+trivuleForm.emit(eventName: string, data?: any): void;
+```
 
-### Form Validation Status
+#### Parameters
 
-The `passes` method in the `TrForm` class checks whether the form is valid or not.
+- `eventName`: A string representing the name of the custom event to emit.
+- `data` (optional): Additional data to pass along with the event.
 
-#### Example Usage
+#### Example
 
-```javascript
+```typescript
+// Emit a custom event to indicate form validation
+trivuleForm.emit("tr.form.validate", {
+  valid: true,
+  message: "Form validation completed successfully",
+});
+```
+
+#### Usage
+
+You can use the `emit` method to trigger custom events at specific points within your form's lifecycle or in response to certain actions. These events can be listened to and handled elsewhere in your application logic. By emitting custom events, you can create a more modular and flexible architecture for managing form behavior and interactions.
+
+### Handling Form Updates and Validation Events
+
+The `onUpdate` and `onValidate` methods in the `TrivuleForm` class provide powerful event handling capabilities for managing form updates and validation processes.
+
+#### `onUpdate` Method
+
+The `onUpdate` method allows you to attach event listeners that respond to updates in the form inputs. When any input value within the form is updated, the provided callback function is executed.
+
+##### Syntax
+
+```typescript
+trivuleForm.onUpdate(callback: TrivuleFormHandler): void;
+```
+
+##### Parameters
+
+- `callback`: A callback function to execute when any input value in the form is updated. This function takes the form instance as a parameter.
+
+##### Example
+
+```typescript
+trivuleForm.onUpdate((form) => {
+  console.log("Form updated", form);
+});
+```
+
+#### `onValidate` Method
+
+The `onValidate` method allows you to attach event listeners that respond to the validation process of the form. When the form is validated, either manually or automatically, the provided callback function is executed.
+
+##### Syntax
+
+```typescript
+trivuleForm.onValidate(callback: TrivuleFormHandler): void;
+```
+
+##### Parameters
+
+- `callback`: A callback function to execute when the form is validated. This function takes the form instance as a parameter.
+
+##### Example
+
+```typescript
+trivuleForm.onValidate((form) => {
+  console.log("Form validated", form);
+});
+```
+
+#### Usage
+
+You can use the `onUpdate` method to perform actions whenever any input value in the form is updated. This is useful for dynamically responding to changes in form data.
+
+Similarly, the `onValidate` method allows you to execute custom logic when the form undergoes validation. You can use this to handle validation outcomes, update UI elements, or trigger additional processes based on the validation result.
+
+### Iterating Through Form Inputs with the `each` Method
+
+The `each` method in the `TrivuleForm` class facilitates the iteration through all inputs within the form. This method allows you to perform actions or apply logic to each input individually.
+
+### Iterates through each input
+
+The `each` method iterates through each input within the form and executes a callback function for each input.
+
+##### Syntax
+
+```typescript
+each(callback: ITrivuleInputCallback<TrivuleInput, any>): void;
+```
+
+##### Parameters
+
+- `callback`: A callback function that takes a `TrivuleInput` instance as its parameter. This function will be executed for each input within the form.
+
+##### Example
+
+```typescript
+trivuleForm.each((input) => {
+  console.log("Input name:", input.getName());
+  console.log("Input value:", input.getValue());
+  console.log("Input validation status:", input.passes());
+});
+```
+
+#### Usage
+
+The `each` method is useful when you need to perform operations on each input within the form individually. For example, you can use it to access the name, value, or validation status of each input, apply specific styling or behavior, or trigger custom actions based on input properties.
+
+In this example, we iterate through each input within the `trivuleForm` instance and log their name, value, and validation status. You can replace the callback function with your custom logic to suit your specific requirements, such as updating UI elements, performing calculations, or triggering events based on input properties.
+
+
+
+### Managing Inputs in TrivuleForm
+
+In the `TrivuleForm` class, you can interact with individual form inputs through various methods. These methods allow you to retrieve information about inputs, such as their validation status or values.
+
+#### `inputs` Method
+
+The `inputs` method retrieves an array of all inputs within the form. You can specify whether you want strict or non-strict output. In strict mode, you get objects containing only the input name, value, while in non-strict mode, you receive instances of `TrivuleInput`.
+
+##### Syntax
+
+```typescript
+inputs(strict?: boolean): ITrivuleInputObject[] | TrivuleInput[];
+```
+
+##### Parameters
+
+- `strict`: (Optional) A boolean indicating whether to return strict output (default is `true`).
+
+##### Returns
+
+An array of inputs based on the specified mode.
+
+##### Example
+
+```typescript
+// Get all inputs in strict mode
+const strictInputs = trivuleForm.inputs(); //return name, value object
+
+// Get all inputs in non-strict mode
+const nonStrictInputs = trivuleForm.inputs(false); //Return instances of `TrivuleInput`
+```
+
+#### `validated` Method
+
+The `validated` method retrieves an array of inputs that have passed validation. Similar to the `inputs` method, you can specify whether to return strict or non-strict output.
+
+##### Syntax
+
+```typescript
+validated(strict?: boolean): ITrivuleInputObject[] | TrivuleInput[];
+```
+
+##### Parameters
+
+- `strict`: (Optional) A boolean indicating whether to return strict output (default is `true`).
+
+##### Returns
+
+An array of validated inputs based on the specified mode.
+
+##### Example
+
+```typescript
+// Get validated inputs in strict mode
+const validatedInputs = trivuleForm.validated();
+
+// Get validated inputs in non-strict mode
+const nonStrictValidatedInputs = trivuleForm.validated(false);
+```
+
+#### `failed` Method
+
+The `failed` method retrieves an array of inputs that have failed validation. Like the previous methods, you can choose between strict and non-strict output.
+
+##### Syntax
+
+```typescript
+failed(strict?: boolean): ITrivuleInputObject[] | TrivuleInput[];
+```
+
+##### Parameters
+
+- `strict`: (Optional) A boolean indicating whether to return strict output (default is `true`).
+
+##### Returns
+
+An array of failed inputs based on the specified mode.
+
+##### Example
+
+```typescript
+// Get failed inputs in strict mode
+const failedInputs = trivuleForm.failed();
+
+// Get failed inputs in non-strict mode
+const nonStrictFailedInputs = trivuleForm.failed(false);
+```
+
+These methods provide convenient ways to access and manage inputs within the TrivuleForm instance, allowing you to handle validation results effectively and tailor your application's behavior accordingly.
+
+
+###  Validation status
+
+#### Description
+The `isValid()` method determines whether the entire form is currently valid.
+
+#### Syntax
+```typescript
+isValid(): boolean
+```
+
+#### Returns
+- A boolean value indicating whether all inputs in the form are currently passing validation.
+  - `true`: All inputs are valid.
+  - `false`: At least one input is invalid.
+
+#### Example
+```typescript
 // Check if the form is valid
-const isValid = trForm.passes();
-
-if (isValid) {
-    // Proceed with form submission or handle a valid form
+const isFormValid = trivuleForm.isValid();
+if (isFormValid) {
+  console.log("The form is valid.");
 } else {
-    // Display error messages or handle an invalid form
+  console.log("The form contains invalid inputs.");
 }
 ```
-
-In this example, the `passes` method is called to determine whether the form is valid. Based on the result, you can decide to submit the form, display error messages to the user, or perform other customized actions.
-
-#### Possible Uses
-
-- **Conditional Submission:** Use `passes` before triggering form submission to ensure all validations have been successfully passed.
-  
-- **Dynamic Response:** Customize your application behavior based on the current validation status of the form.
-
-- **Error Handling Logic:** Display targeted error messages or take specific actions in case of validation failure.
-
-The `passes` method calls the internal `isValid` method that checks each field according to the defined validation rules. By incorporating it into your logic, you can create a robust and responsive user experience. Take control of your form validation with the `passes` method from `TrForm`.
-
-### `onValidate()` - Reacting to Form Validation
-
-The `onValidate()` method of the `TrForm` class allows you to react to the form validation event. Use this feature to execute specific actions when complete form validation is performed.
-
-#### Example Usage
-
-```javascript
-trForm.onValidate((trForm) => {
-    console.log("Form validation performed", trForm);
-});
-```
-
-### Destroying TrForm Instance
-
-The `destroy` method of the `TrForm` class allows you to reset the `TrForm` instance by removing custom validation rules and associated event listeners. Here is an example of usage:
-
-```javascript
-trForm.destroy();
-```
-
-In this example, the `destroy` method is called on the `trForm` instance. This removes all custom validation rules and event listeners associated with this instance.
-
-You can use the `destroy` method when you want to reset the `TrForm` instance to its initial state, such as when removing or deactivating the form.
-
-By using the methods and events provided by the `TrForm` class, you can customize your form's validation and interaction in your application. Whether reacting to successful or failed validation events, emitting custom events, listening to form events, or performing specific validations, you have the ability to add custom logic to your application based on the form validation results.
-
-The `isValid` method of the `TrForm` class checks whether the form is valid. It returns a boolean value indicating whether all form fields, represented by `TrInput` instances attached to the `TrForm` class, are valid.
-
-Here's an example usage:
-
-```javascript
-const trForm = new TrForm(formElement);
-
-const isValid = trForm.isValid();
-if (isValid) {
-    // The form is valid
-    // Perform desired actions, such as submitting the form
-} else {
-    // The form is not valid
-    // Perform desired actions, such as displaying an error message
-}
-```
-
-In this example, a `TrForm` instance is created with the form element `formElement`. Then, the `isValid` method is called on this instance to check if the form is valid. The return value, `isValid`, will be `true` if all form fields are valid, and `false` otherwise.
-
-You can use this method to make decisions in your code based on the form's validity. For example, if the form is valid, you may submit the form or perform other desired actions. If the form is not valid, you can display an error message or prevent form submission.
-
-The `isValid` method iterates over all `TrInput` instances attached to the `TrForm` class using the `every` method. It calls the `passes` method on each `TrInput` instance to check if the field is valid. If all fields pass validation, the `isValid` method returns `true`. Otherwise, it returns `false`.
-
-By using the `isValid` method, you can easily verify the overall validity of the form based on the individual validation of each field.
-
-The `observeChanges` method of the `TrForm` class allows you to attach an event listener to the "tr.form.updated" event. When this event is triggered, the method initializes and executes the `TrInputs` for the form, then calls the provided function with the form instance as a parameter.
-
-Here's an example usage:
-
-```javascript
-trForm.observeChanges((form) => {
-    console.log("Form updated", form);
-});
-```
-
-In this example, the `observeChanges` method is called on the `trForm` instance with a callback function that displays a message in the console when the "tr.form.updated" event is triggered. The callback function takes the form instance `form` as a parameter.
-
-When the "tr.form.updated" event is triggered, the `observeChanges` method destroys the current form instance by calling the `destroy` method, then reinitializes the form by calling the `setContainer` method with the original container. Next, the `TrInputs` are initialized by calling the `_initTrInputs` method, then executed by calling the `_runTrInputs` method. Finally, the provided callback function is called with the form instance as a parameter.
-
-Using the `observeChanges` method allows you to monitor changes in the form and take specific actions in response to those changes. You can reset and update the `TrInputs`, as well as execute custom code when the form is updated.
+You can also you the `passes()` method or the `valid` property
+ 
