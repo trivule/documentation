@@ -9,138 +9,83 @@
 
 <url>
   <loc>https://www.trivule.com/</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/try-trivule</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/tuto</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/installation</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.trivule.com/docs/input-validation</loc>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.trivule.com/docs/form-validation</loc>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/rules</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/validation</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/messages</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/attributes</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/events</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/example</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/contribution</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/development</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.trivule.com/docs/license</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.trivule.com/docs/validation/tr-input</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/validation/tr-form</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/validation/trivule</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/rules/global</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/rules/string</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/rules/number</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/rules/file</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/rules/date</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/rules/phone</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/messages/edit-existing-message</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/messages/parameter-in-message</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/messages/translate</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.trivule.com/docs/attributes/natives</loc>
-  <lastmod>2024-04-27T07:29:13+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://www.trivule.com/docs/releases</loc>
+  <lastmod>2024-05-17T10:37:52+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
