@@ -154,9 +154,8 @@ Trivule offers many customization and configuration options to meet your specifi
 - [Customizing Messages](/docs/messages): Learn how to customize the error messages and text displayed by Trivule.
 - [Other Validation Rules](/docs/rules): Explore the different validation rules available in Trivule, such as length validation, regular expression validation, and more.
 - [Validation Events](/docs/events): Learn about validation events to interact with Trivule during form validation.
-- [Validating Individual Inputs](/docs/validation/tr-input): Discover how to validate an individual form field with Trivule.
-- [Validating an Individual Form](/docs/validation/tr-form): Learn how to validate a specific form using Trivule.
-- [Validating Forms on a Page](/docs/validation/trivule): Discover how to validate all forms on a page at once.
+- [Validating Individual Inputs](/docs/input-validation): Discover how to validate an individual form field with Trivule.
+- [Validating an Individual Form](/docs/form-validation): Learn how to validate a specific form using Trivule. 
 - [Examples](/docs/example): Check out real-world examples of Trivule's use for form validation.
 - [Framework Integration (React, Angular, etc.)](#): Get instructions on integrating Trivule into popular frameworks like React, Angular, Vue.js, etc.
 - [Contribution](/docs/contribution): Contribute to Trivule's development by providing suggestions, bug reports, or proposing improvements.
