@@ -10,7 +10,7 @@ Trivule provides the ability to listen for different JavaScript events to trigge
 
 ## Triggering Validation with Default Events
 
-By default, Trivule uses the `input`, `blur`, and `change` events to trigger form field validation. This means that whenever a user enters, leaves, or modifies a value in a form field, validation is automatically triggered.
+By default, Trivule uses the `blur`, and `change` events to trigger form field validation. This means that whenever a user enters, leaves, or modifies a value in a form field, validation is automatically triggered.
 
 For instance, if you want to trigger validation when an element is hovered over by the mouse cursor, you can use Trivule's `data-tr-events` attribute and specify the `mouseenter` event as follows:
 
