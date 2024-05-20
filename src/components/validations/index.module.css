@@ -1,0 +1,17 @@
+.validation {
+    padding: 20vh 0;
+}
+
+@media (max-width: 998px) {
+    .validation {
+        padding: 10vh 0;
+    }
+}
+
+.validation p {
+    font-size: 20px;
+}
+
+.validation a {
+    font-weight: bold;
+}
