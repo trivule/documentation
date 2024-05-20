@@ -7,7 +7,7 @@ title: Form Validation
 
 ## Global Validation
 
-If you have a website or application and want to apply the same validation rules to all forms without managing each form individually, you can use global validation with [declarative validation](#).
+If you have a website or application and want to apply the same validation rules to all forms without managing each form individually, you can use global validation with [declarative validation](/docs/validation-mode#declarative-validation).
 
 ## Usage
 
@@ -25,7 +25,7 @@ Form validation involves validating a set of HTML fields, whether inside a `<for
 
 ## TrivuleForm
 
-TrivuleForm offers two validation approaches: declarative and imperative, to address different form validation needs.
+TrivuleForm offers two validation approaches: [declarative and imperative](/docs/validation-mode), to address different form validation needs.
 
 ### Declarative Validation
 
@@ -62,11 +62,11 @@ Validation initialization:
 const trForm = new TrivuleForm("form");
 ```
 
-With this declarative approach, the form is automatically validated without writing additional JavaScript code, which is ideal for simple form validation needs.
+With this [declarative](/docs/validation-mode#declarative-validation) approach, the form is automatically validated without writing additional JavaScript code, which is ideal for simple form validation needs.
 
 ### Imperative Validation
 
-Imperative validation allows defining validation rules and applying them dynamically using JavaScript code. This provides greater flexibility for more complex form validation cases.
+[Imperative validation](/docs/validation-mode#imperative-validation) allows defining validation rules and applying them dynamically using JavaScript code. This provides greater flexibility for more complex form validation cases.
 
 Example usage:
 
