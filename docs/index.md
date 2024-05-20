@@ -5,55 +5,63 @@ title: Why Trivule?
 
 # Why Trivule?
 
-**Trivule**  is a user-friendly JavaScript library designed to simplify the dynamic validation of HTML forms on your web pages.
+Trivule is a user-friendly JavaScript library designed to simplify dynamic form validation in HTML, offering several key features:
 
-It was created to eliminate redundancy, save time, and reduce the complexity of form validation processes. By using intuitive HTML attributes, this library allows you to add complex and advanced validation rules without the need to know JavaScript. It aligns with the native logic of HTML validation, making the process simple, familiar, and seamless.
+- Real-time validation with flexibility and ease.
+- Time-saving and reduced complexity in validation processes.
+- Easy integration into modern frameworks.
+- Uniform usage in Vanilla JavaScript projects or modern frameworks.
+- Excellent and intuitive message management.
+- Validation without the need to master JavaScript code.
 
-**Trivule** is an excellent option if you are looking for a quick way to implement complex validation on your site without having to write JavaScript code, regardless of your level of web development experience.
+Trivule offers two validation approaches:
 
-## Example
+1. **Declarative Validation:**
+   This method allows validating a form using only HTML attributes. It supports event handling, rules, messages, and styling of an input based on its validity. Additionally, it automatically disables an entire form when all its fields are valid.
 
+2. **Imperative Validation:**
+   This type of validation offers a more advanced approach by allowing more dynamic interaction with the form. It enables defining conditional validations and modifying validation rules during runtime. For example, it allows retrieving only valid or invalid fields from a form, or inserting an input with a validation state.
+
+Trivule is an excellent option if you're looking for a quick way to implement complex validation without wasting time or energy.
+
+**Declarative Validation:**
 ```html
-<form id="myForm">
-    <div>
-        <label class="label">Phone</label>
-        <input type="text" data-tr-rules="required|phone:FR" name="phone" />
-        <div data-tr-feedback="phone"></div>
-    </div>
-    <div>
-        <label class="label">Date</label>
-        <input
-            type="date"
-            data-tr-rules="required|date|after:now"
-            name="date"
-        />
-        <div data-tr-feedback="date"></div>
-    </div>
-    <div>
-        <label class="label">File</label>
-        <input
-            type="file"
-            data-tr-rules="required|file|maxFileSize:1MB"
-            name="file"
-        />
-        <div data-tr-feedback="file"></div>
-    </div>
-    <p><button type="submit" data-tr-submit>Submit</button></p>
-</form>
+<input type="text" data-tr-rules="required|int|min:18" name="age" />  
 ```
- 
 
-Result
-![Capture d'écran de la validation](./screenshot.PNG) 
+**Imperative Validation:**
+```javascript
+trivuleForm.make([
+  {
+    selector: "age",
+    rules: ["required","int", "min:18"],
+  },
+]);
+```
+or
+```javascript
+trivuleForm.make({
+  age: {
+    rules: ["required","int", "min:18"],
+  },
+});
+```
 
 ## Validation Rules
 
 The validation rules in Trivule are predefined character strings that specify the conditions the form field values must meet. They are used as arguments in the `data-tr-rules` attribute. For example:
 
 ```html
-<input type="file" data-tr-rules="required|file|maxFileSize:1MB">
+<input type="file" name="file" data-tr-rules="required|file|size:1MB">
 ```
-
+or 
+```javascript
+trivuleForm.make({
+  age: {
+    rules: "required|file|size:1MB",
+  },
+})
+```
 Explanation of the rules:
 - `required`: Indicates that the field is required.
 - `file`: Specifies that the value of the field must be a file.
@@ -61,36 +69,112 @@ Explanation of the rules:
 
 [Learn more](/docs/rules/)
 
-## Events
+In Trivule, validation is triggered by JavaScript events or custom events. By default, Trivule triggers validation on the following events: `blur`, `input`, or `change` depending on the type of input. You can customize these events as needed.
 
-In Trivule, validation is triggered by JavaScript events or custom events. By default, Trivule triggers validation during the following events: `blur`, `input`, and `change`. You can customize these events as desired.
-
-Unlike traditional JavaScript where you have to write event listeners, with Trivule, you don't need to worry about that. You can simply specify the desired events as a string, similar to how you do with validation rules. For example:
+To specify the desired events, use the `data-tr-events` attribute as a string, similar to how you define validation rules. For example:
 
 ```html
-<input type="file" data-tr-events="click|mouseenter|my-custom-event">
+<input type="file" name="age" data-tr-events="click|mouseenter|my-custom-event">
 ```
 
-In this example, Trivule listens to the following events on the input element and triggers validation when they occur:
-- `click`: Validation is executed and the validation status is indicated when the user clicks in the form field.
-- `mouseenter`: Validation is triggered when the user hovers the cursor over the field.
-- `my-custom-event`: Your own custom JavaScript event.
+Once any of these events is triggered, Trivule proceeds with data validation.
 
-You can use predefined JavaScript events or specify your own custom events to trigger validation in a way that best suits your application.
+Usage through the declarative method:
+
+```javascript
+{
+  age: {
+    rules: [],
+    events: ['click', 'mouseenter', 'my-custom-event']
+  }
+}
+```
+
 
 ## Messages
 
-By default, validation messages are displayed in English on an HTML element (such as `div`, `p`, or `span`) with the attribute `data-tr-feedback="file"`. The messages are separated by the `|` symbol following the order of the rules. The `data-tr-feedback` attribute tells Trivule where to display your error messages.
+Trivule comes with default error messages, but it also provides you with the flexibility to customize or translate messages into different languages and display them wherever you prefer.
 
 ```html
-<input 
-    type="file" data-tr-rules="required|file" 
-    data-tr-messages="The file is required|This field must be a file"
+<input
+    type="file"
+    data-tr-rules="required|mimes:text/plain"
+    data-tr-messages="Le fichier est requis|Le fichier doit être un fichier texte"
     name="file"
 />
+
 <div data-tr-feedback="file"></div>
 ```
+or
+ 
+```javascript
+trivuleForm.make([
+  {
+    selector: "file",
+    rules: ["required", "mimes:text/plain"],
+    messages:['The file is required', 'The file must be a text file'.]
+  }, 
+]);
+```
 
-The flexibility offered by the ability to specify the message display location allows you to customize the message boxes as illustrated in the example below.
+Trivule displays error messages at the nearest feedback element to the input. If you specify a general selector, it will be the first encountered element around the input.
 
-![Screenshot of validation](./nice-error.PNG)
+
+## Interaction with a Form
+
+### Making a Form Validatable
+
+To make a form validatable, use the following syntax:
+
+```javascript
+trivuleForm.make([
+  {
+    selector: "name",
+    rules: ["required", "minlength:5", "upper"],
+  },
+  {
+    selector: "age",
+    rules: ["int", "min:18"],
+  },
+]);
+```
+
+### Handling Validation Results
+
+To perform actions based on the validation results,
+
+#### 1. `onValidate`
+
+```javascript
+trivuleForm.onValidate((form) => {
+  // Get validated input
+  form.validated();
+  // Get all inputs
+  form.all();
+ 
+  // Get a single input
+  const ageInput = form.get('age');
+  
+  // Prepend a rule to the existing list
+  ageInput.prepend({
+    rule: "required",
+    message: "The age field cannot be empty"
+  });
+});
+```
+
+#### 2. `onFails`
+
+```javascript
+trivuleForm.onFails((form) => {
+  // Do something when the form is invalid
+});
+```
+
+#### 3. `onPasses`
+
+```javascript
+trivuleForm.onPasses((form) => {
+  // Do something when the form is valid
+});
+```

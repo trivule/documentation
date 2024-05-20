@@ -5,40 +5,38 @@ title: Installation
 
 # Installation
 
-## Downloading or Using CDN
+## Download or Use CDN
 
-To use Trivule, follow these steps:
+To use Trivule in your project, follow these steps:
 
-1. **[Download](https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js)** the Trivule library from [here](https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js). Alternatively, you can directly use the link: `https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js`.
+1. **[Download](https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js)** the Trivule library from [here](https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js). Alternatively, you can use the CDN link directly: `https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js`.
 2. Include the Trivule library in your web page as you would any other JavaScript file.
 
 ## Installation via npm
 
-1. Go to your project directory and enter the following command:
+1. Navigate to your project directory and run the following command:
 
 ```bash
 npm i trivule
 ```
 
-After installation, you can use Trivule in your project as needed:
+Once installed, you can use Trivule in your project as needed:
 
-- For a single form field:
-
-```js
-import { TrInput } from 'trivule';
-const trInput = new TrInput('selector');
-trInput.init();
-```
-
-- For an entire form:
+- For validating a single form field:
 
 ```js
-import { TrForm } from 'trivule';
-const trForm = new TrForm('selector');
-trForm.init();
+import { TrivuleInput } from 'trivule';
+const trInput = new TrivuleInput('selector'); 
 ```
 
-- For all forms:
+- For validating an entire form:
+
+```js
+import { TrivuleForm } from 'trivule';
+const trForm = new TrivuleForm('selector'); 
+```
+
+- For validating all forms in your project, suitable for classic HTML/CSS projects (vanilla), but also supports declarative validation:
 
 ```js
 import { Trivule } from 'trivule';
@@ -46,7 +44,8 @@ const tr = new Trivule();
 tr.init();
 ```
 
-## Complete Example
+## Example
+Here's an example of validation that doesn't require JavaScript:
 
 ```html
 <form id="myForm">
@@ -76,7 +75,7 @@ tr.init();
     <p><button type="submit" data-tr-submit>Submit</button></p>
 </form>
 
-<script src="https://cdn.jsdelivr.net/npm/trivule@1.0.0/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/trivule@latest/dist/index.umd.js"></script>
 <script>
 const tr = new Trivule();
 tr.init();
