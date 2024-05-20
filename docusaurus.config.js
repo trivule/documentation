@@ -136,7 +136,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Trivule`,
       },
       prism: {
-        theme: prismThemes.github,
+        theme: prismThemes.oneDark,
         darkTheme: prismThemes.dracula,
       },
     }),
