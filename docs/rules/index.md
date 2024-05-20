@@ -542,7 +542,7 @@ The `endWithString` rule checks if the input string ends with a specified substr
 <input type="text" data-tr-rules="endWithString:suffix" />
 ``` 
 
-# How to add or modify a new rule in Trivule?
+## Add or modify a new rule in Trivule?
 
 Let's say the `required` rule doesn't meet your requirements. You want to customize its behavior or add a new rule. The `rule` method of the `TrBag` class is here for that.
 
