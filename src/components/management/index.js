@@ -3,7 +3,7 @@ import Heading from "@theme/Heading";
 import global from "@site/src/pages/index.module.css";
 import particular from "./index.module.css";
 const styles = { ...global, ...particular };
-import effortlessImg from "@site/static/img/effortless.png";
+import managementImg from "@site/static/img/management.png";
 import Link from "@docusaurus/Link";
 
 export default function Management() {
@@ -24,8 +24,8 @@ export default function Management() {
             <div className={clsx(styles.featureCardExample)}>
               <div className={styles.header}>Example of use </div>
               <img
-                src={effortlessImg}
-                alt={effortlessImg}
+                src={managementImg}
+                alt={managementImg}
                 className={clsx(styles.mpb0)}
               />
             </div>
@@ -37,7 +37,7 @@ export default function Management() {
               requirements. This flexibility allows you to create a tailored
               form experience, ensuring optimal usability and performance.
             </p>
-            <Link to="/">Discover Dynamic Field Management</Link>
+            {/* <Link to="/">Discover Dynamic Field Management</Link> */}
           </div>
         </div>
       </div>
