@@ -1,0 +1,17 @@
+.management {
+    padding: 20vh 0;
+}
+
+@media (max-width: 998px) {
+    .management {
+        padding: 10vh 0;
+    }
+}
+
+.management p {
+    font-size: 20px;
+}
+
+.management a {
+    font-weight: bold;
+}

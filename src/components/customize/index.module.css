@@ -1,0 +1,17 @@
+.customization {
+    padding: 20vh 0;
+}
+
+@media (max-width: 998px) {
+    .customization {
+        padding: 10vh 0;
+    }
+}
+
+.customization p {
+    font-size: 20px;
+}
+
+.customization a {
+    font-weight: bold;
+}

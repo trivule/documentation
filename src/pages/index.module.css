@@ -1,23 +1,88 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.btn_bg {
+  background-color: var(--ifm-color-primary);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+.btn {
+  outline: 1px solid var(--ifm-color-primary);
+  background-color: transparent;
+}
+
+.btn_bg,
+.btn {
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  text-align: center;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.btn_bg:hover,
+.btn:hover {
+  transform: scale(1.03);
+  opacity: 0.8;
+}
+
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .flex {
+    display: block;
+  }
+
+  .flex button {
+    margin-bottom: 1rem;
   }
 }
 
-.buttons {
+.flexColumn {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  text-align: center;
   justify-content: center;
+  text-align: center;
+}
+
+.featureCardExample {
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 var(--ifm-box-shadow);
+  text-align: start;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.featureCardExample .header {
+  padding: 0.7rem 1rem;
+  font-size: 14px;
+}
+
+.mpb0{
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.fs16 {
+  font-size: 16px !important;
+}
+
+.mt3 {
+  margin-top: 3rem;
+}
+
+@media (max-width: 998px) {
+  .mt3 {
+    margin: 1rem 0;
+  }
+  .featureCard {
+    margin-top: 2rem;
+  }
+}
+
+.bgSeparator {
+  background-color: var(--ifm-separator);
 }

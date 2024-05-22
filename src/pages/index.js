@@ -1,33 +1,14 @@
-import clsx from "clsx";
-import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
-
-import Heading from "@theme/Heading";
-import styles from "./index.module.css";
-
-function HomepageHeader() {
-  return (
-    <header className={clsx("hero ", styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          Quick Validation
-        </Heading>
-        <p className="hero__subtitle">
-          Trivule enables dynamic form validation <br /> without needing to
-          write or know JavaScript,
-          <br /> saving developers time and effort.
-        </p>
-        <div className={styles.buttons}>
-          <Link className="button button--primary button--lg" to="/docs">
-            Read docs
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+import clsx from "clsx";
+import Banner from "@site/src/components/banner";
+import Installation from "@site/src/components/installation";
+import Using from "@site/src/components/using";
+import Customization from "@site/src/components/customize";
+import Management from "@site/src/components/management";
+import Stylisation from "@site/src/components/styles";
+import Validation from "@site/src/components/validations";
+import More from "@site/src/components/more";
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
@@ -36,10 +17,18 @@ export default function Home() {
       title={`${siteConfig.title}`}
       description="Trivule is a library that simplifies web form validation, making it a seamless, intuitive, and effortless experience."
     >
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      <Banner />
+      <div className={clsx("features")}>
+        <Installation />
+        <Using />
+        <Customization />
+        <Management />
+        <Stylisation />
+        <Validation />
+        <More />
+      </div>
     </Layout>
   );
 }
+
+

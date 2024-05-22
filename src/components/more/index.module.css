@@ -1,0 +1,15 @@
+.more {
+    padding: 10vh 0;
+}
+
+.more p {
+    font-size: 20px;
+}
+
+.more a {
+    font-weight: bold;
+}
+
+.center {
+    justify-content: center;
+}

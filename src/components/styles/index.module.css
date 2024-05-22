@@ -1,0 +1,17 @@
+.stylisation {
+    padding: 20vh 0;
+}
+
+@media (max-width: 998px) {
+    .stylisation {
+        padding: 10vh 0;
+    }
+}
+
+.stylisation p {
+    font-size: 20px;
+}
+
+.stylisation a {
+    font-weight: bold;
+}
