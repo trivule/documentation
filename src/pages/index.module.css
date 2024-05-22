@@ -1,5 +1,6 @@
 .btn_bg {
   background-color: var(--ifm-color-primary);
+  color: white !important;
 }
 
 .btn {

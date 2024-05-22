@@ -8,7 +8,7 @@ import Link from "@docusaurus/Link";
 
 export default function Customization() {
   return (
-    <div className={clsx(styles.bgSeparator)}>
+    <div>
       <div
         className={clsx("container", styles.flexColumn, styles.customization)}
       >

@@ -8,7 +8,7 @@ import Link from "@docusaurus/Link";
 
 export default function Using() {
   return (
-    <div>
+    <div className={clsx(styles.bgSeparator)}>
       <div className={clsx("container", styles.flexColumn, styles.using)}>
         <Heading as="h1" className="hero__title">
           <span>Validate Forms Intuitively with HTML Attributes</span>

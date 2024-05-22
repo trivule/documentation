@@ -20,11 +20,11 @@ export default function Home() {
       <Banner />
       <div className={clsx("features")}>
         <Installation />
+        <Validation />
         <Using />
         <Customization />
         <Management />
         <Stylisation />
-        <Validation />
         <More />
       </div>
     </Layout>

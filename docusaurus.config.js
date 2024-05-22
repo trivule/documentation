@@ -65,16 +65,21 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [
-        {
-          name: "keywords",
-          content:
-            "Form validator, Quick form validation, effortless form validator, best validator, javascript validator",
-        },
-        {
-          name: "description",
-          content:
-            " Trivule is a user-friendly JavaScript library for HTML form validation. It allows you to quickly add validation rules to your form fields using custom HTML attributes, without the need to write additional JavaScript code. ",
-        },
+        {property: 'og:type', content: 'website'},
+        {property: 'og:locale', content: 'en_US'}, 
+        {property: 'og:site_name', content: 'Trivule Documentation'},
+      
+        {property: 'og:title', content: 'Trivule - Dynamic Form Validation'},
+        {property: 'og:description', content: 'Dynamic form validation without needing to write or know JavaScript, saving developers time and effort.'},
+        {property: 'og:image', content: '/img/logo.png'},
+        {property: 'og:url', content: 'https://trivule.com'},
+      
+        {property: 'twitter:card', content: 'summary_large_image'},
+        {property: 'twitter:image', content: '/img/logo.png'},
+      
+        {property: 'og:image:width', content: '600'},
+        {property: 'og:image:height', content: '600'},
+        {property: 'twitter:site', content: '@trivule'},
       ],
       // Replace with your project's social card
       image: "img/logo.png",
