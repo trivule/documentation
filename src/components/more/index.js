@@ -7,7 +7,7 @@ const styles = { ...global, ...particular };
 
 export default function More() {
   return (
-    <div>
+    <div className={clsx(styles.bgSeparator)}>
       <div className={clsx("container", styles.flexColumn, styles.more)}>
         <Heading as="h1" className="hero__title">
           <span className="text--primary">

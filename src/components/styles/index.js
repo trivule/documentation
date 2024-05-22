@@ -8,7 +8,7 @@ import Link from "@docusaurus/Link";
 
 export default function Stylisation() {
   return (
-    <div className={clsx(styles.bgSeparator)}>
+    <div>
       <div className={clsx("container", styles.flexColumn, styles.stylisation)}>
         <Heading as="h1" className="hero__title">
           <span>You can also style validated form fields with ease</span>

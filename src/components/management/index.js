@@ -8,7 +8,7 @@ import Link from "@docusaurus/Link";
 
 export default function Management() {
   return (
-    <div>
+    <div className={clsx(styles.bgSeparator)}>
       <div className={clsx("container", styles.flexColumn, styles.management)}>
         <Heading as="h1" className="hero__title">
           <span>Dynamically Manage Validated and Invalidated Input Fields</span>
