@@ -9,6 +9,7 @@ import Management from "@site/src/components/management";
 import Stylisation from "@site/src/components/styles";
 import Validation from "@site/src/components/validations";
 import More from "@site/src/components/more";
+import trivuleLogo from "@site/static/img/logo.png";
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
@@ -16,6 +17,8 @@ export default function Home() {
     <Layout
       title={`${siteConfig.title}`}
       description="Trivule is a library that simplifies web form validation, making it a seamless, intuitive, and effortless experience."
+      image={trivuleLogo}
+      url="https://trivule.com"
     >
       <Banner />
       <div className={clsx("features")}>
