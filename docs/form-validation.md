@@ -1,17 +1,19 @@
 ---
 sidebar_position: 5
-title: Form Validation
+title: Validation
 ---
 
-# Form Validation
+# Validation
 
-## Global Validation
+## Global Validation 
 
-If you have a website or application and want to apply the same validation rules to all forms without managing each form individually, you can use global validation with [declarative validation](/docs/validation-mode#declarative-validation).
+If you have a website or application and want to validate all forms without managing each form individually, you can use global validation with [declarative validation](/docs/validation-mode#declarative-validation).
+
+When you initialize the `Trivule` class, it will attempt to validate all forms on your page using declarative mode.
 
 ## Usage
 
-To set up global validation, simply initialize Trivule:
+To set up global validation, initialize Trivule as follows:
 
 ```html
 <script>
@@ -20,75 +22,64 @@ To set up global validation, simply initialize Trivule:
 </script>
 ```
 
-This activates global validation for all your forms.
-Form validation involves validating a set of HTML fields, whether inside a `<form>` element or grouped within a container such as a `<div>`.
+This will activate the validation for all your forms. Trivule will validate any set of HTML fields with data-tr-rules in , whether inside a `<form>` .
 
-## TrivuleForm
+## Example
 
-TrivuleForm offers two validation approaches: [declarative and imperative](/docs/validation-mode), to address different form validation needs.
-
-### Declarative Validation
-
-Declarative validation allows validating a form by simply specifying validation rules in the attributes of HTML fields. It's a simple and convenient approach for basic form validation.
-
-Example usage:
+### HTML
 
 ```html
 <form>
-  <div>
-    <label>Email</label>
-    <input type="text" data-tr-rules="required|email|maxlength:32" name="email" />
-    <div data-tr-feedback="email"></div>
-  </div>
-  <div>
-    <label>Message</label>
-    <textarea
-      data-tr-rules="required|between:2,250|endWith:."
-      name="message"
-    ></textarea>
-    <div data-tr-feedback="message"></div>
-  </div>
-  <p>
-    <button type="submit" value="Submit" data-tr-submit>
-      Submit
-    </button>
-  </p>
+  <input type="text" name="username" data-tr-rules="required|minlength:5" />
+  <input type="email" name="email" data-tr-rules="required|email" />
+  <input type="password" name="password" data-tr-rules="required|minlength:8" />
+  <button type="submit">Submit</button>
 </form>
 ```
 
-Validation initialization:
+### JavaScript
 
-```js
-const trForm = new TrivuleForm("form");
+```html
+<script>
+  const trivule = new Trivule();
+  trivule.init();
+</script>
 ```
 
-With this [declarative](/docs/validation-mode#declarative-validation) approach, the form is automatically validated without writing additional JavaScript code, which is ideal for simple form validation needs.
+This setup ensures all forms on your page are validated without needing to handle each one individually.
 
-### Imperative Validation
+### Form  validation
 
-[Imperative validation](/docs/validation-mode#imperative-validation) allows defining validation rules and applying them dynamically using JavaScript code. This provides greater flexibility for more complex form validation cases.
+Sometimes you need advanced validation for a form, with rules that change based on user interactions. Or you may simply want to manage the validation of a specific form. For this, the `TrivuleForm` class is ideal. It allows for individual form field validation and primarily uses imperative validation.
 
-Example usage:
+[Imperative validation](/docs/validation-mode#imperative-validation) allows you to define validation rules and apply them dynamically using JavaScript code. This offers greater flexibility for more complex validation cases.
 
-```js
-const trivuleForm = new TrivuleForm("form",{
-  realTime:false,
-  feedbackSelector:".invalid-feedback"
-});
-// Define imperative validation rules for each form field
-trivuleForm.make([
-  {
-    selector: "email",
-    rules: ["required", "email", "maxlength:32"],
-  },
-  {
-    selector: "message",
-    rules: ["required", "between:2,250", "endWith:."],
-  },
-]);
-```
+1. **Initialize TrivuleForm:**
+   To start, initialize an instance of `TrivuleForm` by specifying the form selector and desired options.
 
-With this imperative approach, you can dynamically define validation rules and interact more actively with the form according to specific needs.
+    ```javascript
+    const trivuleForm = new TrivuleForm("form", {
+      realTime: false,
+      feedbackSelector: ".invalid-feedback"
+    });
+    ```
+
+2. **Define validation rules:**
+   Use the `make` method to define validation rules for each form field.
+
+    ```javascript
+    trivuleForm.make([
+      {
+        selector: "email",
+        rules: ["required", "email", "maxlength:32"],
+      },
+      {
+        selector: "message",
+        rules: ["required", "between:2,250", "endWith:."],
+      },
+    ]);
+    ```
+ With this imperative approach, you can dynamically define validation rules and interact more actively with the form according to specific needs.
 
  ### Validation Settings
 
@@ -112,6 +103,7 @@ Here's the translation:
 - `realTime` (optional): This option specifies whether validation should be performed in real-time as the user types in the form fields. By default, this option is disabled (`false`).
 
 These options allow you to customize the validation of your form according to your specific needs.
+
 **Default values**
 ```js
 const options = {
