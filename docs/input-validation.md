@@ -246,7 +246,7 @@ trivuleInput.appendRule({
 
 By offering both `pushRule()` and `appendRule()` methods, developers have flexible options for extending the validation capabilities of Trivule input instances, enhancing the overall flexibility and adaptability of input validation processes.
 
-### Modifying Validation Rules with `prependRule()`, `insertAfterRule()`, and `insertBeforeRule()`
+### Make Validation scenario with `prependRule()`, `insertAfterRule()`, and `insertBeforeRule()`
 
 The `prependRule()`, `insertAfterRule()`, and `insertBeforeRule()` methods in the `TrivuleInput` class offer developers versatile options to modify and rearrange validation rules within Trivule input instances. These methods enable dynamic adjustments to the validation process, enhancing flexibility and customization.
 
