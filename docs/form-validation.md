@@ -11,7 +11,7 @@ If you have a website or application and want to validate all forms without mana
 
 When you initialize the `Trivule` class, it will attempt to validate all forms on your page using declarative mode.
 
-## Usage
+### Usage
 
 To set up global validation, initialize Trivule as follows:
 
@@ -24,9 +24,9 @@ To set up global validation, initialize Trivule as follows:
 
 This will activate the validation for all your forms. Trivule will validate any set of HTML fields with data-tr-rules in , whether inside a `<form>` .
 
-## Example
+### Example
 
-### HTML
+#### HTML
 
 ```html
 <form>
@@ -37,7 +37,7 @@ This will activate the validation for all your forms. Trivule will validate any 
 </form>
 ```
 
-### JavaScript
+#### JavaScript
 
 ```html
 <script>
@@ -48,61 +48,104 @@ This will activate the validation for all your forms. Trivule will validate any 
 
 This setup ensures all forms on your page are validated without needing to handle each one individually.
 
-### Form  validation
-
+## Form  validation
 Sometimes you need advanced validation for a form, with rules that change based on user interactions. Or you may simply want to manage the validation of a specific form. For this, the `TrivuleForm` class is ideal. It allows for individual form field validation and primarily uses imperative validation.
-
+ 
 [Imperative validation](/docs/validation-mode#imperative-validation) allows you to define validation rules and apply them dynamically using JavaScript code. This offers greater flexibility for more complex validation cases.
 
-1. **Initialize TrivuleForm:**
-   To start, initialize an instance of `TrivuleForm` by specifying the form selector and desired options.
+### Initialization Methods
+##### 1. Initialization with Two Parameters
+You can initialize `TrivuleForm` with a form selector and configuration options.
 
-    ```javascript
-    const trivuleForm = new TrivuleForm("form", {
-      realTime: false,
-      feedbackSelector: ".invalid-feedback"
-    });
-    ```
+**Example**
+```javascript
+const trivuleForm = new TrivuleForm("form", {
+  realTime: false,
+  feedbackSelector: ".invalid-feedback"
+});
+```
+The first parameter can be any CSS selector or any argument acceptable by the traditional method `document.querySelector`.
 
-2. **Define validation rules:**
-   Use the `make` method to define validation rules for each form field.
+##### 2. Initialization with a Single Parameter 
+>Note: Available from Trivule v1.3.0
 
-    ```javascript
-    trivuleForm.make([
-      {
-        selector: "email",
-        rules: ["required", "email", "maxlength:32"],
-      },
-      {
-        selector: "message",
-        rules: ["required", "between:2,250", "endWith:."],
-      },
-    ]);
-    ```
- With this imperative approach, you can dynamically define validation rules and interact more actively with the form according to specific needs.
+#### a. Using an HTML Element or CSS Selector
 
- ### Validation Settings
+You can initialize `TrivuleForm` directly with an HTML form element or any CSS selector.
 
-- To initialize form validation, the first argument passed to the constructor is a CSS selector. It can be a standard `<form>` element or a `<div>` container containing a set of inputs to validate.
-- The second parameter consists of a basic configuration to customize the validation behavior.
+**Example**
+```javascript
+const formElement = document.getElementById("myForm");
+const trivuleForm = new TrivuleForm(formElement);
+```
 
-Here's an explanation of each available option:
+##### b. Using a Configuration Object
 
-- `auto` (optional): This option specifies whether the form should be validated as the user types in the form fields. By default, this option is disabled (`false`).
+You can initialize `TrivuleForm` using a configuration object that includes the form element or selector.
 
-- `local` (optional): This option allows you to set the language for validation error messages. You can specify the language as a string. For example, `"fr"` for French. This option is also optional.
+**Example**
+```javascript
+const trivuleForm = new TrivuleForm({
+  element: "#myForm",
+  realTime: true,
+  feedbackSelector: ".invalid-feedback"
+});
+```
 
-- `validClass` (optional): This is the CSS class that will be added to all the inputs in the form when they are valid. If this option is not set, no class will be added.
+##### 3. Initialization without Parameters
 
-- `invalidClass` (optional): This is the CSS class that will be added to all the inputs in the form when they are invalid. If this option is not set, `is-invalid` class will be added.
+If you initialize `TrivuleForm` without parameters, you need to bind the form element later using the `bind` method. Validation will not be triggered until the expected HTML element is found.
 
-Here's the translation:
+**Example**
+```javascript
+const trivuleForm = new TrivuleForm();
+trivuleForm.bind("#myForm");
+```
 
-- `feedbackSelector` (optional): If this option is not specified, Trivule will first check if a selector is indicated during declaration with the `make` method, and then use that selector. In the absence of a selector, Trivule will check if the input has an associated HTML element with the `data-tr-feedback` attribute set to the input's name. If no element is found in either of these cases, no feedback message will be displayed.
+### Form Binding
 
-- `realTime` (optional): This option specifies whether validation should be performed in real-time as the user types in the form fields. By default, this option is disabled (`false`).
+The `bind` method is used to associate a form element with the `TrivuleForm` instance. It can be an HTML element or a CSS selector. If the element is conditionally rendered (common in modern frameworks), you can call `bind` multiple times, waiting for the element to be found; it will stop executing once the element is found in the DOM.
+
+**Syntax**
+```javascript
+trivuleForm.bind(form);
+```
+**Parameters**
+- `form` (optional): The HTML form element or a CSS selector string for the form to bind.
+
+**Example**
+
+##### Binding with HTML Element
+```javascript
+const formElement = document.getElementById("myForm");
+trivuleForm.bind(formElement);
+```
+
+##### Binding with CSS Selector
+```javascript
+trivuleForm.bind("#myForm");
+```
+
+The `bind` method can be called without a parameter. In this case, it assumes that a selector has been assigned during initialization via the configuration.
+
+**Note:**
+> Calling the `bind` method may have different behavior depending on its context.
+> See the hook [afterBinding](#) for more information.
+> If you are not sure that the element will be rendered immediately after initialization, it is recommended to use the hook [afterBinding](#) while remembering to call the `bind` method later.
+
+### Configuration Notes
+
+#### Configuration Options (`TrivuleFormConfig`)
+- `element`: The HTML form element or a selector string for the form to bind.
+- -  `auto` (optional): This option specifies whether the form should be validated as the user types in the form fields. By default, this option is disabled (`false`).
+-  `local` (optional): This option allows you to set the language for validation error messages. You can specify the language as a string. For example, `"fr"` for French. This option is also optional.
+-  `validClass` (optional): This is the CSS class that will be added to all the inputs in the form when they are valid. If this option is not set, no class will be added.
+-  `invalidClass` (optional): This is the CSS class that will be added to all the inputs in the form when they are invalid. If this option is not set, `is-invalid` class will be added.
+-  `feedbackSelector` (optional): If this option is not specified, Trivule will first check if a selector is indicated during declaration with the `make` method, and then use that selector. In the absence of a selector, Trivule will check if the input has an associated HTML element with the `data-tr-feedback` attribute set to the input's name. If no element is found in either of these cases, no feedback message will be displayed.
+-  `realTime` (optional): Enables or disables real-time validation.
 
 These options allow you to customize the validation of your form according to your specific needs.
+
 
 **Default values**
 ```js
@@ -115,8 +158,85 @@ const options = {
   invalidClass: "is-invalid",
   feedbackSelector: "[data-tr-feedback={name}]", //where {name} we be replaced with the input name
   realTime: true;
+  element:null, // the css selector or html element
 };
 ```
+
+### Lifecycle Hooks
+
+TrivuleForm offers lifecycle hooks that empower you to execute code at specific stages during the form binding process. These hooks provide flexibility for handling various scenarios related to form validation.
+
+#### Register Callbacks and Execute After Form Binding
+
+The `afterBinding` hook registers a callback function to be executed **after** the form element has been successfully bound to the `TrivuleForm` instance. This is useful for performing actions that rely on the form being fully bound, such as:
+
+- Initializing additional validation rules or logic after the form element is available.
+- Triggering custom events to notify other parts of your application about the binding completion.
+
+**Syntax:**
+
+```javascript
+form.afterBinding(callbackFunction);
+```
+
+**Parameters:**
+
+- `callbackFunction` (required): The callback function to be executed after binding. This function receives the `TrivuleForm` instance as its argument.
+
+**Example:**
+
+```javascript
+const form = new TrivuleForm();
+form.afterBinding((formInstance) => {
+  console.log("Form has been bound. You can now perform additional actions.");
+  // Access the form element using formInstance.getElement()
+});
+
+form.bind("#myForm");
+```
+
+**Returns:**
+
+The `afterBinding` method returns the `TrivuleForm` instance itself, allowing for method chaining.
+
+#### Register Callbacks and Execute Before Form Binding
+
+The `beforeBinding` hook registers a callback function to be executed **before** the form element is bound to the `TrivuleForm` instance. This can be useful for performing preparatory actions or validations before the binding process begins.
+
+**Syntax:**
+
+```javascript
+form.beforeBinding(callbackFunction);
+```
+
+**Parameters:**
+
+- `callbackFunction` (required): The callback function to be executed before binding. This function receives the `TrivuleForm` instance as its argument.
+
+**Example:**
+
+```javascript
+const form = new TrivuleForm();
+form.beforeBinding((formInstance) => {
+  console.log("Form binding is about to start. You can perform any pre-checks here.");
+  // Perform any validation or checks before binding
+});
+
+form.bind("#myForm");
+```
+
+**Returns:**
+
+The `beforeBinding` method returns the `TrivuleForm` instance itself, allowing for method chaining.
+
+**Key Points:**
+
+- Lifecycle hooks provide flexibility for handling different stages of form binding.
+- `afterBinding` is useful for actions after successful binding.
+- `beforeBinding` allows for pre-checks or preparatory actions before binding.
+
+By leveraging these hooks effectively, you can enhance the control and customization of your form validation process with TrivuleForm.
+
 ### Make Validation
 
 The `make` method in the `TrivuleForm` class is used to define and apply validation rules to form inputs. This method allows you to specify validation parameters for multiple inputs, either by passing an array of input parameters or an object containing input names and their corresponding parameters.
