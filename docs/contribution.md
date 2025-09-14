@@ -5,7 +5,7 @@ title: Contribution
  
 # Contribution
  
-We welcome community contributions to improve `Trivule`. If you encounter issues, have ideas for improvements, or wish to make changes to the code, please follow the steps below to contribute.
+We welcome community contributions to improve `Trivule`. If you encounter an issue, have ideas for improvements, or wish to make changes to the code, please follow the steps below to contribute.
 
 ### Opening Issues
 
