@@ -65,21 +65,25 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [
-        {property: 'og:type', content: 'website'},
-        {property: 'og:locale', content: 'en_US'}, 
-        {property: 'og:site_name', content: 'Trivule Documentation'},
-      
-        {property: 'og:title', content: 'Trivule - Dynamic Form Validation'},
-        {property: 'og:description', content: 'Dynamic form validation without needing to write or know JavaScript, saving developers time and effort.'},
-        {property: 'og:image', content: '/img/logo.png'},
-        {property: 'og:url', content: 'https://trivule.com'},
-      
-        {property: 'twitter:card', content: 'summary_large_image'},
-        {property: 'twitter:image', content: '/img/logo.png'},
-      
-        {property: 'og:image:width', content: '600'},
-        {property: 'og:image:height', content: '600'},
-        {property: 'twitter:site', content: '@trivule'},
+        { property: "og:type", content: "website" },
+        { property: "og:locale", content: "en_US" },
+        { property: "og:site_name", content: "Trivule Documentation" },
+
+        { property: "og:title", content: "Trivule - Dynamic Form Validation" },
+        {
+          property: "og:description",
+          content:
+            "Dynamic form validation without needing to write or know JavaScript, saving developers time and effort.",
+        },
+        { property: "og:image", content: "/img/logo.png" },
+        { property: "og:url", content: "https://trivule.com" },
+
+        { property: "twitter:card", content: "summary_large_image" },
+        { property: "twitter:image", content: "/img/logo.png" },
+
+        { property: "og:image:width", content: "600" },
+        { property: "og:image:height", content: "600" },
+        { property: "twitter:site", content: "@trivule" },
       ],
       // Replace with your project's social card
       image: "img/logo.png",
@@ -95,11 +99,7 @@ const config = {
             position: "left",
             label: "Documentation",
           },
-          {
-            href: "/try-trivule",
-            position: "left",
-            label: "Try online",
-          },
+
           {
             href: "https://github.com/trivule",
             label: "GitHub",

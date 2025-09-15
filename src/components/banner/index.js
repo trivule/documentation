@@ -24,9 +24,6 @@ export default function Banner() {
             Get started with Trivule
           </button>
         </Link>
-        <Link to="/try-trivule">
-          <button className={clsx(styles.btn)}>Try Trivule</button>
-        </Link>
       </div>
     </div>
   );
